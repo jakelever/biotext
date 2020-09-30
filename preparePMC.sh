@@ -1,19 +1,9 @@
 #!/bin/bash
 set -ex
 
-rm -f pubmed_listing.txt pmc_listing.txt
+rm -f pmc_listing.txt
 
-echo "Updating PubMed and PubMed Central (Open Access / Author Manuscript) listings"
-
-for dir in "baseline" "updatefiles"
-do
-	ftpPath=ftp://ftp.ncbi.nlm.nih.gov/pubmed/$dir/
-
-	curl --silent $ftpPath |\
-	grep -oP "pubmed\w+.xml.gz" |\
-	sort -u |\
-	awk -v ftpPath=$ftpPath ' { print ftpPath$0 } ' >> pubmed_listing.txt
-done
+echo "Updating PubMed Central (Open Access / Author Manuscript) listings"
 
 for ftpPath in "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_bulk/" "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/manuscript/"
 do
@@ -23,12 +13,13 @@ do
 	awk -v ftpPath=$ftpPath ' { print ftpPath$0 } ' >> pmc_listing.txt
 done
 
+echo "Downloading PubMed Central archives"
+
 mkdir -p pmc_archives
 cd pmc_archives
 
 rm -f download.tmp
 
-#for f in `echo $files | tr ',' '\n'`
 while read ftpPath
 do
 	f=`echo $ftpPath | grep -oP "[^/]+$"`
@@ -44,6 +35,8 @@ do
 	fi
 
 done < ../pmc_listing.txt
+
+echo "Running grouping on PubMed Central data"
 
 python ../groupPMC.py --inPMCDir . --prevGroupings groupings.json.prev --outGroupings groupings.json
 
