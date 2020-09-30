@@ -49,7 +49,7 @@ snakemake -j 100 --cluster ' sbatch' --latency-wait 60 converted_biocxml.flag
 This project requires Python 3 with dependencies that can be installed with pip.
 
 ```
-pip install -U snakemake bioc
+pip install -U snakemake bioc ftputil
 ```
 
 For testing, it also uses biopython.

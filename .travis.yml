@@ -2,7 +2,7 @@
 language: python
 
 install:
-  - pip install -U snakemake bioc biopython
+  - pip install -U snakemake bioc ftputil biopython
 script:
   - sh test.sh
 
