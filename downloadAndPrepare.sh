@@ -42,16 +42,10 @@ do
 	if [ -f download.tmp ]; then
 		mv download.tmp $f
 	fi
-	
-	new_timestamp=`date -R -d @$(stat -c '%Y' $f)`
 
-	#grouping_file=${f%.xml.tar.gz}.groups.json
-	#if [[ "$timestamp" != "$new_timestamp"  || ! -f $grouping_file ]]; then
-	#	python ../splitPMC.py --inPMC $f --outGroupings $grouping_file --prevGroupings $grouping_file.prev
-	#	cp $grouping_file $grouping_file.prev
-	#fi
 done < ../pmc_listing.txt
 
-python ../groupPMC.py --inPMCDir . --outGroupings groupings.json --outGroupings groupings.json
+python ../groupPMC.py --inPMCDir . --prevGroupings groupings.json.prev --outGroupings groupings.json
 
+cp groupings.json groupings.json.prev
 
