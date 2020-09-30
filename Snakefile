@@ -5,7 +5,7 @@ import json
 from snakemake.remote.FTP import RemoteProvider as FTPRemoteProvider
 FTP = FTPRemoteProvider()
 
-pubmed_biocxml_file, pmc_biocxml_files = [], []
+pubmed_biocxml_files, pmc_biocxml_files = [], []
 
 # Use the pubmed_listing file to get a list of output files for each PubMed XML file
 if os.path.isfile('pubmed_listing.txt'):
@@ -24,6 +24,12 @@ if os.path.isfile('pmc_archives/groupings.json'):
 		pmc_blocks = sorted(json.load(f)['groups'].keys())
 		pmc_biocxml_files = [ "biocxml/pmc_%s.bioc.xml" % b for b in pmc_blocks ]
 
+# Delete the flags so that those rules have to be evaluated
+if os.path.isfile("downloaded.flag"):
+	os.remove("downloaded.flag")
+if os.path.isfile("converted_biocxml.flag"):
+	os.remove("converted_biocxml.flag")
+
 rule convert_biocxml:
 	input: 
 		pubmed = pubmed_biocxml_files,
@@ -33,9 +39,9 @@ rule convert_biocxml:
 	shell: "touch -d '10 years ago' {output}"
 
 rule download:
-	input: "downloadAndPrepare.sh"
+	input: [ "preparePubmed.sh", "preparePMC.sh" ]
 	output: "downloaded.flag"
-	shell: "sh downloadAndPrepare.sh && touch -d '10 years ago' {output}"
+	shell: "sh preparePubmed.sh && sh preparePMC.sh && touch -d '10 years ago' {output}"
 
 rule pubmed_convert_biocxml:
 	output: "biocxml/pubmed_{dir}_{f}.bioc.xml"
