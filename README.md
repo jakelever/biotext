@@ -4,7 +4,7 @@ Sometimes you need a easily-updated local copy of PubMed and PubMed Central, and
 
 ## Advantages
 - Deals with format conversion
-- Chunks PubMed Central (which is normally ~2000000 files) into larger files that are easier to parallelise
+- Chunks PubMed Central (which is normally ~2,000,000 files) into larger files that are easier to parallelise
 - Uses Snakemake, so can be deployed on a cluster
 
 ## Details
