@@ -1,0 +1,8 @@
+
+language: python
+
+install:
+  - pip install -U snakemake bioc biopython
+script:
+  - sh test.sh
+
