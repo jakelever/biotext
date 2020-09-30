@@ -9,11 +9,11 @@ Sometimes you need a easily-updated local copy of PubMed and PubMed Central, and
 
 ## Details
 
-PubMed is released as a series of XML files with a baseline of files and updates released daily. Each file has tens of thousands of titles and abstracts along with metadata. Each update file may contain new documents or updates to previous documents. These files follow the PubMed XML standard. This project converts each file into the BioC format.
+PubMed is released as a series of XML files with a [baseline of files and updates released daily](https://www.nlm.nih.gov/databases/download/pubmed_medline.html). Each file has tens of thousands of titles and abstracts along with metadata. Each update file may contain new documents or updates to previous documents. These files follow the [PubMed XML standard](https://www.nlm.nih.gov/bsd/licensee/data_elements_doc.html). This project converts each file into the [BioC format](http://bioc.sourceforge.net/).
 
-PubMed Central offers full-text articles of documents in a different XML format. A portion of PubMed Central is released for text mining as the non-commercial and commercial licensed PubMed Central Open Access subset and the Author Manuscript Collection. PubMed Central is released as about 15 archives of XML files. Each archive has a very large number of files which makes it somewhat unwieldy. Each new version of these archives contains a mix of new files and old files which need to be distinguished. This project identifies unprocessed files, groups them into chunk (of 2000 documents by default) and converts them to BioC XML.
+PubMed Central offers full-text articles of documents in a different XML format. A portion of PubMed Central is released for text mining as the [non-commercial and commercial licensed PubMed Central Open Access subset](https://www.ncbi.nlm.nih.gov/pmc/tools/openftlist/) and the [Author Manuscript Collection](https://www.ncbi.nlm.nih.gov/pmc/about/mscollection/). PubMed Central is released as about 15 archives of XML files. Each archive has a very large number of files which makes it somewhat unwieldy. Each new version of these archives contains a mix of new files and old files which need to be distinguished. This project identifies unprocessed files, groups them into chunk (of 2000 documents by default) and converts them to BioC XML.
 
-This project does not deal with duplicates of documents, both in the PubMed update files, and documents in PubMed Central that are also in PubMed. Any text mining in documents should do a final pass on final results to identify the latest version of a document, i.e. going through new--to-old PubMed Central files before new-to-old PubMed files.
+**N.B.** This project does not deal with duplicates of documents, both in the PubMed update files, and documents in PubMed Central that are also in PubMed. Any text mining of these documents should do a final pass to identify the latest version of a document, i.e. going through new-to-old PubMed Central files before new-to-old PubMed files.
 
 ## Usage
 
@@ -37,4 +37,9 @@ snakemake -j 100 --cluster ' sbatch' --latency-wait 60 converted_biocxml.flag
 
 ## Dependencies
 
-This project requires Python 3 and snakemake (which can be used with pip).
+This project requires Python 3 with dependencies that can be installed with pip.
+
+```
+pip install -U snakemake bioc
+```
+
