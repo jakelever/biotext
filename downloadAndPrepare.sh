@@ -52,6 +52,6 @@ do
 	#fi
 done < ../pmc_listing.txt
 
-python ../splitPMCDir.py --inPMCDir . --outGroupings groupings.json --outGroupings groupings.json
+python ../groupPMC.py --inPMCDir . --outGroupings groupings.json --outGroupings groupings.json
 
 
