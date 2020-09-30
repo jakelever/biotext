@@ -1,5 +1,14 @@
 # BioText
 
+<p>
+	<a href="https://travis-ci.org/jakelever/biotext">
+		<img src="https://travis-ci.org/jakelever/biotext.svg?branch=master" />
+	</a>
+	<a href="https://opensource.org/licenses/MIT">
+		<img src="https://img.shields.io/badge/License-MIT-blue.svg" />
+	</a>
+</p>
+
 Sometimes you need a easily-updated local copy of PubMed and PubMed Central, and this project can help with that. It manages the download the PubMed and PubMed Central and converting it into the nice BioC XML format while keeping important metadata. And then it handles the update process without redoing all the previous downloading and computation.
 
 ## Advantages
