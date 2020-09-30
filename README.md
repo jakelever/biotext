@@ -43,3 +43,8 @@ This project requires Python 3 with dependencies that can be installed with pip.
 pip install -U snakemake bioc
 ```
 
+For testing, it also uses biopython.
+```
+pip install -U biopython
+```
+

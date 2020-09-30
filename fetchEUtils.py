@@ -19,7 +19,7 @@ if __name__ == '__main__':
 
 	with open(args.o,'w') as f:
 		handle = Entrez.efetch(db=args.database, id=args.identifier, rettype="gb", retmode="xml")
-		f.write(handle.read())
+		f.write(handle.read().decode('utf-8'))
 
 	print("Output to %s complete" % args.o)
 
