@@ -3,3 +3,12 @@ __pycache__
 *.pyc
 *.xml
 
+pubmed_listing.txt
+pmc_listing.txt
+
+.snakemake/
+pmc_archives/
+biocxml/
+
+*.flag
+
