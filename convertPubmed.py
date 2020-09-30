@@ -1,6 +1,5 @@
 
 import argparse
-import bioc
 import tempfile
 import hashlib
 

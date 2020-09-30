@@ -1,6 +1,5 @@
 
 import argparse
-import bioc
 from Bio import Entrez
 import io
 

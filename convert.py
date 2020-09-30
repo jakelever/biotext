@@ -1,6 +1,5 @@
 
 import argparse
-import bioc
 
 from bioconverters import convert
 

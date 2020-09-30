@@ -1,18 +1,6 @@
 
 import argparse
-import bioc
 from Bio import Entrez
-import io
-
-from bioconverters import convert
-
-def eutilsToFile(db,id,filename):
-	handle = Entrez.efetch(db=db, id=id, rettype="gb", retmode="xml")
-	with codecs.open(filename,'w','utf-8') as f:
-		xml = handle.read()
-		if isinstance(xml,bytes):
-			xml = xml.decode('utf-8')
-		f.write(xml)
 
 acceptedInFormats = ['biocxml','pubmedxml','marcxml','pmcxml','uimaxmi']
 acceptedOutFormats = ['biocxml','txt']
