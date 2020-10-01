@@ -1,4 +1,6 @@
 
+localrules: convert_biocxml
+
 import os
 import json
 
@@ -36,12 +38,12 @@ rule convert_biocxml:
 		pmc_downloaded = 'pmc_archives/groupings.json',
 		pmc = pmc_biocxml_files
 	output: "converted_biocxml.flag"
-	shell: "touch -d '10 years ago' {output}"
+	shell: "touch {output}"
 
 rule download:
 	input: [ "preparePubmed.sh", "preparePMC.sh" ]
 	output: "downloaded.flag"
-	shell: "sh preparePubmed.sh && sh preparePMC.sh && touch -d '10 years ago' {output}"
+	shell: "sh preparePubmed.sh && sh preparePMC.sh && touch {output}"
 
 rule pubmed_convert_biocxml:
 	output: "biocxml/pubmed_{dir}_{f}.bioc.xml"
