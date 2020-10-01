@@ -31,4 +31,5 @@ snakemake --cores 1 converted_biocxml.flag
 
 # Cleaning up after test
 rm -fr pmc_archives biocxml
+rm converted_biocxml.flag pubmed_listing.txt
 
