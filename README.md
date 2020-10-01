@@ -9,7 +9,7 @@
 	</a>
 </p>
 
-Sometimes you need a easily-updated local copy of PubMed and PubMed Central, and this project can help with that. It manages the download the PubMed and PubMed Central and converting it into the nice BioC XML format while keeping important metadata. And then it handles the update process without redoing all the previous downloading and computation.
+Sometimes you need a easily-updated local copy of PubMed and PubMed Central, and this project can help with that. It manages the download the PubMed and PubMed Central and converting it into the nice BioC XML format while keeping important metadata. It also handles the update process without redoing all the previous downloading and computation.
 
 ## Advantages
 - Deals with format conversion
@@ -26,14 +26,14 @@ PubMed Central offers full-text articles of documents in a different XML format.
 
 ## Usage
 
-There are two steps involved.
+There are two steps involved shown below with single-core Snakemake calls. Suggestions for using a cluster are further below.
 
 ```
 # 1. Downloading and grouping PubMed Central (which is a single thread)
-snakemake downloaded.flag
+snakemake --cores 1 downloaded.flag
 
 # 2. Converting PubMed files and PubMed Central groups of files (which can be parallelised).
-snakemake converted_biocxml.flag
+snakemake --cores 1 converted_biocxml.flag
 ```
 
 Those steps will download PubMed Central to a *pmc_archives* directory and create a *biocxml* directory with the converted files.
