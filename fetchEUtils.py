@@ -2,7 +2,7 @@
 import argparse
 from Bio import Entrez
 
-acceptedInFormats = ['biocxml','pubmedxml','marcxml','pmcxml','uimaxmi']
+acceptedInFormats = ['biocxml','pubmedxml','pmcxml']
 acceptedOutFormats = ['biocxml','txt']
 if __name__ == '__main__':
 	parser = argparse.ArgumentParser(description='Downloads a single PubMed or PubMed Central document. Useful for testing purposes.')

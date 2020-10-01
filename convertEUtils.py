@@ -5,7 +5,7 @@ import io
 
 from bioconverters import convert
 
-acceptedInFormats = ['biocxml','pubmedxml','marcxml','pmcxml','uimaxmi']
+acceptedInFormats = ['biocxml','pubmedxml','pmcxml']
 acceptedOutFormats = ['biocxml','txt']
 if __name__ == '__main__':
 	parser = argparse.ArgumentParser(description='Downloads and converts small number of PubMed or PubMed Central documents. Useful for testing purposes.')

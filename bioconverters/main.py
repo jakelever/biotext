@@ -4,8 +4,6 @@ import bioc
 
 from .pubmedxml import pubmedxml2bioc
 from .pmcxml import pmcxml2bioc
-from .marcxml import marcxml2bioc
-from .uimaxmi import uimaxmi2bioc
 from .bioc import biocxml2bioc
 
 def docs2bioc(source,format):
@@ -13,16 +11,12 @@ def docs2bioc(source,format):
 		return biocxml2bioc(source)
 	elif format == 'pubmedxml':
 		return pubmedxml2bioc(source)
-	elif format == 'marcxml':
-		return marcxml2bioc(source)
 	elif format == 'pmcxml':
 		return pmcxml2bioc(source)
-	elif format == 'uimaxmi':
-		return uimaxmi2bioc(source)
 	else:
 		raise RuntimeError("Unknown format: %s" % format)
 
-acceptedInFormats = ['biocxml','pubmedxml','marcxml','pmcxml','uimaxmi']
+acceptedInFormats = ['biocxml','pubmedxml','pmcxml']
 acceptedOutFormats = ['biocxml','txt']
 def convert(inFiles,inFormat,outFile,outFormat):
 	outBiocHandle,outTxtHandle = None,None
