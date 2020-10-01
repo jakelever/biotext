@@ -1,8 +1,8 @@
 #!/bin/bash
 set -ex
 
-if [ -d pmc_archives ]; then
-	echo "pmc_archives already exists. Cannot continue"
+if [[ -d pmc_archives || -d biocxml ]]; then
+	echo "ERROR: pmc_archives or biocxml directory already exists. Cannot continue"
 	exit 1
 fi
 
@@ -28,4 +28,7 @@ mv single_file.txt pubmed_listing.txt
 
 # Then run the main convert code using Snakemake
 snakemake --cores 1 converted_biocxml.flag
+
+# Cleaning up after test
+rm -fr pmc_archives biocxml
 
