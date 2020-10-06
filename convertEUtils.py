@@ -28,7 +28,7 @@ if __name__ == '__main__':
 	doc_xmls = []
 	for identifier in identifiers:
 		handle = Entrez.efetch(db=args.database, id=identifier, rettype="gb", retmode="xml")
-		doc_xml = io.StringIO(handle.read())
+		doc_xml = io.StringIO(handle.read().decode('utf-8'))
 		doc_xmls.append(doc_xml)
 
 	outFormat = args.oFormat.lower()
