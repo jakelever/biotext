@@ -91,6 +91,8 @@ def getPubmedEntryDate(elem,pmid):
 
 	return pubYear,pubMonth,pubDay
 
+pubTypeSkips = {"Research Support, N.I.H., Intramural","Research Support, Non-U.S. Gov't","Research Support, U.S. Gov't, P.H.S.","Research Support, N.I.H., Extramural","Research Support, U.S. Gov't, Non-P.H.S.","English Abstract"}
+doiRegex = re.compile(r'^[0-9\.]+\/.+[^\/]$')
 def processMedlineFile(source):
 	for event, elem in etree.iterparse(source, events=('start', 'end', 'start-ns', 'end-ns')):
 		if (event=='end' and elem.tag=='PubmedArticle'): #MedlineCitation'):
@@ -160,6 +162,33 @@ def processMedlineFile(source):
 
 				meshHeadings.append(meshHeading)
 			meshHeadingsTxt = "\t".join(meshHeadings)
+
+			supplementaryConcepts = []
+			conceptElems = elem.findall('./MedlineCitation/SupplMeshList/SupplMeshName')
+			for conceptElem in conceptElems:
+				conceptID = conceptElem.attrib['UI']
+				conceptType = conceptElem.attrib['Type']
+				conceptName = conceptElem.text
+				#supplementaryConcepts.append((conceptID,conceptType,conceptName))
+				supplementaryConcepts.append("%s|%s|%s" % (conceptID,conceptType,conceptName))
+			supplementaryConceptsTxt = "\t".join(supplementaryConcepts)
+
+			doiElems = elem.findall("./PubmedData/ArticleIdList/ArticleId[@IdType='doi']")
+			dois = [ doiElem.text for doiElem in doiElems if doiElem.text and doiRegex.match(doiElem.text) ]
+
+			doi = None
+			if dois:
+				doi = dois[0] # We'll just use DOI the first one provided
+
+			pmcElems = elem.findall("./PubmedData/ArticleIdList/ArticleId[@IdType='pmc']")
+			assert len(pmcElems) <= 1, "Foud more than one PMCID with PMID: %s" % pmid
+			pmcid = None
+			if len(pmcElems) == 1:
+				pmcid = pmcElems[0].text
+
+			pubTypeElems = elem.findall('./MedlineCitation/Article/PublicationTypeList/PublicationType')
+			pubType = [ e.text for e in pubTypeElems if not e.text in pubTypeSkips ]
+			pubTypeTxt = "|".join(pubType)
 					
 			# Extract the title of paper
 			title = elem.findall('./MedlineCitation/Article/ArticleTitle')
@@ -183,6 +212,8 @@ def processMedlineFile(source):
 
 			document = {}
 			document["pmid"] = pmid
+			document["pmcid"] = pmcid
+			document["doi"] = doi
 			document["pubYear"] = pubYear
 			document["pubMonth"] = pubMonth
 			document["pubDay"] = pubDay
@@ -193,6 +224,8 @@ def processMedlineFile(source):
 			document["authors"] = authors
 			document["chemicals"] = chemicalsTxt
 			document["meshHeadings"] = meshHeadingsTxt
+			document["supplementaryMesh"] = supplementaryConceptsTxt
+			document["publicationTypes"] = pubTypeTxt
 
 			yield document
 		
@@ -207,6 +240,8 @@ def pubmedxml2bioc(source):
 		biocDoc.id = pmDoc["pmid"]
 		biocDoc.infons['title'] = " ".join(pmDoc["title"])
 		biocDoc.infons['pmid'] = pmDoc["pmid"]
+		biocDoc.infons['pmcid'] = pmDoc["pmcid"]
+		biocDoc.infons['doi'] = pmDoc["doi"]
 		biocDoc.infons['year'] = pmDoc["pubYear"]
 		biocDoc.infons['month'] = pmDoc["pubMonth"]
 		biocDoc.infons['day'] = pmDoc["pubDay"]
@@ -215,6 +250,8 @@ def pubmedxml2bioc(source):
 		biocDoc.infons['authors'] = ", ".join(pmDoc["authors"])
 		biocDoc.infons['chemicals'] = pmDoc['chemicals']
 		biocDoc.infons['meshHeadings'] = pmDoc['meshHeadings']
+		biocDoc.infons['supplementaryMesh'] = pmDoc['supplementaryMesh']
+		biocDoc.infons['publicationTypes'] = pmDoc['publicationTypes']
 
 		offset = 0
 		for section in ["title","abstract"]:
