@@ -41,7 +41,8 @@ if __name__ == '__main__':
 		current_group = []
 
 		for i,member in enumerate(tar.getmembers()):
-			if member.isfile() and member.name.endswith('.nxml') and member.mtime > time_cutoff:
+			file_ext = member.name.split('.')[-1]
+			if member.isfile() and file_ext in ['xml','nxml'] and member.mtime > time_cutoff:
 				current_group.append(member.name)
 
 				if member.mtime > newest_mtime:
