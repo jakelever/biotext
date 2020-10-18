@@ -9,8 +9,11 @@ pmc_listing.txt
 .snakemake/
 pmc_archives/
 biocxml/
+pubtator/
 
 *.flag
 
 *.out
+
+bioconcepts2pubtatorcentral.gz
 

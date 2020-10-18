@@ -8,6 +8,10 @@ from snakemake.remote.FTP import RemoteProvider as FTPRemoteProvider
 FTP = FTPRemoteProvider()
 
 pubmed_biocxml_files, pmc_biocxml_files = [], []
+pubtator_files = []
+
+if os.path.isdir('biocxml'):
+	pubtator_files = [ f"pubtator/{f}" for f in os.listdir('biocxml') ]
 
 # Use the pubmed_listing file to get a list of output files for each PubMed XML file
 if os.path.isfile('pubmed_listing.txt'):
@@ -17,27 +21,30 @@ if os.path.isfile('pubmed_listing.txt'):
 			split = line.strip('\n').split('/')
 			filename = split[-1].replace('.xml.gz','').replace('pubmed','')
 			dir = split[-2]
-			pubmed_biocxml_file = "biocxml/pubmed_%s_%s.bioc.xml" % (dir,filename)
-			pubmed_biocxml_files.append(pubmed_biocxml_file)
+			pubmed_biocxml_files.append(f"biocxml/pubmed_{dir}_{filename}.bioc.xml")
 
 # Use the PMC groupings file to get a list of output files
 if os.path.isfile('pmc_archives/groupings.json'):
 	with open('pmc_archives/groupings.json') as f:
 		pmc_blocks = sorted(json.load(f)['groups'].keys())
-		pmc_biocxml_files = [ "biocxml/pmc_%s.bioc.xml" % b for b in pmc_blocks ]
+		pmc_biocxml_files = [ f"biocxml/pmc_{b}.bioc.xml" for b in pmc_blocks ]
 
 # Delete the flags so that those rules have to be evaluated
 if os.path.isfile("downloaded.flag"):
 	os.remove("downloaded.flag")
-if os.path.isfile("converted_biocxml.flag"):
-	os.remove("converted_biocxml.flag")
+if os.path.isfile("converted.flag"):
+	os.remove("converted.flag")
+if os.path.isfile("pubtator_downloaded.flag"):
+	os.remove("pubtator_downloaded.flag")
+if os.path.isfile("pubtator.flag"):
+	os.remove("pubtator.flag")
 
 rule convert_biocxml:
 	input: 
 		pubmed = pubmed_biocxml_files,
 		pmc_downloaded = 'pmc_archives/groupings.json',
 		pmc = pmc_biocxml_files
-	output: "converted_biocxml.flag"
+	output: "converted.flag"
 	shell: "touch {output}"
 
 rule download:
@@ -54,4 +61,19 @@ rule pmc_convert_biocxml:
 	input: "pmc_archives"
 	output: "biocxml/pmc_{block}.bioc.xml"
 	shell: "python convertPMC.py --pmcDir {input} --block {wildcards.block} --format biocxml --outFile {output}"
+
+rule download_pubtator:
+	output: "pubtator_downloaded.flag"
+	shell: "curl -o bioconcepts2pubtatorcentral.gz ftp://ftp.ncbi.nlm.nih.gov/pub/lu/PubTatorCentral/bioconcepts2pubtatorcentral.gz && touch {output}"
+
+rule align_with_pubtator:
+	input: 
+		biocxml="biocxml/{f}.bioc.xml"
+	output: "pubtator/{f}.bioc.xml"
+	shell: "python alignWithPubtator.py --inBioc {input.biocxml} --annotations <(zcat bioconcepts2pubtatorcentral.gz) --outBioc {output}"
+
+rule pubtator_complete:
+	input: pubtator_files
+	output: "pubtator.flag"
+	shell: "touch {output}"
 

@@ -1,4 +1,4 @@
-# BioText
+# BioText (with added PubTator)
 
 <p>
 	<a href="https://travis-ci.org/jakelever/biotext">
@@ -9,12 +9,13 @@
 	</a>
 </p>
 
-Sometimes you need a easily-updated local copy of PubMed and PubMed Central, and this project can help with that. It manages the download the PubMed and PubMed Central and converting it into the nice BioC XML format while keeping important metadata. It also handles the update process without redoing all the previous downloading and computation.
+Sometimes you need a easily-updated local copy of PubMed and PubMed Central, and sometimes (but not always) you want annotations of entities from [PubTator](https://www.ncbi.nlm.nih.gov/research/pubtator/) on those articles. This project can help with that. It manages the download the PubMed and PubMed Central and converting it into the nice BioC XML format while keeping important metadata. As a separate step, it can load up PubTator Central annotations and align them to the documents. It also handles the update process without redoing all the previous downloading and computation.
 
 ## Advantages
 - Deals with format conversion
 - Chunks PubMed Central (which is normally ~2,000,000 files) into larger files that are easier to parallelise
 - Uses Snakemake, so can be deployed on a cluster
+- Can add [PubTator Central](https://www.ncbi.nlm.nih.gov/research/pubtator/) annotations (of chemicals, genes, diseases, etc) to the text
 
 ## Details
 
@@ -24,16 +25,20 @@ PubMed Central offers full-text articles of documents in a different XML format.
 
 **N.B.** This project does not deal with duplicates of documents, both in the PubMed update files, and documents in PubMed Central that are also in PubMed. Any text mining of these documents should do a final pass to identify the latest version of a document, i.e. going through new-to-old PubMed Central files before new-to-old PubMed files.
 
+## PubTator Annotation
+
+As an optional extra, you can get [PubTator Central annotations](https://www.ncbi.nlm.nih.gov/research/pubtator/) added to the documents. This uses the method outlined in [Lever et al, PSB 2020](https://pubmed.ncbi.nlm.nih.gov/31797632/). It downloads the latest version of the [PubTator Central annotation alignments](ftp://ftp.ncbi.nlm.nih.gov/pub/lu/PubTatorCentral) and identifies their locations in each document. This doubles the disk space requirement.
+
 ## Usage
 
-There are two steps involved shown below with single-core Snakemake calls. Suggestions for using a cluster are further below.
+There are two core steps involved shown below with single-core Snakemake calls for downloading and conversion. Suggestions for using a cluster are further below.
 
 ```
 # 1. Downloading and grouping PubMed Central (which is a single thread)
 snakemake --cores 1 downloaded.flag
 
 # 2. Converting PubMed files and PubMed Central groups of files (which can be parallelised).
-snakemake --cores 1 converted_biocxml.flag
+snakemake --cores 1 converted.flag
 ```
 
 Those steps will download PubMed Central to a *pmc_archives* directory and create a *biocxml* directory with the converted files.
@@ -41,7 +46,16 @@ Those steps will download PubMed Central to a *pmc_archives* directory and creat
 Those calls to snakemake can then be augmented to use a cluster (or whatever local set up you have), e.g.
 ```
 # Run a hundred jobs at a time on a SLURM cluster using sbatch
-snakemake -j 100 --cluster ' sbatch' --latency-wait 60 converted_biocxml.flag
+snakemake -j 100 --cluster ' sbatch' --latency-wait 60 converted.flag
+```
+
+The commands for running the PubTator alignments are below. Please add appropriate cluster flags.
+```
+# Download the PubTator file
+snakemake --cores 1 pubtator_downloaded.flag
+
+# Run the conversions on all the files in biocxml/
+snakemake --cores 1 pubtator.flag
 ```
 
 ## Dependencies
