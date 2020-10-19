@@ -80,6 +80,9 @@ rule pubtator_complete:
 	shell: "touch {output}"
 
 
+pmid_files = []
+if os.path.isdir('biocxml'):
+	pmid_files = [ "pmids/%s" % f.replace('.bioc.xml','.txt') for f in os.listdir('biocxml') ]
 
 rule gather_all_pmids:
 	input: pmid_files
