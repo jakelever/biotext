@@ -38,6 +38,8 @@ if os.path.isfile("pubtator_downloaded.flag"):
 	os.remove("pubtator_downloaded.flag")
 if os.path.isfile("pubtator.flag"):
 	os.remove("pubtator.flag")
+if os.path.isfile("pmids.flag"):
+	os.remove("pmids.flag")
 
 rule convert_biocxml:
 	input: 
@@ -76,4 +78,16 @@ rule pubtator_complete:
 	input: pubtator_files
 	output: "pubtator.flag"
 	shell: "touch {output}"
+
+
+
+rule gather_all_pmids:
+	input: pmid_files
+	output: "pmids.flag"
+	shell: "touch {output}"
+
+rule gather_pmids:
+	input: "biocxml/{f}.bioc.xml"
+	output: "pmids/{f}.txt"
+	shell: 'grep -hoP "<infon key=.pmid.>\d+</infon>" {input} | tr ">" "<" | cut -f 3 -d "<" | sort -u > {output}'
 
