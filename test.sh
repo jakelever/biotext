@@ -27,9 +27,9 @@ tail -n 1 pubmed_listing.txt > single_file.txt
 mv single_file.txt pubmed_listing.txt
 
 # Then run the main convert code using Snakemake
-snakemake --cores 1 converted_biocxml.flag
+snakemake --cores 1 converted.flag
 
 # Cleaning up after test
 rm -fr pmc_archives biocxml
-rm converted_biocxml.flag pubmed_listing.txt
+rm converted.flag pubmed_listing.txt
 
