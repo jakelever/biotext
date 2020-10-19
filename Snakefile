@@ -133,5 +133,5 @@ rule gather_all_pmids:
 rule gather_pmids:
 	input: "biocxml/{f}.bioc.xml"
 	output: "pmids/{f}.txt"
-	shell: 'grep -hoP "<infon key=.pmid.>\d+</infon>" {input} | tr ">" "<" | cut -f 3 -d "<" | sort -u > {output}'
+	shell: ' {{ grep -hoP "<infon key=.pmid.>\d+</infon>" {input} || true; }} | tr ">" "<" | cut -f 3 -d "<" | sort -u > {output}'
 
