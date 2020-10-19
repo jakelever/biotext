@@ -7,11 +7,38 @@ import json
 from snakemake.remote.FTP import RemoteProvider as FTPRemoteProvider
 FTP = FTPRemoteProvider()
 
-pubmed_biocxml_files, pmc_biocxml_files = [], []
-pubtator_files = []
 
-if os.path.isdir('biocxml'):
-	pubtator_files = [ f"pubtator/{f}" for f in os.listdir('biocxml') ]
+
+
+
+#  ____                      _                 _ 
+# |  _ \  _____      ___ __ | | ___   __ _  __| |
+# | | | |/ _ \ \ /\ / / '_ \| |/ _ \ / _` |/ _` |
+# | |_| | (_) \ V  V /| | | | | (_) | (_| | (_| |
+# |____/ \___/ \_/\_/ |_| |_|_|\___/ \__,_|\__,_|
+#                                                
+
+# Delete the flags so that those rules have to be evaluated
+if os.path.isfile("downloaded.flag"):
+	os.remove("downloaded.flag")
+
+rule download:
+	input: [ "preparePubmed.sh", "preparePMC.sh" ]
+	output: "downloaded.flag"
+	shell: "sh preparePubmed.sh && sh preparePMC.sh && touch {output}"
+
+
+#   ____                          _   
+#  / ___|___  _ ____   _____ _ __| |_ 
+# | |   / _ \| '_ \ \ / / _ \ '__| __|
+# | |__| (_) | | | \ V /  __/ |  | |_ 
+#  \____\___/|_| |_|\_/ \___|_|   \__|
+#                                     
+
+if os.path.isfile("converted.flag"):
+	os.remove("converted.flag")
+
+pubmed_biocxml_files, pmc_biocxml_files = [], []
 
 # Use the pubmed_listing file to get a list of output files for each PubMed XML file
 if os.path.isfile('pubmed_listing.txt'):
@@ -29,18 +56,6 @@ if os.path.isfile('pmc_archives/groupings.json'):
 		pmc_blocks = sorted(json.load(f)['groups'].keys())
 		pmc_biocxml_files = [ f"biocxml/pmc_{b}.bioc.xml" for b in pmc_blocks ]
 
-# Delete the flags so that those rules have to be evaluated
-if os.path.isfile("downloaded.flag"):
-	os.remove("downloaded.flag")
-if os.path.isfile("converted.flag"):
-	os.remove("converted.flag")
-if os.path.isfile("pubtator_downloaded.flag"):
-	os.remove("pubtator_downloaded.flag")
-if os.path.isfile("pubtator.flag"):
-	os.remove("pubtator.flag")
-if os.path.isfile("pmids.flag"):
-	os.remove("pmids.flag")
-
 rule convert_biocxml:
 	input: 
 		pubmed = pubmed_biocxml_files,
@@ -49,10 +64,6 @@ rule convert_biocxml:
 	output: "converted.flag"
 	shell: "touch {output}"
 
-rule download:
-	input: [ "preparePubmed.sh", "preparePMC.sh" ]
-	output: "downloaded.flag"
-	shell: "sh preparePubmed.sh && sh preparePMC.sh && touch {output}"
 
 rule pubmed_convert_biocxml:
 	output: "biocxml/pubmed_{dir}_{f}.bioc.xml"
@@ -63,6 +74,25 @@ rule pmc_convert_biocxml:
 	input: "pmc_archives"
 	output: "biocxml/pmc_{block}.bioc.xml"
 	shell: "python convertPMC.py --pmcDir {input} --block {wildcards.block} --format biocxml --outFile {output}"
+
+
+
+#  ____        _   _____     _             
+# |  _ \ _   _| |_|_   _|_ _| |_ ___  _ __ 
+# | |_) | | | | '_ \| |/ _` | __/ _ \| '__|
+# |  __/| |_| | |_) | | (_| | || (_) | |   
+# |_|    \__,_|_.__/|_|\__,_|\__\___/|_|   
+#                                          
+
+if os.path.isfile("pubtator_downloaded.flag"):
+	os.remove("pubtator_downloaded.flag")
+if os.path.isfile("pubtator.flag"):
+	os.remove("pubtator.flag")
+
+pubtator_files = []
+
+if os.path.isdir('biocxml'):
+	pubtator_files = [ f"pubtator/{f}" for f in os.listdir('biocxml') ]
 
 rule download_pubtator:
 	output: "pubtator_downloaded.flag"
@@ -79,6 +109,17 @@ rule pubtator_complete:
 	output: "pubtator.flag"
 	shell: "touch {output}"
 
+
+
+#  ____  __  __ ___ ____      
+# |  _ \|  \/  |_ _|  _ \ ___ 
+# | |_) | |\/| || || | | / __|
+# |  __/| |  | || || |_| \__ \
+# |_|   |_|  |_|___|____/|___/
+#                             
+
+if os.path.isfile("pmids.flag"):
+	os.remove("pmids.flag")
 
 pmid_files = []
 if os.path.isdir('biocxml'):
