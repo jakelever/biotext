@@ -10,6 +10,7 @@ pmc_listing.txt
 pmc_archives/
 biocxml/
 pubtator/
+pmids/
 
 *.flag
 
