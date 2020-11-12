@@ -3,12 +3,23 @@ localrules: convert_biocxml
 
 import os
 import json
+import sys
 
 from snakemake.remote.FTP import RemoteProvider as FTPRemoteProvider
 FTP = FTPRemoteProvider()
 
-
-
+# Make the default rule print out usage info
+rule nodefault:
+	output: "nodefault"
+	run:
+		print()
+		print("ERROR: You must provide one of the targets below:")
+		print("  downloaded.flag - Download file listings and PMC data")
+		print("  converted.flag - Run the conversions to BioC XML")
+		print("  pubtator_downloaded.flag - Download PubTator data")
+		print("  pubtator.flag - Run conversions of PubTator data")
+		print("  pmids.flag - Create PMID listings for each file for easier indexing")
+		print()
 
 
 #  ____                      _                 _ 
