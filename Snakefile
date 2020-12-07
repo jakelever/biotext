@@ -82,9 +82,8 @@ rule pubmed_convert_biocxml:
 	shell: "python convertPubmed.py --url ftp://ftp.ncbi.nlm.nih.gov/pubmed/{wildcards.dir}/pubmed{wildcards.f}.xml.gz --o {output} --oFormat biocxml"
 
 rule pmc_convert_biocxml:
-	input: "pmc_archives"
 	output: "biocxml/pmc_{block}.bioc.xml"
-	shell: "python convertPMC.py --pmcDir {input} --block {wildcards.block} --format biocxml --outFile {output}"
+	shell: "python convertPMC.py --pmcDir pmc_archives --block {wildcards.block} --format biocxml --outFile {output}"
 
 
 
