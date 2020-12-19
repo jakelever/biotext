@@ -9,7 +9,7 @@
 	</a>
 </p>
 
-Sometimes you need a easily-updated local copy of PubMed and PubMed Central, and sometimes (but not always) you want annotations of entities from [PubTator](https://www.ncbi.nlm.nih.gov/research/pubtator/) on those articles. This project can help with that. It manages the download the PubMed and PubMed Central and converting it into the nice BioC XML format while keeping important metadata. As a separate step, it can load up PubTator Central annotations and align them to the documents. It also handles the update process without redoing all the previous downloading and computation.
+Sometimes you need a easily-updated local copy of PubMed and PubMed Central, and sometimes (but not always) you want annotations of entities from [PubTator](https://www.ncbi.nlm.nih.gov/research/pubtator/) on those articles. This project can help with that. It manages the download of PubMed and PubMed Central and converting it into the nice BioC XML format while keeping important metadata. As a separate step, it can load up PubTator Central annotations and align them to the documents. It also handles the update process without redoing all the previous downloading and computation.
 
 ## Advantages
 - Deals with format conversion
