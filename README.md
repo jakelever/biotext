@@ -23,7 +23,13 @@ PubMed is released as a series of XML files with a [baseline of files and update
 
 PubMed Central offers full-text articles of documents in a different XML format. A portion of PubMed Central is released for text mining as the [non-commercial and commercial licensed PubMed Central Open Access subset](https://www.ncbi.nlm.nih.gov/pmc/tools/openftlist/) and the [Author Manuscript Collection](https://www.ncbi.nlm.nih.gov/pmc/about/mscollection/). PubMed Central is released as about 15 archives of XML files. Each archive has a very large number of files which makes it somewhat unwieldy. Each new version of these archives contains a mix of new files and old files which need to be distinguished. This project identifies unprocessed files, groups them into chunk (of 2000 documents by default) and converts them to BioC XML.
 
-**N.B.** This project does not deal with duplicates of documents, both in the PubMed update files, and documents in PubMed Central that are also in PubMed. Any text mining of these documents should do a final pass to identify the latest version of a document, i.e. going through new-to-old PubMed Central files before new-to-old PubMed files.
+## Things To Be Aware Of
+
+There are few details that you should keep at the back of your mind when using this project.
+
+- This project does not deal with duplicates of documents, both in the PubMed update files, and documents in PubMed Central that are also in PubMed. Any text mining of these documents should do a final pass to identify the latest version of a document, i.e. going through new-to-old PubMed Central files before new-to-old PubMed files.
+- PubMed Central files contain a lot of Unicode characters while PubMed generally does not. An abstract for an article that is in both resources may be processed differently in the PubMed Central file due to Unicode characters.
+- Yearly releases of PubMed means that there is a yearly cleanup required. More details are in the Yearly Baseline Releases below and BioText will throw an error to try to warn you about a new release.
 
 ## PubTator Annotation
 
