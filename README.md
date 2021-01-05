@@ -71,3 +71,15 @@ For testing, it also uses biopython.
 pip install -U biopython
 ```
 
+## Yearly Baseline Releases
+
+Every year, PubMed is given a new baseline release with daily updates based from this (typically in Nov/Dec). BioText will throw an error (below) if it sees any old baseline/update files in the biocxml/ directory. This will happen when a new baseline is released. You can see the year of the release by the first number in the filename. For example, pubmed\_updatefiles\_**20**n1478.bioc.xml is from the 2020 release.
+
+When this happens, it's time for a yearly clean-out. You should delete the old PubMed files (which will likely be all PubMed files in biocxml). You will also need to delete any downstream files based upon these files to make sure that other projects don't end up with duplicate files.
+
+```
+AssertionError in line 66 of /projects/jlever/github/biotext/Snakefile:
+Found unexpected PubMed files (e.g. biocxml/pubmed_baseline_20n0001.bioc.xml) in biocxml directory. Likely due to a new PubMed baseline release. These should be manually deleted as well as downstream files. Check the project README for more details under section Yearly Baseline Releases.
+  File "/projects/jlever/github/biotext/Snakefile", line 66, in <module>
+```
+
