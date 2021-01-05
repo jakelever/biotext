@@ -89,3 +89,15 @@ Found unexpected PubMed files (e.g. biocxml/pubmed_baseline_20n0001.bioc.xml) in
   File "/projects/jlever/github/biotext/Snakefile", line 66, in <module>
 ```
 
+## Contributing
+
+Contributions are very welcome.
+
+## License
+
+Distributed under the terms of the [MIT](http://opensource.org/licenses/MIT) license, "BioText" is free and open source software
+
+## Issues
+
+If you encounter any problems, please [file an issue](https://github.com/jakelever/biotext/issues) along with a detailed description.
+
