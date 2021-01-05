@@ -61,9 +61,10 @@ if os.path.isfile('pubmed_listing.txt'):
 			dir = split[-2]
 			pubmed_biocxml_files.append(f"biocxml/pubmed_{dir}_{filename}.bioc.xml")
 
-	existing_pubmed_biocxml_files = [ f"biocxml/{f}" for f in os.listdir('biocxml') if f.startswith('pubmed') and f.endswith('.xml') ]
-	unexpected_files = [ f for f in sorted(existing_pubmed_biocxml_files) if not f in pubmed_biocxml_files ]
-	assert len(unexpected_files) == 0, "Found unexpected PubMed files (e.g. %s) in biocxml directory. Likely due to a new PubMed baseline release. These should be manually deleted as well as downstream files. Check the project README for more details under section Yearly Baseline Releases." % unexpected_files[0]
+	if os.path.isdir('biocxml'):
+		existing_pubmed_biocxml_files = [ f"biocxml/{f}" for f in os.listdir('biocxml') if f.startswith('pubmed') and f.endswith('.xml') ]
+		unexpected_files = [ f for f in sorted(existing_pubmed_biocxml_files) if not f in pubmed_biocxml_files ]
+		assert len(unexpected_files) == 0, "Found unexpected PubMed files (e.g. %s) in biocxml directory. Likely due to a new PubMed baseline release. These should be manually deleted as well as downstream files. Check the project README for more details under section Yearly Baseline Releases." % unexpected_files[0]
 
 # Use the PMC groupings file to get a list of output files
 if os.path.isfile('pmc_archives/groupings.json'):
