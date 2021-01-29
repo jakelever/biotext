@@ -1,7 +1,8 @@
 #!/bin/bash
 set -ex
 
-rm -f pmc_listing.txt
+mkdir -p listings
+rm -f listings/pmc.txt
 
 echo "Updating PubMed Central (Open Access / Author Manuscript) listings"
 
@@ -18,7 +19,7 @@ do
 		exit 1
 	fi
 
-	cat tmp_listing.txt >> pmc_listing.txt
+	cat tmp_listing.txt >> listings/pmc.txt
 	rm tmp_listing.txt
 done
 
@@ -45,7 +46,7 @@ do
 		mv download.tmp $f
 	fi
 
-done < ../pmc_listing.txt
+done < ../listings/pmc.txt
 
 echo "Running grouping on PubMed Central data"
 

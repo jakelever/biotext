@@ -51,9 +51,9 @@ if os.path.isfile("converted.flag"):
 
 pubmed_biocxml_files, pmc_biocxml_files = [], []
 
-# Use the pubmed_listing file to get a list of output files for each PubMed XML file
-if os.path.isfile('pubmed_listing.txt'):
-	with open('pubmed_listing.txt') as f:
+# Use the pubmed listing file to get a list of output files for each PubMed XML file
+if os.path.isfile('listings/pubmed.txt'):
+	with open('listings/pubmed.txt') as f:
 		pubmed_biocxml_files = []
 		for line in f:
 			split = line.strip('\n').split('/')

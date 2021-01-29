@@ -1,7 +1,9 @@
 #!/bin/bash
 set -ex
 
-rm -f pubmed_listing.txt
+mkdir -p listings
+
+rm -f listings/pubmed.txt
 
 echo "Updating PubMed Listing"
 
@@ -12,6 +14,6 @@ do
 	curl --silent $ftpPath |\
 	grep -oP "pubmed\w+.xml.gz" |\
 	sort -u |\
-	awk -v ftpPath=$ftpPath ' { print ftpPath$0 } ' >> pubmed_listing.txt
+	awk -v ftpPath=$ftpPath ' { print ftpPath$0 } ' >> listings/pubmed.txt
 done
 

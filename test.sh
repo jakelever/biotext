@@ -23,13 +23,14 @@ python groupPMC.py --inPMCDir pmc_archives --prevGroupings pmc_archives/grouping
 sh preparePubmed.sh
 
 # We'll just use the last PubMed file
-tail -n 1 pubmed_listing.txt > single_file.txt
-mv single_file.txt pubmed_listing.txt
+mkdir -p listings
+tail -n 1 listings/pubmed.txt > single_file.txt
+mv single_file.txt listings/pubmed.txt
 
 # Then run the main convert code using Snakemake
 snakemake --cores 1 converted.flag
 
 # Cleaning up after test
 rm -fr pmc_archives biocxml
-rm converted.flag pubmed_listing.txt
+rm converted.flag listings/pubmed.txt
 
