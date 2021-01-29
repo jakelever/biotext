@@ -10,8 +10,19 @@ do
 	curl --silent $ftpPath |\
 	grep -oP "\S+.xml.tar.gz" |\
 	sort -u |\
-	awk -v ftpPath=$ftpPath ' { print ftpPath$0 } ' >> pmc_listing.txt
+	awk -v ftpPath=$ftpPath ' { print ftpPath$0 } ' > tmp_listing.txt
+
+	listing_count=`cat tmp_listing.txt | wc -l`
+	if [ $listing_count -eq 0 ]; then
+		echo "ERROR: Didn't find any PMC files at path: $ftpPath"
+		exit 1
+	fi
+
+	cat tmp_listing.txt >> pmc_listing.txt
+	rm tmp_listing.txt
 done
+
+exit 0
 
 echo "Downloading PubMed Central archives"
 
