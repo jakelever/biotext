@@ -148,7 +148,11 @@ def processMedlineFile(source):
 				meshID = descriptorElem.attrib['UI']
 				majorTopicYN = descriptorElem.attrib['MajorTopicYN']
 				name = descriptorElem.text
-				#meshHeading = {'Descriptor':name,'MajorTopicYN':majorTopicYN,'ID':meshID,'Qualifiers':[]}
+
+				assert not '|' in meshID and not '~' in meshID, "Found delimiter in %s" % meshID
+				assert not '|' in majorTopicYN and not '~' in majorTopicYN, "Found delimiter in %s" % majorTopicYN
+				assert not '|' in name and not '~' in name, "Found delimiter in %s" % name
+
 				meshHeading = "Descriptor|%s|%s|%s" % (meshID,majorTopicYN,name)
 
 				qualifierElems = meshElem.findall('./QualifierName')
@@ -156,9 +160,12 @@ def processMedlineFile(source):
 					meshID = qualifierElem.attrib['UI']
 					majorTopicYN = qualifierElem.attrib['MajorTopicYN']
 					name = qualifierElem.text
-					qualifier = {'Qualifier':name,'MajorTopicYN':majorTopicYN,'ID':meshID}
-					#meshHeading['Qualifiers'].append(qualifier)
-					meshHeading += "%%Qualifier|%s|%s|%s" % (meshID,majorTopicYN,name)
+
+					assert not '|' in meshID and not '~' in meshID, "Found delimiter in %s" % meshID
+					assert not '|' in majorTopicYN and not '~' in majorTopicYN, "Found delimiter in %s" % majorTopicYN
+					assert not '|' in name and not '~' in name, "Found delimiter in %s" % name
+
+					meshHeading += "~Qualifier|%s|%s|%s" % (meshID,majorTopicYN,name)
 
 				meshHeadings.append(meshHeading)
 			meshHeadingsTxt = "\t".join(meshHeadings)
