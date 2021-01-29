@@ -43,7 +43,7 @@ def download_file_with_retries(url, local_filename, retries=10):
 			return
 		except:
 			print("Unexpected error:", sys.exc_info()[0])
-			time.sleep(3*(tryno+1))
+			time.sleep(5*(tryno+1))
 
 	raise RuntimeError("Unable to download %s" % url)
 
