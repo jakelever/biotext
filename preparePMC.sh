@@ -23,8 +23,6 @@ do
 	rm tmp_listing.txt
 done
 
-exit 0
-
 echo "Downloading PubMed Central archives"
 
 mkdir -p pmc_archives
