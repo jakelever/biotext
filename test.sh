@@ -31,6 +31,6 @@ mv single_file.txt listings/pubmed.txt
 snakemake --cores 1 converted.flag
 
 # Cleaning up after test
-rm -fr pmc_archives biocxml
-rm converted.flag listings/pubmed.txt
+rm -fr pmc_archives biocxml listings
+rm converted.flag
 
