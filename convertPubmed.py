@@ -42,7 +42,7 @@ def download_file_with_retries(url, local_filename, retries=10):
 			download_file_and_check_md5sum(url, local_filename)
 			return
 		except:
-			print("Unexpected error:", sys.exc_info()[0])
+			print("Unexpected error:", sys.exc_info()[0], sys.exc_info()[1])
 			time.sleep(5*(tryno+1))
 
 	raise RuntimeError("Unable to download %s" % url)
