@@ -27,7 +27,7 @@ def convert(inFiles,inFormat,outFile,outFormat):
 	if outFormat == 'biocxml':
 		outBiocHandle = bioc.BioCXMLDocumentWriter(outFile)
 	elif outFormat == 'txt':
-		outTxtHandle = open(outFile,'w','utf-8')
+		outTxtHandle = open(outFile,'w',encoding='utf-8')
 
 	for inFile in inFiles:
 
