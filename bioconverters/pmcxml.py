@@ -3,11 +3,14 @@ import xml.etree.cElementTree as etree
 import bioc
 import calendar
 import html
+import sys
 
 from .utils import extractTextFromElemList
 from .utils import removeWeirdBracketsFromOldTitles
 from .utils import removeBracketsWithoutWords
 from .utils import trimSentenceLengths
+
+from .utils import extractAnnotations
 
 def getMetaInfoForPMCArticle(articleElem):
 	monthMapping = {}
@@ -96,6 +99,8 @@ def processPMCFile(source):
 					if subJournal == None:
 						subJournal = journal
 						subJournalISO = journalISO
+
+				#print('pmcid:', subPmcidText)
 						
 				# Extract the title of paper
 				title = articleElem.findall('./front/article-meta/title-group/article-title') + articleElem.findall('./front-stub/title-group/article-title')
@@ -117,8 +122,20 @@ def processPMCFile(source):
 				articleText = extractTextFromElemList(articleElem.findall('./body'))
 				backText = extractTextFromElemList(articleElem.findall('./back'))
 				floatingText = extractTextFromElemList(articleElem.findall('./floats-group'))
-				
-				document = {'pmid':subPmidText, 'pmcid':subPmcidText, 'doi':subDoiText, 'pubYear':subPubYear, 'pubMonth':subPubMonth, 'pubDay':subPubDay, 'journal':subJournal, 'journalISO':subJournalISO}
+
+				referenceElems = articleElem.findall('./back/ref-list/ref')
+				references = {}
+				for r in referenceElems:
+					# pub-id-type
+					refIDs = {}
+					refIDElems = r.findall('element-citation/pub-id') + r.findall('mixed-citation/pub-id')
+					for rid in refIDElems:
+						if 'pub-id-type' in rid.attrib:
+							refIDs[rid.attrib['pub-id-type']] = rid.text
+
+					references[r.attrib['id']] = refIDs
+
+				document = {'pmid':subPmidText, 'pmcid':subPmcidText, 'doi':subDoiText, 'pubYear':subPubYear, 'pubMonth':subPubMonth, 'pubDay':subPubDay, 'journal':subJournal, 'journalISO':subJournalISO, 'references':references}
 
 				textSources = {}
 				textSources['title'] = titleText
@@ -131,7 +148,7 @@ def processPMCFile(source):
 				for k in textSources.keys():
 					tmp = textSources[k]
 					tmp = [ t for t in tmp if len(t) > 0 ]
-					tmp = [ html.unescape(t) for t in tmp ]
+					#tmp = [ html.unescape(t) for t in tmp ]
 					tmp = [ removeBracketsWithoutWords(t) for t in tmp ]
 					textSources[k] = tmp
 
@@ -145,9 +162,11 @@ def processPMCFile(source):
 allowedSubsections = {"abbreviations","additional information","analysis","author contributions","authors' contributions","authors’ contributions","background","case report","competing interests","conclusion","conclusions","conflict of interest","conflicts of interest","consent","data analysis","data collection","discussion","ethics statement","funding","introduction","limitations","material and methods","materials","materials and methods","measures","method","methods","participants","patients and methods","pre-publication history","related literature","results","results and discussion","statistical analyses","statistical analysis","statistical methods","statistics","study design","summary","supplementary data","supplementary information","supplementary material","supporting information"}
 def pmcxml2bioc(source):
 	try:
+		currentID = 1
 		for pmcDoc in processPMCFile(source):
 			biocDoc = bioc.BioCDocument()
 			biocDoc.id = pmcDoc["pmid"]
+
 			biocDoc.infons['title'] = " ".join(pmcDoc["textSources"]["title"])
 			biocDoc.infons['pmid'] = pmcDoc["pmid"]
 			biocDoc.infons['pmcid'] = pmcDoc["pmcid"]
@@ -163,6 +182,11 @@ def pmcxml2bioc(source):
 				subsection = None
 				for textSource in textSourceGroup:
 					textSource = trimSentenceLengths(textSource)
+
+					#print(pmcDoc["pmcid"], textSource)
+
+					textSource, annotations = extractAnnotations(textSource)
+
 					passage = bioc.BioCPassage()
 
 					subsectionCheck = textSource.lower().strip('01234567890. ')
@@ -173,6 +197,29 @@ def pmcxml2bioc(source):
 					passage.infons['subsection'] = subsection
 					passage.text = textSource
 					passage.offset = offset
+
+					for anno in annotations:
+						start,end = anno['position']
+
+						a = bioc.BioCAnnotation()
+						a.text = passage.text[start:end]
+						a.infons = {k:v for k,v in anno.items() if k != 'position'}
+
+						# Connect up references with document IDs (e.g. pmids)
+						if anno['type'] == 'xref' and 'rid' in anno and anno['rid'] in pmcDoc['references']:
+							a.infons.update(pmcDoc['references'][anno['rid']])
+
+						#a.id = 'T%d' % currentID
+						a.id = "%s_%d" % (anno['type'],currentID)
+						currentID += 1
+
+						if end <= start:
+							continue
+
+						biocLoc = bioc.BioCLocation(offset=passage.offset+start, length=(end-start))
+						a.locations.append(biocLoc)
+						passage.annotations.append(a)
+
 					offset += len(textSource)
 					biocDoc.add_passage(passage)
 

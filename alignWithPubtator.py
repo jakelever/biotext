@@ -61,8 +61,8 @@ if __name__ == '__main__':
 	with open(args.inBioc,'rb') as f:
 		parser = bioc.BioCXMLDocumentReader(f)
 		for i,doc in enumerate(parser):
-			for passage in doc.passages:
-				passage.annotations = []
+			#for passage in doc.passages:
+			#	passage.annotations = []
 
 			if 'pmid' in doc.infons and doc.infons['pmid']:
 				pmid = int(doc.infons['pmid'])

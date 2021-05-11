@@ -10,6 +10,8 @@ from .utils import removeWeirdBracketsFromOldTitles
 from .utils import removeBracketsWithoutWords
 from .utils import trimSentenceLengths
 
+from .utils import extractAnnotations
+
 def getJournalDateForMedlineFile(elem,pmid):
 	yearRegex = re.compile(r'(18|19|20)\d\d')
 
@@ -202,14 +204,14 @@ def processMedlineFile(source):
 			titleText = extractTextFromElemList(title)
 			titleText = [ removeWeirdBracketsFromOldTitles(t) for t in titleText ]
 			titleText = [ t for t in titleText if len(t) > 0 ]
-			titleText = [ html.unescape(t) for t in titleText ]
+			#titleText = [ html.unescape(t) for t in titleText ]
 			titleText = [ removeBracketsWithoutWords(t) for t in titleText ]
 			
 			# Extract the abstract from the paper
 			abstract = elem.findall('./MedlineCitation/Article/Abstract/AbstractText')
 			abstractText = extractTextFromElemList(abstract)
 			abstractText = [ t for t in abstractText if len(t) > 0 ]
-			abstractText = [ html.unescape(t) for t in abstractText ]
+			#abstractText = [ html.unescape(t) for t in abstractText ]
 			abstractText = [ removeBracketsWithoutWords(t) for t in abstractText ]
 			
 			journalTitleFields = elem.findall('./MedlineCitation/Article/Journal/Title')
@@ -264,6 +266,8 @@ def pubmedxml2bioc(source):
 		for section in ["title","abstract"]:
 			for textSource in pmDoc[section]:
 				textSource = trimSentenceLengths(textSource)
+				textSource, annotations = extractAnnotations(textSource)
+
 				passage = bioc.BioCPassage()
 				passage.infons['section'] = section
 				passage.text = textSource
