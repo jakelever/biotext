@@ -65,9 +65,9 @@ def get_journal_date_for_medline_file(elem, pmid: Union[str, int]) -> DateTuple:
     assert pub_date_field is not None, "Couldn't find PubDate field for PMID=%s" % pmid
 
     medline_date_field = pub_date_field.find("./MedlineDate")
-    pub_date_field_Year = pub_date_field.find("./Year")
-    pub_date_field_Month = pub_date_field.find("./Month")
-    pub_date_field_Day = pub_date_field.find("./Day")
+    pub_date_field_year = pub_date_field.find("./Year")
+    pub_date_field_month = pub_date_field.find("./Month")
+    pub_date_field_day = pub_date_field.find("./Day")
 
     pub_year, pub_month, pub_day = None, None, None
     if medline_date_field is not None:
@@ -82,12 +82,12 @@ def get_journal_date_for_medline_file(elem, pmid: Union[str, int]) -> DateTuple:
         if len(month_search) > 0:
             pub_month = month_search[0]
     else:
-        if pub_date_field_Year is not None:
-            pub_year = pub_date_field_Year.text
-        if pub_date_field_Month is not None:
-            pub_month = pub_date_field_Month.text
-        if pub_date_field_Day is not None:
-            pub_day = pub_date_field_Day.text
+        if pub_date_field_year is not None:
+            pub_year = pub_date_field_year.text
+        if pub_date_field_month is not None:
+            pub_month = pub_date_field_month.text
+        if pub_date_field_day is not None:
+            pub_day = pub_date_field_day.text
 
     if pub_year is not None:
         pub_year = int(pub_year)
@@ -114,12 +114,12 @@ def get_pubmed_entry_date(elem, pmid) -> DateTuple:
     for pub_date_field in pub_date_fields:
         assert "PubStatus" in pub_date_field.attrib
         # if 'PubStatus' in pub_date_field.attrib and pub_date_field.attrib['PubStatus'] == "pubmed":
-        pub_date_field_Year = pub_date_field.find("./Year")
-        pub_date_field_Month = pub_date_field.find("./Month")
-        pub_date_field_Day = pub_date_field.find("./Day")
-        pub_year = int(pub_date_field_Year.text)
-        pub_month = int(pub_date_field_Month.text)
-        pub_day = int(pub_date_field_Day.text)
+        pub_date_field_year = pub_date_field.find("./Year")
+        pub_date_field_month = pub_date_field.find("./Month")
+        pub_date_field_day = pub_date_field.find("./Day")
+        pub_year = int(pub_date_field_year.text)
+        pub_month = int(pub_date_field_month.text)
+        pub_day = int(pub_date_field_day.text)
 
         date_type = pub_date_field.attrib["PubStatus"]
         if pub_year > 1700 and pub_year < 2100:

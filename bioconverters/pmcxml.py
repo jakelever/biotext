@@ -72,12 +72,12 @@ def get_meta_info_for_pmc_article(
     if len(pubdates) >= 1:
         most_complete, completeness = None, 0
         for pubdate in pubdates:
-            pub_year_Field = pubdate.find("./year")
-            if pub_year_Field is not None:
-                pub_year = pub_year_Field.text.strip().replace("\n", " ")
-            pub_season_Field = pubdate.find("./season")
-            if pub_season_Field is not None:
-                pub_season = pub_season_Field.text.strip().replace("\n", " ")
+            pub_year_field = pubdate.find("./year")
+            if pub_year_field is not None:
+                pub_year = pub_year_field.text.strip().replace("\n", " ")
+            pub_season_field = pubdate.find("./season")
+            if pub_season_field is not None:
+                pub_season = pub_season_field.text.strip().replace("\n", " ")
                 month_search = [
                     c
                     for c in (list(calendar.month_name) + list(calendar.month_abbr))
@@ -85,12 +85,12 @@ def get_meta_info_for_pmc_article(
                 ]
                 if len(month_search) > 0:
                     pub_month = month_mapping[month_search[0]]
-            pub_month_Field = pubdate.find("./month")
-            if pub_month_Field is not None:
-                pub_month = pub_month_Field.text.strip().replace("\n", " ")
-            pub_day_Field = pubdate.find("./day")
-            if pub_day_Field is not None:
-                pub_day = pub_day_Field.text.strip().replace("\n", " ")
+            pub_month_field = pubdate.find("./month")
+            if pub_month_field is not None:
+                pub_month = pub_month_field.text.strip().replace("\n", " ")
+            pub_day_field = pubdate.find("./day")
+            if pub_day_field is not None:
+                pub_day = pub_day_field.text.strip().replace("\n", " ")
 
             this_completeness = sum(x is not None for x in [pub_year, pub_month, pub_day])
             if this_completeness > completeness:
