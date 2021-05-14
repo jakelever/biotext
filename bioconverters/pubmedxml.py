@@ -28,7 +28,7 @@ def get_journal_date_for_medline_file(elem, pmid):
         "./MedlineCitation/Article/Journal/JournalIssue/PubDate/MedlineDate"
     )
 
-    assert not pub_date_field is None, "Couldn't find PubDate field for PMID=%s" % pmid
+    assert pub_date_field is not None, "Couldn't find PubDate field for PMID=%s" % pmid
 
     medline_date_field = pub_date_field.find("./MedlineDate")
     pub_date_field_Year = pub_date_field.find("./Year")
@@ -36,7 +36,7 @@ def get_journal_date_for_medline_file(elem, pmid):
     pub_date_field_Day = pub_date_field.find("./Day")
 
     pub_year, pub_month, pub_day = None, None, None
-    if not medline_date_field is None:
+    if medline_date_field is not None:
         regex_search = re.search(year_regex, medline_date_field.text)
         if regex_search:
             pub_year = regex_search.group()
@@ -48,23 +48,23 @@ def get_journal_date_for_medline_file(elem, pmid):
         if len(month_search) > 0:
             pub_month = month_search[0]
     else:
-        if not pub_date_field_Year is None:
+        if pub_date_field_Year is not None:
             pub_year = pub_date_field_Year.text
-        if not pub_date_field_Month is None:
+        if pub_date_field_Month is not None:
             pub_month = pub_date_field_Month.text
-        if not pub_date_field_Day is None:
+        if pub_date_field_Day is not None:
             pub_day = pub_date_field_Day.text
 
-    if not pub_year is None:
+    if pub_year is not None:
         pub_year = int(pub_year)
         if not (pub_year > 1700 and pub_year < 2100):
             pub_year = None
 
-    if not pub_month is None:
+    if pub_month is not None:
         if pub_month in month_mapping:
             pub_month = month_mapping[pub_month]
         pub_month = int(pub_month)
-    if not pub_day is None:
+    if pub_day is not None:
         pub_day = int(pub_day)
 
     return pub_year, pub_month, pub_day
@@ -113,12 +113,16 @@ pub_type_skips = {
 doi_regex = re.compile(r"^[0-9\.]+\/.+[^\/]$")
 
 
-def process_medline_file(source):
+def process_medline_file(source: str):
+    """
+    Args:
+        source: path to the MEDLINE xml file
+    """
     for event, elem in etree.iterparse(source, events=("start", "end", "start-ns", "end-ns")):
         if event == "end" and elem.tag == "PubmedArticle":  # MedlineCitation'):
             # Try to extract the pmid_id
             pmid_field = elem.find("./MedlineCitation/PMID")
-            assert not pmid_field is None
+            assert pmid_field is not None
             pmid = pmid_field.text
 
             journal_year, journal_month, journal_day = get_journal_date_for_medline_file(elem, pmid)
@@ -180,11 +184,11 @@ def process_medline_file(source):
                 major_topic_yn = descriptor_elem.attrib["MajorTopicYN"]
                 name = descriptor_elem.text
 
-                assert not "|" in mesh_id and not "~" in mesh_id, "Found delimiter in %s" % mesh_id
-                assert not "|" in major_topic_yn and not "~" in major_topic_yn, (
+                assert "|" not in mesh_id and "~" not in mesh_id, "Found delimiter in %s" % mesh_id
+                assert "|" not in major_topic_yn and "~" not in major_topic_yn, (
                     "Found delimiter in %s" % major_topic_yn
                 )
-                assert not "|" in name and not "~" in name, "Found delimiter in %s" % name
+                assert "|" not in name and "~" not in name, "Found delimiter in %s" % name
 
                 mesh_heading = "Descriptor|%s|%s|%s" % (mesh_id, major_topic_yn, name)
 
@@ -194,13 +198,13 @@ def process_medline_file(source):
                     major_topic_yn = qualifier_elem.attrib["MajorTopicYN"]
                     name = qualifier_elem.text
 
-                    assert not "|" in mesh_id and not "~" in mesh_id, (
+                    assert "|" not in mesh_id and "~" not in mesh_id, (
                         "Found delimiter in %s" % mesh_id
                     )
-                    assert not "|" in major_topic_yn and not "~" in major_topic_yn, (
+                    assert "|" not in major_topic_yn and "~" not in major_topic_yn, (
                         "Found delimiter in %s" % major_topic_yn
                     )
-                    assert not "|" in name and not "~" in name, "Found delimiter in %s" % name
+                    assert "|" not in name and "~" not in name, "Found delimiter in %s" % name
 
                     mesh_heading += "~Qualifier|%s|%s|%s" % (mesh_id, major_topic_yn, name)
 
@@ -237,7 +241,7 @@ def process_medline_file(source):
             pub_type_elems = elem.findall(
                 "./MedlineCitation/Article/PublicationTypeList/PublicationType"
             )
-            pub_type = [e.text for e in pub_type_elems if not e.text in pub_type_skips]
+            pub_type = [e.text for e in pub_type_elems if e.text not in pub_type_skips]
             pub_type_txt = "|".join(pub_type)
 
             # Extract the title of paper

@@ -43,10 +43,10 @@ def get_meta_info_for_pmc_article(article_elem):
         most_complete, completeness = None, 0
         for pubdate in pubdates:
             pub_year_Field = pubdate.find("./year")
-            if not pub_year_Field is None:
+            if pub_year_Field is not None:
                 pub_year = pub_year_Field.text.strip().replace("\n", " ")
             pub_season_Field = pubdate.find("./season")
-            if not pub_season_Field is None:
+            if pub_season_Field is not None:
                 pub_season = pub_season_Field.text.strip().replace("\n", " ")
                 month_search = [
                     c
@@ -56,13 +56,13 @@ def get_meta_info_for_pmc_article(article_elem):
                 if len(month_search) > 0:
                     pub_month = month_mapping[month_search[0]]
             pub_month_Field = pubdate.find("./month")
-            if not pub_month_Field is None:
+            if pub_month_Field is not None:
                 pub_month = pub_month_Field.text.strip().replace("\n", " ")
             pub_day_Field = pubdate.find("./day")
-            if not pub_day_Field is None:
+            if pub_day_Field is not None:
                 pub_day = pub_day_Field.text.strip().replace("\n", " ")
 
-            this_completeness = sum(not x is None for x in [pub_year, pub_month, pub_day])
+            this_completeness = sum(x is not None for x in [pub_year, pub_month, pub_day])
             if this_completeness > completeness:
                 most_complete = pub_year, pub_month, pub_day
         pub_year, pub_month, pub_day = most_complete
@@ -155,11 +155,11 @@ def process_pmc_file(source):
                             pmcid_text,
                             doi_text,
                         )
-                    if sub_pub_year == None:
+                    if sub_pub_year is None:
                         sub_pub_year = pub_year
                         sub_pub_month = pub_month
                         sub_pub_day = pub_day
-                    if sub_journal == None:
+                    if sub_journal is None:
                         sub_journal = journal
                         sub_journal_iso = journal_iso
 
