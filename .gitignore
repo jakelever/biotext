@@ -4,6 +4,7 @@ __pycache__
 *.pyc
 venv
 .snakemake/
+*.egg-info
 
 *.xml
 
