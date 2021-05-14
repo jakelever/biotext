@@ -27,8 +27,8 @@ def cleanup_text(text):
     text = "".join(ch if unicodedata.category(ch)[0] != "Z" else " " for ch in text)
 
     # Remove repeated commands and commas next to periods
-    text = re.sub(",(\s*,)*", ",", text)
-    text = re.sub("(,\s*)*\.", ".", text)
+    text = re.sub(r",(\s*,)*", ",", text)
+    text = re.sub(r"(,\s*)*\.", ".", text)
     return text.strip()
 
 
