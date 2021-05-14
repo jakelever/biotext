@@ -1,6 +1,13 @@
 import calendar
 import html
 import xml.etree.cElementTree as etree
+from typing import Iterable, Optional, Tuple
+
+try:
+    # python 3.8+
+    from typing import TypedDict  # type: ignore
+except ImportError:
+    from typing_extensions import TypedDict
 
 import bioc
 
@@ -12,7 +19,30 @@ from .utils import (
 )
 
 
-def get_meta_info_for_pmc_article(article_elem):
+class TextSource(TypedDict):
+    title: Iterable[str]
+    subtitle: Iterable[str]
+    abstract: Iterable[str]
+    article: Iterable[str]
+    back: Iterable[str]
+    floating: Iterable[str]
+
+
+class PmcArticle(TypedDict):
+    pmid: str
+    pmcid: str
+    doi: str
+    pubYear: str
+    pubMonth: str
+    pubDay: str
+    journal: str
+    journalISO: str
+    textSources: TextSource
+
+
+def get_meta_info_for_pmc_article(
+    article_elem,
+) -> Tuple[str, str, str, Optional[str], Optional[int], Optional[str], str, str]:
     month_mapping = {}
     for i, m in enumerate(calendar.month_name):
         month_mapping[m] = i
@@ -95,7 +125,7 @@ def get_meta_info_for_pmc_article(article_elem):
     )
 
 
-def process_pmc_file(source):
+def process_pmc_file(source: str) -> Iterable[PmcArticle]:
     # Skip to the article element in the file
     for event, elem in etree.iterparse(source, events=("start", "end", "start-ns", "end-ns")):
         if event == "end" and elem.tag == "article":
@@ -189,18 +219,20 @@ def process_pmc_file(source):
                 back_text = extract_text_from_elem_list(article_elem.findall("./back"))
                 floating_text = extract_text_from_elem_list(article_elem.findall("./floats-group"))
 
-                document = {
-                    "pmid": sub_pmid_text,
-                    "pmcid": sub_pmcid_text,
-                    "doi": sub_doi_text,
-                    "pubYear": sub_pub_year,
-                    "pubMonth": sub_pub_month,
-                    "pubDay": sub_pub_day,
-                    "journal": sub_journal,
-                    "journalISO": sub_journal_iso,
-                }
+                document = PmcArticle(
+                    {
+                        "pmid": sub_pmid_text,
+                        "pmcid": sub_pmcid_text,
+                        "doi": sub_doi_text,
+                        "pubYear": sub_pub_year,
+                        "pubMonth": sub_pub_month,
+                        "pubDay": sub_pub_day,
+                        "journal": sub_journal,
+                        "journalISO": sub_journal_iso,
+                    }
+                )
 
-                text_sources = {}
+                text_sources = TextSource({})
                 text_sources["title"] = title_text
                 text_sources["subtitle"] = subtitle_text
                 text_sources["abstract"] = abstract_text
@@ -269,7 +301,7 @@ allowed_subsections = {
 }
 
 
-def pmcxml2bioc(source):
+def pmcxml2bioc(source: str) -> Iterable[bioc.BioCDocument]:
     try:
         for pmc_doc in process_pmc_file(source):
             bioc_doc = bioc.BioCDocument()

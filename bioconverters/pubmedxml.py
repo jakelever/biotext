@@ -2,6 +2,13 @@ import calendar
 import html
 import re
 import xml.etree.cElementTree as etree
+from typing import Iterable, Optional, Tuple, Union
+
+try:
+    # python 3.8+
+    from typing import TypedDict  # type: ignore
+except ImportError:
+    from typing_extensions import TypedDict
 
 import bioc
 
@@ -12,8 +19,35 @@ from .utils import (
     trim_sentence_lengths,
 )
 
+DateTuple = Tuple[Optional[int], Optional[int], Optional[int]]
 
-def get_journal_date_for_medline_file(elem, pmid):
+
+class MedlineArticle(TypedDict):
+    pmid: str
+    pmcid: str
+    doi: str
+    pubYear: Optional[int]
+    pubMonth: Optional[int]
+    pubDay: Optional[int]
+    title: Iterable[str]
+    abstract: str
+    journal: str
+    journalISO: str
+    authors: Iterable[str]
+    chemicals: str
+    meshHeadings: str
+    supplementaryMesh: str
+    publicationTypes: str
+
+
+def get_journal_date_for_medline_file(elem, pmid: Union[str, int]) -> DateTuple:
+    """
+    Scrapes the Journal Date from the Medline XML element tree.
+
+    Args:
+        elem: XML element to be scraped/parsed
+        pmid: Pubmed ID of the article, only used for reporting errors
+    """
     year_regex = re.compile(r"(18|19|20)\d\d")
 
     month_mapping = {}
@@ -62,7 +96,7 @@ def get_journal_date_for_medline_file(elem, pmid):
 
     if pub_month is not None:
         if pub_month in month_mapping:
-            pub_month = month_mapping[pub_month]
+            pub_month = month_mapping[pub_month]  # type: ignore
         pub_month = int(pub_month)
     if pub_day is not None:
         pub_day = int(pub_day)
@@ -70,7 +104,11 @@ def get_journal_date_for_medline_file(elem, pmid):
     return pub_year, pub_month, pub_day
 
 
-def get_pubmed_entry_date(elem, pmid):
+def get_pubmed_entry_date(elem, pmid) -> DateTuple:
+    """
+    Args:
+        pmid: not used?
+    """
     pub_date_fields = elem.findall("./PubmedData/History/PubMedPubDate")
     all_dates = {}
     for pub_date_field in pub_date_fields:
@@ -113,7 +151,7 @@ pub_type_skips = {
 doi_regex = re.compile(r"^[0-9\.]+\/.+[^\/]$")
 
 
-def process_medline_file(source: str):
+def process_medline_file(source: str) -> Iterable[MedlineArticle]:
     """
     Args:
         source: path to the MEDLINE xml file
@@ -283,13 +321,17 @@ def process_medline_file(source: str):
             document["supplementaryMesh"] = supplementary_concepts_txt
             document["publicationTypes"] = pub_type_txt
 
-            yield document
+            yield MedlineArticle(document)
 
             # Important: clear the current element from memory to keep memory usage low
             elem.clear()
 
 
-def pubmedxml2bioc(source):
+def pubmedxml2bioc(source: str) -> Iterable[bioc.BioCDocument]:
+    """
+    Args:
+        source: path to the MEDLINE xml file
+    """
     for pm_doc in process_medline_file(source):
         bioc_doc = bioc.BioCDocument()
         bioc_doc.id = pm_doc["pmid"]

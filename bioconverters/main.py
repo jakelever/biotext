@@ -1,3 +1,5 @@
+from typing import Iterable
+
 import bioc
 
 from .bioc import biocxml2bioc
@@ -5,7 +7,11 @@ from .pmcxml import pmcxml2bioc
 from .pubmedxml import pubmedxml2bioc
 
 
-def docs2bioc(source, format):
+def docs2bioc(source: str, format: str) -> Iterable[bioc.BioCDocument]:
+    """
+    Args:
+        source: path to the input file
+    """
     if format == "biocxml":
         return biocxml2bioc(source)
     elif format == "pubmedxml":

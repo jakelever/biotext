@@ -4,7 +4,7 @@ import unicodedata
 
 # Remove empty brackets (that could happen if the contents have been removed already
 # e.g. for citation ( [3] [4] ) -> ( ) -> nothing
-def remove_brackets_without_words(text):
+def remove_brackets_without_words(text: str) -> str:
     fixed = re.sub(r"\([\W\s]*\)", " ", text)
     fixed = re.sub(r"\[[\W\s]*\]", " ", fixed)
     fixed = re.sub(r"\{[\W\s]*\}", " ", fixed)
@@ -13,14 +13,14 @@ def remove_brackets_without_words(text):
 
 # Some older articles have titles like "[A study of ...]."
 # This removes the brackets while retaining the full stop
-def remove_weird_brackets_from_old_titles(title_text):
+def remove_weird_brackets_from_old_titles(title_text: str) -> str:
     title_text = title_text.strip()
     if title_text[0] == "[" and title_text[-2:] == "].":
         title_text = title_text[1:-2] + "."
     return title_text
 
 
-def cleanup_text(text):
+def cleanup_text(text: str) -> str:
     # Remove some "control-like" characters (left/right separator)
     text = text.replace(u"\u2028", " ").replace(u"\u2029", " ")
     text = "".join(ch for ch in text if unicodedata.category(ch)[0] != "C")
@@ -120,6 +120,6 @@ def extract_text_from_elem_list(elem_list):
     return merged_list
 
 
-def trim_sentence_lengths(text):
+def trim_sentence_lengths(text: str) -> str:
     MAXLENGTH = 90000
     return ".".join(line[:MAXLENGTH] for line in text.split("."))
