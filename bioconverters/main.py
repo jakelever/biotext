@@ -8,18 +8,18 @@ from .pubmedxml import pubmedxml2bioc
 
 
 def docs2bioc(source, format):
-    if format == 'biocxml':
+    if format == "biocxml":
         return biocxml2bioc(source)
-    elif format == 'pubmedxml':
+    elif format == "pubmedxml":
         return pubmedxml2bioc(source)
-    elif format == 'pmcxml':
+    elif format == "pmcxml":
         return pmcxml2bioc(source)
     else:
         raise RuntimeError("Unknown format: %s" % format)
 
 
-accepted_in_formats = ['biocxml', 'pubmedxml', 'pmcxml']
-accepted_out_formats = ['biocxml', 'txt']
+accepted_in_formats = ["biocxml", "pubmedxml", "pmcxml"]
+accepted_out_formats = ["biocxml", "txt"]
 
 
 def convert(in_files, in_format, out_file, out_format):
@@ -38,23 +38,23 @@ def convert(in_files, in_format, out_file, out_format):
         "/".join(accepted_out_formats),
     )
 
-    if out_format == 'biocxml':
+    if out_format == "biocxml":
         out_bioc_handle = bioc.BioCXMLDocumentWriter(out_file)
-    elif out_format == 'txt':
-        out_txt_handle = open(out_file, 'w', encoding='utf-8')
+    elif out_format == "txt":
+        out_txt_handle = open(out_file, "w", encoding="utf-8")
 
     for in_file in in_files:
 
         for bioc_doc in docs2bioc(in_file, in_format):
 
-            if out_format == 'biocxml':
+            if out_format == "biocxml":
                 out_bioc_handle.write_document(bioc_doc)
-            elif out_format == 'txt':
+            elif out_format == "txt":
                 for passage in bioc_doc.passages:
                     out_txt_handle.write(passage.text)
                     out_txt_handle.write("\n\n")
 
-    if out_format == 'biocxml':
+    if out_format == "biocxml":
         out_bioc_handle.close()
-    elif out_format == 'txt':
+    elif out_format == "txt":
         out_txt_handle.close()

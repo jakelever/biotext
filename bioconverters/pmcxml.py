@@ -20,23 +20,23 @@ def get_meta_info_for_pmc_article(article_elem):
         month_mapping[m] = i
 
     # Attempt to extract the PubMed ID, PubMed Central IDs and DOIs
-    pmid_text = ''
-    pmcid_text = ''
-    doi_text = ''
-    article_id = article_elem.findall('./front/article-meta/article-id') + article_elem.findall(
-        './front-stub/article-id'
+    pmid_text = ""
+    pmcid_text = ""
+    doi_text = ""
+    article_id = article_elem.findall("./front/article-meta/article-id") + article_elem.findall(
+        "./front-stub/article-id"
     )
     for a in article_id:
-        if a.text and 'pub-id-type' in a.attrib and a.attrib['pub-id-type'] == 'pmid':
-            pmid_text = a.text.strip().replace('\n', ' ')
-        if a.text and 'pub-id-type' in a.attrib and a.attrib['pub-id-type'] == 'pmc':
-            pmcid_text = a.text.strip().replace('\n', ' ')
-        if a.text and 'pub-id-type' in a.attrib and a.attrib['pub-id-type'] == 'doi':
-            doi_text = a.text.strip().replace('\n', ' ')
+        if a.text and "pub-id-type" in a.attrib and a.attrib["pub-id-type"] == "pmid":
+            pmid_text = a.text.strip().replace("\n", " ")
+        if a.text and "pub-id-type" in a.attrib and a.attrib["pub-id-type"] == "pmc":
+            pmcid_text = a.text.strip().replace("\n", " ")
+        if a.text and "pub-id-type" in a.attrib and a.attrib["pub-id-type"] == "doi":
+            doi_text = a.text.strip().replace("\n", " ")
 
     # Attempt to get the publication date
-    pubdates = article_elem.findall('./front/article-meta/pub-date') + article_elem.findall(
-        './front-stub/pub-date'
+    pubdates = article_elem.findall("./front/article-meta/pub-date") + article_elem.findall(
+        "./front-stub/pub-date"
     )
     pub_year, pub_month, pub_day = None, None, None
     if len(pubdates) >= 1:
@@ -44,23 +44,23 @@ def get_meta_info_for_pmc_article(article_elem):
         for pubdate in pubdates:
             pub_year_Field = pubdate.find("./year")
             if not pub_year_Field is None:
-                pub_year = pub_year_Field.text.strip().replace('\n', ' ')
+                pub_year = pub_year_Field.text.strip().replace("\n", " ")
             pub_season_Field = pubdate.find("./season")
             if not pub_season_Field is None:
-                pub_season = pub_season_Field.text.strip().replace('\n', ' ')
+                pub_season = pub_season_Field.text.strip().replace("\n", " ")
                 month_search = [
                     c
                     for c in (list(calendar.month_name) + list(calendar.month_abbr))
-                    if c != '' and c in pub_season
+                    if c != "" and c in pub_season
                 ]
                 if len(month_search) > 0:
                     pub_month = month_mapping[month_search[0]]
             pub_month_Field = pubdate.find("./month")
             if not pub_month_Field is None:
-                pub_month = pub_month_Field.text.strip().replace('\n', ' ')
+                pub_month = pub_month_Field.text.strip().replace("\n", " ")
             pub_day_Field = pubdate.find("./day")
             if not pub_day_Field is None:
-                pub_day = pub_day_Field.text.strip().replace('\n', ' ')
+                pub_day = pub_day_Field.text.strip().replace("\n", " ")
 
             this_completeness = sum(not x is None for x in [pub_year, pub_month, pub_day])
             if this_completeness > completeness:
@@ -68,19 +68,19 @@ def get_meta_info_for_pmc_article(article_elem):
         pub_year, pub_month, pub_day = most_complete
 
     journal = (
-        article_elem.findall('./front/journal-meta/journal-title')
-        + article_elem.findall('./front/journal-meta/journal-title-group/journal-title')
-        + article_elem.findall('./front-stub/journal-title-group/journal-title')
+        article_elem.findall("./front/journal-meta/journal-title")
+        + article_elem.findall("./front/journal-meta/journal-title-group/journal-title")
+        + article_elem.findall("./front-stub/journal-title-group/journal-title")
     )
     assert len(journal) <= 1
     journal_text = " ".join(extract_text_from_elem_list(journal))
 
-    journal_iso_text = ''
-    journal_iso = article_elem.findall('./front/journal-meta/journal-id') + article_elem.findall(
-        './front-stub/journal-id'
+    journal_iso_text = ""
+    journal_iso = article_elem.findall("./front/journal-meta/journal-id") + article_elem.findall(
+        "./front-stub/journal-id"
     )
     for field in journal_iso:
-        if 'journal-id-type' in field.attrib and field.attrib['journal-id-type'] == "iso-abbrev":
+        if "journal-id-type" in field.attrib and field.attrib["journal-id-type"] == "iso-abbrev":
             journal_iso_text = field.text
 
     return (
@@ -97,8 +97,8 @@ def get_meta_info_for_pmc_article(article_elem):
 
 def process_pmc_file(source):
     # Skip to the article element in the file
-    for event, elem in etree.iterparse(source, events=('start', 'end', 'start-ns', 'end-ns')):
-        if event == 'end' and elem.tag == 'article':
+    for event, elem in etree.iterparse(source, events=("start", "end", "start-ns", "end-ns")):
+        if event == "end" and elem.tag == "article":
             (
                 pmid_text,
                 pmcid_text,
@@ -113,7 +113,7 @@ def process_pmc_file(source):
             # We're going to process the main article along with any subarticles
             # And if any of the subarticles have distinguishing IDs (e.g. PMID), then
             # that'll be used, otherwise the parent article IDs will be used
-            subarticles = [elem] + elem.findall('./sub-article')
+            subarticles = [elem] + elem.findall("./sub-article")
 
             for article_elem in subarticles:
                 if article_elem == elem:
@@ -149,7 +149,7 @@ def process_pmc_file(source):
                         sub_journal,
                         sub_journal_iso,
                     ) = get_meta_info_for_pmc_article(article_elem)
-                    if sub_pmid_text == '' and sub_pmcid_text == '' and sub_doi_text == '':
+                    if sub_pmid_text == "" and sub_pmcid_text == "" and sub_doi_text == "":
                         sub_pmid_text, sub_pmcid_text, sub_doi_text = (
                             pmid_text,
                             pmcid_text,
@@ -165,48 +165,48 @@ def process_pmc_file(source):
 
                 # Extract the title of paper
                 title = article_elem.findall(
-                    './front/article-meta/title-group/article-title'
-                ) + article_elem.findall('./front-stub/title-group/article-title')
+                    "./front/article-meta/title-group/article-title"
+                ) + article_elem.findall("./front-stub/title-group/article-title")
                 assert len(title) <= 1
                 title_text = extract_text_from_elem_list(title)
                 title_text = [remove_weird_brackets_from_old_titles(t) for t in title_text]
 
                 # Get the subtitle (if it's there)
                 subtitle = article_elem.findall(
-                    './front/article-meta/title-group/subtitle'
-                ) + article_elem.findall('./front-stub/title-group/subtitle')
+                    "./front/article-meta/title-group/subtitle"
+                ) + article_elem.findall("./front-stub/title-group/subtitle")
                 subtitle_text = extract_text_from_elem_list(subtitle)
                 subtitle_text = [remove_weird_brackets_from_old_titles(t) for t in subtitle_text]
 
                 # Extract the abstract from the paper
                 abstract = article_elem.findall(
-                    './front/article-meta/abstract'
-                ) + article_elem.findall('./front-stub/abstract')
+                    "./front/article-meta/abstract"
+                ) + article_elem.findall("./front-stub/abstract")
                 abstract_text = extract_text_from_elem_list(abstract)
 
                 # Extract the full text from the paper as well as supplementaries and floating blocks of text
-                article_text = extract_text_from_elem_list(article_elem.findall('./body'))
-                back_text = extract_text_from_elem_list(article_elem.findall('./back'))
-                floating_text = extract_text_from_elem_list(article_elem.findall('./floats-group'))
+                article_text = extract_text_from_elem_list(article_elem.findall("./body"))
+                back_text = extract_text_from_elem_list(article_elem.findall("./back"))
+                floating_text = extract_text_from_elem_list(article_elem.findall("./floats-group"))
 
                 document = {
-                    'pmid': sub_pmid_text,
-                    'pmcid': sub_pmcid_text,
-                    'doi': sub_doi_text,
-                    'pubYear': sub_pub_year,
-                    'pubMonth': sub_pub_month,
-                    'pubDay': sub_pub_day,
-                    'journal': sub_journal,
-                    'journalISO': sub_journal_iso,
+                    "pmid": sub_pmid_text,
+                    "pmcid": sub_pmcid_text,
+                    "doi": sub_doi_text,
+                    "pubYear": sub_pub_year,
+                    "pubMonth": sub_pub_month,
+                    "pubDay": sub_pub_day,
+                    "journal": sub_journal,
+                    "journalISO": sub_journal_iso,
                 }
 
                 text_sources = {}
-                text_sources['title'] = title_text
-                text_sources['subtitle'] = subtitle_text
-                text_sources['abstract'] = abstract_text
-                text_sources['article'] = article_text
-                text_sources['back'] = back_text
-                text_sources['floating'] = floating_text
+                text_sources["title"] = title_text
+                text_sources["subtitle"] = subtitle_text
+                text_sources["abstract"] = abstract_text
+                text_sources["article"] = article_text
+                text_sources["back"] = back_text
+                text_sources["floating"] = floating_text
 
                 for k in text_sources.keys():
                     tmp = text_sources[k]
@@ -215,7 +215,7 @@ def process_pmc_file(source):
                     tmp = [remove_brackets_without_words(t) for t in tmp]
                     text_sources[k] = tmp
 
-                document['textSources'] = text_sources
+                document["textSources"] = text_sources
                 yield document
 
             # Less important here (compared to abstracts) as each article file is not too big
@@ -274,15 +274,15 @@ def pmcxml2bioc(source):
         for pmc_doc in process_pmc_file(source):
             bioc_doc = bioc.BioCDocument()
             bioc_doc.id = pmc_doc["pmid"]
-            bioc_doc.infons['title'] = " ".join(pmc_doc["textSources"]["title"])
-            bioc_doc.infons['pmid'] = pmc_doc["pmid"]
-            bioc_doc.infons['pmcid'] = pmc_doc["pmcid"]
-            bioc_doc.infons['doi'] = pmc_doc["doi"]
-            bioc_doc.infons['year'] = pmc_doc["pubYear"]
-            bioc_doc.infons['month'] = pmc_doc["pubMonth"]
-            bioc_doc.infons['day'] = pmc_doc["pubDay"]
-            bioc_doc.infons['journal'] = pmc_doc["journal"]
-            bioc_doc.infons['journalISO'] = pmc_doc["journalISO"]
+            bioc_doc.infons["title"] = " ".join(pmc_doc["textSources"]["title"])
+            bioc_doc.infons["pmid"] = pmc_doc["pmid"]
+            bioc_doc.infons["pmcid"] = pmc_doc["pmcid"]
+            bioc_doc.infons["doi"] = pmc_doc["doi"]
+            bioc_doc.infons["year"] = pmc_doc["pubYear"]
+            bioc_doc.infons["month"] = pmc_doc["pubMonth"]
+            bioc_doc.infons["day"] = pmc_doc["pubDay"]
+            bioc_doc.infons["journal"] = pmc_doc["journal"]
+            bioc_doc.infons["journalISO"] = pmc_doc["journalISO"]
 
             offset = 0
             for group_name, text_source_group in pmc_doc["textSources"].items():
@@ -291,12 +291,12 @@ def pmcxml2bioc(source):
                     text_source = trim_sentence_lengths(text_source)
                     passage = bioc.BioCPassage()
 
-                    subsection_check = text_source.lower().strip('01234567890. ')
+                    subsection_check = text_source.lower().strip("01234567890. ")
                     if subsection_check in allowed_subsections:
                         subsection = subsection_check
 
-                    passage.infons['section'] = group_name
-                    passage.infons['subsection'] = subsection
+                    passage.infons["section"] = group_name
+                    passage.infons["subsection"] = subsection
                     passage.text = text_source
                     passage.offset = offset
                     offset += len(text_source)
