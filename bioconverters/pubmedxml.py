@@ -6,103 +6,103 @@ import xml.etree.cElementTree as etree
 import bioc
 
 from .utils import (
-    extractTextFromElemList,
-    removeBracketsWithoutWords,
-    removeWeirdBracketsFromOldTitles,
-    trimSentenceLengths,
+    extract_text_from_elem_list,
+    remove_brackets_without_words,
+    remove_weird_brackets_from_old_titles,
+    trim_sentence_lengths,
 )
 
 
-def getJournalDateForMedlineFile(elem, pmid):
-    yearRegex = re.compile(r'(18|19|20)\d\d')
+def get_journal_date_for_medline_file(elem, pmid):
+    year_regex = re.compile(r'(18|19|20)\d\d')
 
-    monthMapping = {}
+    month_mapping = {}
     for i, m in enumerate(calendar.month_name):
-        monthMapping[m] = i
+        month_mapping[m] = i
     for i, m in enumerate(calendar.month_abbr):
-        monthMapping[m] = i
+        month_mapping[m] = i
 
     # Try to extract the publication date
-    pubDateField = elem.find('./MedlineCitation/Article/Journal/JournalIssue/PubDate')
-    medlineDateField = elem.find(
+    pub_date_field = elem.find('./MedlineCitation/Article/Journal/JournalIssue/PubDate')
+    medline_date_field = elem.find(
         './MedlineCitation/Article/Journal/JournalIssue/PubDate/MedlineDate'
     )
 
-    assert not pubDateField is None, "Couldn't find PubDate field for PMID=%s" % pmid
+    assert not pub_date_field is None, "Couldn't find PubDate field for PMID=%s" % pmid
 
-    medlineDateField = pubDateField.find('./MedlineDate')
-    pubDateField_Year = pubDateField.find('./Year')
-    pubDateField_Month = pubDateField.find('./Month')
-    pubDateField_Day = pubDateField.find('./Day')
+    medline_date_field = pub_date_field.find('./MedlineDate')
+    pub_date_field_Year = pub_date_field.find('./Year')
+    pub_date_field_Month = pub_date_field.find('./Month')
+    pub_date_field_Day = pub_date_field.find('./Day')
 
-    pubYear, pubMonth, pubDay = None, None, None
-    if not medlineDateField is None:
-        regexSearch = re.search(yearRegex, medlineDateField.text)
-        if regexSearch:
-            pubYear = regexSearch.group()
-        monthSearch = [
+    pub_year, pub_month, pub_day = None, None, None
+    if not medline_date_field is None:
+        regex_search = re.search(year_regex, medline_date_field.text)
+        if regex_search:
+            pub_year = regex_search.group()
+        month_search = [
             c
             for c in (list(calendar.month_name) + list(calendar.month_abbr))
-            if c != '' and c in medlineDateField.text
+            if c != '' and c in medline_date_field.text
         ]
-        if len(monthSearch) > 0:
-            pubMonth = monthSearch[0]
+        if len(month_search) > 0:
+            pub_month = month_search[0]
     else:
-        if not pubDateField_Year is None:
-            pubYear = pubDateField_Year.text
-        if not pubDateField_Month is None:
-            pubMonth = pubDateField_Month.text
-        if not pubDateField_Day is None:
-            pubDay = pubDateField_Day.text
+        if not pub_date_field_Year is None:
+            pub_year = pub_date_field_Year.text
+        if not pub_date_field_Month is None:
+            pub_month = pub_date_field_Month.text
+        if not pub_date_field_Day is None:
+            pub_day = pub_date_field_Day.text
 
-    if not pubYear is None:
-        pubYear = int(pubYear)
-        if not (pubYear > 1700 and pubYear < 2100):
-            pubYear = None
+    if not pub_year is None:
+        pub_year = int(pub_year)
+        if not (pub_year > 1700 and pub_year < 2100):
+            pub_year = None
 
-    if not pubMonth is None:
-        if pubMonth in monthMapping:
-            pubMonth = monthMapping[pubMonth]
-        pubMonth = int(pubMonth)
-    if not pubDay is None:
-        pubDay = int(pubDay)
+    if not pub_month is None:
+        if pub_month in month_mapping:
+            pub_month = month_mapping[pub_month]
+        pub_month = int(pub_month)
+    if not pub_day is None:
+        pub_day = int(pub_day)
 
-    return pubYear, pubMonth, pubDay
+    return pub_year, pub_month, pub_day
 
 
-def getPubmedEntryDate(elem, pmid):
-    pubDateFields = elem.findall('./PubmedData/History/PubMedPubDate')
-    allDates = {}
-    for pubDateField in pubDateFields:
-        assert 'PubStatus' in pubDateField.attrib
-        # if 'PubStatus' in pubDateField.attrib and pubDateField.attrib['PubStatus'] == "pubmed":
-        pubDateField_Year = pubDateField.find('./Year')
-        pubDateField_Month = pubDateField.find('./Month')
-        pubDateField_Day = pubDateField.find('./Day')
-        pubYear = int(pubDateField_Year.text)
-        pubMonth = int(pubDateField_Month.text)
-        pubDay = int(pubDateField_Day.text)
+def get_pubmed_entry_date(elem, pmid):
+    pub_date_fields = elem.findall('./PubmedData/History/PubMedPubDate')
+    all_dates = {}
+    for pub_date_field in pub_date_fields:
+        assert 'PubStatus' in pub_date_field.attrib
+        # if 'PubStatus' in pub_date_field.attrib and pub_date_field.attrib['PubStatus'] == "pubmed":
+        pub_date_field_Year = pub_date_field.find('./Year')
+        pub_date_field_Month = pub_date_field.find('./Month')
+        pub_date_field_Day = pub_date_field.find('./Day')
+        pub_year = int(pub_date_field_Year.text)
+        pub_month = int(pub_date_field_Month.text)
+        pub_day = int(pub_date_field_Day.text)
 
-        dateType = pubDateField.attrib['PubStatus']
-        if pubYear > 1700 and pubYear < 2100:
-            allDates[dateType] = (pubYear, pubMonth, pubDay)
+        date_type = pub_date_field.attrib['PubStatus']
+        if pub_year > 1700 and pub_year < 2100:
+            all_dates[date_type] = (pub_year, pub_month, pub_day)
 
-    if len(allDates) == 0:
+    if len(all_dates) == 0:
         return None, None, None
 
-    if 'pubmed' in allDates:
-        pubYear, pubMonth, pubDay = allDates['pubmed']
-    elif 'entrez' in allDates:
-        pubYear, pubMonth, pubDay = allDates['entrez']
-    elif 'medline' in allDates:
-        pubYear, pubMonth, pubDay = allDates['medline']
+    if 'pubmed' in all_dates:
+        pub_year, pub_month, pub_day = all_dates['pubmed']
+    elif 'entrez' in all_dates:
+        pub_year, pub_month, pub_day = all_dates['entrez']
+    elif 'medline' in all_dates:
+        pub_year, pub_month, pub_day = all_dates['medline']
     else:
-        pubYear, pubMonth, pubDay = list(allDates.values())[0]
+        pub_year, pub_month, pub_day = list(all_dates.values())[0]
 
-    return pubYear, pubMonth, pubDay
+    return pub_year, pub_month, pub_day
 
 
-pubTypeSkips = {
+pub_type_skips = {
     "Research Support, N.I.H., Intramural",
     "Research Support, Non-U.S. Gov't",
     "Research Support, U.S. Gov't, P.H.S.",
@@ -110,38 +110,40 @@ pubTypeSkips = {
     "Research Support, U.S. Gov't, Non-P.H.S.",
     "English Abstract",
 }
-doiRegex = re.compile(r'^[0-9\.]+\/.+[^\/]$')
+doi_regex = re.compile(r'^[0-9\.]+\/.+[^\/]$')
 
 
-def processMedlineFile(source):
+def process_medline_file(source):
     for event, elem in etree.iterparse(source, events=('start', 'end', 'start-ns', 'end-ns')):
         if event == 'end' and elem.tag == 'PubmedArticle':  # MedlineCitation'):
-            # Try to extract the pmidID
-            pmidField = elem.find('./MedlineCitation/PMID')
-            assert not pmidField is None
-            pmid = pmidField.text
+            # Try to extract the pmid_i_d
+            pmid_field = elem.find('./MedlineCitation/PMID')
+            assert not pmid_field is None
+            pmid = pmid_field.text
 
-            journalYear, journalMonth, journalDay = getJournalDateForMedlineFile(elem, pmid)
-            entryYear, entryMonth, entryDay = getPubmedEntryDate(elem, pmid)
+            journal_year, journal_month, journal_day = get_journal_date_for_medline_file(elem, pmid)
+            entry_year, entry_month, entry_day = get_pubmed_entry_date(elem, pmid)
 
             jComparison = tuple(
-                9999 if d is None else d for d in [journalYear, journalMonth, journalDay]
+                9999 if d is None else d for d in [journal_year, journal_month, journal_day]
             )
-            eComparison = tuple(9999 if d is None else d for d in [entryYear, entryMonth, entryDay])
+            eComparison = tuple(
+                9999 if d is None else d for d in [entry_year, entry_month, entry_day]
+            )
             if (
                 jComparison < eComparison
             ):  # The PubMed entry has been delayed for some reason so let's try the journal data
-                pubYear, pubMonth, pubDay = journalYear, journalMonth, journalDay
+                pub_year, pub_month, pub_day = journal_year, journal_month, journal_day
             else:
-                pubYear, pubMonth, pubDay = entryYear, entryMonth, entryDay
+                pub_year, pub_month, pub_day = entry_year, entry_month, entry_day
 
             # Extract the authors
-            authorElems = elem.findall('./MedlineCitation/Article/AuthorList/Author')
+            author_elems = elem.findall('./MedlineCitation/Article/AuthorList/Author')
             authors = []
-            for authorElem in authorElems:
-                forename = authorElem.find('./ForeName')
-                lastname = authorElem.find('./LastName')
-                collectivename = authorElem.find('./CollectiveName')
+            for author_elem in author_elems:
+                forename = author_elem.find('./ForeName')
+                lastname = author_elem.find('./LastName')
+                collectivename = author_elem.find('./CollectiveName')
 
                 name = None
                 if (
@@ -162,118 +164,124 @@ def processMedlineFile(source):
                 authors.append(name)
 
             chemicals = []
-            chemicalElems = elem.findall('./MedlineCitation/ChemicalList/Chemical/NameOfSubstance')
-            for chemicalElem in chemicalElems:
-                chemID = chemicalElem.attrib['UI']
-                name = chemicalElem.text
-                # chemicals.append((chemID,name))
-                chemicals.append("%s|%s" % (chemID, name))
-            chemicalsTxt = "\t".join(chemicals)
+            chemical_elems = elem.findall('./MedlineCitation/ChemicalList/Chemical/NameOfSubstance')
+            for chemical_elem in chemical_elems:
+                chem_i_d = chemical_elem.attrib['UI']
+                name = chemical_elem.text
+                # chemicals.append((chem_i_d,name))
+                chemicals.append("%s|%s" % (chem_i_d, name))
+            chemicals_txt = "\t".join(chemicals)
 
-            meshHeadings = []
-            meshElems = elem.findall('./MedlineCitation/MeshHeadingList/MeshHeading')
-            for meshElem in meshElems:
-                descriptorElem = meshElem.find('./DescriptorName')
-                meshID = descriptorElem.attrib['UI']
-                majorTopicYN = descriptorElem.attrib['MajorTopicYN']
-                name = descriptorElem.text
+            mesh_headings = []
+            mesh_elems = elem.findall('./MedlineCitation/MeshHeadingList/MeshHeading')
+            for mesh_elem in mesh_elems:
+                descriptor_elem = mesh_elem.find('./DescriptorName')
+                mesh_i_d = descriptor_elem.attrib['UI']
+                major_topic_y_n = descriptor_elem.attrib['MajorTopicYN']
+                name = descriptor_elem.text
 
-                assert not '|' in meshID and not '~' in meshID, "Found delimiter in %s" % meshID
-                assert not '|' in majorTopicYN and not '~' in majorTopicYN, (
-                    "Found delimiter in %s" % majorTopicYN
+                assert not '|' in mesh_i_d and not '~' in mesh_i_d, (
+                    "Found delimiter in %s" % mesh_i_d
+                )
+                assert not '|' in major_topic_y_n and not '~' in major_topic_y_n, (
+                    "Found delimiter in %s" % major_topic_y_n
                 )
                 assert not '|' in name and not '~' in name, "Found delimiter in %s" % name
 
-                meshHeading = "Descriptor|%s|%s|%s" % (meshID, majorTopicYN, name)
+                mesh_heading = "Descriptor|%s|%s|%s" % (mesh_i_d, major_topic_y_n, name)
 
-                qualifierElems = meshElem.findall('./QualifierName')
-                for qualifierElem in qualifierElems:
-                    meshID = qualifierElem.attrib['UI']
-                    majorTopicYN = qualifierElem.attrib['MajorTopicYN']
-                    name = qualifierElem.text
+                qualifier_elems = mesh_elem.findall('./QualifierName')
+                for qualifier_elem in qualifier_elems:
+                    mesh_i_d = qualifier_elem.attrib['UI']
+                    major_topic_y_n = qualifier_elem.attrib['MajorTopicYN']
+                    name = qualifier_elem.text
 
-                    assert not '|' in meshID and not '~' in meshID, "Found delimiter in %s" % meshID
-                    assert not '|' in majorTopicYN and not '~' in majorTopicYN, (
-                        "Found delimiter in %s" % majorTopicYN
+                    assert not '|' in mesh_i_d and not '~' in mesh_i_d, (
+                        "Found delimiter in %s" % mesh_i_d
+                    )
+                    assert not '|' in major_topic_y_n and not '~' in major_topic_y_n, (
+                        "Found delimiter in %s" % major_topic_y_n
                     )
                     assert not '|' in name and not '~' in name, "Found delimiter in %s" % name
 
-                    meshHeading += "~Qualifier|%s|%s|%s" % (meshID, majorTopicYN, name)
+                    mesh_heading += "~Qualifier|%s|%s|%s" % (mesh_i_d, major_topic_y_n, name)
 
-                meshHeadings.append(meshHeading)
-            meshHeadingsTxt = "\t".join(meshHeadings)
+                mesh_headings.append(mesh_heading)
+            mesh_headings_txt = "\t".join(mesh_headings)
 
-            supplementaryConcepts = []
-            conceptElems = elem.findall('./MedlineCitation/SupplMeshList/SupplMeshName')
-            for conceptElem in conceptElems:
-                conceptID = conceptElem.attrib['UI']
-                conceptType = conceptElem.attrib['Type']
-                conceptName = conceptElem.text
-                # supplementaryConcepts.append((conceptID,conceptType,conceptName))
-                supplementaryConcepts.append("%s|%s|%s" % (conceptID, conceptType, conceptName))
-            supplementaryConceptsTxt = "\t".join(supplementaryConcepts)
+            supplementary_concepts = []
+            concept_elems = elem.findall('./MedlineCitation/SupplMeshList/SupplMeshName')
+            for concept_elem in concept_elems:
+                concept_i_d = concept_elem.attrib['UI']
+                concept_type = concept_elem.attrib['Type']
+                concept_name = concept_elem.text
+                # supplementary_concepts.append((concept_i_d,concept_type,concept_name))
+                supplementary_concepts.append(
+                    "%s|%s|%s" % (concept_i_d, concept_type, concept_name)
+                )
+            supplementary_concepts_txt = "\t".join(supplementary_concepts)
 
-            doiElems = elem.findall("./PubmedData/ArticleIdList/ArticleId[@IdType='doi']")
+            doi_elems = elem.findall("./PubmedData/ArticleIdList/ArticleId[@IdType='doi']")
             dois = [
-                doiElem.text
-                for doiElem in doiElems
-                if doiElem.text and doiRegex.match(doiElem.text)
+                doi_elem.text
+                for doi_elem in doi_elems
+                if doi_elem.text and doi_regex.match(doi_elem.text)
             ]
 
             doi = None
             if dois:
                 doi = dois[0]  # We'll just use DOI the first one provided
 
-            pmcElems = elem.findall("./PubmedData/ArticleIdList/ArticleId[@IdType='pmc']")
-            assert len(pmcElems) <= 1, "Foud more than one PMCID with PMID: %s" % pmid
+            pmc_elems = elem.findall("./PubmedData/ArticleIdList/ArticleId[@IdType='pmc']")
+            assert len(pmc_elems) <= 1, "Foud more than one PMCID with PMID: %s" % pmid
             pmcid = None
-            if len(pmcElems) == 1:
-                pmcid = pmcElems[0].text
+            if len(pmc_elems) == 1:
+                pmcid = pmc_elems[0].text
 
-            pubTypeElems = elem.findall(
+            pub_type_elems = elem.findall(
                 './MedlineCitation/Article/PublicationTypeList/PublicationType'
             )
-            pubType = [e.text for e in pubTypeElems if not e.text in pubTypeSkips]
-            pubTypeTxt = "|".join(pubType)
+            pub_type = [e.text for e in pub_type_elems if not e.text in pub_type_skips]
+            pub_type_txt = "|".join(pub_type)
 
             # Extract the title of paper
             title = elem.findall('./MedlineCitation/Article/ArticleTitle')
-            titleText = extractTextFromElemList(title)
-            titleText = [removeWeirdBracketsFromOldTitles(t) for t in titleText]
-            titleText = [t for t in titleText if len(t) > 0]
-            titleText = [html.unescape(t) for t in titleText]
-            titleText = [removeBracketsWithoutWords(t) for t in titleText]
+            title_text = extract_text_from_elem_list(title)
+            title_text = [remove_weird_brackets_from_old_titles(t) for t in title_text]
+            title_text = [t for t in title_text if len(t) > 0]
+            title_text = [html.unescape(t) for t in title_text]
+            title_text = [remove_brackets_without_words(t) for t in title_text]
 
             # Extract the abstract from the paper
             abstract = elem.findall('./MedlineCitation/Article/Abstract/AbstractText')
-            abstractText = extractTextFromElemList(abstract)
-            abstractText = [t for t in abstractText if len(t) > 0]
-            abstractText = [html.unescape(t) for t in abstractText]
-            abstractText = [removeBracketsWithoutWords(t) for t in abstractText]
+            abstract_text = extract_text_from_elem_list(abstract)
+            abstract_text = [t for t in abstract_text if len(t) > 0]
+            abstract_text = [html.unescape(t) for t in abstract_text]
+            abstract_text = [remove_brackets_without_words(t) for t in abstract_text]
 
-            journalTitleFields = elem.findall('./MedlineCitation/Article/Journal/Title')
-            journalTitleISOFields = elem.findall(
+            journal_title_fields = elem.findall('./MedlineCitation/Article/Journal/Title')
+            journal_title_iso_fields = elem.findall(
                 './MedlineCitation/Article/Journal/ISOAbbreviation'
             )
-            journalTitle = " ".join(extractTextFromElemList(journalTitleFields))
-            journalISOTitle = " ".join(extractTextFromElemList(journalTitleISOFields))
+            journal_title = " ".join(extract_text_from_elem_list(journal_title_fields))
+            journal_iso_title = " ".join(extract_text_from_elem_list(journal_title_iso_fields))
 
             document = {}
             document["pmid"] = pmid
             document["pmcid"] = pmcid
             document["doi"] = doi
-            document["pubYear"] = pubYear
-            document["pubMonth"] = pubMonth
-            document["pubDay"] = pubDay
-            document["title"] = titleText
-            document["abstract"] = abstractText
-            document["journal"] = journalTitle
-            document["journalISO"] = journalISOTitle
+            document["pubYear"] = pub_year
+            document["pubMonth"] = pub_month
+            document["pubDay"] = pub_day
+            document["title"] = title_text
+            document["abstract"] = abstract_text
+            document["journal"] = journal_title
+            document["journalISO"] = journal_iso_title
             document["authors"] = authors
-            document["chemicals"] = chemicalsTxt
-            document["meshHeadings"] = meshHeadingsTxt
-            document["supplementaryMesh"] = supplementaryConceptsTxt
-            document["publicationTypes"] = pubTypeTxt
+            document["chemicals"] = chemicals_txt
+            document["meshHeadings"] = mesh_headings_txt
+            document["supplementaryMesh"] = supplementary_concepts_txt
+            document["publicationTypes"] = pub_type_txt
 
             yield document
 
@@ -282,33 +290,33 @@ def processMedlineFile(source):
 
 
 def pubmedxml2bioc(source):
-    for pmDoc in processMedlineFile(source):
-        biocDoc = bioc.BioCDocument()
-        biocDoc.id = pmDoc["pmid"]
-        biocDoc.infons['title'] = " ".join(pmDoc["title"])
-        biocDoc.infons['pmid'] = pmDoc["pmid"]
-        biocDoc.infons['pmcid'] = pmDoc["pmcid"]
-        biocDoc.infons['doi'] = pmDoc["doi"]
-        biocDoc.infons['year'] = pmDoc["pubYear"]
-        biocDoc.infons['month'] = pmDoc["pubMonth"]
-        biocDoc.infons['day'] = pmDoc["pubDay"]
-        biocDoc.infons['journal'] = pmDoc["journal"]
-        biocDoc.infons['journalISO'] = pmDoc["journalISO"]
-        biocDoc.infons['authors'] = ", ".join(pmDoc["authors"])
-        biocDoc.infons['chemicals'] = pmDoc['chemicals']
-        biocDoc.infons['meshHeadings'] = pmDoc['meshHeadings']
-        biocDoc.infons['supplementaryMesh'] = pmDoc['supplementaryMesh']
-        biocDoc.infons['publicationTypes'] = pmDoc['publicationTypes']
+    for pm_doc in process_medline_file(source):
+        bioc_doc = bioc.BioCDocument()
+        bioc_doc.id = pm_doc["pmid"]
+        bioc_doc.infons['title'] = " ".join(pm_doc["title"])
+        bioc_doc.infons['pmid'] = pm_doc["pmid"]
+        bioc_doc.infons['pmcid'] = pm_doc["pmcid"]
+        bioc_doc.infons['doi'] = pm_doc["doi"]
+        bioc_doc.infons['year'] = pm_doc["pubYear"]
+        bioc_doc.infons['month'] = pm_doc["pubMonth"]
+        bioc_doc.infons['day'] = pm_doc["pubDay"]
+        bioc_doc.infons['journal'] = pm_doc["journal"]
+        bioc_doc.infons['journalISO'] = pm_doc["journalISO"]
+        bioc_doc.infons['authors'] = ", ".join(pm_doc["authors"])
+        bioc_doc.infons['chemicals'] = pm_doc['chemicals']
+        bioc_doc.infons['meshHeadings'] = pm_doc['meshHeadings']
+        bioc_doc.infons['supplementaryMesh'] = pm_doc['supplementaryMesh']
+        bioc_doc.infons['publicationTypes'] = pm_doc['publicationTypes']
 
         offset = 0
         for section in ["title", "abstract"]:
-            for textSource in pmDoc[section]:
-                textSource = trimSentenceLengths(textSource)
+            for text_source in pm_doc[section]:
+                text_source = trim_sentence_lengths(text_source)
                 passage = bioc.BioCPassage()
                 passage.infons['section'] = section
-                passage.text = textSource
+                passage.text = text_source
                 passage.offset = offset
-                offset += len(textSource)
-                biocDoc.add_passage(passage)
+                offset += len(text_source)
+                bioc_doc.add_passage(passage)
 
-        yield biocDoc
+        yield bioc_doc

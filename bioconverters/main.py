@@ -18,41 +18,43 @@ def docs2bioc(source, format):
         raise RuntimeError("Unknown format: %s" % format)
 
 
-acceptedInFormats = ['biocxml', 'pubmedxml', 'pmcxml']
-acceptedOutFormats = ['biocxml', 'txt']
+accepted_in_formats = ['biocxml', 'pubmedxml', 'pmcxml']
+accepted_out_formats = ['biocxml', 'txt']
 
 
-def convert(inFiles, inFormat, outFile, outFormat):
-    outBiocHandle, outTxtHandle = None, None
+def convert(in_files, in_format, out_file, out_format):
+    out_bioc_handle, out_txt_handle = None, None
 
-    assert inFormat in acceptedInFormats, "%s is not an accepted input format. Options are: %s" % (
-        inFormat,
-        "/".join(acceptedInFormats),
+    assert (
+        in_format in accepted_in_formats
+    ), "%s is not an accepted input format. Options are: %s" % (
+        in_format,
+        "/".join(accepted_in_formats),
     )
     assert (
-        outFormat in acceptedOutFormats
+        out_format in accepted_out_formats
     ), "%s is not an accepted output format. Options are: %s" % (
-        outFormat,
-        "/".join(acceptedOutFormats),
+        out_format,
+        "/".join(accepted_out_formats),
     )
 
-    if outFormat == 'biocxml':
-        outBiocHandle = bioc.BioCXMLDocumentWriter(outFile)
-    elif outFormat == 'txt':
-        outTxtHandle = open(outFile, 'w', encoding='utf-8')
+    if out_format == 'biocxml':
+        out_bioc_handle = bioc.BioCXMLDocumentWriter(out_file)
+    elif out_format == 'txt':
+        out_txt_handle = open(out_file, 'w', encoding='utf-8')
 
-    for inFile in inFiles:
+    for in_file in in_files:
 
-        for biocDoc in docs2bioc(inFile, inFormat):
+        for bioc_doc in docs2bioc(in_file, in_format):
 
-            if outFormat == 'biocxml':
-                outBiocHandle.write_document(biocDoc)
-            elif outFormat == 'txt':
-                for passage in biocDoc.passages:
-                    outTxtHandle.write(passage.text)
-                    outTxtHandle.write("\n\n")
+            if out_format == 'biocxml':
+                out_bioc_handle.write_document(bioc_doc)
+            elif out_format == 'txt':
+                for passage in bioc_doc.passages:
+                    out_txt_handle.write(passage.text)
+                    out_txt_handle.write("\n\n")
 
-    if outFormat == 'biocxml':
-        outBiocHandle.close()
-    elif outFormat == 'txt':
-        outTxtHandle.close()
+    if out_format == 'biocxml':
+        out_bioc_handle.close()
+    elif out_format == 'txt':
+        out_txt_handle.close()
