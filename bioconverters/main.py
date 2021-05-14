@@ -1,5 +1,3 @@
-import argparse
-
 import bioc
 
 from .bioc import biocxml2bioc
