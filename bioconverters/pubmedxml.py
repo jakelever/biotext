@@ -116,7 +116,7 @@ doi_regex = re.compile(r"^[0-9\.]+\/.+[^\/]$")
 def process_medline_file(source):
     for event, elem in etree.iterparse(source, events=("start", "end", "start-ns", "end-ns")):
         if event == "end" and elem.tag == "PubmedArticle":  # MedlineCitation'):
-            # Try to extract the pmid_i_d
+            # Try to extract the pmid_id
             pmid_field = elem.find("./MedlineCitation/PMID")
             assert not pmid_field is None
             pmid = pmid_field.text
@@ -166,45 +166,43 @@ def process_medline_file(source):
             chemicals = []
             chemical_elems = elem.findall("./MedlineCitation/ChemicalList/Chemical/NameOfSubstance")
             for chemical_elem in chemical_elems:
-                chem_i_d = chemical_elem.attrib["UI"]
+                chem_id = chemical_elem.attrib["UI"]
                 name = chemical_elem.text
-                # chemicals.append((chem_i_d,name))
-                chemicals.append("%s|%s" % (chem_i_d, name))
+                # chemicals.append((chem_id,name))
+                chemicals.append("%s|%s" % (chem_id, name))
             chemicals_txt = "\t".join(chemicals)
 
             mesh_headings = []
             mesh_elems = elem.findall("./MedlineCitation/MeshHeadingList/MeshHeading")
             for mesh_elem in mesh_elems:
                 descriptor_elem = mesh_elem.find("./DescriptorName")
-                mesh_i_d = descriptor_elem.attrib["UI"]
-                major_topic_y_n = descriptor_elem.attrib["MajorTopicYN"]
+                mesh_id = descriptor_elem.attrib["UI"]
+                major_topic_yn = descriptor_elem.attrib["MajorTopicYN"]
                 name = descriptor_elem.text
 
-                assert not "|" in mesh_i_d and not "~" in mesh_i_d, (
-                    "Found delimiter in %s" % mesh_i_d
-                )
-                assert not "|" in major_topic_y_n and not "~" in major_topic_y_n, (
-                    "Found delimiter in %s" % major_topic_y_n
+                assert not "|" in mesh_id and not "~" in mesh_id, "Found delimiter in %s" % mesh_id
+                assert not "|" in major_topic_yn and not "~" in major_topic_yn, (
+                    "Found delimiter in %s" % major_topic_yn
                 )
                 assert not "|" in name and not "~" in name, "Found delimiter in %s" % name
 
-                mesh_heading = "Descriptor|%s|%s|%s" % (mesh_i_d, major_topic_y_n, name)
+                mesh_heading = "Descriptor|%s|%s|%s" % (mesh_id, major_topic_yn, name)
 
                 qualifier_elems = mesh_elem.findall("./QualifierName")
                 for qualifier_elem in qualifier_elems:
-                    mesh_i_d = qualifier_elem.attrib["UI"]
-                    major_topic_y_n = qualifier_elem.attrib["MajorTopicYN"]
+                    mesh_id = qualifier_elem.attrib["UI"]
+                    major_topic_yn = qualifier_elem.attrib["MajorTopicYN"]
                     name = qualifier_elem.text
 
-                    assert not "|" in mesh_i_d and not "~" in mesh_i_d, (
-                        "Found delimiter in %s" % mesh_i_d
+                    assert not "|" in mesh_id and not "~" in mesh_id, (
+                        "Found delimiter in %s" % mesh_id
                     )
-                    assert not "|" in major_topic_y_n and not "~" in major_topic_y_n, (
-                        "Found delimiter in %s" % major_topic_y_n
+                    assert not "|" in major_topic_yn and not "~" in major_topic_yn, (
+                        "Found delimiter in %s" % major_topic_yn
                     )
                     assert not "|" in name and not "~" in name, "Found delimiter in %s" % name
 
-                    mesh_heading += "~Qualifier|%s|%s|%s" % (mesh_i_d, major_topic_y_n, name)
+                    mesh_heading += "~Qualifier|%s|%s|%s" % (mesh_id, major_topic_yn, name)
 
                 mesh_headings.append(mesh_heading)
             mesh_headings_txt = "\t".join(mesh_headings)
@@ -212,13 +210,11 @@ def process_medline_file(source):
             supplementary_concepts = []
             concept_elems = elem.findall("./MedlineCitation/SupplMeshList/SupplMeshName")
             for concept_elem in concept_elems:
-                concept_i_d = concept_elem.attrib["UI"]
+                concept_id = concept_elem.attrib["UI"]
                 concept_type = concept_elem.attrib["Type"]
                 concept_name = concept_elem.text
-                # supplementary_concepts.append((concept_i_d,concept_type,concept_name))
-                supplementary_concepts.append(
-                    "%s|%s|%s" % (concept_i_d, concept_type, concept_name)
-                )
+                # supplementary_concepts.append((concept_id,concept_type,concept_name))
+                supplementary_concepts.append("%s|%s|%s" % (concept_id, concept_type, concept_name))
             supplementary_concepts_txt = "\t".join(supplementary_concepts)
 
             doi_elems = elem.findall("./PubmedData/ArticleIdList/ArticleId[@IdType='doi']")
