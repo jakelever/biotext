@@ -1,12 +1,15 @@
 
 __pycache__
+.mypy_cache
 *.pyc
+venv
+.snakemake/
+
 *.xml
 
 pubmed_listing.txt
 pmc_listing.txt
 
-.snakemake/
 pmc_archives/
 biocxml/
 pubtator/
@@ -18,3 +21,4 @@ pmids/
 
 bioconcepts2pubtatorcentral.gz
 
+.vscode
