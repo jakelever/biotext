@@ -2,7 +2,7 @@ import calendar
 import html
 import re
 import xml.etree.cElementTree as etree
-from typing import Iterable, Optional, Tuple, Union
+from typing import Iterable, Optional, TextIO, Tuple, Union
 
 try:
     # python 3.8+
@@ -151,7 +151,7 @@ pub_type_skips = {
 doi_regex = re.compile(r"^[0-9\.]+\/.+[^\/]$")
 
 
-def process_medline_file(source: str) -> Iterable[MedlineArticle]:
+def process_medline_file(source: Union[str, TextIO]) -> Iterable[MedlineArticle]:
     """
     Args:
         source: path to the MEDLINE xml file
@@ -327,7 +327,7 @@ def process_medline_file(source: str) -> Iterable[MedlineArticle]:
             elem.clear()
 
 
-def pubmedxml2bioc(source: str) -> Iterable[bioc.BioCDocument]:
+def pubmedxml2bioc(source: Union[str, TextIO]) -> Iterable[bioc.BioCDocument]:
     """
     Args:
         source: path to the MEDLINE xml file

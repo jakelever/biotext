@@ -1,7 +1,7 @@
 import calendar
 import html
 import xml.etree.cElementTree as etree
-from typing import Iterable, Optional, Tuple
+from typing import Iterable, Optional, TextIO, Tuple, Union
 
 try:
     # python 3.8+
@@ -125,7 +125,7 @@ def get_meta_info_for_pmc_article(
     )
 
 
-def process_pmc_file(source: str) -> Iterable[PmcArticle]:
+def process_pmc_file(source: Union[str, TextIO]) -> Iterable[PmcArticle]:
     # Skip to the article element in the file
     for event, elem in etree.iterparse(source, events=("start", "end", "start-ns", "end-ns")):
         if event == "end" and elem.tag == "article":
@@ -301,7 +301,7 @@ allowed_subsections = {
 }
 
 
-def pmcxml2bioc(source: str) -> Iterable[bioc.BioCDocument]:
+def pmcxml2bioc(source: Union[str, TextIO]) -> Iterable[bioc.BioCDocument]:
     try:
         for pmc_doc in process_pmc_file(source):
             bioc_doc = bioc.BioCDocument()
