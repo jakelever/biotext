@@ -24,23 +24,17 @@ if __name__ == '__main__':
 	source = os.path.join(args.pmcDir, block['src'])
 	files_to_extract = block['group']
 
-	#print(source)
-	#print(len(files_to_extract))
-
 	with bioc.BioCXMLDocumentWriter(args.outFile) as writer:
 		tar = tarfile.open(source)
 		for i,filename in enumerate(files_to_extract):
-			#print(i,filename)
 			member = tar.getmember(filename)
-			#print(member)
+			
 			file_handle = tar.extractfile(member)
-			#print(file_handle)
+			
 			data = file_handle.read().decode('utf-8')
-			#print(len(data))
-			#print(data[:500])
-			for biocDoc in pmcxml2bioc(io.StringIO(data)):
-				writer.write_document(biocDoc)
 
-			#break
+			for bioc_doc in pmcxml2bioc(io.StringIO(data)):
+				writer.write_document(bioc_doc)
+
 	print("Saved %d documents to %s" % (len(files_to_extract), args.outFile))
 

@@ -47,19 +47,19 @@ def download_file_with_retries(url, local_filename, retries=10):
 
 	raise RuntimeError("Unable to download %s" % url)
 
-acceptedOutFormats = ['biocxml','txt']
+accepted_out_formats = ['biocxml','txt']
 if __name__ == '__main__':
 	parser = argparse.ArgumentParser(description='Tool to convert corpus between different formats')
 	parser.add_argument('--url',type=str,required=True,help="URL to PubMed GZipped XML file")
 	parser.add_argument('--o',type=str,required=True,help="Where to store resulting converted docs")
-	parser.add_argument('--oFormat',type=str,required=True,help="Format for output corpus. Options: %s" % "/".join(acceptedOutFormats))
+	parser.add_argument('--oFormat',type=str,required=True,help="Format for output corpus. Options: %s" % "/".join(accepted_out_formats))
 
 	args = parser.parse_args()
 
-	inFormat = 'pubmedxml'
-	outFormat = args.oFormat.lower()
+	in_format = 'pubmedxml'
+	out_format = args.oFormat.lower()
 
-	assert outFormat in acceptedOutFormats, "%s is not an accepted output format. Options are: %s" % (outFormat, "/".join(acceptedOutFormats))
+	assert out_format in accepted_out_formats, "%s is not an accepted output format. Options are: %s" % (out_format, "/".join(accepted_out_formats))
 
 	with tempfile.NamedTemporaryFile() as tf:
 		print("Downloading...")
@@ -67,7 +67,7 @@ if __name__ == '__main__':
 
 		print("Converting...")
 		with gzip.open(tf.name) as f:	
-			convert([f],inFormat,args.o,outFormat)
+			convert([f],in_format,args.o,out_format)
 
 	print("Output to %s complete" % args.o)
 
