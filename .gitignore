@@ -23,3 +23,8 @@ pmids/
 bioconcepts2pubtatorcentral.gz
 
 .vscode
+
+snakejob.*
+*.sqlite
+
+listings/
