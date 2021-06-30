@@ -7,12 +7,16 @@ from bioconverters import pmcxml2bioc
 import bioc
 import io
 
+import tempfile
+from dbutils import saveDocumentsToDatabase
+
 if __name__ == '__main__':
 	parser = argparse.ArgumentParser(description='Convert a block of PMC articles')
 	parser.add_argument('--pmcDir',required=True,type=str,help='Directory with PMC Tar Gz files and groupings already processed')
 	parser.add_argument('--block',required=True,type=str,help='Name of block to process')
 	parser.add_argument('--format',required=True,type=str,help='Format to output documents to (only biocxml supported)')
 	parser.add_argument('--outFile',required=True,type=str,help='File to save to')
+	parser.add_argument('--db',action='store_true',help="Whether to output as an SQLite database")
 	args = parser.parse_args()
 
 	assert args.format == 'biocxml'
@@ -24,17 +28,22 @@ if __name__ == '__main__':
 	source = os.path.join(args.pmcDir, block['src'])
 	files_to_extract = block['group']
 
-	with bioc.BioCXMLDocumentWriter(args.outFile) as writer:
-		tar = tarfile.open(source)
-		for i,filename in enumerate(files_to_extract):
-			member = tar.getmember(filename)
-			
-			file_handle = tar.extractfile(member)
-			
-			data = file_handle.read().decode('utf-8')
+	with tempfile.NamedTemporaryFile() as tf_out:
+		out_file = tf_out.name if args.db else args.outFile
+		with bioc.BioCXMLDocumentWriter(out_file) as writer:
+			tar = tarfile.open(source)
+			for i,filename in enumerate(files_to_extract):
+				member = tar.getmember(filename)
+				
+				file_handle = tar.extractfile(member)
+				
+				data = file_handle.read().decode('utf-8')
 
-			for bioc_doc in pmcxml2bioc(io.StringIO(data)):
-				writer.write_document(bioc_doc)
+				for bioc_doc in pmcxml2bioc(io.StringIO(data)):
+					writer.write_document(bioc_doc)
+
+		if args.db:
+			saveDocumentsToDatabase(args.outFile,tf_out.name,is_fulltext=True)
 
 	print("Saved %d documents to %s" % (len(files_to_extract), args.outFile))
 

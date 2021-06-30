@@ -12,6 +12,8 @@ import time
 import gzip
 import sys
 
+from dbutils import saveDocumentsToDatabase
+
 def download_file(url,local_filename):
 	with closing(request.urlopen(url)) as r:
 		with open(local_filename, 'wb') as f:
@@ -47,27 +49,42 @@ def download_file_with_retries(url, local_filename, retries=10):
 
 	raise RuntimeError("Unable to download %s" % url)
 
+
+
+
+
 accepted_out_formats = ['biocxml','txt']
-if __name__ == '__main__':
+def main():
 	parser = argparse.ArgumentParser(description='Tool to convert corpus between different formats')
 	parser.add_argument('--url',type=str,required=True,help="URL to PubMed GZipped XML file")
 	parser.add_argument('--o',type=str,required=True,help="Where to store resulting converted docs")
 	parser.add_argument('--oFormat',type=str,required=True,help="Format for output corpus. Options: %s" % "/".join(accepted_out_formats))
+	parser.add_argument('--db',action='store_true',help="Whether to output as an SQLite database")
 
 	args = parser.parse_args()
 
 	in_format = 'pubmedxml'
 	out_format = args.oFormat.lower()
 
+	if args.db:
+		assert out_format == 'biocxml', "Output format must be biocxml when storing to the database"
+
 	assert out_format in accepted_out_formats, "%s is not an accepted output format. Options are: %s" % (out_format, "/".join(accepted_out_formats))
 
-	with tempfile.NamedTemporaryFile() as tf:
+	with tempfile.NamedTemporaryFile() as tf_pubmed, tempfile.NamedTemporaryFile() as tf_out:
 		print("Downloading...")
-		download_file_with_retries(args.url, tf.name)
+		download_file_with_retries(args.url, tf_pubmed.name)
+	
+		out_file = tf_out.name if args.db else args.o
 
 		print("Converting...")
-		with gzip.open(tf.name) as f:	
-			convert([f],in_format,args.o,out_format)
+		with gzip.open(tf_pubmed.name) as f:	
+			convert([f],in_format,out_file,out_format)
+
+		if args.db:
+			saveDocumentsToDatabase(args.o,tf_out.name,is_fulltext=False)
 
 	print("Output to %s complete" % args.o)
 
+if __name__ == '__main__':
+	main()

@@ -48,6 +48,8 @@ rule download:
 
 if os.path.isfile("converted.flag"):
 	os.remove("converted.flag")
+if os.path.isfile("db.flag"):
+	os.remove("db.flag")
 
 pubmed_biocxml_files, pmc_biocxml_files = [], []
 
@@ -72,6 +74,9 @@ if os.path.isfile('pmc_archives/groupings.json'):
 		pmc_blocks = sorted(json.load(f)['groups'].keys())
 		pmc_biocxml_files = [ f"biocxml/pmc_{b}.bioc.xml" for b in pmc_blocks ]
 
+pubmed_db_files = [ filename.replace('biocxml/','working_db/').replace('.bioc.xml','.sqlite') for filename in pubmed_biocxml_files ]
+pmc_db_files = [ filename.replace('biocxml/','working_db/').replace('.bioc.xml','.sqlite') for filename in pmc_biocxml_files ]
+
 rule convert_biocxml:
 	input: 
 		pubmed = pubmed_biocxml_files,
@@ -80,16 +85,29 @@ rule convert_biocxml:
 	output: "converted.flag"
 	shell: "touch {output}"
 
+rule convert_db:
+	input: 
+		pubmed = pubmed_db_files,
+		pmc_downloaded = 'pmc_archives/groupings.json',
+		pmc = pmc_db_files
+	output: "db.flag"
+	shell: "touch {output}"
 
 rule pubmed_convert_biocxml:
 	output: "biocxml/pubmed_{dir}_{f}.bioc.xml"
-	#shell: "python convert.py --i <(curl --silent ftp://ftp.ncbi.nlm.nih.gov/pubmed/{wildcards.dir}/pubmed{wildcards.f}.xml.gz | gunzip) --iFormat pubmedxml --o {output} --oFormat biocxml"
 	shell: "python convertPubmed.py --url ftp://ftp.ncbi.nlm.nih.gov/pubmed/{wildcards.dir}/pubmed{wildcards.f}.xml.gz --o {output} --oFormat biocxml"
+
+rule pubmed_convert_db:
+	output: "working_db/pubmed_{dir}_{f}.sqlite"
+	shell: "python convertPubmed.py --url ftp://ftp.ncbi.nlm.nih.gov/pubmed/{wildcards.dir}/pubmed{wildcards.f}.xml.gz --o {output} --oFormat biocxml --db"
 
 rule pmc_convert_biocxml:
 	output: "biocxml/pmc_{block}.bioc.xml"
 	shell: "python convertPMC.py --pmcDir pmc_archives --block {wildcards.block} --format biocxml --outFile {output}"
 
+rule pmc_convert_db:
+	output: "working_db/pmc_{block}.sqlite"
+	shell: "python convertPMC.py --pmcDir pmc_archives --block {wildcards.block} --format biocxml --outFile {output} --db"
 
 
 #  ____        _   _____     _             
