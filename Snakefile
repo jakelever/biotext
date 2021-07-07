@@ -1,5 +1,5 @@
 
-localrules: convert_biocxml
+localrules: convert_biocxml, convert_db, pubtator_complete, gather_all_pmids
 
 import os
 import json
