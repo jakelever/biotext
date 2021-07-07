@@ -12,6 +12,10 @@ import time
 import gzip
 import sys
 
+import re
+import os
+from datetime import datetime
+
 from dbutils import saveDocumentsToDatabase
 
 def download_file(url,local_filename):
@@ -38,10 +42,13 @@ def download_file_and_check_md5sum(url, local_filename):
 	if expected_md5 != got_md5:
 		raise RuntimeError("MD5 of downloaded file doesn't match expected: %s != %s" % (expected_md5,got_md5))
 
-def download_file_with_retries(url, local_filename, retries=10):
+def download_file_with_retries(url, local_filename, check_md5=False, retries=10):
 	for tryno in range(retries):
 		try:
-			download_file_and_check_md5sum(url, local_filename)
+			if check_md5:
+				download_file_and_check_md5sum(url, local_filename)
+			else:
+				download_file(url,local_filename)
 			return
 		except:
 			print("Unexpected error:", sys.exc_info()[0], sys.exc_info()[1])
@@ -50,7 +57,25 @@ def download_file_with_retries(url, local_filename, retries=10):
 	raise RuntimeError("Unable to download %s" % url)
 
 
+def get_pubmed_timestamp(url):
+	assert url.startswith('ftp://ftp.ncbi.nlm.nih.gov/pubmed/')
 
+	listing_url = os.path.dirname(url).replace('ftp://','http://')
+	filename = os.path.basename(url)
+
+	with tempfile.NamedTemporaryFile() as tf:
+		download_file_with_retries(listing_url,tf.name)
+		with open(tf.name) as f:
+			listing_page = f.read()
+
+	match = re.search('<a href="%s">%s</a>\s+(\d+-\d+-\d+\s+\d+:\d+)' % (filename,filename), listing_page)
+	assert match, "Could not find timestamp for url: %s" % url
+    
+	found_date = match.groups()[0]
+	date_obj = datetime.strptime(found_date, '%Y-%m-%d %H:%M')
+	timestamp = int(datetime.timestamp(date_obj))
+
+	return timestamp
 
 
 accepted_out_formats = ['biocxml','txt']
@@ -71,9 +96,11 @@ def main():
 
 	assert out_format in accepted_out_formats, "%s is not an accepted output format. Options are: %s" % (out_format, "/".join(accepted_out_formats))
 
+	timestamp = get_pubmed_timestamp(args.url)
+
 	with tempfile.NamedTemporaryFile() as tf_pubmed, tempfile.NamedTemporaryFile() as tf_out:
 		print("Downloading...")
-		download_file_with_retries(args.url, tf_pubmed.name)
+		download_file_with_retries(args.url, tf_pubmed.name, check_md5=True)
 	
 		out_file = tf_out.name if args.db else args.o
 
@@ -82,9 +109,10 @@ def main():
 			convert([f],in_format,out_file,out_format)
 
 		if args.db:
-			saveDocumentsToDatabase(args.o,tf_out.name,is_fulltext=False)
+			saveDocumentsToDatabase(args.o,tf_out.name,timestamp=timestamp,is_fulltext=False)
 
 	print("Output to %s complete" % args.o)
 
 if __name__ == '__main__':
 	main()
+

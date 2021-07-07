@@ -4,7 +4,6 @@ import sqlite3
 import os
 import hashlib
 import io
-import time
 import xml.etree.cElementTree as etree
 
 def gzip_str(string_: str) -> bytes:
@@ -24,7 +23,7 @@ def calcSHA256_AsInt(data):
 	sha256 = hashlib.sha256(data).hexdigest()
 	return int(sha256[:10],16)
 
-def saveDocumentsToDatabase(db_filename, documents_filename, is_fulltext):
+def saveDocumentsToDatabase(db_filename, documents_filename, timestamp, is_fulltext):
 	if os.path.isfile(db_filename):
 		os.remove(db_filename)
 
@@ -39,7 +38,7 @@ def saveDocumentsToDatabase(db_filename, documents_filename, is_fulltext):
 	cur.execute("CREATE TABLE metadata(pmid INTEGER PRIMARY KEY ASC, compressed BLOB, hash INTEGER, updated INTEGER);")
 	con.commit()
 
-	timestamp = int(time.time())
+
 
 	document_records,metadata_records = [],[]
 	seen_pmids = set()
@@ -74,6 +73,7 @@ def saveDocumentsToDatabase(db_filename, documents_filename, is_fulltext):
 						metadata_hash = calcSHA256_AsInt(metadata_compressed)
 
 						metadata_record = (pmid, compressed, metadata_hash, timestamp)
+						metadata_records.append(metadata_record)
 						
 						#print(metadata_fields)
 						#assert False
