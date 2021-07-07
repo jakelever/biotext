@@ -39,7 +39,7 @@ do
 		timestamp=`date -R -d @$(stat -c '%Y' $f)`
 	fi
 
-	curl -o download.tmp $ftpPath --time-cond "$timestamp" --retry 5
+	curl -R -o download.tmp $ftpPath --time-cond "$timestamp" --retry 5
 	if [ -f download.tmp ]; then
 		mv download.tmp $f
 	fi
