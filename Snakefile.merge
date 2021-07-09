@@ -1,0 +1,54 @@
+
+import os
+import math
+
+from dbutils import mergeDBs
+
+
+
+def chunks(lst, n):
+	"""Yield successive n-sized chunks from lst."""
+	for i in range(0, len(lst), n):
+		yield lst[i:i + n]
+
+db_dir = 'working_db'
+db_files_to_combine = sorted( os.path.join(db_dir,f) for f in os.listdir(db_dir) if f.endswith('.sqlite') )
+
+#DB_MERGE_BATCH_SIZE = 2
+
+rule all:
+	input: "merged.sqlite"
+
+prev_round_output = db_files_to_combine
+round_no = 0
+while True:
+	group_size = 2 if round_no > 0 else 20
+	truncate_inputs = round_no > 0
+
+	this_round_groups = list(chunks(prev_round_output,group_size))
+	this_round_outputs = []
+	if len(this_round_groups) == 1:
+
+		rule db_merge_final:
+			input: this_round_groups[0]
+			output: "merged.sqlite"
+			run: mergeDBs(input,output[0],truncate_inputs=truncate_inputs)
+
+		break
+
+	else:
+
+		for i,group in enumerate(this_round_groups):
+			intermediate = "working_merges/%02d.%04d.sqlite" % (round_no, i)
+			this_round_outputs.append(intermediate)
+			#print(intermediate)
+
+			rule:
+				name: "db_merge_intermediate_%02d_%04d" % (round_no, i)
+				input: group
+				output: intermediate
+				run: mergeDBs(input,output[0],truncate_inputs=truncate_inputs)
+
+	round_no += 1
+	prev_round_output = this_round_outputs
+

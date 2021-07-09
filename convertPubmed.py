@@ -11,6 +11,7 @@ from contextlib import closing
 import time
 import gzip
 import sys
+import string
 
 import re
 import os
@@ -77,6 +78,13 @@ def get_pubmed_timestamp(url):
 
 	return timestamp
 
+def get_pubmed_fileindex(url):
+	filename = os.path.basename(url)
+	digits_in_filename = [ c for c in filename if c in string.digits ]
+	assert len(digits_in_filename) == 6, "Expected exactly 6 digits in filename: %s" % filename
+	file_index = int("".join(digits_in_filename))
+	return int(file_index)
+	
 
 accepted_out_formats = ['biocxml','txt']
 def main():
@@ -96,7 +104,7 @@ def main():
 
 	assert out_format in accepted_out_formats, "%s is not an accepted output format. Options are: %s" % (out_format, "/".join(accepted_out_formats))
 
-	timestamp = get_pubmed_timestamp(args.url)
+	file_index = get_pubmed_fileindex(args.url)
 
 	with tempfile.NamedTemporaryFile() as tf_pubmed, tempfile.NamedTemporaryFile() as tf_out:
 		print("Downloading...")
@@ -109,7 +117,7 @@ def main():
 			convert([f],in_format,out_file,out_format)
 
 		if args.db:
-			saveDocumentsToDatabase(args.o,tf_out.name,timestamp=timestamp,is_fulltext=False)
+			saveDocumentsToDatabase(args.o,tf_out.name,is_fulltext=False,file_index=file_index)
 
 	print("Output to %s complete" % args.o)
 

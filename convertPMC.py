@@ -29,11 +29,6 @@ if __name__ == '__main__':
 	source = os.path.join(args.pmcDir, block['src'])
 	files_to_extract = block['group']
 
-	fname = pathlib.Path(source)
-	timestamp = fname.stat().st_mtime
-
-	#timestamp = int(time.time())
-
 	with tempfile.NamedTemporaryFile() as tf_out:
 		out_file = tf_out.name if args.db else args.outFile
 		with bioc.BioCXMLDocumentWriter(out_file) as writer:
@@ -49,7 +44,7 @@ if __name__ == '__main__':
 					writer.write_document(bioc_doc)
 
 		if args.db:
-			saveDocumentsToDatabase(args.outFile,tf_out.name,timestamp=timestamp,is_fulltext=True)
+			saveDocumentsToDatabase(args.outFile,tf_out.name,is_fulltext=True)
 
 	print("Saved %d documents to %s" % (len(files_to_extract), args.outFile))
 
