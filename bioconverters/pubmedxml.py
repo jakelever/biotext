@@ -301,8 +301,14 @@ def process_medline_file(source: Union[str, TextIO]) -> Iterable[MedlineArticle]
             journal_title_iso_fields = elem.findall(
                 "./MedlineCitation/Article/Journal/ISOAbbreviation"
             )
-            journal_title = " ".join(extract_text_from_elem_list(journal_title_fields))
-            journal_iso_title = " ".join(extract_text_from_elem_list(journal_title_iso_fields))
+
+            journal_title, journal_iso_title = "",""
+            assert len(journal_title_fields) <= 1, "Error with pmid=%s" % pmid
+            assert len(journal_title_iso_fields) <= 1, "Error with pmid=%s" % pmid
+            if journal_title_fields:
+                journal_title = journal_title_fields[0].text
+            if journal_title_iso_fields:
+                journal_iso_title = journal_title_iso_fields[0].text
 
             document = {}
             document["pmid"] = pmid
