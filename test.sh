@@ -1,8 +1,11 @@
 #!/bin/bash
 set -ex
 
-if [[ -d pmc_archives || -d biocxml ]]; then
-	echo "ERROR: pmc_archives or biocxml directory already exists. Cannot continue"
+if [[ -d pmc_archives || -d biocxml || -d working_db ]]; then
+	echo "ERROR: pmc_archives, biocxml or working_db directory already exists. Cannot continue"
+	exit 1
+elif [[ -f biotext.sqlite ]]; then
+	echo "ERROR: biotext.sqlite already exists. Cannot continue"
 	exit 1
 fi
 
@@ -30,7 +33,11 @@ mv single_file.txt listings/pubmed.txt
 # Then run the main convert code using Snakemake
 snakemake --cores 1 converted.flag
 
+# Then run the main convert code using Snakemake
+snakemake --cores 1 db.flag
+
 # Cleaning up after test
-rm -fr pmc_archives biocxml listings
-rm converted.flag
+rm biotext.db
+rm -fr pmc_archives biocxml working_db listings
+rm -f converted.flag db.flag
 
