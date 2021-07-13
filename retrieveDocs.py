@@ -33,14 +33,17 @@ def main():
 	cur = con.cursor()
 
 	if args.list:
-		document_count = 0
+		fulltext_count,abstract_count = 0,0
 		with open(args.outFile,'w') as outF:
-			outF.write("pmid\tis_fulltext\n")
-			for pmid,is_fulltext in cur.execute('SELECT pmid,is_fulltext FROM documents ORDER BY pmid'):
-				outF.write("%d\t%d\n" % (pmid,is_fulltext))
-				document_count += 1
+			outF.write("type\tpmid\thash\tupdated\tfile_index\n")
+			for pmid,hash_value,updated,file_index in cur.execute('SELECT pmid,hash,updated,file_index FROM abstracts ORDER BY pmid'):
+				outF.write("%s\t%d\t%d\t%d\t%d\n" % ("abstract",pmid,hash_value,updated,file_index))
+				abstract_count += 1
+			for pmid,hash_value,updated in cur.execute('SELECT pmid,hash,updated FROM fulltext ORDER BY pmid'):
+				outF.write("%s\t%d\t%d\t%d\t%d\n" % ("fulltext",pmid,hash_value,updated,-1))
+				fulltext_count += 1
 		
-		print("Saved listing of %d documents" % document_count)
+		print("Saved listing of %d full-text documents and %d abstracts" % (fulltext_count,abstract_count))
 		sys.exit(0)
 
 	assert args.pmids or args.pmidfile, "Must provide --pmids or --pmidfile"
