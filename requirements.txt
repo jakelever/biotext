@@ -1,3 +1,4 @@
 snakemake
 bioc
 ftputil
+biopython
