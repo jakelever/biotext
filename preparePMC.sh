@@ -43,6 +43,7 @@ do
 	DOWNLOAD_SUCCESS=0
 	for retry in $(seq 10)
 	do
+		RETVAL=0
 		curl -o download.tmp.gz $ftpPath --time-cond "$timestamp" || {
 			RETVAL=$?
 			true
