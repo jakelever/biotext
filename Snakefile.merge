@@ -32,7 +32,9 @@ while True:
 		rule db_merge_final:
 			input: this_round_groups[0]
 			output: "merged.sqlite"
-			run: mergeDBs(input,output[0],truncate_inputs=truncate_inputs)
+			params:
+				truncate_inputs=truncate_inputs
+			run: mergeDBs(input,output[0],truncate_inputs=params.truncate_inputs)
 
 		break
 
@@ -47,7 +49,9 @@ while True:
 				name: "db_merge_intermediate_%02d_%04d" % (round_no, i)
 				input: group
 				output: intermediate
-				run: mergeDBs(input,output[0],truncate_inputs=truncate_inputs)
+				params:
+					truncate_inputs=truncate_inputs
+				run: mergeDBs(input,output[0],truncate_inputs=params.truncate_inputs)
 
 	round_no += 1
 	prev_round_output = this_round_outputs
