@@ -1,5 +1,5 @@
 
-localrules: convert_biocxml, convert_db, pubtator_complete, gather_all_pmids
+localrules: convert_biocxml, pubtator_complete, gather_all_pmids
 
 import os
 import json
@@ -91,7 +91,7 @@ rule convert_db:
 		pmc_downloaded = 'pmc_archives/groupings.json',
 		pmc = pmc_db_files
 	output: "db.flag"
-	shell: "touch {output}"
+	shell: "python mergeDBs.py --mainDB biotext.db --inDir working_db/ && sh cleanupDB.sh && touch {output}"
 
 rule pubmed_convert_biocxml:
 	output: "biocxml/pubmed_{dir}_{f}.bioc.xml"

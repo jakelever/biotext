@@ -17,13 +17,13 @@ def main():
 
 	input_dbs = sorted( os.path.join(args.inDir,f) for f in os.listdir(args.inDir) if f.endswith('.sqlite') )
 
-	if len(input_dbs) == 0:
-		print("No databases to merge.")
-		sys.exit(0)
+	#if len(input_dbs) == 0:
+	#	print("No databases to merge.")
+	#	sys.exit(0)
 
-	if os.path.isfile(args.mainDB):
-		print("DELETING the main DB, for testing purposes")
-		os.remove(args.mainDB)
+	#if os.path.isfile(args.mainDB):
+	#	print("DELETING the main DB, for testing purposes")
+	#	os.remove(args.mainDB)
 
 	mergeDBs(input_dbs,args.mainDB,truncate_inputs)
 

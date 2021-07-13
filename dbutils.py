@@ -120,67 +120,75 @@ def mergeDBs(input_dbs,output_db,truncate_inputs=False):
 
 	input_dbs_orig = list(input_dbs)
 
-	#tempdir_prefix = ".tmp_%s_%d_" % (os.environ['HOSTNAME'],os.getpid())
-	#with tempfile.TemporaryDirectory(prefix=tempdir_prefix,dir='.') as tempdir:
-	with tempfile.TemporaryDirectory() as tempdir:
+	input_dbs = [ input_db for input_db in input_dbs if os.path.getsize(input_db) > 0 ]
 
-		# Add output DB on list to be merged
-		if os.path.isfile(output_db):
-			input_dbs.append(output_db)
+	if len(input_dbs) < len(input_dbs_orig):
+		skip_count = len(input_dbs_orig) - len(input_dbs)
+		print("Skipping %d files that are empty" % skip_count)
 
-		tmp_main_db = os.path.join(tempdir, 'main.sqlite')
-		tmp_insert_db = os.path.join(tempdir, 'insert.sqlite')
+	tmp_output_db = "%s.tmp" % output_db
 
+	# If the output_db doesn't exist, use the first input db and merge into it
+	if not os.path.isfile(output_db):
+		assert len(input_dbs) > 0, "Must provide non-empty databases as no output file exists yet"
 		print("Starting with %s..." % input_dbs[0])
-		shutil.copyfile(input_dbs[0], tmp_main_db)
+		shutil.copyfile(input_dbs[0],tmp_output_db)
 		input_dbs = input_dbs[1:]
+	else:
+		if len(input_dbs) == 0:
+			print("No input databases to process, but output database does exist. So no work to do.")
+			return
+		shutil.copyfile(output_db,tmp_output_db)
 
-		expected_schema = getDBSchema(tmp_main_db)
+	expected_schema = getDBSchema(tmp_output_db)
 
-		con = sqlite3.connect(tmp_main_db)
-		cur = con.cursor()
+	con = sqlite3.connect(tmp_output_db)
+	cur = con.cursor()
 
-		for input_db in input_dbs:
-			if os.path.getsize(input_db) == 0:
-				print("Skipping %s..." % input_db)
-				continue
+	for input_db in input_dbs:
+		#if os.path.getsize(input_db) == 0:
+		#	print("Skipping %s..." % input_db)
+		#	continue
 
-			print("Processing %s..." % input_db)
-			sys.stdout.flush()
+		assert os.path.getsize(input_db) > 0, "Input db file (%s) is empty" % input_db
 
-			shutil.copyfile(input_db, tmp_insert_db)
+		print("Processing %s..." % input_db)
+		sys.stdout.flush()
 
-			input_schema = getDBSchema(tmp_insert_db)
+		tmp_insert_db = "%s.tmp" % input_db
 
-			assert expected_schema == input_schema, "Databases should match up exactly! %s != %s" % (expected_schema, input_schema)
+		shutil.copyfile(input_db, tmp_insert_db)
 
+		input_schema = getDBSchema(tmp_insert_db)
 
-			cur.execute("ATTACH DATABASE ? as input_db ;", (tmp_insert_db, ))
-
-			for table in ['fulltext','abstracts']:
-				time_field = 'updated' if table == 'fulltext' else 'file_index'
-
-				# Update the documents  table with the latest documents
-				cur.execute(f"DELETE FROM input_db.{table} WHERE pmid IN (SELECT current.pmid FROM input_db.{table} inserting, {table} current WHERE inserting.pmid = current.pmid AND inserting.{time_field} < current.{time_field} AND inserting.hash != current.hash )")
-				con.commit()
-
-				cur.execute(f"DELETE FROM input_db.{table} WHERE pmid IN (SELECT current.pmid FROM input_db.{table} inserting, {table} current WHERE inserting.pmid = current.pmid AND inserting.{time_field} > current.{time_field} AND inserting.hash == current.hash )")
-				con.commit()
-
-				cur.execute(f"REPLACE INTO {table} SELECT * FROM input_db.{table};")
-				con.commit()
+		assert expected_schema == input_schema, "Databases should match up exactly! %s != %s" % (expected_schema, input_schema)
 
 
-			cur.execute("DETACH DATABASE input_db ;")
-			
+		cur.execute("ATTACH DATABASE ? as input_db ;", (tmp_insert_db, ))
+
+		for table in ['fulltext','abstracts']:
+			time_field = 'updated' if table == 'fulltext' else 'file_index'
+
+			# Update the documents  table with the latest documents
+			cur.execute(f"DELETE FROM input_db.{table} WHERE pmid IN (SELECT current.pmid FROM input_db.{table} inserting, {table} current WHERE inserting.pmid = current.pmid AND inserting.{time_field} < current.{time_field} AND inserting.hash != current.hash )")
 			con.commit()
 
-		con.close()
+			cur.execute(f"DELETE FROM input_db.{table} WHERE pmid IN (SELECT current.pmid FROM input_db.{table} inserting, {table} current WHERE inserting.pmid = current.pmid AND inserting.{time_field} > current.{time_field} AND inserting.hash == current.hash )")
+			con.commit()
 
-		shutil.copyfile(tmp_main_db, output_db)
-		os.remove(tmp_main_db)
+			cur.execute(f"REPLACE INTO {table} SELECT * FROM input_db.{table};")
+			con.commit()
+
+
+		cur.execute("DETACH DATABASE input_db ;")
+		
+		con.commit()
+
 		os.remove(tmp_insert_db)
 
+	con.close()
+
+	shutil.move(tmp_output_db,output_db)
 
 	if truncate_inputs:
 		for input_db in input_dbs_orig:
