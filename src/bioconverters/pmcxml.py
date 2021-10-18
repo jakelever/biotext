@@ -40,6 +40,53 @@ class PmcArticle(TypedDict):
     textSources: TextSource
 
 
+def extract_article_content(article_elem: etree.Element) -> TextSource:
+    """
+    Given the XML element representing the top-level of the scientific article, extract all the text sources
+    """
+    # Extract the title of paper
+    title = article_elem.findall(
+        "./front/article-meta/title-group/article-title"
+    ) + article_elem.findall("./front-stub/title-group/article-title")
+    assert len(title) <= 1
+    title_text = extract_text_from_elem_list(title)
+    title_text = [remove_weird_brackets_from_old_titles(t) for t in title_text]
+
+    # Get the subtitle (if it's there)
+    subtitle = article_elem.findall(
+        "./front/article-meta/title-group/subtitle"
+    ) + article_elem.findall("./front-stub/title-group/subtitle")
+    subtitle_text = extract_text_from_elem_list(subtitle)
+    subtitle_text = [remove_weird_brackets_from_old_titles(t) for t in subtitle_text]
+
+    # Extract the abstract from the paper
+    abstract = article_elem.findall("./front/article-meta/abstract") + article_elem.findall(
+        "./front-stub/abstract"
+    )
+    abstract_text = extract_text_from_elem_list(abstract)
+
+    # Extract the full text from the paper as well as supplementaries and floating blocks of text
+    article_text = extract_text_from_elem_list(article_elem.findall("./body"))
+    back_text = extract_text_from_elem_list(article_elem.findall("./back"))
+    floating_text = extract_text_from_elem_list(article_elem.findall("./floats-group"))
+    text_sources = TextSource({})
+    text_sources["title"] = title_text
+    text_sources["subtitle"] = subtitle_text
+    text_sources["abstract"] = abstract_text
+    text_sources["article"] = article_text
+    text_sources["back"] = back_text
+    text_sources["floating"] = floating_text
+
+    for k in text_sources.keys():
+        tmp = text_sources[k]
+        tmp = [t for t in tmp if len(t) > 0]
+        tmp = [html.unescape(t) for t in tmp]
+        tmp = [remove_brackets_without_words(t) for t in tmp]
+        text_sources[k] = tmp
+
+    return text_sources
+
+
 def get_meta_info_for_pmc_article(
     article_elem,
 ) -> Tuple[str, str, str, Optional[str], Optional[int], Optional[str], str, str]:
@@ -193,32 +240,6 @@ def process_pmc_file(source: Union[str, TextIO]) -> Iterable[PmcArticle]:
                         sub_journal = journal
                         sub_journal_iso = journal_iso
 
-                # Extract the title of paper
-                title = article_elem.findall(
-                    "./front/article-meta/title-group/article-title"
-                ) + article_elem.findall("./front-stub/title-group/article-title")
-                assert len(title) <= 1
-                title_text = extract_text_from_elem_list(title)
-                title_text = [remove_weird_brackets_from_old_titles(t) for t in title_text]
-
-                # Get the subtitle (if it's there)
-                subtitle = article_elem.findall(
-                    "./front/article-meta/title-group/subtitle"
-                ) + article_elem.findall("./front-stub/title-group/subtitle")
-                subtitle_text = extract_text_from_elem_list(subtitle)
-                subtitle_text = [remove_weird_brackets_from_old_titles(t) for t in subtitle_text]
-
-                # Extract the abstract from the paper
-                abstract = article_elem.findall(
-                    "./front/article-meta/abstract"
-                ) + article_elem.findall("./front-stub/abstract")
-                abstract_text = extract_text_from_elem_list(abstract)
-
-                # Extract the full text from the paper as well as supplementaries and floating blocks of text
-                article_text = extract_text_from_elem_list(article_elem.findall("./body"))
-                back_text = extract_text_from_elem_list(article_elem.findall("./back"))
-                floating_text = extract_text_from_elem_list(article_elem.findall("./floats-group"))
-
                 document = PmcArticle(
                     {
                         "pmid": sub_pmid_text,
@@ -232,22 +253,7 @@ def process_pmc_file(source: Union[str, TextIO]) -> Iterable[PmcArticle]:
                     }
                 )
 
-                text_sources = TextSource({})
-                text_sources["title"] = title_text
-                text_sources["subtitle"] = subtitle_text
-                text_sources["abstract"] = abstract_text
-                text_sources["article"] = article_text
-                text_sources["back"] = back_text
-                text_sources["floating"] = floating_text
-
-                for k in text_sources.keys():
-                    tmp = text_sources[k]
-                    tmp = [t for t in tmp if len(t) > 0]
-                    tmp = [html.unescape(t) for t in tmp]
-                    tmp = [remove_brackets_without_words(t) for t in tmp]
-                    text_sources[k] = tmp
-
-                document["textSources"] = text_sources
+                document["textSources"] = extract_article_content(article_elem)
                 yield document
 
             # Less important here (compared to abstracts) as each article file is not too big
