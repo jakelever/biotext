@@ -13,6 +13,7 @@ setup(
     name='bioconverters',
     version='1.0.0',
     packages=['bioconverters'],
+    package_dir={'': 'src'},
     description='Convert between NCBI pubmed/PMC and BIOC formats',
     long_description=long_description,
     long_description_format='md',
