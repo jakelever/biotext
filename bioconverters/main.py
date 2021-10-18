@@ -2,7 +2,6 @@ from typing import Iterable, TextIO, Union
 
 import bioc
 
-from .bioc import biocxml2bioc
 from .pmcxml import pmcxml2bioc
 from .pubmedxml import pubmedxml2bioc
 
@@ -12,9 +11,7 @@ def docs2bioc(source: Union[str, TextIO], format: str) -> Iterable[bioc.BioCDocu
     Args:
         source: filehandler or path to the input file
     """
-    if format == "biocxml":
-        return biocxml2bioc(source)
-    elif format == "pubmedxml":
+    if format == "pubmedxml":
         return pubmedxml2bioc(source)
     elif format == "pmcxml":
         return pmcxml2bioc(source)
