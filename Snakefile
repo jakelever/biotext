@@ -22,29 +22,29 @@ rule nodefault:
 		print()
 
 
-#  ____                      _                 _ 
+#  ____                      _                 _
 # |  _ \  _____      ___ __ | | ___   __ _  __| |
 # | | | |/ _ \ \ /\ / / '_ \| |/ _ \ / _` |/ _` |
 # | |_| | (_) \ V  V /| | | | | (_) | (_| | (_| |
 # |____/ \___/ \_/\_/ |_| |_|_|\___/ \__,_|\__,_|
-#                                                
+#
 
 # Delete the flags so that those rules have to be evaluated
 if os.path.isfile("downloaded.flag"):
 	os.remove("downloaded.flag")
 
 rule download:
-	input: [ "preparePubmed.sh", "preparePMC.sh" ]
+	input: [ "src/preparePubmed.sh", "src/preparePMC.sh" ]
 	output: "downloaded.flag"
-	shell: "sh preparePubmed.sh && sh preparePMC.sh && touch {output}"
+	shell: "sh src/preparePubmed.sh && sh src/preparePMC.sh && touch {output}"
 
 
-#   ____                          _   
-#  / ___|___  _ ____   _____ _ __| |_ 
+#   ____                          _
+#  / ___|___  _ ____   _____ _ __| |_
 # | |   / _ \| '_ \ \ / / _ \ '__| __|
-# | |__| (_) | | | \ V /  __/ |  | |_ 
+# | |__| (_) | | | \ V /  __/ |  | |_
 #  \____\___/|_| |_|\_/ \___|_|   \__|
-#                                     
+#
 
 if os.path.isfile("converted.flag"):
 	os.remove("converted.flag")
@@ -78,7 +78,7 @@ pubmed_db_files = [ filename.replace('biocxml/','working_db/').replace('.bioc.xm
 pmc_db_files = [ filename.replace('biocxml/','working_db/').replace('.bioc.xml','.sqlite') for filename in pmc_biocxml_files ]
 
 rule convert_biocxml:
-	input: 
+	input:
 		pubmed = pubmed_biocxml_files,
 		pmc_downloaded = 'pmc_archives/groupings.json',
 		pmc = pmc_biocxml_files
@@ -86,36 +86,36 @@ rule convert_biocxml:
 	shell: "touch {output}"
 
 rule convert_db:
-	input: 
+	input:
 		pubmed = pubmed_db_files,
 		pmc_downloaded = 'pmc_archives/groupings.json',
 		pmc = pmc_db_files
 	output: "db.flag"
-	shell: "python mergeDBs.py --mainDB biotext.db --inDir working_db/ && sh cleanupDB.sh && touch {output}"
+	shell: "python src/mergeDBs.py --mainDB biotext.db --inDir working_db/ && sh src/cleanupDB.sh && touch {output}"
 
 rule pubmed_convert_biocxml:
 	output: "biocxml/pubmed_{dir}_{f}.bioc.xml"
-	shell: "python convertPubmed.py --url ftp://ftp.ncbi.nlm.nih.gov/pubmed/{wildcards.dir}/pubmed{wildcards.f}.xml.gz --o {output} --oFormat biocxml"
+	shell: "python src/convertPubmed.py --url ftp://ftp.ncbi.nlm.nih.gov/pubmed/{wildcards.dir}/pubmed{wildcards.f}.xml.gz --o {output} --oFormat biocxml"
 
 rule pubmed_convert_db:
 	output: "working_db/pubmed_{dir}_{f}.sqlite"
-	shell: "python convertPubmed.py --url ftp://ftp.ncbi.nlm.nih.gov/pubmed/{wildcards.dir}/pubmed{wildcards.f}.xml.gz --o {output} --oFormat biocxml --db"
+	shell: "python src/convertPubmed.py --url ftp://ftp.ncbi.nlm.nih.gov/pubmed/{wildcards.dir}/pubmed{wildcards.f}.xml.gz --o {output} --oFormat biocxml --db"
 
 rule pmc_convert_biocxml:
 	output: "biocxml/pmc_{block}.bioc.xml"
-	shell: "python convertPMC.py --pmcDir pmc_archives --block {wildcards.block} --format biocxml --outFile {output}"
+	shell: "python src/convertPMC.py --pmcDir pmc_archives --block {wildcards.block} --format biocxml --outFile {output}"
 
 rule pmc_convert_db:
 	output: "working_db/pmc_{block}.sqlite"
-	shell: "python convertPMC.py --pmcDir pmc_archives --block {wildcards.block} --format biocxml --outFile {output} --db"
+	shell: "python src/convertPMC.py --pmcDir pmc_archives --block {wildcards.block} --format biocxml --outFile {output} --db"
 
 
-#  ____        _   _____     _             
-# |  _ \ _   _| |_|_   _|_ _| |_ ___  _ __ 
+#  ____        _   _____     _
+# |  _ \ _   _| |_|_   _|_ _| |_ ___  _ __
 # | |_) | | | | '_ \| |/ _` | __/ _ \| '__|
-# |  __/| |_| | |_) | | (_| | || (_) | |   
-# |_|    \__,_|_.__/|_|\__,_|\__\___/|_|   
-#                                          
+# |  __/| |_| | |_) | | (_| | || (_) | |
+# |_|    \__,_|_.__/|_|\__,_|\__\___/|_|
+#
 
 if os.path.isfile("pubtator_downloaded.flag"):
 	os.remove("pubtator_downloaded.flag")
@@ -132,10 +132,10 @@ rule download_pubtator:
 	shell: "curl -o bioconcepts2pubtatorcentral.gz ftp://ftp.ncbi.nlm.nih.gov/pub/lu/PubTatorCentral/bioconcepts2pubtatorcentral.gz && touch {output}"
 
 rule align_with_pubtator:
-	input: 
+	input:
 		biocxml="biocxml/{f}.bioc.xml"
 	output: "pubtator/{f}.bioc.xml"
-	shell: "python alignWithPubtator.py --inBioc {input.biocxml} --annotations <(zcat bioconcepts2pubtatorcentral.gz) --outBioc {output}"
+	shell: "python src/alignWithPubtator.py --inBioc {input.biocxml} --annotations <(zcat bioconcepts2pubtatorcentral.gz) --outBioc {output}"
 
 rule pubtator_complete:
 	input: pubtator_files
@@ -144,12 +144,12 @@ rule pubtator_complete:
 
 
 
-#  ____  __  __ ___ ____      
-# |  _ \|  \/  |_ _|  _ \ ___ 
+#  ____  __  __ ___ ____
+# |  _ \|  \/  |_ _|  _ \ ___
 # | |_) | |\/| || || | | / __|
 # |  __/| |  | || || |_| \__ \
 # |_|   |_|  |_|___|____/|___/
-#                             
+#
 
 if os.path.isfile("pmids.flag"):
 	os.remove("pmids.flag")
@@ -167,4 +167,3 @@ rule gather_pmids:
 	input: "biocxml/{f}.bioc.xml"
 	output: "pmids/{f}.txt"
 	shell: ' {{ grep -hoP "<infon key=.pmid.>\d+</infon>" {input} || true; }} | tr ">" "<" | cut -f 3 -d "<" | sort -u > {output}'
-
