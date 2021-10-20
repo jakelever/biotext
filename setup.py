@@ -7,7 +7,7 @@ with open('README.md', 'r') as fh:
 
 
 DEV_REQS = ['black', 'flake8', 'isort', 'mypy']
-TEST_REQS = ['biopython', 'snakemake', 'ftputil']
+TEST_REQS = ['biopython', 'snakemake', 'ftputil', 'requests', 'pytest']
 
 setup(
     name='bioconverters',
