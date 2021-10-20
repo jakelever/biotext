@@ -36,7 +36,7 @@ if os.path.isfile("downloaded.flag"):
 rule download:
 	input: [ "src/preparePubmed.sh", "src/preparePMC.sh" ]
 	output: "downloaded.flag"
-	shell: "sh src/preparePubmed.sh && sh src/preparePMC.sh && touch {output}"
+	shell: "bash src/preparePubmed.sh && bash src/preparePMC.sh && touch {output}"
 
 
 #   ____                          _
@@ -91,7 +91,7 @@ rule convert_db:
 		pmc_downloaded = 'pmc_archives/groupings.json',
 		pmc = pmc_db_files
 	output: "db.flag"
-	shell: "python src/mergeDBs.py --mainDB biotext.db --inDir working_db/ && sh src/cleanupDB.sh && touch {output}"
+	shell: "python src/mergeDBs.py --mainDB biotext.db --inDir working_db/ && bash src/cleanupDB.sh && touch {output}"
 
 rule pubmed_convert_biocxml:
 	output: "biocxml/pubmed_{dir}_{f}.bioc.xml"
