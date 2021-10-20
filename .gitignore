@@ -2,10 +2,10 @@
 __pycache__
 .mypy_cache
 *.pyc
-venv
+venv*
 .snakemake/
 *.egg-info
-
+build
 *.xml
 
 pubmed_listing.txt
