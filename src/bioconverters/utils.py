@@ -27,11 +27,13 @@ class TextChunk:
     text: str
     xml_node: str
     xml_path: str
+    non_separating: bool = False
 
-    def __init__(self, text, xml_node, xml_path=None):
+    def __init__(self, text, xml_node, xml_path=None, non_separating=False):
         self.text = text
         self.xml_node = xml_node
         self.xml_path = xml_path
+        self.non_separating = non_separating
 
     def __str__(self) -> str:
         return self.text
@@ -43,9 +45,9 @@ TagHandlerFunction = Callable[[etree.Element, Dict[str, Callable]], List[TextChu
 # Remove empty brackets (that could happen if the contents have been removed already
 # e.g. for citation ( [3] [4] ) -> ( ) -> nothing
 def remove_brackets_without_words(text: str) -> str:
-    fixed = re.sub(r"\([\W\s]*\)", " ", text)
-    fixed = re.sub(r"\[[\W\s]*\]", " ", fixed)
-    fixed = re.sub(r"\{[\W\s]*\}", " ", fixed)
+    fixed = re.sub(r"\([\W\s]*\)", "", text)
+    fixed = re.sub(r"\[[\W\s]*\]", "", fixed)
+    fixed = re.sub(r"\{[\W\s]*\}", "", fixed)
     return fixed
 
 
@@ -67,6 +69,16 @@ def cleanup_text(text: str) -> str:
     # Remove repeated commands and commas next to periods
     text = re.sub(r",(\s*,)*", ",", text)
     text = re.sub(r"(,\s*)*\.", ".", text)
+    text = remove_brackets_without_words(text)
+
+    # remove extra spaces from in-text figute/table citations
+    text = re.sub(r'\(\s+([^)]*[^\s)])\s+\)', r'(\1)', text)
+
+    # remove trailing spaces before periods
+    text = re.sub(r'\s+\.(\s|$)', r'.\1', text)
+
+    # remove extra spaces around commas
+    text = re.sub(r'\s+,\s+', ', ', text)
     return text.strip()
 
 
@@ -89,6 +101,28 @@ def build_xml_parent_mapping(
             queue.append(child)
             mapping[child] = current_node
     return mapping
+
+
+def merge_adjacent_xref_siblings(elem_list):
+    """
+    If two XML elements in a list are adjacent and both xrefs separated only by punctuation, merge them
+    """
+    siblings = []
+
+    for elem in elem_list:
+        if siblings and elem.tag == 'xref' and siblings[-1].tag == 'xref':
+            # merge these 2 if the tail of the first element is a punctuation mark
+            prev_tail = siblings[-1].tail.strip()
+            if (
+                siblings[-1].tail
+                and len(prev_tail) == 1
+                and unicodedata.category(prev_tail)[0] == 'P'
+            ):
+                siblings[-1].text = siblings[-1].text + siblings[-1].tail + elem.text
+                siblings[-1].tail = elem.tail
+                continue
+        siblings.append(elem)
+    return siblings
 
 
 def get_tag_path(mapping: Dict[etree.Element, etree.Element], node: etree.Element) -> str:
@@ -126,23 +160,17 @@ def tag_handler(
 
     # Then get the text from all child XML nodes recursively
     child_passages = []
-    child_tags = []
-    for child in elem:
-        child_passages.extend(tag_handler(child, custom_handlers=custom_handlers))
-        child_tags.append(child.tag)
 
-    if elem.tag == 'sup' and len(child_tags) > 1 and set(child_tags) == {'xref'}:
-        # this is an in-text citation
-        return [TextChunk(head, elem), TextChunk(tail, elem)]
-    elif elem.tag == 'xref' and 'xref' in IGNORE_LIST:
+    for child in merge_adjacent_xref_siblings(elem):
+        child_passages.extend(tag_handler(child, custom_handlers=custom_handlers))
+
+    if elem.tag == 'xref' and 'xref' in IGNORE_LIST:
         # keep xref tags that refer to internal elements like tables and figures
         if not re.search(r'\b(Figure|Fig|Table)s?(\.|\b)', head, re.IGNORECASE):
-            if 'supp' in head.lower() or 'fig' in head.lower():  # TODO: remove warning
-                print('IGNORING XREF', elem.tag, head)
             return [TextChunk(tail, elem)]
     elif elem.tag in IGNORE_LIST:
         # Check if the tag should be ignored (so don't use main contents)
-        return [TextChunk(tail, elem)]
+        return [TextChunk(tail, elem, non_separating=True)]
 
     return [TextChunk(head, elem)] + child_passages + [TextChunk(tail, elem)]
 
@@ -171,19 +199,25 @@ def extract_text_chunks(
     merged_text_chunks = [[]]
 
     for chunk in raw_text_chunks:
-        if chunk.xml_node and chunk.xml_node.tag in passage_tags:
+        if chunk.xml_node is not None and chunk.xml_node.tag in passage_tags:
             # start a new tag set
             merged_text_chunks.append([chunk])
         else:
             merged_text_chunks[-1].append(chunk)
 
-    def merge_text_chunks(passage_list):
-        text = ' '.join([p.text.strip() for p in passage_list])
+    def merge_text_chunks(chunk_list):
+        merge = []
+        for i, chunk in enumerate(chunk_list):
+            if chunk.non_separating or (i > 0 and chunk_list[i - 1].non_separating):
+                merge.append(chunk.text.strip())
+            else:
+                merge.extend([' ', chunk.text.strip()])
+        text = ''.join(merge)
         # Remove any newlines (as they can be trusted to be syntactically important)
         text = text.replace('\n', '')
         # Remove no-break spaces
         text = cleanup_text(text)
-        return TextChunk(text, passage_list[0].xml_node)
+        return TextChunk(text, chunk_list[0].xml_node)
 
     merged_chunks = [merge_text_chunks(m) for m in merged_text_chunks if m]
 
