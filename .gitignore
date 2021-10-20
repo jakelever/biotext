@@ -15,6 +15,7 @@ pmc_archives/
 biocxml/
 pubtator/
 pmids/
+.coverage
 
 *.flag
 
