@@ -15,12 +15,12 @@ mkdir pmc_archives
 #cp -r test_data pmc_archives
 
 # Let's create some test data for PMC (from a single article) and tar it up
-python fetchEUtils.py --database pmc --identifier 46506 --email jlever@stanford.edu --o pmc_test_data.nxml
+python src/fetchEUtils.py --database pmc --identifier 46506 --email jlever@stanford.edu --o pmc_test_data.nxml
 tar -czf pmc_archives/pmc_example_archive.tar.gz pmc_test_data.nxml
 rm pmc_test_data.nxml
 
 # Run the grouping code on it
-python groupPMC.py --inPMCDir pmc_archives --prevGroupings pmc_archives/groupings.json --outGroupings pmc_archives/groupings.json
+python src/groupPMC.py --inPMCDir pmc_archives --prevGroupings pmc_archives/groupings.json --outGroupings pmc_archives/groupings.json
 
 # We'll get the latest PubMed listing
 sh preparePubmed.sh
@@ -40,4 +40,3 @@ snakemake --cores 1 db.flag
 rm biotext.db
 rm -fr pmc_archives biocxml working_db listings
 rm -f converted.flag db.flag
-
