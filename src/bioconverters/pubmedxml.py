@@ -2,7 +2,7 @@ import calendar
 import html
 import re
 import xml.etree.cElementTree as etree
-from typing import Iterable, Optional, TextIO, Tuple, Union
+from typing import Dict, Iterable, Optional, TextIO, Tuple, Union
 
 try:
     # python 3.8+
@@ -13,7 +13,8 @@ except ImportError:
 import bioc
 
 from .utils import (
-    extract_text_from_elem_list,
+    TagHandlerFunction,
+    extract_text_chunks,
     remove_brackets_without_words,
     remove_weird_brackets_from_old_titles,
     trim_sentence_lengths,
@@ -40,7 +41,7 @@ class MedlineArticle(TypedDict):
     publicationTypes: str
 
 
-def get_journal_date_for_medline_file(elem, pmid: Union[str, int]) -> DateTuple:
+def get_journal_date_for_medline_file(elem: etree.Element, pmid: Union[str, int]) -> DateTuple:
     """
     Scrapes the Journal Date from the Medline XML element tree.
 
@@ -104,7 +105,7 @@ def get_journal_date_for_medline_file(elem, pmid: Union[str, int]) -> DateTuple:
     return pub_year, pub_month, pub_day
 
 
-def get_pubmed_entry_date(elem, pmid) -> DateTuple:
+def get_pubmed_entry_date(elem: etree.Element, pmid) -> DateTuple:
     """
     Args:
         pmid: not used?
@@ -151,7 +152,9 @@ pub_type_skips = {
 doi_regex = re.compile(r"^[0-9\.]+\/.+[^\/]$")
 
 
-def process_medline_file(source: Union[str, TextIO]) -> Iterable[MedlineArticle]:
+def process_medline_file(
+    source: Union[str, TextIO], tag_handlers: Dict[str, TagHandlerFunction] = {}
+) -> Iterable[MedlineArticle]:
     """
     Args:
         source: path to the MEDLINE xml file
@@ -284,16 +287,20 @@ def process_medline_file(source: Union[str, TextIO]) -> Iterable[MedlineArticle]
 
             # Extract the title of paper
             title = elem.findall("./MedlineCitation/Article/ArticleTitle")
-            title_text = extract_text_from_elem_list(title)
-            title_text = [remove_weird_brackets_from_old_titles(t) for t in title_text]
+            title_text = extract_text_chunks(title, tag_handlers=tag_handlers)
+            title_text = [
+                remove_weird_brackets_from_old_titles(chunk.text)
+                for chunk in title_text
+                if chunk.text
+            ]
             title_text = [t for t in title_text if len(t) > 0]
             title_text = [html.unescape(t) for t in title_text]
             title_text = [remove_brackets_without_words(t) for t in title_text]
 
             # Extract the abstract from the paper
             abstract = elem.findall("./MedlineCitation/Article/Abstract/AbstractText")
-            abstract_text = extract_text_from_elem_list(abstract)
-            abstract_text = [t for t in abstract_text if len(t) > 0]
+            abstract_text = extract_text_chunks(abstract, tag_handlers=tag_handlers)
+            abstract_text = [chunk.text for chunk in abstract_text if len(chunk.text) > 0]
             abstract_text = [html.unescape(t) for t in abstract_text]
             abstract_text = [remove_brackets_without_words(t) for t in abstract_text]
 
@@ -302,7 +309,7 @@ def process_medline_file(source: Union[str, TextIO]) -> Iterable[MedlineArticle]
                 "./MedlineCitation/Article/Journal/ISOAbbreviation"
             )
 
-            journal_title, journal_iso_title = "",""
+            journal_title, journal_iso_title = "", ""
             assert len(journal_title_fields) <= 1, "Error with pmid=%s" % pmid
             assert len(journal_title_iso_fields) <= 1, "Error with pmid=%s" % pmid
             if journal_title_fields:
@@ -333,12 +340,16 @@ def process_medline_file(source: Union[str, TextIO]) -> Iterable[MedlineArticle]
             elem.clear()
 
 
-def pubmedxml2bioc(source: Union[str, TextIO]) -> Iterable[bioc.BioCDocument]:
+def pubmedxml2bioc(
+    source: Union[str, TextIO],
+    tag_handlers: Dict[str, TagHandlerFunction] = {},
+    trim_sentences=True,
+) -> Iterable[bioc.BioCDocument]:
     """
     Args:
         source: path to the MEDLINE xml file
     """
-    for pm_doc in process_medline_file(source):
+    for pm_doc in process_medline_file(source, tag_handlers=tag_handlers):
         bioc_doc = bioc.BioCDocument()
         bioc_doc.id = pm_doc["pmid"]
         bioc_doc.infons["title"] = " ".join(pm_doc["title"])
@@ -359,7 +370,8 @@ def pubmedxml2bioc(source: Union[str, TextIO]) -> Iterable[bioc.BioCDocument]:
         offset = 0
         for section in ["title", "abstract"]:
             for text_source in pm_doc[section]:
-                text_source = trim_sentence_lengths(text_source)
+                if trim_sentences:
+                    text_source = trim_sentence_lengths(text_source)
                 passage = bioc.BioCPassage()
                 passage.infons["section"] = section
                 passage.text = text_source
