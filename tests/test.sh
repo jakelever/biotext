@@ -23,7 +23,7 @@ rm pmc_test_data.nxml
 python src/groupPMC.py --inPMCDir pmc_archives --prevGroupings pmc_archives/groupings.json --outGroupings pmc_archives/groupings.json
 
 # We'll get the latest PubMed listing
-sh preparePubmed.sh
+sh src/preparePubmed.sh
 
 # We'll just use the last PubMed file
 mkdir -p listings
