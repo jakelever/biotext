@@ -328,7 +328,7 @@ def pmcxml2bioc(
     source: Union[str, TextIO],
     tag_handlers: Dict[str, TagHandlerFunction] = {},
     trim_sentences=True,
-    paths_infon=False,
+    xml_path_infon=False,
 ) -> Iterator[Iterable[bioc.BioCDocument]]:
     """
     Convert a PMC XML file into its Bioc equivalent
@@ -375,7 +375,7 @@ def pmcxml2bioc(
 
                     passage.infons["section"] = group_name
                     passage.infons["subsection"] = subsection
-                    if paths_infon and chunk.xml_path:
+                    if xml_path_infon and chunk.xml_path:
                         passage.infons["xml_path"] = chunk.xml_path
                     passage.text = text_source
                     passage.offset = offset

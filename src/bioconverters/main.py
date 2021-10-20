@@ -1,4 +1,4 @@
-from typing import Iterable, TextIO, Union
+from typing import Iterable, Iterator, TextIO, Union
 
 import bioc
 
@@ -6,15 +6,15 @@ from .pmcxml import pmcxml2bioc
 from .pubmedxml import pubmedxml2bioc
 
 
-def docs2bioc(source: Union[str, TextIO], format: str) -> Iterable[bioc.BioCDocument]:
+def docs2bioc(source: Union[str, TextIO], format: str, **kwargs) -> Iterator[Iterable[bioc.BioCDocument]]:
     """
     Args:
         source: filehandler or path to the input file
     """
     if format == "pubmedxml":
-        return pubmedxml2bioc(source)
+        return pubmedxml2bioc(source, **kwargs)
     elif format == "pmcxml":
-        return pmcxml2bioc(source)
+        return pmcxml2bioc(source, **kwargs)
     else:
         raise RuntimeError("Unknown format: %s" % format)
 
@@ -23,7 +23,7 @@ accepted_in_formats = ["biocxml", "pubmedxml", "pmcxml"]
 accepted_out_formats = ["biocxml", "txt"]
 
 
-def convert(in_files, in_format, out_file, out_format):
+def convert(in_files, in_format, out_file, out_format, **kwargs):
     out_bioc_handle, out_txt_handle = None, None
 
     assert (
@@ -46,7 +46,7 @@ def convert(in_files, in_format, out_file, out_format):
 
     for in_file in in_files:
 
-        for bioc_doc in docs2bioc(in_file, in_format):
+        for bioc_doc in docs2bioc(in_file, in_format, **kwargs):
 
             if out_format == "biocxml":
                 out_bioc_handle.write_document(bioc_doc)

@@ -2,7 +2,7 @@ import calendar
 import html
 import re
 import xml.etree.cElementTree as etree
-from typing import Callable, Dict, Iterable, Optional, TextIO, Tuple, Union
+from typing import Dict, Iterable, Optional, TextIO, Tuple, Union
 
 try:
     # python 3.8+
