@@ -1,7 +1,7 @@
 import calendar
 import html
 import xml.etree.cElementTree as etree
-from typing import Iterable, Optional, TextIO, Tuple, Union
+from typing import Dict, Iterable, Iterator, Optional, TextIO, Tuple, Union
 
 try:
     # python 3.8+
@@ -12,8 +12,9 @@ except ImportError:
 import bioc
 
 from .utils import (
-    extract_text_from_elem_list,
-    remove_brackets_without_words,
+    TagHandlerFunction,
+    TextChunk,
+    extract_text_chunks,
     remove_weird_brackets_from_old_titles,
     trim_sentence_lengths,
 )
@@ -40,35 +41,46 @@ class PmcArticle(TypedDict):
     textSources: TextSource
 
 
-def extract_article_content(article_elem: etree.Element) -> TextSource:
+def extract_article_content(
+    article_elem: etree.Element, tag_handlers: Dict[str, TagHandlerFunction] = {}
+) -> TextSource:
     """
     Given the XML element representing the top-level of the scientific article, extract all the text sources
+
+    Args:
+        tag_handlers: custom callables to handle various XML tags
     """
     # Extract the title of paper
     title = article_elem.findall(
         "./front/article-meta/title-group/article-title"
     ) + article_elem.findall("./front-stub/title-group/article-title")
     assert len(title) <= 1
-    title_text = extract_text_from_elem_list(title)
-    title_text = [remove_weird_brackets_from_old_titles(t) for t in title_text]
+    title_text = extract_text_chunks(title, tag_handlers=tag_handlers)
+    title_text = [
+        TextChunk(remove_weird_brackets_from_old_titles(t.text), t.xml_node) for t in title_text
+    ]
 
     # Get the subtitle (if it's there)
     subtitle = article_elem.findall(
         "./front/article-meta/title-group/subtitle"
     ) + article_elem.findall("./front-stub/title-group/subtitle")
-    subtitle_text = extract_text_from_elem_list(subtitle)
-    subtitle_text = [remove_weird_brackets_from_old_titles(t) for t in subtitle_text]
+    subtitle_text = extract_text_chunks(subtitle, tag_handlers=tag_handlers)
+    subtitle_text = [
+        TextChunk(remove_weird_brackets_from_old_titles(t.text), t.xml_node) for t in subtitle_text
+    ]
 
     # Extract the abstract from the paper
     abstract = article_elem.findall("./front/article-meta/abstract") + article_elem.findall(
         "./front-stub/abstract"
     )
-    abstract_text = extract_text_from_elem_list(abstract)
+    abstract_text = extract_text_chunks(abstract, tag_handlers=tag_handlers)
 
     # Extract the full text from the paper as well as supplementaries and floating blocks of text
-    article_text = extract_text_from_elem_list(article_elem.findall("./body"))
-    back_text = extract_text_from_elem_list(article_elem.findall("./back"))
-    floating_text = extract_text_from_elem_list(article_elem.findall("./floats-group"))
+    article_text = extract_text_chunks(article_elem.findall("./body"), tag_handlers=tag_handlers)
+    back_text = extract_text_chunks(article_elem.findall("./back"), tag_handlers=tag_handlers)
+    floating_text = extract_text_chunks(
+        article_elem.findall("./floats-group"), tag_handlers=tag_handlers
+    )
     text_sources = TextSource({})
     text_sources["title"] = title_text
     text_sources["subtitle"] = subtitle_text
@@ -78,11 +90,12 @@ def extract_article_content(article_elem: etree.Element) -> TextSource:
     text_sources["floating"] = floating_text
 
     for k in text_sources.keys():
-        tmp = text_sources[k]
-        tmp = [t for t in tmp if len(t) > 0]
-        tmp = [html.unescape(t) for t in tmp]
-        tmp = [remove_brackets_without_words(t) for t in tmp]
-        text_sources[k] = tmp
+        cleaned = []
+        for passage in text_sources[k]:
+            if len(passage.text):
+                passage.text = html.unescape(passage.text)
+                cleaned.append(passage)
+        text_sources[k] = cleaned
 
     return text_sources
 
@@ -150,7 +163,7 @@ def get_meta_info_for_pmc_article(
         + article_elem.findall("./front-stub/journal-title-group/journal-title")
     )
     assert len(journal) <= 1
-    journal_text = " ".join(extract_text_from_elem_list(journal))
+    journal_text = " ".join([c.text for c in extract_text_chunks(journal)])
 
     journal_iso_text = ""
     journal_iso = article_elem.findall("./front/journal-meta/journal-id") + article_elem.findall(
@@ -172,7 +185,9 @@ def get_meta_info_for_pmc_article(
     )
 
 
-def process_pmc_file(source: Union[str, TextIO]) -> Iterable[PmcArticle]:
+def process_pmc_file(
+    source: Union[str, TextIO], tag_handlers: Dict[str, TagHandlerFunction] = {}
+) -> Iterable[PmcArticle]:
     # Skip to the article element in the file
     for event, elem in etree.iterparse(source, events=("start", "end", "start-ns", "end-ns")):
         if event == "end" and elem.tag == "article":
@@ -250,10 +265,12 @@ def process_pmc_file(source: Union[str, TextIO]) -> Iterable[PmcArticle]:
                         "pubDay": sub_pub_day,
                         "journal": sub_journal,
                         "journalISO": sub_journal_iso,
+                        "textSources": extract_article_content(
+                            article_elem, tag_handlers=tag_handlers
+                        ),
                     }
                 )
 
-                document["textSources"] = extract_article_content(article_elem)
                 yield document
 
             # Less important here (compared to abstracts) as each article file is not too big
@@ -307,12 +324,32 @@ allowed_subsections = {
 }
 
 
-def pmcxml2bioc(source: Union[str, TextIO]) -> Iterable[bioc.BioCDocument]:
+def pmcxml2bioc(
+    source: Union[str, TextIO],
+    tag_handlers: Dict[str, TagHandlerFunction] = {},
+    trim_sentences=True,
+    paths_infon=False,
+) -> Iterator[Iterable[bioc.BioCDocument]]:
+    """
+    Convert a PMC XML file into its Bioc equivalent
+
+    Args:
+        source: The text or file handle containing the PMC XML
+        tag_handlers: custom overrides for handling specific XML tags. Defaults to {}.
+        trim_sentences: Trim text content to a maximum sentence length. Defaults to True.
+        paths_infon: Add a xml_path infon element to passages to describe where in the XML heirarchy this text is from. Defaults to False.
+
+    Raises:
+        RuntimeError: On any parsing errors
+
+    Returns:
+        An iterator over the newly generated Bioc documents
+    """
     try:
-        for pmc_doc in process_pmc_file(source):
+        for pmc_doc in process_pmc_file(source, tag_handlers=tag_handlers):
             bioc_doc = bioc.BioCDocument()
             bioc_doc.id = pmc_doc["pmid"]
-            bioc_doc.infons["title"] = " ".join(pmc_doc["textSources"]["title"])
+            bioc_doc.infons["title"] = " ".join([p.text for p in pmc_doc["textSources"]["title"]])
             bioc_doc.infons["pmid"] = pmc_doc["pmid"]
             bioc_doc.infons["pmcid"] = pmc_doc["pmcid"]
             bioc_doc.infons["doi"] = pmc_doc["doi"]
@@ -325,8 +362,11 @@ def pmcxml2bioc(source: Union[str, TextIO]) -> Iterable[bioc.BioCDocument]:
             offset = 0
             for group_name, text_source_group in pmc_doc["textSources"].items():
                 subsection = None
-                for text_source in text_source_group:
-                    text_source = trim_sentence_lengths(text_source)
+                for chunk in text_source_group:
+                    text_source = chunk.text
+                    if trim_sentences:
+                        text_source = trim_sentence_lengths(text_source)
+
                     passage = bioc.BioCPassage()
 
                     subsection_check = text_source.lower().strip("01234567890. ")
@@ -335,8 +375,11 @@ def pmcxml2bioc(source: Union[str, TextIO]) -> Iterable[bioc.BioCDocument]:
 
                     passage.infons["section"] = group_name
                     passage.infons["subsection"] = subsection
+                    if paths_infon and chunk.xml_path:
+                        passage.infons["xml_path"] = chunk.xml_path
                     passage.text = text_source
                     passage.offset = offset
+
                     offset += len(text_source)
                     bioc_doc.add_passage(passage)
 
