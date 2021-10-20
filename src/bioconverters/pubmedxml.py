@@ -288,7 +288,11 @@ def process_medline_file(
             # Extract the title of paper
             title = elem.findall("./MedlineCitation/Article/ArticleTitle")
             title_text = extract_text_chunks(title, tag_handlers=tag_handlers)
-            title_text = [remove_weird_brackets_from_old_titles(chunk.text) for chunk in title_text]
+            title_text = [
+                remove_weird_brackets_from_old_titles(chunk.text)
+                for chunk in title_text
+                if chunk.text
+            ]
             title_text = [t for t in title_text if len(t) > 0]
             title_text = [html.unescape(t) for t in title_text]
             title_text = [remove_brackets_without_words(t) for t in title_text]
