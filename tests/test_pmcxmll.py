@@ -2,7 +2,7 @@ from io import StringIO
 
 import pytest
 import requests
-from bioconverters import docs2bioc
+from bioconverters.main import docs2bioc
 from bioconverters.utils import TextChunk
 
 
