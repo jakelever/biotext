@@ -2,7 +2,7 @@ from setuptools import setup
 
 long_description = ''
 
-with open('docs/BioConverters.md', 'r') as fh:
+with open('docs/bioconverters.md', 'r') as fh:
     long_description = fh.read()
 
 

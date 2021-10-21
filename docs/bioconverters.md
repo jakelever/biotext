@@ -15,9 +15,9 @@ pip install bioconverters
 Now you are ready to start converting files. Assuming you already have a file containing PMC formatted XML
 
 ```python
-from bioconverters import pubmedxml2bioc
+from bioconverters import pmcxml2bioc
 
-for doc in pubmedxml2bioc('/path/to/pmc/xml/file.xml'):
+for doc in pmcxml2bioc('/path/to/pmc/xml/file.xml'):
     # do stuff with bioc doc
 ```
 
@@ -27,14 +27,14 @@ You can overload the parse functions that deal with specific tags but providing 
 
 ```python
 from bioconverters.util import TextChunk
-from bioconverters import pubmedxml2bioc
+from bioconverters import pmcxml2bioc
 
 def ignore_element(xml_element, custom_handlers):
     tail = (elem.tail or "").strip()
     return [TextChunk(tail, elem)]
 
 
-for doc in pubmedxml2bioc('/path/to/pmc/xml/file.xml', tag_handlers={'table': ignore_element}):
+for doc in pmcxml2bioc('/path/to/pmc/xml/file.xml', tag_handlers={'table': ignore_element}):
     # do stuff with bioc doc
 ```
 
@@ -43,7 +43,7 @@ for doc in pubmedxml2bioc('/path/to/pmc/xml/file.xml', tag_handlers={'table': ig
 You can also choose to truncate sentences to a maximum length. This is on by default. To turn this option off use the flag
 
 ```python
-for doc in pubmedxml2bioc('/path/to/pmc/xml/file.xml', trim_sentences=False):
+for doc in pmcxml2bioc('/path/to/pmc/xml/file.xml', trim_sentences=False):
     # do stuff with bioc doc
 ```
 
@@ -52,7 +52,7 @@ for doc in pubmedxml2bioc('/path/to/pmc/xml/file.xml', trim_sentences=False):
 To keep track of approximately where in the XML heirarchy a passage was derived from use the `xml_path_infon` option.
 
 ```python
-for doc in pubmedxml2bioc('/path/to/pmc/xml/file.xml', xml_path_infon=False):
+for doc in pmcxml2bioc('/path/to/pmc/xml/file.xml', xml_path_infon=False):
     # do stuff with bioc doc
 ```
 
