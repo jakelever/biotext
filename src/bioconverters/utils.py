@@ -20,7 +20,17 @@ IGNORE_LIST = [
 ]
 
 # XML elements to separate text between (into different passages)
-SEPERATION_LIST = ["title", "p", "sec", "break", "def-item", "list-item", "caption", "table"]
+SEPERATION_LIST = [
+    "title",
+    "p",
+    "sec",
+    "break",
+    "def-item",
+    "list-item",
+    "caption",
+    "table",
+    "thead",
+]
 
 
 class TextChunk:
@@ -28,12 +38,14 @@ class TextChunk:
     xml_node: str
     xml_path: str
     non_separating: bool = False
+    is_tail: bool = False
 
-    def __init__(self, text, xml_node, xml_path=None, non_separating=False):
+    def __init__(self, text, xml_node, xml_path=None, non_separating=False, is_tail=False):
         self.text = text
         self.xml_node = xml_node
         self.xml_path = xml_path
         self.non_separating = non_separating
+        self.is_tail = is_tail
 
     def __str__(self) -> str:
         return self.text
@@ -167,12 +179,12 @@ def tag_handler(
     if elem.tag == 'xref' and 'xref' in IGNORE_LIST:
         # keep xref tags that refer to internal elements like tables and figures
         if not re.search(r'\b(Figure|Fig|Table)s?(\.|\b)', head, re.IGNORECASE):
-            return [TextChunk(tail, elem)]
+            return [TextChunk(tail, elem, is_tail=True)]
     elif elem.tag in IGNORE_LIST:
         # Check if the tag should be ignored (so don't use main contents)
-        return [TextChunk(tail, elem, non_separating=True)]
+        return [TextChunk(tail, elem, non_separating=True, is_tail=True)]
 
-    return [TextChunk(head, elem)] + child_passages + [TextChunk(tail, elem)]
+    return [TextChunk(head, elem)] + child_passages + [TextChunk(tail, elem, is_tail=True)]
 
 
 def extract_text_chunks(
@@ -217,7 +229,12 @@ def extract_text_chunks(
         text = text.replace('\n', '')
         # Remove no-break spaces
         text = cleanup_text(text)
-        return TextChunk(text, chunk_list[0].xml_node)
+        first_non_tail_node = None
+        for chunk in chunk_list:
+            if not chunk.is_tail:
+                first_non_tail_node = chunk.xml_node
+                break
+        return TextChunk(text, first_non_tail_node or chunk_list[0].xml_node)
 
     merged_chunks = [merge_text_chunks(m) for m in merged_text_chunks if m]
 
