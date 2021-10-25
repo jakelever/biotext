@@ -30,12 +30,18 @@ def formula_article():
 
 def test_convert_pmc_with_table(table_article):
     file = StringIO(table_article)
-    expected_content = "ERBB2 mutation  Exon  Functional region  Cancer type  Lapatinib  AEE788  Reference      WT  NA  NA  Breast cancer  30  257  NA    L755S  19  ATP binding region  Breast and gastric cancer  >2000  897  4    L755P  19  ATP binding region  NSCLC  1545  1216  2,3    V773A  20  ATP binding region  SCCHN  146  200  6    V777L  20  ATP binding region  Gastric, colon and lung  27  215  3,4    T798M  20  Gate keeper residue  NA  1433  >2000  NA    N857S  21  Activation loop  Ovarian cancer  75  246  2    T862A  21  Activation loop  Primary gastric cancer  125  191  7    H878Y  21  Activation loop  Hepatocellular carcinoma  14  168  5"
+    table_header = (
+        'ERBB2 mutation  Exon  Functional region  Cancer type  Lapatinib  AEE788  Reference'
+    )
+    expected_content = "WT  NA  NA  Breast cancer  30  257  NA    L755S  19  ATP binding region  Breast and gastric cancer  >2000  897  4    L755P  19  ATP binding region  NSCLC  1545  1216  2,3    V773A  20  ATP binding region  SCCHN  146  200  6    V777L  20  ATP binding region  Gastric, colon and lung  27  215  3,4    T798M  20  Gate keeper residue  NA  1433  >2000  NA    N857S  21  Activation loop  Ovarian cancer  75  246  2    T862A  21  Activation loop  Primary gastric cancer  125  191  7    H878Y  21  Activation loop  Hepatocellular carcinoma  14  168  5"
     all_passages = []
     for doc in docs2bioc(file, 'pmcxml', trim_sentences=False, xml_path_infon=True):
         all_passages.extend(doc.passages)
     assert expected_content in [
-        p.text for p in all_passages if p.infons.get('xml_path', '').endswith('table')
+        p.text for p in all_passages if p.infons.get('xml_path', '').endswith('tbody')
+    ]
+    assert table_header in [
+        p.text for p in all_passages if p.infons.get('xml_path', '').endswith('thead')
     ]
 
 
