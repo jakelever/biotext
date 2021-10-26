@@ -9,6 +9,8 @@ try:
 except ImportError:
     from typing_extensions import TypedDict
 
+from collections import OrderedDict
+
 import bioc
 
 from .utils import (
@@ -16,17 +18,64 @@ from .utils import (
     TextChunk,
     extract_text_chunks,
     remove_weird_brackets_from_old_titles,
+    strip_annotation_markers,
     trim_sentence_lengths,
 )
 
+allowed_subsections = {
+    "abbreviations",
+    "additional information",
+    "analysis",
+    "author contributions",
+    "authors' contributions",
+    "authors’ contributions",
+    "background",
+    "case report",
+    "competing interests",
+    "conclusion",
+    "conclusions",
+    "conflict of interest",
+    "conflicts of interest",
+    "consent",
+    "data analysis",
+    "data collection",
+    "discussion",
+    "ethics statement",
+    "funding",
+    "introduction",
+    "limitations",
+    "material and methods",
+    "materials",
+    "materials and methods",
+    "measures",
+    "method",
+    "methods",
+    "participants",
+    "patients and methods",
+    "pre-publication history",
+    "related literature",
+    "results",
+    "results and discussion",
+    "statistical analyses",
+    "statistical analysis",
+    "statistical methods",
+    "statistics",
+    "study design",
+    "summary",
+    "supplementary data",
+    "supplementary information",
+    "supplementary material",
+    "supporting information",
+}
+
 
 class TextSource(TypedDict):
-    title: Iterable[str]
-    subtitle: Iterable[str]
-    abstract: Iterable[str]
-    article: Iterable[str]
-    back: Iterable[str]
-    floating: Iterable[str]
+    title: Iterable[TextChunk]
+    subtitle: Iterable[TextChunk]
+    abstract: Iterable[TextChunk]
+    article: Iterable[TextChunk]
+    back: Iterable[TextChunk]
+    floating: Iterable[TextChunk]
 
 
 class PmcArticle(TypedDict):
@@ -39,6 +88,7 @@ class PmcArticle(TypedDict):
     journal: str
     journalISO: str
     textSources: TextSource
+    annotations: Dict[str, str] = {}
 
 
 def extract_article_content(
@@ -50,6 +100,7 @@ def extract_article_content(
     Args:
         tag_handlers: custom callables to handle various XML tags
     """
+    annotations_map: Dict[str, TextChunk] = {}
     # Extract the title of paper
     title = article_elem.findall(
         "./front/article-meta/title-group/article-title"
@@ -73,15 +124,23 @@ def extract_article_content(
     abstract = article_elem.findall("./front/article-meta/abstract") + article_elem.findall(
         "./front-stub/abstract"
     )
-    abstract_text = extract_text_chunks(abstract, tag_handlers=tag_handlers)
+    abstract_text = extract_text_chunks(
+        abstract, tag_handlers=tag_handlers, annotations_map=annotations_map
+    )
 
     # Extract the full text from the paper as well as supplementaries and floating blocks of text
-    article_text = extract_text_chunks(article_elem.findall("./body"), tag_handlers=tag_handlers)
-    back_text = extract_text_chunks(article_elem.findall("./back"), tag_handlers=tag_handlers)
-    floating_text = extract_text_chunks(
-        article_elem.findall("./floats-group"), tag_handlers=tag_handlers
+    article_text = extract_text_chunks(
+        article_elem.findall("./body"), tag_handlers=tag_handlers, annotations_map=annotations_map
     )
-    text_sources = TextSource({})
+    back_text = extract_text_chunks(
+        article_elem.findall("./back"), tag_handlers=tag_handlers, annotations_map=annotations_map
+    )
+    floating_text = extract_text_chunks(
+        article_elem.findall("./floats-group"),
+        tag_handlers=tag_handlers,
+        annotations_map=annotations_map,
+    )
+    text_sources = OrderedDict()  # make sure the sections stay in the order specified below
     text_sources["title"] = title_text
     text_sources["subtitle"] = subtitle_text
     text_sources["abstract"] = abstract_text
@@ -97,7 +156,7 @@ def extract_article_content(
                 cleaned.append(passage)
         text_sources[k] = cleaned
 
-    return text_sources
+    return text_sources, annotations_map
 
 
 def get_meta_info_for_pmc_article(
@@ -255,6 +314,10 @@ def process_pmc_file(
                         sub_journal = journal
                         sub_journal_iso = journal_iso
 
+                text_sources, annotations = extract_article_content(
+                    article_elem, tag_handlers=tag_handlers
+                )
+
                 document = PmcArticle(
                     {
                         "pmid": sub_pmid_text,
@@ -265,9 +328,8 @@ def process_pmc_file(
                         "pubDay": sub_pub_day,
                         "journal": sub_journal,
                         "journalISO": sub_journal_iso,
-                        "textSources": extract_article_content(
-                            article_elem, tag_handlers=tag_handlers
-                        ),
+                        "textSources": text_sources,
+                        'annotations': annotations,
                     }
                 )
 
@@ -275,53 +337,6 @@ def process_pmc_file(
 
             # Less important here (compared to abstracts) as each article file is not too big
             elem.clear()
-
-
-allowed_subsections = {
-    "abbreviations",
-    "additional information",
-    "analysis",
-    "author contributions",
-    "authors' contributions",
-    "authors’ contributions",
-    "background",
-    "case report",
-    "competing interests",
-    "conclusion",
-    "conclusions",
-    "conflict of interest",
-    "conflicts of interest",
-    "consent",
-    "data analysis",
-    "data collection",
-    "discussion",
-    "ethics statement",
-    "funding",
-    "introduction",
-    "limitations",
-    "material and methods",
-    "materials",
-    "materials and methods",
-    "measures",
-    "method",
-    "methods",
-    "participants",
-    "patients and methods",
-    "pre-publication history",
-    "related literature",
-    "results",
-    "results and discussion",
-    "statistical analyses",
-    "statistical analysis",
-    "statistical methods",
-    "statistics",
-    "study design",
-    "summary",
-    "supplementary data",
-    "supplementary information",
-    "supplementary material",
-    "supporting information",
-}
 
 
 def pmcxml2bioc(
@@ -363,7 +378,10 @@ def pmcxml2bioc(
             for group_name, text_source_group in pmc_doc["textSources"].items():
                 subsection = None
                 for chunk in text_source_group:
-                    text_source = chunk.text
+                    text_source, annotations = strip_annotation_markers(
+                        chunk.text, pmc_doc['annotations']
+                    )
+
                     if trim_sentences:
                         text_source = trim_sentence_lengths(text_source)
 
@@ -379,6 +397,12 @@ def pmcxml2bioc(
                         passage.infons["xml_path"] = chunk.xml_path
                     passage.text = text_source
                     passage.offset = offset
+
+                    if not trim_sentences:
+                        for annotation in annotations:
+                            for location in annotation.locations:
+                                location.offset += offset
+                            passage.add_annotation(annotation)
 
                     offset += len(text_source)
                     bioc_doc.add_passage(passage)

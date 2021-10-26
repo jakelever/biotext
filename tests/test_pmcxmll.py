@@ -65,9 +65,9 @@ def test_sibling_intext_citations(table_article):
 
     for doc in docs2bioc(file, 'pmcxml'):
         all_passages.extend(doc.passages)
+
+    for c in all_passages:
+        print(c.text[max(len(c.text) - 100, 0) :])
     assert any(
-        [
-            chunk.text.endswith('inspected using the graphics program PyMOL.')
-            for chunk in all_passages
-        ]
+        ['inspected using the graphics program PyMOL ANN_' in chunk.text for chunk in all_passages]
     )
