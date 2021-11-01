@@ -2,10 +2,9 @@ import re
 import unicodedata
 import uuid
 import xml.etree.cElementTree as etree
-from typing import Callable, Dict, Iterable, List, Tuple
+from typing import Callable, Dict, Iterable, List, Optional, Tuple
 
 import bioc
-from bioc.bioc import BioCAnnotation
 
 # XML elements to ignore the contents of
 IGNORE_LIST = [
@@ -28,13 +27,15 @@ SEPERATION_LIST = [
     "title",
     "p",
     "sec",
-    "break",
     "def-item",
     "list-item",
     "caption",
-    "table",
     "thead",
+    "label",
 ]
+
+TABLE_DELIMITER = '\t'
+TABLE_DELIMATED_TAGS = {'tr', 'th', 'td'}
 
 
 class TextChunk:
@@ -67,6 +68,10 @@ class TextChunk:
     def __len__(self) -> int:
         return len(self.text)
 
+    @property
+    def tag(self):
+        return None if self.xml_node is None else self.xml_node.tag
+
 
 TagHandlerFunction = Callable[[etree.Element, Dict[str, Callable]], List[TextChunk]]
 
@@ -74,9 +79,9 @@ TagHandlerFunction = Callable[[etree.Element, Dict[str, Callable]], List[TextChu
 # Remove empty brackets (that could happen if the contents have been removed already
 # e.g. for citation ( [3] [4] ) -> ( ) -> nothing
 def remove_brackets_without_words(text: str) -> str:
-    fixed = re.sub(r"\([\W\s]*\)", "", text)
-    fixed = re.sub(r"\[[\W\s]*\]", "", fixed)
-    fixed = re.sub(r"\{[\W\s]*\}", "", fixed)
+    fixed = re.sub(r"\((\W|[^\S\t])*\)", "", text)
+    fixed = re.sub(r"\[(\W|[^\S\t])*\]", "", fixed)
+    fixed = re.sub(r"\{(\W|[^\S\t])*\}", "", fixed)
     return fixed
 
 
@@ -90,25 +95,36 @@ def remove_weird_brackets_from_old_titles(title_text: str) -> str:
 
 
 def cleanup_text(text: str) -> str:
+    """
+    Clean up non-tab extra whitespace, remove control characters and extra leftover brackets etc
+    """
     # Remove some "control-like" characters (left/right separator)
     text = text.replace(u"\u2028", " ").replace(u"\u2029", " ")
-    text = "".join(ch for ch in text if unicodedata.category(ch)[0] != "C")
+    text = "".join(ch for ch in text if unicodedata.category(ch)[0] != "C" or ch == TABLE_DELIMITER)
     text = "".join(ch if unicodedata.category(ch)[0] != "Z" else " " for ch in text)
 
     # Remove repeated commands and commas next to periods
-    text = re.sub(r",(\s*,)*", ",", text)
-    text = re.sub(r"(,\s*)*\.", ".", text)
+    text = re.sub(r",([^\S\t]*,)*", ",", text)
+    text = re.sub(r"(,[^\S\t]*)*\.", ".", text)
     text = remove_brackets_without_words(text)
 
     # remove extra spaces from in-text figute/table citations
-    text = re.sub(r'\(\s+([^)]*[^\s)])\s+\)', r'(\1)', text)
+    text = re.sub(r'\([^\S\t]*([^)]*[^\s)])[^\S\t]*\)', r'(\1)', text)
 
     # remove trailing spaces before periods
-    text = re.sub(r'\s+\.(\s|$)', r'.\1', text)
+    text = re.sub(r'[^\S\t]+\.(\s|$)', r'.\1', text)
 
-    # remove extra spaces around commas
-    text = re.sub(r'\s*,\s+', ', ', text)
-    return text.strip()
+    # remove extra spaces around commas/semi-colons
+    text = re.sub(r'[^\S\t]*([,;])[^\S\t]+', r'\1 ', text)
+
+    # trim leading and trailing non tab whitespace
+    text = re.sub(r'(^|\t)([^\S\t]+)', r'\1', text)
+    text = re.sub(r'([^\S\t]+)(\t|$)', r'\2', text)
+
+    # trim multiple non-tab spaces
+    text = re.sub(r'[^\S\t][^\S\t]+', ' ', text)
+
+    return text
 
 
 def trim_sentence_lengths(text: str) -> str:
@@ -197,7 +213,13 @@ def tag_handler(
     if elem.tag == 'xref' and 'xref' in IGNORE_LIST:
         # keep xref tags that refer to internal elements like tables and figures
         if elem.attrib.get('ref-type', '') == 'bibr':
-            return [TextChunk(head, elem, is_annotation=True), TextChunk(tail, elem, is_tail=True)]
+            if tail:
+                return [
+                    TextChunk(head, elem, is_annotation=True),
+                    TextChunk(tail, elem, is_tail=True),
+                ]
+            else:
+                return [TextChunk(head, elem, is_annotation=True)]
     elif elem.tag in IGNORE_LIST:
         # Check if the tag should be ignored (so don't use main contents)
         return [
@@ -218,12 +240,15 @@ def strip_annotation_markers(
     for ann_marker in annotations_map:
         # citation in brackets
         patterns = [
-            (r'\(' + re.escape(ann_marker) + r'\)', 0),  # citation in brackets
+            (r'[^\S\t]?\(' + re.escape(ann_marker) + r'\)', 0),  # citation in brackets
             (
-                r'\s' + re.escape(ann_marker) + r'\.',
+                r'[^\S\t]' + re.escape(ann_marker) + r'\.',
                 1,
             ),  # citation at end of sentence, remove extra whitespace
-            (r'\s' + re.escape(ann_marker) + r'\s', 1),  # citation surrounded by whitespace
+            (
+                r'[^\S\t]' + re.escape(ann_marker) + r'[^\S\t]',
+                1,
+            ),  # citation surrounded by whitespace
             (re.escape(ann_marker), 0),  # citation by itself
         ]
         for pattern, end_offset in patterns:
@@ -256,11 +281,64 @@ def strip_annotation_markers(
     return transformed_text, transformed_annotations
 
 
+def merge_text_chunks(chunk_list, annotations_map=None) -> TextChunk:
+    """
+    Merge some list of text chunks and pick the most top-level xml node associated with the list to be the new node for the chunk
+
+    Will insert temporary annotation ID markers if an annotations map is provided, otherwise will strip these out
+    """
+    if annotations_map is None:
+        # if no mapping is expected, simply drop annotation chunks
+        chunk_list = [c for c in chunk_list if not c.is_annotation]
+
+    merge = []
+
+    for i, current_chunk in enumerate(chunk_list):
+        if i > 0:
+            previous_chunk = chunk_list[i - 1]
+            join_char = ' '
+            tags = {previous_chunk.tag, current_chunk.tag}
+            if any(
+                [
+                    previous_chunk.is_annotation,
+                    current_chunk.is_annotation,
+                    previous_chunk.non_separating,
+                    current_chunk.non_separating,
+                    current_chunk.is_tail and not (current_chunk.text or previous_chunk.text),
+                ]
+            ):
+                join_char = ''
+            elif len(tags) == 1 and tags & TABLE_DELIMATED_TAGS and not current_chunk.is_tail:
+                join_char = TABLE_DELIMITER
+
+            merge.append(join_char)
+
+        current_text = cleanup_text(current_chunk.text)
+        if current_chunk.is_annotation:
+            ann_id = f'ANN_{uuid.uuid4()}'
+            annotations_map[ann_id] = current_text
+            merge.append(ann_id)
+        else:
+            merge.append(current_text)
+
+    text = ''.join(merge)
+    # Remove any newlines (as they can be trusted to be syntactically important)
+    text = text.replace('\n', '')
+    text = cleanup_text(text)
+
+    first_non_tail_node = chunk_list[0].xml_node
+    for chunk in chunk_list:
+        if not chunk.is_tail and not chunk.is_annotation:
+            first_non_tail_node = chunk.xml_node
+            break
+    return TextChunk(text, xml_node=first_non_tail_node)
+
+
 def extract_text_chunks(
     element_list: Iterable[etree.Element],
     passage_tags=SEPERATION_LIST,
     tag_handlers: Dict[str, TagHandlerFunction] = {},
-    annotations_map: Dict[str, str] = {},
+    annotations_map: Optional[Dict[str, str]] = None,
 ) -> List[TextChunk]:
     """
     Extract and beautify text from a series of XML elements
@@ -278,44 +356,20 @@ def extract_text_chunks(
     raw_text_chunks = []
     for elem in element_list:
         raw_text_chunks.extend(tag_handler(elem, tag_handlers))
-    merged_text_chunks = [[]]
+    chunks_to_be_merged = [[]]
 
     for chunk in raw_text_chunks:
-        if chunk.xml_node is not None and chunk.xml_node.tag in passage_tags:
+        if chunk.xml_node is not None and chunk.tag in passage_tags:
             # start a new tag set
-            merged_text_chunks.append([chunk])
+            chunks_to_be_merged.append([chunk])
         else:
-            merged_text_chunks[-1].append(chunk)
+            chunks_to_be_merged[-1].append(chunk)
 
-    def merge_text_chunks(chunk_list):
-        merge = []
-        for i, chunk in enumerate(chunk_list):
-            if chunk.is_annotation:
-                # add to mapping, replace context with UUID
-                id = f'ANN_{uuid.uuid4()}'
-                merge.append(id)
-                annotations_map[id] = cleanup_text(chunk.text)
-            elif not merge or chunk.non_separating or (i > 0 and chunk_list[i - 1].non_separating):
-                merge.append(chunk.text.strip())
-            else:
-                merge.extend([' ', chunk.text.strip()])
-        text = ''.join(merge)
-        # Remove any newlines (as they can be trusted to be syntactically important)
-        text = text.replace('\n', '')
-        # Remove no-break spaces
-        text = cleanup_text(text)
-        first_non_tail_node = None
-        for chunk in chunk_list:
-            if not chunk.is_tail and not chunk.is_annotation:
-                first_non_tail_node = chunk.xml_node
-                break
-        return TextChunk(text, first_non_tail_node or chunk_list[0].xml_node)
-
-    merged_chunks = [merge_text_chunks(m) for m in merged_text_chunks if m]
+    merged_chunks = [merge_text_chunks(m, annotations_map) for m in chunks_to_be_merged if m]
 
     # assign the XML path to each passage
     mapping = build_xml_parent_mapping(element_list)
     for chunk in merged_chunks:
         chunk.xml_path = get_tag_path(mapping, chunk.xml_node)
 
-    return merged_chunks
+    return [c for c in merged_chunks if c.text]

@@ -7,7 +7,7 @@ with open('docs/bioconverters.md', 'r') as fh:
 
 
 DEV_REQS = ['black', 'flake8', 'isort', 'mypy']
-TEST_REQS = ['biopython', 'snakemake', 'ftputil', 'requests', 'pytest', 'pytest-cov']
+TEST_REQS = ['biopython', 'snakemake', 'ftputil', 'requests', 'pytest', 'pytest-cov', 'hypothesis']
 
 setup(
     name='bioconverters',
