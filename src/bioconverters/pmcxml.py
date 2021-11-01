@@ -92,8 +92,8 @@ class PmcArticle(TypedDict):
 
 
 def extract_article_content(
-    article_elem: etree.Element, tag_handlers: Dict[str, TagHandlerFunction] = {}
-) -> TextSource:
+    article_elem: etree.Element, tag_handlers: Dict[str, TagHandlerFunction]
+) -> Tuple[TextSource, Dict[str, str]]:
     """
     Given the XML element representing the top-level of the scientific article, extract all the text sources
 
@@ -245,7 +245,8 @@ def get_meta_info_for_pmc_article(
 
 
 def process_pmc_file(
-    source: Union[str, TextIO], tag_handlers: Dict[str, TagHandlerFunction] = {}
+    source: Union[str, TextIO],
+    tag_handlers: Dict[str, TagHandlerFunction] = {},
 ) -> Iterable[PmcArticle]:
     # Skip to the article element in the file
     for event, elem in etree.iterparse(source, events=("start", "end", "start-ns", "end-ns")):
@@ -342,8 +343,8 @@ def process_pmc_file(
 def pmcxml2bioc(
     source: Union[str, TextIO],
     tag_handlers: Dict[str, TagHandlerFunction] = {},
-    trim_sentences=True,
-    xml_path_infon=False,
+    trim_sentences: bool = True,
+    xml_path_infon: bool = False,
 ) -> Iterator[Iterable[bioc.BioCDocument]]:
     """
     Convert a PMC XML file into its Bioc equivalent

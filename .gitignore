@@ -6,6 +6,8 @@ venv*
 .snakemake/
 *.egg-info
 build
+.hypothesis
+.pytest_cache
 *.xml
 
 pubmed_listing.txt
