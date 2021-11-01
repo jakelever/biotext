@@ -393,7 +393,8 @@ def pmcxml2bioc(
                         subsection = subsection_check
 
                     passage.infons["section"] = group_name
-                    passage.infons["subsection"] = subsection
+                    if subsection:
+                        passage.infons["subsection"] = subsection
                     if xml_path_infon and chunk.xml_path:
                         passage.infons["xml_path"] = chunk.xml_path
                     passage.text = text_source
