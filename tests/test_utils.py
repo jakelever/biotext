@@ -96,8 +96,20 @@ def test_extract_figure_label():
             'This is a sentence with an in-text citation.',
             [35],
         ),
+        (
+            'This is a sentence with an in-text citation [ANN_1234].',
+            {'ANN_1234': 'Blargh, M. et. al, 2000'},
+            'This is a sentence with an in-text citation.',
+            [35],
+        ),
     ],
-    ids=['single citation', 'multiple citations', 'middle sentence citation', 'brackets'],
+    ids=[
+        'single citation',
+        'multiple citations',
+        'middle sentence citation',
+        'round-brackets',
+        'square-brackets',
+    ],
 )
 def test_strip_annotation_markers(text, annotations_map, expected_text, expected_locations):
     text_result, annotations_result = strip_annotation_markers(text, annotations_map)
