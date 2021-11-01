@@ -1,4 +1,4 @@
-import re
+import os
 import xml.etree.cElementTree as etree
 from typing import List
 from xml.sax.saxutils import escape
@@ -187,6 +187,25 @@ def test_extract_delimited_table(values: List[str or int or float or None], rows
     else:
         assert len(table_body) == 1
         assert len(table_body[0].split(TABLE_DELIMITER)) == cols * rows
+
+
+def test_floating_table():
+    xml_input = os.path.join(os.path.dirname(__file__), 'data', 'floating_table.xml')
+    with open(xml_input, 'r') as fh:
+        xml_data = fh.read()
+    chunks = extract_text_chunks([etree.fromstring(xml_data)])
+    expected_columns = 6
+    expected_rows = 16
+
+    table_header = [c.text for c in chunks if c.xml_path.endswith('thead')]
+
+    assert len(table_header) == 1
+    header = table_header[0].split(TABLE_DELIMITER)
+    assert header == ['Patient sample', 'Exon', 'DNA', 'Protein', 'Domain', 'Germline/ Somatic']
+
+    table_body = [c.text for c in chunks if c.xml_path.endswith('tbody')]
+    assert len(table_body) == 1
+    assert len(table_body[0].split(TABLE_DELIMITER)) == expected_columns * expected_rows
 
 
 @pytest.mark.parametrize(

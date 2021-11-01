@@ -27,7 +27,6 @@ SEPERATION_LIST = [
     "title",
     "p",
     "sec",
-    "break",
     "def-item",
     "list-item",
     "caption",
@@ -36,6 +35,7 @@ SEPERATION_LIST = [
 ]
 
 TABLE_DELIMITER = '\t'
+TABLE_DELIMATED_TAGS = {'tr', 'th', 'td'}
 
 
 class TextChunk:
@@ -308,7 +308,7 @@ def merge_text_chunks(chunk_list, annotations_map=None) -> TextChunk:
                 ]
             ):
                 join_char = ''
-            elif (tags == {'td'} or tags == {'tr'}) and not current_chunk.is_tail:
+            elif len(tags) == 1 and tags & TABLE_DELIMATED_TAGS and not current_chunk.is_tail:
                 join_char = TABLE_DELIMITER
 
             merge.append(join_char)
