@@ -1,0 +1,183 @@
+<?xml version="1.0" ?>
+<!DOCTYPE pmc-articleset PUBLIC "-//NLM//DTD ARTICLE SET 2.0//EN" "https://dtd.nlm.nih.gov/ncbi/pmc/articleset/nlm-articleset-2.0.dtd">
+<pmc-articleset>
+    <article xmlns:xlink="http://www.w3.org/1999/xlink"
+        xmlns:mml="http://www.w3.org/1998/Math/MathML" article-type="research-article">
+        <floats-group>
+            <fig position="float">
+                <label>Figure 3</label>
+                <caption>
+                    <title>Fugiat consequat excepteur est do enim irure dolore proident labore.</title>
+                    <p >
+                        <bold>a,</bold> Et dolore officia esse et fugiat cillum fugiat non nisi proident ea.</p>
+                </caption>
+                <graphic />
+            </fig>
+            <table-wrap position="float">
+                <label>Table 1</label>
+                <caption>
+                    <p >Nisi ullamco anim consequat Lorem minim non <italic>VOLUPTATE</italic> cillum exercitation voluptate veniam deserunt pariatur.</p>
+                </caption>
+                <table frame="hsides" rules="none">
+                    <thead>
+                        <tr>
+                            <th align="center" rowspan="1" colspan="1">Patient<break/>
+sample</th>
+                            <th align="center" rowspan="1" colspan="1">Exon</th>
+                            <th align="center" rowspan="1" colspan="1">DNA</th>
+                            <th align="center" rowspan="1" colspan="1">Protein</th>
+                            <th align="center" rowspan="1" colspan="1">Domain</th>
+                            <th align="center" rowspan="1" colspan="1">Germline/<break/>
+Somatic</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td align="center" rowspan="1" colspan="1">123</td>
+                            <td align="center" rowspan="1" colspan="1">22</td>
+                            <td align="center" rowspan="1" colspan="1">C1234T</td>
+                            <td align="center" rowspan="1" colspan="1">T1234M</td>
+                            <td align="center" rowspan="1" colspan="1">some domain</td>
+                            <td align="center" rowspan="1" colspan="1">germline</td>
+                        </tr>
+                        <tr>
+                            <td align="center" rowspan="1" colspan="1">124</td>
+                            <td align="center" rowspan="1" colspan="1">12</td>
+                            <td align="center" rowspan="1" colspan="1">C1234CA</td>
+                            <td align="center" rowspan="1" colspan="1">F1234L</td>
+                            <td align="center" rowspan="1" colspan="1">some domain</td>
+                            <td align="center" rowspan="1" colspan="1">somatic</td>
+                        </tr>
+                        <tr>
+                            <td align="center" rowspan="1" colspan="1">125</td>
+                            <td align="center" rowspan="1" colspan="1">12</td>
+                            <td align="center" rowspan="1" colspan="1">C1234CA</td>
+                            <td align="center" rowspan="1" colspan="1">F1234L</td>
+                            <td align="center" rowspan="1" colspan="1">some domain</td>
+                            <td align="center" rowspan="1" colspan="1">somatic</td>
+                        </tr>
+                        <tr>
+                            <td align="center" rowspan="1" colspan="1">126</td>
+                            <td align="center" rowspan="1" colspan="1">12</td>
+                            <td align="center" rowspan="1" colspan="1">C1234CA</td>
+                            <td align="center" rowspan="1" colspan="1">F1234L</td>
+                            <td align="center" rowspan="1" colspan="1">some domain</td>
+                            <td align="center" rowspan="1" colspan="1">somatic</td>
+                        </tr>
+                        <tr>
+                            <td align="center" rowspan="1" colspan="1">127</td>
+                            <td align="center" rowspan="1" colspan="1">12</td>
+                            <td align="center" rowspan="1" colspan="1">C1234CA</td>
+                            <td align="center" rowspan="1" colspan="1">F1234L</td>
+                            <td align="center" rowspan="1" colspan="1">some domain</td>
+                            <td align="center" rowspan="1" colspan="1">somatic</td>
+                        </tr>
+                        <tr>
+                            <td align="center" rowspan="1" colspan="1">128</td>
+                            <td align="center" rowspan="1" colspan="1">12</td>
+                            <td align="center" rowspan="1" colspan="1">G1234GA</td>
+                            <td align="center" rowspan="1" colspan="1">A1234T</td>
+                            <td align="center" rowspan="1" colspan="1">some domain</td>
+                            <td align="center" rowspan="1" colspan="1">somatic</td>
+                        </tr>
+                        <tr>
+                            <td align="center" rowspan="1" colspan="1">129</td>
+                            <td align="center" rowspan="1" colspan="1">12</td>
+                            <td align="center" rowspan="1" colspan="1">T1234TG</td>
+                            <td align="center" rowspan="1" colspan="1">F1234C</td>
+                            <td align="center" rowspan="1" colspan="1">some domain</td>
+                            <td align="center" rowspan="1" colspan="1">somatic</td>
+                        </tr>
+                        <tr>
+                            <td align="center" rowspan="1" colspan="1">130</td>
+                            <td align="center" rowspan="1" colspan="1">12</td>
+                            <td align="center" rowspan="1" colspan="1">G1234GA</td>
+                            <td align="center" rowspan="1" colspan="1">R1234Q</td>
+                            <td align="center" rowspan="1" colspan="1">some domain</td>
+                            <td align="center" rowspan="1" colspan="1">germline</td>
+                        </tr>
+                        <tr>
+                            <td align="center" rowspan="1" colspan="1"/>
+                            <td align="center" rowspan="1" colspan="1"/>
+                            <td align="center" rowspan="1" colspan="1"/>
+                            <td align="center" rowspan="1" colspan="1"/>
+                            <td align="center" rowspan="1" colspan="1"/>
+                            <td align="center" rowspan="1" colspan="1"/>
+                        </tr>
+                        <tr>
+                            <td align="center" rowspan="1" colspan="1">
+                                <bold>Cell line</bold>
+                            </td>
+                            <td align="center" rowspan="1" colspan="1">
+                                <bold>Exon</bold>
+                            </td>
+                            <td align="center" rowspan="1" colspan="1">
+                                <bold>DNA</bold>
+                            </td>
+                            <td align="center" rowspan="1" colspan="1">
+                                <bold>Protein</bold>
+                            </td>
+                            <td align="center" rowspan="1" colspan="1">
+                                <bold>Domain</bold>
+                            </td>
+                            <td align="center" rowspan="1" colspan="1"/>
+                        </tr>
+                        <tr>
+                            <td align="center" rowspan="1" colspan="1">142</td>
+                            <td align="center" rowspan="1" colspan="1">20</td>
+                            <td align="center" rowspan="1" colspan="1">G1234A</td>
+                            <td align="center" rowspan="1" colspan="1">D1234N</td>
+                            <td align="center" rowspan="1" colspan="1">some domain</td>
+                            <td align="center" rowspan="1" colspan="1"/>
+                        </tr>
+                        <tr>
+                            <td align="center" rowspan="1" colspan="1">141</td>
+                            <td align="center" rowspan="1" colspan="1">23</td>
+                            <td align="center" rowspan="1" colspan="1">C1234CA</td>
+                            <td align="center" rowspan="1" colspan="1">F1234L</td>
+                            <td align="center" rowspan="1" colspan="1">some domain</td>
+                            <td align="center" rowspan="1" colspan="1"/>
+                        </tr>
+                        <tr>
+                            <td align="center" rowspan="1" colspan="1">144</td>
+                            <td align="center" rowspan="1" colspan="1">23</td>
+                            <td align="center" rowspan="1" colspan="1">C1234CA</td>
+                            <td align="center" rowspan="1" colspan="1">F1234L</td>
+                            <td align="center" rowspan="1" colspan="1">some domain</td>
+                            <td align="center" rowspan="1" colspan="1"/>
+                        </tr>
+                        <tr>
+                            <td align="center" rowspan="1" colspan="1">145</td>
+                            <td align="center" rowspan="1" colspan="1">23</td>
+                            <td align="center" rowspan="1" colspan="1">C1234CA</td>
+                            <td align="center" rowspan="1" colspan="1">F1234L</td>
+                            <td align="center" rowspan="1" colspan="1">some domain</td>
+                            <td align="center" rowspan="1" colspan="1"/>
+                        </tr>
+                        <tr>
+                            <td align="center" rowspan="1" colspan="1">146</td>
+                            <td align="center" rowspan="1" colspan="1">24</td>
+                            <td align="center" rowspan="1" colspan="1">T1234G</td>
+                            <td align="center" rowspan="1" colspan="1">F1234V</td>
+                            <td align="center" rowspan="1" colspan="1">some domain</td>
+                            <td align="center" rowspan="1" colspan="1"/>
+                        </tr>
+                        <tr>
+                            <td align="center" rowspan="1" colspan="1">157</td>
+                            <td align="center" rowspan="1" colspan="1">25</td>
+                            <td align="center" rowspan="1" colspan="1">G1234GA</td>
+                            <td align="center" rowspan="1" colspan="1">R1234Q</td>
+                            <td align="center" rowspan="1" colspan="1">some domain</td>
+                            <td align="center" rowspan="1" colspan="1"/>
+                        </tr>
+                    </tbody>
+                </table>
+                <table-wrap-foot>
+                    <fn >
+                        <p >Enim dolor est labore incididunt enim.</p>
+                    </fn>
+                </table-wrap-foot>
+            </table-wrap>
+        </floats-group>
+    </article>
+</pmc-articleset>

@@ -240,7 +240,7 @@ def strip_annotation_markers(
     for ann_marker in annotations_map:
         # citation in brackets
         patterns = [
-            (r'[^\S\t]?\(' + re.escape(ann_marker) + r'\)', 0),  # citation in brackets
+            (r'[^\S\t]?[\(\[\{]' + re.escape(ann_marker) + r'[\)\]\}]', 0),  # citation in brackets
             (
                 r'[^\S\t]' + re.escape(ann_marker) + r'\.',
                 1,
