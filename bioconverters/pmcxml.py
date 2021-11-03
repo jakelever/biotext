@@ -1,6 +1,7 @@
 import calendar
 import html
 import xml.etree.cElementTree as etree
+import io
 from typing import Iterable, Optional, TextIO, Tuple, Union
 
 try:
@@ -126,6 +127,10 @@ def get_meta_info_for_pmc_article(
 
 
 def process_pmc_file(source: Union[str, TextIO]) -> Iterable[PmcArticle]:
+    content = source.read()
+    content = content.replace('xlink:href','href') # Fix for broken PMC XML files
+    source = io.StringIO(content)
+
     # Skip to the article element in the file
     for event, elem in etree.iterparse(source, events=("start", "end", "start-ns", "end-ns")):
         if event == "end" and elem.tag == "article":
