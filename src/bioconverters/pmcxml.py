@@ -1,5 +1,6 @@
 import calendar
 import html
+import io
 import xml.etree.cElementTree as etree
 from typing import Dict, Iterable, Iterator, Optional, TextIO, Tuple, Union
 
@@ -13,9 +14,14 @@ from collections import OrderedDict
 
 import bioc
 
-from .utils import (TagHandlerFunction, TextChunk, extract_text_chunks,
-                    remove_weird_brackets_from_old_titles,
-                    strip_annotation_markers, trim_sentence_lengths)
+from .utils import (
+    TagHandlerFunction,
+    TextChunk,
+    extract_text_chunks,
+    remove_weird_brackets_from_old_titles,
+    strip_annotation_markers,
+    trim_sentence_lengths,
+)
 
 allowed_subsections = {
     "abbreviations",
@@ -243,6 +249,10 @@ def process_pmc_file(
     source: Union[str, TextIO],
     tag_handlers: Dict[str, TagHandlerFunction] = {},
 ) -> Iterable[PmcArticle]:
+    content = source.read()
+    content = content.replace('xlink:href', 'href')  # Fix for broken PMC XML files
+    source = io.StringIO(content)
+
     # Skip to the article element in the file
     for event, elem in etree.iterparse(source, events=("start", "end", "start-ns", "end-ns")):
         if event == "end" and elem.tag == "article":
