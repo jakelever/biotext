@@ -44,10 +44,17 @@ do
 	for retry in $(seq 10)
 	do
 		RETVAL=0
+		rm -f download.tmp.gz
 		curl -o download.tmp.gz $ftpPath --time-cond "$timestamp" || {
 			RETVAL=$?
 			true
 		}
+
+		if [ $RETVAL -eq 0 ] && [ ! -f download.tmp.gz ]; then
+			echo "No download needed"
+			DOWNLOAD_SUCCESS=1
+			break
+		fi
 
 		if [ $RETVAL -ne 0 ]; then
 			echo "ERROR with curl. Retrying..."

@@ -34,7 +34,11 @@ if __name__ == '__main__':
 		with bioc.BioCXMLDocumentWriter(out_file) as writer:
 			tar = tarfile.open(source)
 			for i,filename in enumerate(files_to_extract):
-				member = tar.getmember(filename)
+				try:
+					member = tar.getmember(filename)
+				except KeyError:
+					print("WARNING. Didn't find %s in %s. Skipping" % (filename,source))
+					continue
 				
 				file_handle = tar.extractfile(member)
 				
