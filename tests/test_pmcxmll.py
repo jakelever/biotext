@@ -28,7 +28,7 @@ def test_convert_pmc_with_table(table_article):
     )
     expected_content = "WT\tNA\tNA\tBreast cancer\t30\t257\tNA\tL755S\t19\tATP binding region\tBreast and gastric cancer\t>2000\t897\t4\tL755P	19\tATP binding region\tNSCLC\t1545\t1216\t2,3\tV773A\t20\tATP binding region\tSCCHN\t146\t200\t6\tV777L\t20\tATP binding region\tGastric, colon and lung\t27\t215\t3,4\tT798M\t20\tGate keeper residue\tNA\t1433\t>2000\tNA\tN857S\t21\tActivation loop\tOvarian cancer\t75\t246\t2\tT862A\t21\tActivation loop\tPrimary gastric cancer\t125\t191\t7\tH878Y\t21\tActivation loop\tHepatocellular carcinoma\t14\t168\t5"
     all_passages = []
-    for doc in docs2bioc(file, 'pmcxml', trim_sentences=False, xml_path_infon=True):
+    for doc in docs2bioc(file, 'pmcxml', trim_sentences=False, all_xml_path_infon=True):
         all_passages.extend(doc.passages)
     table_body = [p.text for p in all_passages if 'tbody' in p.infons.get('xml_path', '')]
     assert len(table_body) == 1

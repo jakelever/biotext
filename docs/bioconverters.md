@@ -40,19 +40,19 @@ for doc in pmcxml2bioc('/path/to/pmc/xml/file.xml', tag_handlers={'table': ignor
 
 ## Trim Sentences
 
-You can also choose to truncate sentences to a maximum length. This is on by default. To turn this option off use the flag
+You can also choose to truncate sentences to a maximum length. This is off by default. To turn this option off use the flag
 
 ```python
-for doc in pmcxml2bioc('/path/to/pmc/xml/file.xml', trim_sentences=False):
+for doc in pmcxml2bioc('/path/to/pmc/xml/file.xml', trim_sentences=True):
     # do stuff with bioc doc
 ```
 
 ## Add XML structure Information
 
-To keep track of approximately where in the XML heirarchy a passage was derived from use the `xml_path_infon` option.
+To keep track of approximately where in the XML heirarchy a passage was derived from use the `all_xml_path_infon` option. Note that this will be default added for any table and figure elements regardless of the flag
 
 ```python
-for doc in pmcxml2bioc('/path/to/pmc/xml/file.xml', xml_path_infon=False):
+for doc in pmcxml2bioc('/path/to/pmc/xml/file.xml', all_xml_path_infon=True):
     # do stuff with bioc doc
 ```
 
