@@ -1,0 +1,35 @@
+<?xml version="1.1" encoding="utf8" ?>
+<article>
+    <table-wrap>
+        <object-id pub-id-type="doi">some doi url</object-id>
+        <label>Table 1</label>
+        <caption>
+            <title>The title of the table</title>
+        </caption>
+        <alternatives>
+            <graphic />
+            <table frame="hsides" rules="groups">
+                <thead>
+                    <tr>
+                        <td rowspan="1" colspan="1">Column 1</td>
+                        <td rowspan="1" colspan="1">Column 2</td>
+                    </tr>
+                </thead>
+
+                <tbody>
+                <tr>
+                        <td rowspan="1" colspan="1">}{</td>
+                        <td rowspan="1" colspan="1">}{</td>
+                    </tr>
+                </tbody>
+            </table>
+        </alternatives>
+        <table-wrap-foot>
+            <fn>
+                <label/>
+                <p>some long description of the table contents in the table footer
+                </p>
+            </fn>
+        </table-wrap-foot>
+    </table-wrap>
+</article>

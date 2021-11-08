@@ -68,6 +68,16 @@ class TextChunk:
     def __len__(self) -> int:
         return len(self.text)
 
+    def __repr__(self):
+        tag = self.tag
+        if self.is_tail:
+            tag = f'{tag}#'
+        ns = '-ns' if self.non_separating else ''
+        tag = f'{tag}{ns}'
+        if self.text:
+            tag = f'{tag}+text[{len(self.text)}]'
+        return tag
+
     @property
     def tag(self):
         return None if self.xml_node is None else self.xml_node.tag
@@ -77,11 +87,16 @@ TagHandlerFunction = Callable[[etree.Element, Dict[str, Callable]], List[TextChu
 
 
 # Remove empty brackets (that could happen if the contents have been removed already
-# e.g. for citation ( [3] [4] ) -> ( ) -> nothing
+# e.g. for citation ( [] [] ) -> ( ) -> nothing
 def remove_brackets_without_words(text: str) -> str:
-    fixed = re.sub(r"\((\W|[^\S\t])*\)", "", text)
-    fixed = re.sub(r"\[(\W|[^\S\t])*\]", "", fixed)
-    fixed = re.sub(r"\{(\W|[^\S\t])*\}", "", fixed)
+    changed = True
+    previous_text = text
+    while changed:
+        fixed = re.sub(r"\([^\w\t]*\)", "", previous_text)
+        fixed = re.sub(r"\[[^\w\t]*\]", "", fixed)
+        fixed = re.sub(r"\{[^\w\t]*\}", "", fixed)
+        changed = bool(previous_text != fixed)
+        previous_text = fixed
     return fixed
 
 
@@ -261,20 +276,15 @@ def strip_annotation_markers(
     transformed_text = text
     offset = 0
 
-    def find_last_token_pos(string):
-        match = re.search(r'(\S+)\s*$', string)
-        return match.start(1), match.end(1)
-
     for start, end, marker in matched_annotations:
         ann = bioc.BioCAnnotation()
         ann.id = marker
         ann.infons['citation_text'] = annotations_map[marker]
         ann.infons['type'] = 'citation'
-        token_start, token_end = find_last_token_pos(transformed_text[: start - offset])
         transformed_text = transformed_text[: start - offset] + transformed_text[end - offset :]
 
-        ann.text = transformed_text[token_start:token_end]
-        ann.add_location(bioc.BioCLocation(token_start, len(ann.text)))
+        # since the token place-holder is removed, must be start - 1 (and previous offset) for the new position
+        ann.add_location(bioc.BioCLocation(start - offset - 1, 0))
 
         offset += end - start
         transformed_annotations.append(ann)

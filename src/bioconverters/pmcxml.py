@@ -13,14 +13,9 @@ from collections import OrderedDict
 
 import bioc
 
-from .utils import (
-    TagHandlerFunction,
-    TextChunk,
-    extract_text_chunks,
-    remove_weird_brackets_from_old_titles,
-    strip_annotation_markers,
-    trim_sentence_lengths,
-)
+from .utils import (TagHandlerFunction, TextChunk, extract_text_chunks,
+                    remove_weird_brackets_from_old_titles,
+                    strip_annotation_markers, trim_sentence_lengths)
 
 allowed_subsections = {
     "abbreviations",
@@ -343,17 +338,19 @@ def process_pmc_file(
 def pmcxml2bioc(
     source: Union[str, TextIO],
     tag_handlers: Dict[str, TagHandlerFunction] = {},
-    trim_sentences: bool = True,
-    xml_path_infon: bool = False,
+    trim_sentences: bool = False,
+    all_xml_path_infon: bool = False,
+    mark_citations: bool = True,
 ) -> Iterator[Iterable[bioc.BioCDocument]]:
     """
     Convert a PMC XML file into its Bioc equivalent
 
     Args:
         source: The text or file handle containing the PMC XML
-        tag_handlers: custom overrides for handling specific XML tags. Defaults to {}.
-        trim_sentences: Trim text content to a maximum sentence length. Defaults to True.
-        paths_infon: Add a xml_path infon element to passages to describe where in the XML heirarchy this text is from. Defaults to False.
+        tag_handlers: custom overrides for handling specific XML tags.
+        trim_sentences: Trim text content to a maximum sentence length.
+        all_xml_path_infon: Add a xml_path infon element to every passages to describe where in the XML heirarchy this text is from (Will always add to table/figure elements even without flag)
+        mark_citations: Add 0-length bioc annotations for in-text citations
 
     Raises:
         RuntimeError: On any parsing errors
@@ -393,14 +390,20 @@ def pmcxml2bioc(
                         subsection = subsection_check
 
                     passage.infons["section"] = group_name
-                    if subsection:
-                        passage.infons["subsection"] = subsection
-                    if xml_path_infon and chunk.xml_path:
-                        passage.infons["xml_path"] = chunk.xml_path
+                    passage.infons["subsection"] = subsection
+
+                    if chunk.xml_path:
+                        if all_xml_path_infon or set(chunk.xml_path.split('/')) & {
+                            'thead',
+                            'tbody',
+                            'fig',
+                        }:
+                            passage.infons["xml_path"] = chunk.xml_path
+
                     passage.text = text_source
                     passage.offset = offset
 
-                    if not trim_sentences:
+                    if not trim_sentences and mark_citations:
                         for annotation in annotations:
                             for location in annotation.locations:
                                 location.offset += offset

@@ -14,6 +14,8 @@ from bioconverters.utils import (
 from hypothesis import given
 from hypothesis import strategies as st
 
+from .util import data_file_path
+
 
 @pytest.mark.parametrize(
     'test_input,expected',
@@ -25,6 +27,8 @@ from hypothesis import strategies as st
         ('(Table. 1)', '(Table. 1)'),
         ('( ; )', ''),
         ('( . )', ''),
+        ('   }{ \t}{   ', '   }{ \t}{   '),
+        ('( [] [ ] )', ''),
     ],
 )
 def test_remove_brackets_without_words(test_input, expected):
@@ -39,13 +43,11 @@ def test_extract_text_chunks_sibling_xrefs():
     annotations_map = {}
     chunks = extract_text_chunks(root_nodes, annotations_map=annotations_map)
     full_text = ' '.join(c.text for c in chunks if c.text.strip())
-    print(full_text)
     assert '1' in annotations_map.values()
     assert '2, 3' in annotations_map.values()
     for key in annotations_map:
         assert key in full_text
     final_text, annotations_result = strip_annotation_markers(full_text, annotations_map)
-    print(final_text)
     assert final_text == expected
 
     locations = []
@@ -54,8 +56,8 @@ def test_extract_text_chunks_sibling_xrefs():
         text.append(ann.text)
         for loc in ann.locations:
             locations.append(loc.offset)
-    assert text == ['turpis', 'lobortis']
-    assert locations == [108, 318]
+    assert text == ['', '']
+    assert locations == [113, 325]
 
 
 def test_extract_figure_label():
@@ -76,31 +78,31 @@ def test_extract_figure_label():
             'This is a sentence with an in-text citation ANN_1234.',
             {'ANN_1234': 'Blargh, M. et. al, 2000'},
             'This is a sentence with an in-text citation.',
-            [35],
+            [42],
         ),
         (
             'This is a sentence with an in-text citation ANN_1234 that has multiple references in the same sentence ANN_1235.',
             {'ANN_1234': 'Blargh, M. et. al, 2000', 'ANN_1235': 'Som other blargh, 2001'},
             'This is a sentence with an in-text citation that has multiple references in the same sentence.',
-            [35, 85],
+            [42, 92],
         ),
         (
             'This is a sentence with an in-text citation ANN_1234. In an inner sentence',
             {'ANN_1234': 'Blargh, M. et. al, 2000'},
             'This is a sentence with an in-text citation. In an inner sentence',
-            [35],
+            [42],
         ),
         (
             'This is a sentence with an in-text citation (ANN_1234).',
             {'ANN_1234': 'Blargh, M. et. al, 2000'},
             'This is a sentence with an in-text citation.',
-            [35],
+            [42],
         ),
         (
             'This is a sentence with an in-text citation [ANN_1234].',
             {'ANN_1234': 'Blargh, M. et. al, 2000'},
             'This is a sentence with an in-text citation.',
-            [35],
+            [42],
         ),
     ],
     ids=[
@@ -201,8 +203,25 @@ def test_extract_delimited_table(values: List[str or int or float or None], rows
         assert len(table_body[0].split(TABLE_DELIMITER)) == cols * rows
 
 
+@pytest.mark.parametrize('xml_file,rows,cols', [('format_chars_table.xml', 1, 2)])
+def test_extract_explicit_table(xml_file, rows, cols):
+    with open(data_file_path(xml_file), 'r') as fh:
+        table_xml = fh.read()
+
+    chunks = extract_text_chunks([etree.fromstring(table_xml.strip())])
+
+    table_header = [c.text for c in chunks if c.xml_path.endswith('thead')]
+
+    assert len(table_header) == 1
+    assert len(table_header[0].split(TABLE_DELIMITER)) == cols
+
+    table_body = [c.text for c in chunks if c.xml_path.endswith('tbody')]
+    assert len(table_body) == 1
+    assert len(table_body[0].split(TABLE_DELIMITER)) == cols * rows
+
+
 def test_floating_table():
-    xml_input = os.path.join(os.path.dirname(__file__), 'data', 'floating_table.xml')
+    xml_input = data_file_path('floating_table.xml')
     with open(xml_input, 'r') as fh:
         xml_data = fh.read()
     chunks = extract_text_chunks([etree.fromstring(xml_data)])
@@ -229,6 +248,7 @@ def test_floating_table():
         ),
         ('extra space , before comma', 'extra space, before comma'),
         ('extra space ; before semi-colon', 'extra space; before semi-colon'),
+        ('   }{ \t}{   ', '}{\t}{'),
     ],
 )
 def test_cleanup_text(input, output):
