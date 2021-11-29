@@ -249,7 +249,13 @@ def process_pmc_file(
     source: Union[str, TextIO],
     tag_handlers: Dict[str, TagHandlerFunction] = {},
 ) -> Iterable[PmcArticle]:
-    content = source.read()
+
+    if isinstance(source,str):
+        with open(source,encoding='utf-8') as f:
+            content = f.read()
+    else:
+        content = source.read()
+
     content = content.replace('xlink:href', 'href')  # Fix for broken PMC XML files
     source = io.StringIO(content)
 

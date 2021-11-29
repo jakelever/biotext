@@ -83,7 +83,7 @@ done < ../listings/pmc.txt
 
 echo "Running grouping on PubMed Central data"
 
-python ../groupPMC.py --inPMCDir . --prevGroupings groupings.json.prev --outGroupings groupings.json
+python ../src/groupPMC.py --inPMCDir . --prevGroupings groupings.json.prev --outGroupings groupings.json
 
 cp groupings.json groupings.json.prev
 
