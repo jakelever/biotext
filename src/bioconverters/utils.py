@@ -172,7 +172,7 @@ def merge_adjacent_xref_siblings(elem_list):
     for elem in elem_list:
         if siblings and elem.tag == 'xref' and siblings[-1].tag == 'xref':
             # merge these 2 if the tail of the first element is a punctuation mark
-            prev_tail = siblings[-1].tail.strip()
+            prev_tail = (siblings[-1].tail or '').strip()
             if (
                 siblings[-1].tail
                 and len(prev_tail) == 1
