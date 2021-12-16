@@ -179,7 +179,8 @@ def merge_adjacent_xref_siblings(elem_list):
                 and unicodedata.category(prev_tail)[0] == 'P'
                 and elem.attrib.get('ref-type') == siblings[-1].attrib.get('ref-type')
             ):
-                siblings[-1].text = siblings[-1].text + siblings[-1].tail + elem.text
+
+                siblings[-1].text = (siblings[-1].text or '') + prev_tail + (elem.text or '')
                 siblings[-1].tail = elem.tail
                 continue
         siblings.append(elem)

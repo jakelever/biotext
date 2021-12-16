@@ -1,6 +1,7 @@
 import os
 import xml.etree.cElementTree as etree
-from typing import List
+from typing import List, Optional
+from unittest.mock import MagicMock
 from xml.sax.saxutils import escape
 
 import pytest
@@ -8,10 +9,11 @@ from bioconverters.utils import (
     TABLE_DELIMITER,
     cleanup_text,
     extract_text_chunks,
+    merge_adjacent_xref_siblings,
     remove_brackets_without_words,
     strip_annotation_markers,
 )
-from hypothesis import given
+from hypothesis import given, infer
 from hypothesis import strategies as st
 
 from .util import data_file_path
@@ -253,3 +255,29 @@ def test_floating_table():
 )
 def test_cleanup_text(input, output):
     assert cleanup_text(input) == output
+
+
+@given(text=infer, sibling_text=infer, sibling_tail=infer)
+def test_merge_adjacent_xref_siblings(
+    text: Optional[str], sibling_text: Optional[str], sibling_tail: Optional[str]
+):
+    tail = ', '
+    merged = merge_adjacent_xref_siblings(
+        [
+            MagicMock(text=text, tail=tail, attrib={'ref-type': 'thing'}, tag='xref'),
+            MagicMock(
+                text=sibling_text, tail=sibling_tail, attrib={'ref-type': 'thing'}, tag='xref'
+            ),
+        ]
+    )
+    assert len(merged) == 1
+
+    merged = merge_adjacent_xref_siblings(
+        [
+            MagicMock(text=text, tail='a', attrib={'ref-type': 'thing'}, tag='xref'),
+            MagicMock(
+                text=sibling_text, tail=sibling_tail, attrib={'ref-type': 'thing'}, tag='xref'
+            ),
+        ]
+    )
+    assert len(merged) == 2
