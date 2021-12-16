@@ -46,7 +46,7 @@ def test_extract_text_chunks_sibling_xrefs():
     chunks = extract_text_chunks(root_nodes, annotations_map=annotations_map)
     full_text = ' '.join(c.text for c in chunks if c.text.strip())
     assert '1' in annotations_map.values()
-    assert '2, 3' in annotations_map.values()
+    assert '2,3' in annotations_map.values()
     for key in annotations_map:
         assert key in full_text
     final_text, annotations_result = strip_annotation_markers(full_text, annotations_map)

@@ -63,4 +63,4 @@ def test_sibling_intext_citations(table_article):
     assert any(
         ['inspected using the graphics program PyMOL.' in chunk.text for chunk in all_passages]
     )
-    assert '[14], [16], [23]\u2013[25]' in [a.infons['citation_text'] for a in all_annotations]
+    assert '[14],[16],[23]\u2013[25]' in [a.infons['citation_text'] for a in all_annotations]
