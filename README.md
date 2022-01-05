@@ -12,6 +12,7 @@
 Sometimes you need a easily-updated local copy of PubMed and PubMed Central, and sometimes (but not always) you want annotations of entities from [PubTator](https://www.ncbi.nlm.nih.gov/research/pubtator/) on those articles. This project can help with that. It manages the download of PubMed and PubMed Central and converting it into the nice BioC XML format while keeping important metadata. As a separate step, it can load up PubTator Central annotations and align them to the documents. It also handles the update process without redoing all the previous downloading and computation.
 
 ## Advantages
+
 - Deals with format conversion
 - Chunks PubMed Central (which is normally ~2,000,000 files) into larger files that are easier to parallelise
 - Uses Snakemake, so can be deployed on a cluster
@@ -39,7 +40,7 @@ As an optional extra, you can get [PubTator Central annotations](https://www.ncb
 
 There are two core steps involved shown below with single-core Snakemake calls for downloading and conversion. Suggestions for using a cluster are further below.
 
-```
+```bash
 # 1. Downloading and grouping PubMed Central (which is a single thread)
 snakemake --cores 1 downloaded.flag
 
@@ -50,13 +51,15 @@ snakemake --cores 1 converted.flag
 Those steps will download PubMed Central to a *pmc_archives* directory and create a *biocxml* directory with the converted files.
 
 Those calls to snakemake can then be augmented to use a cluster (or whatever local set up you have), e.g.
-```
+
+```bash
 # Run a hundred jobs at a time on a SLURM cluster using sbatch
 snakemake -j 100 --cluster ' sbatch' --latency-wait 60 converted.flag
 ```
 
 The commands for running the PubTator alignments are below. Please add appropriate cluster flags.
-```
+
+```bash
 # Download the PubTator file
 snakemake --cores 1 pubtator_downloaded.flag
 
@@ -68,12 +71,13 @@ snakemake --cores 1 pubtator.flag
 
 This project requires Python 3 with dependencies that can be installed with pip.
 
-```
+```bash
 pip install -U snakemake bioc ftputil
 ```
 
 For testing, it also uses biopython.
-```
+
+```bash
 pip install -U biopython
 ```
 
@@ -83,7 +87,7 @@ Every year, PubMed is given a new baseline release with daily updates based from
 
 When this happens, it's time for a yearly clean-out. You should delete the old PubMed files (which will likely be all PubMed files in biocxml). You will also need to delete any downstream files based upon these files to make sure that other projects don't end up with duplicate files.
 
-```
+```text
 AssertionError in line 66 of /projects/jlever/github/biotext/Snakefile:
 Found unexpected PubMed files (e.g. biocxml/pubmed_baseline_20n0001.bioc.xml) in biocxml directory. Likely due to a new PubMed baseline release. These should be manually deleted as well as downstream files. Check the project README for more details under section Yearly Baseline Releases.
   File "/projects/jlever/github/biotext/Snakefile", line 66, in <module>
@@ -100,4 +104,3 @@ Distributed under the terms of the [MIT](http://opensource.org/licenses/MIT) lic
 ## Issues
 
 If you encounter any problems, please [file an issue](https://github.com/jakelever/biotext/issues) along with a detailed description.
-

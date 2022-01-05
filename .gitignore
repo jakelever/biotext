@@ -2,11 +2,14 @@
 __pycache__
 .mypy_cache
 *.pyc
-venv
+venv*
 .snakemake/
 *.egg-info
-
-*.xml
+build
+.hypothesis
+.pytest_cache
+coverage.xml
+htmlcov
 
 pubmed_listing.txt
 pmc_listing.txt
@@ -15,6 +18,7 @@ pmc_archives/
 biocxml/
 pubtator/
 pmids/
+.coverage
 
 *.flag
 
