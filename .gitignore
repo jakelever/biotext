@@ -32,3 +32,4 @@ snakejob.*
 *.sqlite
 
 listings/
+dist

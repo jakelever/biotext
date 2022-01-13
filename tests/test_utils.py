@@ -1,4 +1,5 @@
 import os
+import textwrap
 import xml.etree.cElementTree as etree
 from typing import List, Optional
 from unittest.mock import MagicMock
@@ -281,3 +282,55 @@ def test_merge_adjacent_xref_siblings(
         ]
     )
     assert len(merged) == 2
+
+
+def test_keep_extlink_supplementary():
+    xml = textwrap.dedent(
+        '''\
+        <?xml version="1.1" encoding="utf8" ?>
+         <article xmlns:ali="http://www.niso.org/schemas/ali/1.0/"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            xmlns:mml="http://www.w3.org/1998/Math/MathML" article-type="research-article">
+            <p>
+                Introduction of the <italic>NTRK3</italic> G623R mutation to the <italic>ETV6-NTRK3</italic> construct (Ba/F3-ETV6-NTRK3 G623R) conferred reduced sensitivity to entrectinib, increasing the IC<sub>50</sub> value in the proliferation assays more than 250-fold (2 to 507 nM) relative to the Ba/F3-ETV6-NTRK3 cells (Figure <xref ref-type="fig" rid="MDW042F3">3</xref>E). The <italic>NTRK3</italic> G623R mutation conferred even greater loss of sensitivity to the other tested Trk inhibitors, TSR-011 (Tesaro) and LOXO-101 (LOXO), eliciting IC<sub>50</sub> proliferation values of &gt;1000 nM (<ext-link ext-link-type="uri" xlink:href="http://annonc.oxfordjournals.org/lookup/suppl/doi:10.1093/annonc/mdw042/-/DC1">supplementary Figure S4C, available at <italic>Annals of Oncology</italic> online</ext-link>).
+            </p>
+        </article>'''
+    )
+    chunks = extract_text_chunks([etree.fromstring(xml)])
+    assert len(chunks) == 1
+    chunk = chunks[0].text
+    print(chunk)
+    assert '(supplementary Figure S4C, available at Annals of Oncology online)' in chunk
+
+
+def test_drops_extlink_urls():
+    xml = textwrap.dedent(
+        '''\
+    <?xml version="1.1" encoding="utf8" ?>
+    <article xmlns:ali="http://www.niso.org/schemas/ali/1.0/"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        xmlns:mml="http://www.w3.org/1998/Math/MathML" article-type="research-article">
+    <p>
+        Crystal  Protein Data Bank (
+        <ext-link ext-link-type="uri" xlink:href="http://www.pdb.org">www.pdb.org</ext-link>
+        ). Crystal structures of complexes with  program PyMOL (
+        <ext-link ext-link-type="uri" xlink:href="http://www.pymol.org">www.pymol.org</ext-link>
+        )
+        <xref rid="pone.0026760-Yun1" ref-type="bibr">[14]</xref>
+        ,
+        <xref rid="pone.0026760-Yun2" ref-type="bibr">[16]</xref>
+        ,
+        <xref rid="pone.0026760-Stamos1" ref-type="bibr">[23]</xref>
+        –
+        <xref rid="pone.0026760-Qiu1" ref-type="bibr">[25]</xref>
+        .
+    </p>
+    </article>'''
+    )
+    chunks = extract_text_chunks([etree.fromstring(xml)])
+    assert len(chunks) == 1
+    chunk = chunks[0].text
+    print(chunk)
+    assert 'program PyMOL.' in chunk
+    assert '[14]' not in chunk
+    assert '//www.' not in chunk

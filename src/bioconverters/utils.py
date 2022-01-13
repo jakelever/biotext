@@ -237,10 +237,17 @@ def tag_handler(
             else:
                 return [TextChunk(head, elem, is_annotation=True)]
     elif elem.tag in IGNORE_LIST:
-        # Check if the tag should be ignored (so don't use main contents)
-        return [
-            TextChunk(tail, elem, non_separating=True, is_tail=True),
-        ]
+        if not all(
+            [
+                elem.tag == 'ext-link',
+                head,
+                re.search(r'(supp|suppl|supplementary)?\s*(table|figure)\s*s?\d+', head.lower()),
+            ]
+        ):
+            # Check if the tag should be ignored (so don't use main contents)
+            return [
+                TextChunk(tail, elem, non_separating=True, is_tail=True),
+            ]
 
     return [TextChunk(head, elem)] + child_passages + [TextChunk(tail, elem, is_tail=True)]
 
