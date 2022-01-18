@@ -60,6 +60,10 @@ def test_sibling_intext_citations(table_article):
         all_passages.extend(doc.passages)
         all_annotations.extend(bioc.annotations(doc))
 
+    for chunk in all_passages:
+        print(chunk.text)
+        if 'PyMOL' in chunk.text:
+            break
     assert any(
         ['inspected using the graphics program PyMOL.' in chunk.text for chunk in all_passages]
     )
