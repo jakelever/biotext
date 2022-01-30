@@ -10,6 +10,7 @@ import io
 import tempfile
 from dbutils import saveDocumentsToDatabase
 import pathlib
+from tqdm import tqdm
 
 if __name__ == '__main__':
 	parser = argparse.ArgumentParser(description='Convert a block of PMC articles')
@@ -18,6 +19,7 @@ if __name__ == '__main__':
 	parser.add_argument('--format',required=True,type=str,help='Format to output documents to (only biocxml supported)')
 	parser.add_argument('--outFile',required=True,type=str,help='File to save to')
 	parser.add_argument('--db',action='store_true',help="Whether to output as an SQLite database")
+	parser.add_argument('--verbose',action='store_true',help="Whether to provide more output")
 	args = parser.parse_args()
 
 	assert args.format == 'biocxml'
@@ -29,11 +31,19 @@ if __name__ == '__main__':
 	source = os.path.join(args.pmcDir, block['src'])
 	files_to_extract = block['group']
 
+	print(f"Loading {len(files_to_extract)} documents from archive: {source}")
+
 	with tempfile.NamedTemporaryFile() as tf_out:
 		out_file = tf_out.name if args.db else args.outFile
 		with bioc.BioCXMLDocumentWriter(out_file) as writer:
 			tar = tarfile.open(source)
-			for i,filename in enumerate(files_to_extract):
+
+			iterator = tqdm(files_to_extract) if args.verbose else files_to_extract
+
+			for filename in iterator:
+				if args.verbose:
+					iterator.set_description(filename)
+
 				try:
 					member = tar.getmember(filename)
 				except KeyError:
