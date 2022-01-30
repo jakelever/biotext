@@ -6,10 +6,11 @@ rm -f listings/pmc.txt
 
 echo "Updating PubMed Central (Open Access / Author Manuscript) listings"
 
-for ftpPath in "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_bulk/" "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/manuscript/"
+#for ftpPath in "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_bulk/" "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/manuscript/"
+for ftpPath in "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/manuscript/xml/" "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_bulk/oa_comm/xml/" "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_bulk/oa_noncomm/xml/" "ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_bulk/oa_other/xml/"
 do
 	curl --silent $ftpPath |\
-	grep -oP "\S+.xml.tar.gz" |\
+	grep -oP "\S+.tar.gz" |\
 	sort -u |\
 	awk -v ftpPath=$ftpPath ' { print ftpPath$0 } ' > tmp_listing.txt
 
@@ -23,8 +24,6 @@ do
 	rm tmp_listing.txt
 done
 
-echo "Downloading PubMed Central archives"
-
 mkdir -p pmc_archives
 cd pmc_archives
 
@@ -33,6 +32,12 @@ rm -f download.tmp.gz
 while read ftpPath
 do
 	f=`echo $ftpPath | grep -oP "[^/]+$"`
+
+	if [[ "$f" == *".baseline."* ]]; then
+		f="baseline.$f"
+	else
+		f="update.$f"
+	fi
 
 	timestamp="Wed, 31 Dec 1969 16:00:00 -0800"
 	if [ -f $f ]; then

@@ -24,6 +24,8 @@ if __name__ == '__main__':
 		time_cutoff = prev['mtime']
 		newest_mtime = prev['mtime']
 
+		prev_srcs = [ g['src'] for groupid,g in file_groups.items() ]
+
 		print("Loaded %d existing groups" % prev_group_count)
 	else:	
 		file_groups = {}
@@ -31,11 +33,22 @@ if __name__ == '__main__':
 		time_cutoff = 0
 		newest_mtime = 0
 
+		prev_srcs = []
+
 	gztarFiles = sorted([ f for f in os.listdir(args.inPMCDir) if f.endswith('.tar.gz') ])
 
 	for filename in gztarFiles:
+		if filename in prev_srcs:
+			print("Skipping %s" % filename)
+			continue
+
 		print("Processing %s" % filename)
 		sys.stdout.flush()
+
+		assert filename.startswith('baseline') or filename.startswith('update'), "Expecting PMC archives with 'baseline' or 'update' prefixes"
+
+		groupname_base = filename.replace('.tar.gz','')
+		group_index = 0
 
 		tar = tarfile.open(os.path.join(args.inPMCDir,filename))
 		current_group = []
@@ -49,13 +62,14 @@ if __name__ == '__main__':
 					newest_mtime = member.mtime
 
 				if len(current_group) >= per_group:
-					group_name = "%08d" % len(file_groups)
+					group_name = groupname_base + "_%02d" % group_index
+					group_index += 1
 					file_groups[group_name] = {'src':filename, 'group':current_group}
 					current_group = []
 
 		if len(current_group) > 0:
-			group_name = "%08d" % len(file_groups)
-			file_groups[group_name] = current_group
+			group_name = groupname_base + "_%02d" % group_index
+			group_index += 1
 			file_groups[group_name] = {'src':filename, 'group':current_group}
 			current_group = []
 
