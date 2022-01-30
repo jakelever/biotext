@@ -29,6 +29,8 @@ cd pmc_archives
 
 rm -f download.tmp.gz
 
+NEW_FILES=0
+
 while read ftpPath
 do
 	f=`echo $ftpPath | grep -oP "[^/]+$"`
@@ -39,18 +41,17 @@ do
 		f="update.$f"
 	fi
 
-	timestamp="Wed, 31 Dec 1969 16:00:00 -0800"
 	if [ -f $f ]; then
-		timestamp=`date -R -d @$(stat -c '%Y' $f)`
+		echo "Skipping $f..."
+		continue
 	fi
 
-	
 	DOWNLOAD_SUCCESS=0
 	for retry in $(seq 10)
 	do
 		RETVAL=0
 		rm -f download.tmp.gz
-		curl -o download.tmp.gz $ftpPath --time-cond "$timestamp" || {
+		curl -o download.tmp.gz $ftpPath || {
 			RETVAL=$?
 			true
 		}
@@ -82,13 +83,17 @@ do
 
 	if [ -f download.tmp.gz ]; then
 		mv download.tmp.gz $f
+		NEW_FILES=1
 	fi
 
 done < ../listings/pmc.txt
 
-echo "Running grouping on PubMed Central data"
+if [ $NEW_FILES -eq 1 ]; then
+	echo "Running grouping on PubMed Central data"
 
-python ../src/groupPMC.py --inPMCDir . --prevGroupings groupings.json.prev --outGroupings groupings.json
-
-cp groupings.json groupings.json.prev
+	python ../src/groupPMC.py --inPMCDir . --prevGroupings groupings.json.prev --outGroupings groupings.json
+	cp groupings.json groupings.json.prev
+else
+	echo "No new files so no grouping required."
+fi
 
