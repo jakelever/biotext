@@ -29,36 +29,43 @@ if __name__ == '__main__':
 		block = json.load(f)['groups'][args.block]
 
 	source = os.path.join(args.pmcDir, block['src'])
-	files_to_extract = block['group']
+	files_to_extract = set(block['group'])
 
 	print(f"Loading {len(files_to_extract)} documents from archive: {source}")
+
+	found_files = set()
 
 	with tempfile.NamedTemporaryFile() as tf_out:
 		out_file = tf_out.name if args.db else args.outFile
 		with bioc.BioCXMLDocumentWriter(out_file) as writer:
 			tar = tarfile.open(source)
 
-			iterator = tqdm(files_to_extract) if args.verbose else files_to_extract
+			iterator = tqdm(tar) if args.verbose else tar
 
-			for filename in iterator:
-				if args.verbose:
-					iterator.set_description(filename)
+			for member in iterator:
+				if member.name in files_to_extract:
 
-				try:
-					member = tar.getmember(filename)
-				except KeyError:
-					print("WARNING. Didn't find %s in %s. Skipping" % (filename,source))
-					continue
-				
-				file_handle = tar.extractfile(member)
-				
-				data = file_handle.read().decode('utf-8')
+					found_files.add(member.name)
+					if args.verbose:
+						iterator.set_description(f"Found {member.name}: {len(found_files)}/{len(files_to_extract)}")
 
-				for bioc_doc in pmcxml2bioc(io.StringIO(data)):
-					writer.write_document(bioc_doc)
+					file_handle = tar.extractfile(member)
+					
+					data = file_handle.read().decode('utf-8')
+
+					for bioc_doc in pmcxml2bioc(io.StringIO(data)):
+						writer.write_document(bioc_doc)
+
+					if found_files == files_to_extract:
+						if args.verbose:
+							print(f"Extracted all {len(found_files)} files from archives.")
+						break
 
 		if args.db:
 			saveDocumentsToDatabase(args.outFile,tf_out.name,is_fulltext=True)
+
+	missing_files = sorted(files_to_extract - found_files)
+	assert len(missing_files) == 0, f"Did not find {len(missing_files)} expected files in the archive ({source}): {missing_files[:10]}"
 
 	print("Saved %d documents to %s" % (len(files_to_extract), args.outFile))
 
