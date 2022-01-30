@@ -71,7 +71,7 @@ if os.path.isfile('listings/pubmed.txt'):
 # Use the PMC groupings file to get a list of output files
 if os.path.isfile('pmc_archives/groupings.json'):
 	with open('pmc_archives/groupings.json') as f:
-		pmc_blocks = sorted(json.load(f)['groups'].keys())
+		pmc_blocks = sorted(json.load(f).keys())
 		pmc_biocxml_files = [ f"biocxml/pmc_{b}.bioc.xml" for b in pmc_blocks ]
 
 pubmed_db_files = [ filename.replace('biocxml/','working_db/').replace('.bioc.xml','.sqlite') for filename in pubmed_biocxml_files ]

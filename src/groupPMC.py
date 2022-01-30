@@ -17,23 +17,18 @@ if __name__ == '__main__':
 
 	if args.prevGroupings and os.path.isfile(args.prevGroupings):
 		with open(args.prevGroupings) as f:
-			prev = json.load(f)
+			file_groups = json.load(f)
 
-		file_groups = prev['groups']
 		prev_group_count = len(file_groups)
-		time_cutoff = prev['mtime']
-		newest_mtime = prev['mtime']
 
-		prev_srcs = [ g['src'] for groupid,g in file_groups.items() ]
+		prev_srcs = set( g['src'] for groupid,g in file_groups.items() )
 
 		print("Loaded %d existing groups" % prev_group_count)
 	else:	
 		file_groups = {}
 		prev_group_count = 0
-		time_cutoff = 0
-		newest_mtime = 0
 
-		prev_srcs = []
+		prev_srcs = set()
 
 	gztarFiles = sorted([ f for f in os.listdir(args.inPMCDir) if f.endswith('.tar.gz') ])
 
@@ -53,13 +48,10 @@ if __name__ == '__main__':
 		tar = tarfile.open(os.path.join(args.inPMCDir,filename))
 		current_group = []
 
-		for i,member in enumerate(tar.getmembers()):
+		for i,member in enumerate(tar):
 			file_ext = member.name.split('.')[-1]
-			if member.isfile() and file_ext in ['xml','nxml'] and member.mtime > time_cutoff:
+			if member.isfile() and file_ext in ['xml','nxml']:
 				current_group.append(member.name)
-
-				if member.mtime > newest_mtime:
-					newest_mtime = member.mtime
 
 				if len(current_group) >= per_group:
 					group_name = groupname_base + "_%02d" % group_index
@@ -77,7 +69,6 @@ if __name__ == '__main__':
 	
 	print("Added %d new groups" % (len(file_groups)-prev_group_count))
 
-	output = {'mtime':newest_mtime, 'groups':file_groups}
 	with open(args.outGroupings,'w') as f:
-		json.dump(output,f)
+		json.dump(file_groups,f,sort_keys=True)
 

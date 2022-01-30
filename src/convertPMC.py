@@ -26,7 +26,7 @@ if __name__ == '__main__':
 
 	grouping_file = os.path.join(args.pmcDir,'groupings.json')
 	with open(grouping_file) as f:
-		block = json.load(f)['groups'][args.block]
+		block = json.load(f)[args.block]
 
 	source = os.path.join(args.pmcDir, block['src'])
 	files_to_extract = set(block['group'])
