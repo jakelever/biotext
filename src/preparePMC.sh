@@ -28,9 +28,36 @@ mkdir -p pmc_archives
 cd pmc_archives
 
 rm -f download.tmp.gz
+rm -f expected_files.txt found_files.txt unexpected_files.txt
+
+echo "Checking on expected files..."
+while read ftpPath
+do
+	f=`echo $ftpPath | grep -oP "[^/]+$"`
+
+	if [[ "$f" == *".baseline."* ]]; then
+		f="baseline.$f"
+	else
+		f="update.$f"
+	fi
+	echo $f >> expected_files.txt
+done < ../listings/pmc.txt
+
+find -name '*.gz' | sed -e 's/^\.\///' > found_files.txt
+grep -vxFf expected_files.txt found_files.txt || true > unexpected_files.txt
+UNEXPECTED_COUNT=$(cat unexpected_files.txt | wc -l)
+
+if [ $UNEXPECTED_COUNT -ne 0 ]; then
+	echo "ERROR: Unexpected GZ files found in PMC folder. Could there be a new baseline release? If so, old PMC files need to be deleted from biotext and downstream applications"
+	echo
+	echo "Example unexpected files:"
+	head -n 10 unexpected_files.txt
+	exit 1
+fi
+
+rm -f expected_files.txt found_files.txt unexpected_files.txt
 
 NEW_FILES=0
-
 while read ftpPath
 do
 	f=`echo $ftpPath | grep -oP "[^/]+$"`
