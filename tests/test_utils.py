@@ -1,4 +1,3 @@
-import os
 import textwrap
 import xml.etree.cElementTree as etree
 from typing import List, Optional
@@ -10,7 +9,6 @@ from bioconverters.utils import (
     TABLE_DELIMITER,
     cleanup_text,
     extract_text_chunks,
-    mark_acronyms,
     merge_adjacent_xref_siblings,
     remove_brackets_without_words,
     strip_annotation_markers,
@@ -337,54 +335,3 @@ def test_drops_extlink_urls():
     assert 'program PyMOL.' in chunk
     assert '[14]' not in chunk
     assert '//www.' not in chunk
-
-
-@pytest.mark.parametrize(
-    'text,acronyms',
-    [
-        [
-            'the gene for the epidermal growth factor receptor (EGFR) are found',
-            {'EGFR': 'epidermal growth factor receptor'},
-        ],
-        ['small-molecule kinase inhibitors gefitinib (Iressa) and erlotinib (Tarceva).', {}],
-        [
-            'who graded responses according to Response Evaluation Criteria in Solid Tumors (RECIST).',
-            {'RECIST': 'Response Evaluation Criteria in Solid Tumors'},
-        ],
-        [
-            'responsiveness to poly (ADP-ribose) polymerase (PARP) inhibitors',
-            {'PARP': 'poly (ADP-ribose) polymerase'},
-        ],
-        ['advanced hepatocellular carcinoma (HCC)', {'HCC': 'hepatocellular carcinoma'}],
-        [
-            'into the activated B cell-like (ABC) and germinal center B cell-like (GCB) subtypes',
-            {'ABC': 'activated B cell-like', 'GCB': 'germinal center B'},
-        ],
-        [
-            'RECIST 1.1, progression-free survival (PFS), overall survival (OS),',
-            {'PFS': 'progression-free survival', 'OS': 'overall survival'},
-        ],
-        [
-            'with metastatic gastrointestinal stromal tumors (GIST). ',
-            {'GIST': 'gastrointestinal stromal tumors'},
-        ],
-        [
-            'Intrahepatic cholangiocarcinoma (ICC) is an aggressive liver bile duct',
-            {'ICC': 'Intrahepatic cholangiocarcinoma'},
-        ],
-        ['In vivo, activation of apoptosis (TUNEL) and reduction of proliferation (Ki67) ', {}],
-        [
-            'Adult T cell leukemia/lymphoma (ATL) is a peripheral',
-            {'ATL': 'Adult T cell leukemia/lymphoma'},
-        ],
-        ['oncogenic gain of function (GOF). ', {'GOF': 'gain of function'}],
-        ['oncogenic gain of function (GoF). ', {'GoF': 'gain of function'}],
-        [' mutants in cells with EZH2(WT) resulted', {}],
-        [
-            'by fluorescense in situ hybridization (FISH).',
-            {'FISH': 'fluorescense in situ hybridization'},
-        ],
-    ],
-)
-def test_mark_acronyms(text, acronyms):
-    assert acronyms == mark_acronyms(text)
