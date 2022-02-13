@@ -253,38 +253,65 @@ def tag_handler(
 
 
 def strip_annotation_markers(
-    text: str, annotations_map: Dict[str, str]
+    text: str,
+    annotations_map: Dict[str, str],
+    marker_pattern=r'ANN_[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}',
 ) -> Tuple[str, List[bioc.BioCAnnotation]]:
     """
     Given a set of annotations, remove any which are found in the current text and return
     the new string as well as the positions of the annotations in the transformed string
+
+    Args:
+        marker_pattern: the pattern all annotation markers are expected to match
     """
-    matched_annotations: List[Tuple[int, int.str]] = []
-    for ann_marker in annotations_map:
-        # citation in brackets
-        patterns = [
-            (r'[^\S\t]?[\(\[\{]' + re.escape(ann_marker) + r'[\)\]\}]', 0),  # citation in brackets
-            (
-                r'[^\S\t]' + re.escape(ann_marker) + r'\.',
-                1,
-            ),  # citation at end of sentence, remove extra whitespace
-            (
-                r'[^\S\t]' + re.escape(ann_marker) + r'[^\S\t]',
-                1,
-            ),  # citation surrounded by whitespace
-            (re.escape(ann_marker), 0),  # citation by itself
-        ]
-        for pattern, end_offset in patterns:
-            match = re.search(pattern, text)
-            if match:
-                matched_annotations.append((match.start(), match.end() - end_offset, ann_marker))
-                break
+    if not annotations_map:
+        return (text, [])
 
     transformed_annotations: List[bioc.BioCAnnotation] = []
     transformed_text = text
-    offset = 0
 
-    for start, end, marker in matched_annotations:
+    pattern = (
+        r'([^\S\t]*)([\(\[\{][^\S\t]*)?(' + marker_pattern + r')([^\S\t]*[\)\]\}])?([^\S\t]*)(\.)?'
+    )
+
+    matched_annotations: List[Tuple[int, int, str]] = []
+
+    for match in re.finditer(pattern, text):
+        ws_start, br_open, marker, br_close, ws_end, period = [match.group(i) for i in range(1, 7)]
+
+        if marker not in annotations_map:
+            continue
+
+        start_offset = 0
+        end_offset = 0
+
+        matched_brackets = (
+            br_open and br_close and br_open.strip() + br_close.strip() in {'\{\}', '[]', '()'}
+        )
+
+        if not matched_brackets and (br_open or br_close):
+            # do not include in the sequence to be removed from the text
+            start_offset += len(ws_start or '') + len(br_open or '')
+            end_offset += len(period or '') + len(ws_end or '') + len(br_close or '')
+        elif not period:
+            if ws_end:
+                end_offset += len(ws_end)
+            elif ws_start:
+                start_offset += len(ws_start)
+        else:
+            # remove trailing ws and leading ws
+            end_offset += len(period)
+
+        matched_annotations.append(
+            (
+                match.start() + start_offset,
+                match.end() - end_offset,
+                marker,
+            )
+        )
+
+    offset = 0
+    for start, end, marker in sorted(matched_annotations):
         ann = bioc.BioCAnnotation()
         ann.id = marker
         ann.infons['citation_text'] = annotations_map[marker]

@@ -1,4 +1,3 @@
-import os
 import textwrap
 import xml.etree.cElementTree as etree
 from typing import List, Optional
@@ -117,7 +116,9 @@ def test_extract_figure_label():
     ],
 )
 def test_strip_annotation_markers(text, annotations_map, expected_text, expected_locations):
-    text_result, annotations_result = strip_annotation_markers(text, annotations_map)
+    text_result, annotations_result = strip_annotation_markers(
+        text, annotations_map, marker_pattern=r'ANN_\d+'
+    )
     assert text_result == expected_text
     locations = []
     for ann in annotations_result:
