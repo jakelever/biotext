@@ -1,6 +1,7 @@
 import calendar
 import html
 import io
+import re
 import xml.etree.cElementTree as etree
 from typing import Dict, Iterable, Iterator, Optional, TextIO, Tuple, Union
 
@@ -244,20 +245,34 @@ def get_meta_info_for_pmc_article(
         journal_iso_text,
     )
 
-
-def process_pmc_file(
-    source: Union[str, TextIO],
-    tag_handlers: Dict[str, TagHandlerFunction] = {},
-) -> Iterable[PmcArticle]:
-
+def apply_pmc_xlink_fix(
+    source: Union[str, TextIO]
+) -> TextIO:
+    """
+    Hacky fix to add the xlink namespace to the article document if it uses it and has not defined it.
+    A small number of PMC documents need this for the XML parser to successfully load it.
+    """
     if isinstance(source,str):
         with open(source,encoding='utf-8') as f:
             content = f.read()
     else:
         content = source.read()
 
-    content = content.replace('xlink:href', 'href')  # Fix for broken PMC XML files
+    if 'xlink' in content:
+        article_tag = re.search(r'<article.*?>',content).group()
+        if not 'xmlns:xlink=' in article_tag:
+            new_article_tag = article_tag.replace('<article ', '<article xmlns:xlink="http://www.w3.org/1999/xlink" ', 1)
+            content = content.replace(article_tag,new_article_tag,1)
+
     source = io.StringIO(content)
+    return source
+
+def process_pmc_file(
+    source: Union[str, TextIO],
+    tag_handlers: Dict[str, TagHandlerFunction] = {},
+) -> Iterable[PmcArticle]:
+
+    source = apply_pmc_xlink_fix(source)
 
     # Skip to the article element in the file
     for event, elem in etree.iterparse(source, events=("start", "end", "start-ns", "end-ns")):
