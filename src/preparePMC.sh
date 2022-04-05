@@ -43,6 +43,7 @@ do
 	echo $f >> expected_files.txt
 done < ../listings/pmc.txt
 
+touch unexpected_files.txt
 find -name '*.gz' | sed -e 's/^\.\///' > found_files.txt
 grep -vxFf expected_files.txt found_files.txt || true > unexpected_files.txt
 UNEXPECTED_COUNT=$(cat unexpected_files.txt | wc -l)
