@@ -216,8 +216,14 @@ def processMedlineFile(source):
 			
 			journalTitleFields = elem.findall('./MedlineCitation/Article/Journal/Title')
 			journalTitleISOFields = elem.findall('./MedlineCitation/Article/Journal/ISOAbbreviation')
-			journalTitle = " ".join(extractTextFromElemList(journalTitleFields))
-			journalISOTitle = " ".join(extractTextFromElemList(journalTitleISOFields))
+
+			journalTitle, journalISOTitle = "",""
+			assert len(journalTitleFields) <= 1, "Error with pmid=%s" % pmid
+			assert len(journalTitleISOFields) <= 1, "Error with pmid=%s" % pmid
+			if journalTitleFields:
+				journalTitle = journalTitleFields[0].text
+			if journalTitleISOFields:
+				journalISOTitle = journalTitleISOFields[0].text
 
 			document = {}
 			document["pmid"] = pmid
