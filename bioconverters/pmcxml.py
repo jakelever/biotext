@@ -135,6 +135,9 @@ def processPMCFile(source):
 
 					references[r.attrib['id']] = refIDs
 
+				captionElems = articleElem.findall('.//caption')
+				captionText = extractTextFromElemList(captionElems)
+
 				document = {'pmid':subPmidText, 'pmcid':subPmcidText, 'doi':subDoiText, 'pubYear':subPubYear, 'pubMonth':subPubMonth, 'pubDay':subPubDay, 'journal':subJournal, 'journalISO':subJournalISO, 'references':references}
 
 				textSources = {}
@@ -144,6 +147,7 @@ def processPMCFile(source):
 				textSources['article'] = articleText
 				textSources['back'] = backText
 				textSources['floating'] = floatingText
+				textSources['captions'] = captionText
 
 				for k in textSources.keys():
 					tmp = textSources[k]
@@ -177,13 +181,16 @@ def pmcxml2bioc(source):
 			biocDoc.infons['journal'] = pmcDoc["journal"]
 			biocDoc.infons['journalISO'] = pmcDoc["journalISO"]
 
+			captionTexts = set(pmcDoc["textSources"]["captions"])
+			del pmcDoc["textSources"]["captions"]
+
 			offset = 0
 			for groupName,textSourceGroup in pmcDoc["textSources"].items():
 				subsection = None
 				for textSource in textSourceGroup:
-					textSource = trimSentenceLengths(textSource)
+					isCaption = textSource in captionTexts
 
-					#print(pmcDoc["pmcid"], textSource)
+					textSource = trimSentenceLengths(textSource)
 
 					textSource, annotations = extractAnnotations(textSource)
 
@@ -195,6 +202,7 @@ def pmcxml2bioc(source):
 
 					passage.infons['section'] = groupName
 					passage.infons['subsection'] = subsection
+					passage.infons['is_caption'] = isCaption
 					passage.text = textSource
 					passage.offset = offset
 
