@@ -31,9 +31,7 @@ if __name__ == '__main__':
 
 	print("Loaded PMIDs from corpus file...")
 
-	#with bioc.BioCXMLDocumentReader(args.inBioc) as parser:
-	with open(args.inBioc,'rb') as f:
-		parser = bioc.BioCXMLDocumentReader(f)
+	with bioc.biocxml.iterparse(args.inBioc) as parser:
 		for i,doc in enumerate(parser):
 			if 'pmid' in doc.infons and doc.infons['pmid']:
 				pmid = int(doc.infons['pmid'])
@@ -56,10 +54,7 @@ if __name__ == '__main__':
 	print("Starting text alignment...")
 
 	currentID = 1
-	writer = bioc.BioCXMLDocumentWriter(args.outBioc)
-	#with bioc.BioCXMLDocumentReader(args.inBioc) as parser:
-	with open(args.inBioc,'rb') as f:
-		parser = bioc.BioCXMLDocumentReader(f)
+	with bioc.biocxml.iterparse(args.inBioc) as parser, bioc.biocxml.iterwrite(args.outBioc) as writer:
 		for i,doc in enumerate(parser):
 			for passage in doc.passages:
 				passage.annotations = []

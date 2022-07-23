@@ -40,7 +40,7 @@ def convert(in_files, in_format, out_file, out_format, **kwargs):
     )
 
     if out_format == "biocxml":
-        out_bioc_handle = bioc.BioCXMLDocumentWriter(out_file)
+        out_bioc_handle = bioc.biocxml.BioCXMLDocumentWriter(out_file)
     elif out_format == "txt":
         out_txt_handle = open(out_file, "w", encoding="utf-8")
 
@@ -59,3 +59,4 @@ def convert(in_files, in_format, out_file, out_format, **kwargs):
         out_bioc_handle.close()
     elif out_format == "txt":
         out_txt_handle.close()
+

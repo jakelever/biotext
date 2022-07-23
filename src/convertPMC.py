@@ -37,7 +37,9 @@ if __name__ == '__main__':
 
 	with tempfile.NamedTemporaryFile() as tf_out:
 		out_file = tf_out.name if args.db else args.outFile
-		with bioc.BioCXMLDocumentWriter(out_file) as writer:
+
+		with bioc.biocxml.iterwrite(out_file) as writer:
+
 			tar = tarfile.open(source)
 
 			iterator = tqdm(tar) if args.verbose else tar
