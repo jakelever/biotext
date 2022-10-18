@@ -373,7 +373,7 @@ def pmcxml2bioc(
     all_xml_path_infon: bool = False,
     mark_citations: bool = False,
 ) -> Iterator[Iterable[bioc.BioCDocument]]:
-    assert not mark_citations
+    assert not mark_citations, "Currently mark_citations is disabled due to documented issue: https://github.com/jakelever/biotext/issues/9"
     """
     Convert a PMC XML file into its Bioc equivalent
 
