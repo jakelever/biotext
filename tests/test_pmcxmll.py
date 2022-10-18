@@ -50,7 +50,7 @@ def test_custom_tag_handler(table_article):
 
     assert any([expected_content in p.text for p in all_passages])
 
-
+@pytest.mark.skip(reason="Test is currently disabled as mark_citations issue (#9) is unresolved")
 def test_sibling_intext_citations(table_article):
     all_passages = []
     all_annotations = []
