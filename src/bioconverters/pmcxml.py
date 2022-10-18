@@ -371,8 +371,9 @@ def pmcxml2bioc(
     tag_handlers: Dict[str, TagHandlerFunction] = {},
     trim_sentences: bool = False,
     all_xml_path_infon: bool = False,
-    mark_citations: bool = True,
+    mark_citations: bool = False,
 ) -> Iterator[Iterable[bioc.BioCDocument]]:
+    assert not mark_citations
     """
     Convert a PMC XML file into its Bioc equivalent
 
@@ -439,6 +440,10 @@ def pmcxml2bioc(
                             for location in annotation.locations:
                                 location.offset += offset
                             passage.add_annotation(annotation)
+
+                    for annotation in passage.annotations:
+                        for location in annotation.locations:
+                            assert location.offset >= passage.offset and (location.offset+location.length < passage.offset+len(passage.text)), f"location.offset={location.offset} and passage.offset={passage.offset}"
 
                     offset += len(text_source)
                     bioc_doc.add_passage(passage)
