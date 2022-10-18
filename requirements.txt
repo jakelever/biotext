@@ -1,4 +1,4 @@
 snakemake
-bioc
+bioc>=2.0
 ftputil
 biopython
