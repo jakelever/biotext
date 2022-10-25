@@ -20,7 +20,7 @@ from datetime import datetime
 from dbutils import saveDocumentsToDatabase
 
 def download_file(url,local_filename):
-	with closing(request.urlopen(url)) as r:
+	with closing(request.urlopen(url,timeout=20)) as r:
 		with open(local_filename, 'wb') as f:
 			shutil.copyfileobj(r, f)
 
