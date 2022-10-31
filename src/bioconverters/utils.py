@@ -8,8 +8,6 @@ import bioc
 
 # XML elements to ignore the contents of
 IGNORE_LIST = [
-    "table",
-    "table-wrap",
     "xref",
     "disp-formula",
     "inline-formula",
@@ -392,7 +390,7 @@ def extract_text_chunks(
 
     Args:
         element_list: XML elements to be processed
-        passage_tags: List of tags that should be split into their own passage. Defaults to SEPERATION_LIST.
+        passage_tags: List of tags that should be split into their own passage. Defaults to SEPARATION_LIST.
         tag_handlers: Custom overloads for processing various XML tags. Defaults to {}.
 
     Returns:
