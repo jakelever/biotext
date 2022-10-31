@@ -16,7 +16,7 @@ from .utils import (
     TagHandlerFunction,
     extract_text_chunks,
     remove_brackets_without_words,
-    remove_weird_brackets_from_old_titles,
+    remove_brackets_from_titles,
     trim_sentence_lengths,
 )
 
@@ -289,7 +289,7 @@ def process_medline_file(
             title = elem.findall("./MedlineCitation/Article/ArticleTitle")
             title_text = extract_text_chunks(title, tag_handlers=tag_handlers)
             title_text = [
-                remove_weird_brackets_from_old_titles(chunk.text)
+                remove_brackets_from_titles(chunk.text)
                 for chunk in title_text
                 if chunk.text
             ]

@@ -23,7 +23,7 @@ IGNORE_LIST = [
 ]
 
 # XML elements to separate text between (into different passages)
-SEPERATION_LIST = [
+SEPARATION_LIST = [
     "title",
     "p",
     "sec",
@@ -35,7 +35,7 @@ SEPERATION_LIST = [
 ]
 
 TABLE_DELIMITER = '\t'
-TABLE_DELIMATED_TAGS = {'tr', 'th', 'td'}
+TABLE_DELIMITED_TAGS = {'tr', 'th', 'td'}
 
 
 class TextChunk:
@@ -100,9 +100,9 @@ def remove_brackets_without_words(text: str) -> str:
     return fixed
 
 
-# Some older articles have titles like "[A study of ...]."
+# Some articles have titles like "[A study of ...]."
 # This removes the brackets while retaining the full stop
-def remove_weird_brackets_from_old_titles(title_text: str) -> str:
+def remove_brackets_from_titles(title_text: str) -> str:
     title_text = title_text.strip()
     if title_text[0] == "[" and title_text[-2:] == "].":
         title_text = title_text[1:-2] + "."
@@ -353,7 +353,7 @@ def merge_text_chunks(chunk_list, annotations_map=None) -> TextChunk:
                 ]
             ):
                 join_char = ''
-            elif len(tags) == 1 and tags & TABLE_DELIMATED_TAGS and not current_chunk.is_tail:
+            elif len(tags) == 1 and tags & TABLE_DELIMITED_TAGS and not current_chunk.is_tail:
                 join_char = TABLE_DELIMITER
 
             merge.append(join_char)
@@ -381,7 +381,7 @@ def merge_text_chunks(chunk_list, annotations_map=None) -> TextChunk:
 
 def extract_text_chunks(
     element_list: Iterable[etree.Element],
-    passage_tags=SEPERATION_LIST,
+    passage_tags=SEPARATION_LIST,
     tag_handlers: Dict[str, TagHandlerFunction] = {},
     annotations_map: Optional[Dict[str, str]] = None,
 ) -> List[TextChunk]:
