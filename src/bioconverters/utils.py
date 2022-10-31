@@ -8,6 +8,8 @@ import bioc
 
 # XML elements to ignore the contents of
 IGNORE_LIST = [
+    "table",
+    "table-wrap",
     "xref",
     "disp-formula",
     "inline-formula",
