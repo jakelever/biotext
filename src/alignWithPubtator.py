@@ -5,6 +5,7 @@ from collections import defaultdict,Counter
 import re
 import sys
 import string
+from tqdm import tqdm
 
 import datetime
 def now():
@@ -41,8 +42,11 @@ if __name__ == '__main__':
 	print("Finding relevant annotations for PubMed IDs...")
 	
 	pmidToAnnotations = defaultdict(list)
+	pubtatorRowCount = 0
 	with open(args.annotations) as f:
 		for line in f:
+			pubtatorRowCount += 1
+
 			split = line.strip('\n').split('\t')
 			pmid,annotationType,conceptid,mentions,database = split
 			mentions = mentions.strip()
@@ -50,12 +54,13 @@ if __name__ == '__main__':
 			if len(mentions) > 0 and pmid in pmids:
 				pmidToAnnotations[pmid].append((annotationType,conceptid,mentions))
 
+	assert pubtatorRowCount > 0, "Unable to load any data from PubTator file (%s). Does file exist?" % args.annotations
 
 	print("Starting text alignment...")
 
 	currentID = 1
 	with bioc.biocxml.iterparse(args.inBioc) as parser, bioc.biocxml.iterwrite(args.outBioc) as writer:
-		for i,doc in enumerate(parser):
+		for i,doc in tqdm(enumerate(parser)):
 			for passage in doc.passages:
 				passage.annotations = []
 
