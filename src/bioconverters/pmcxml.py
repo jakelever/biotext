@@ -19,7 +19,7 @@ from .utils import (
     TagHandlerFunction,
     TextChunk,
     extract_text_chunks,
-    remove_weird_brackets_from_old_titles,
+    remove_brackets_from_titles,
     strip_annotation_markers,
     trim_sentence_lengths,
 )
@@ -110,7 +110,7 @@ def extract_article_content(
     assert len(title) <= 1
     title_text = extract_text_chunks(title, tag_handlers=tag_handlers)
     title_text = [
-        TextChunk(remove_weird_brackets_from_old_titles(t.text), t.xml_node) for t in title_text
+        TextChunk(remove_brackets_from_titles(t.text), t.xml_node) for t in title_text
     ]
 
     # Get the subtitle (if it's there)
@@ -119,7 +119,7 @@ def extract_article_content(
     ) + article_elem.findall("./front-stub/title-group/subtitle")
     subtitle_text = extract_text_chunks(subtitle, tag_handlers=tag_handlers)
     subtitle_text = [
-        TextChunk(remove_weird_brackets_from_old_titles(t.text), t.xml_node) for t in subtitle_text
+        TextChunk(remove_brackets_from_titles(t.text), t.xml_node) for t in subtitle_text
     ]
 
     # Extract the abstract from the paper
