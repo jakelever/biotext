@@ -373,7 +373,6 @@ def pmcxml2bioc(
     all_xml_path_infon: bool = False,
     mark_citations: bool = False,
 ) -> Iterator[Iterable[bioc.BioCDocument]]:
-    assert not mark_citations, "Currently mark_citations is disabled due to documented issue: https://github.com/jakelever/biotext/issues/9"
     """
     Convert a PMC XML file into its Bioc equivalent
 
@@ -443,7 +442,13 @@ def pmcxml2bioc(
 
                     for annotation in passage.annotations:
                         for location in annotation.locations:
-                            assert location.offset >= passage.offset and (location.offset+location.length < passage.offset+len(passage.text)), f"location.offset={location.offset} and passage.offset={passage.offset}"
+                            if location.offset < passage.offset or (
+                                location.offset + location.length
+                                >= passage.offset + len(passage.text)
+                            ):
+                                raise AssertionError(
+                                    f"annotation.id={annotation.id} location.offset={location.offset} and passage.offset={passage.offset}"
+                                )
 
                     offset += len(text_source)
                     bioc_doc.add_passage(passage)
