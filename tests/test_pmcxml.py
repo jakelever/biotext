@@ -64,10 +64,9 @@ def test_sibling_intext_citations(table_article):
 
     for doc in docs2bioc(file, 'pmcxml', trim_sentences=False, mark_citations=True):
         all_passages.extend(doc.passages)
-        all_annotations.extend(bioc.annotations(doc))
+        all_annotations.extend([a.annotation for a in bioc.annotations(doc)])
 
     for chunk in all_passages:
-        print(chunk.text)
         if 'PyMOL' in chunk.text:
             break
     assert any(
