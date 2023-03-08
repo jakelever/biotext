@@ -404,6 +404,17 @@ def test_floating_table():
     assert len(table_body[0].split(TABLE_DELIMITER)) == expected_columns * expected_rows
 
 
+def test_multilevel_table_header():
+    xml_input = data_file_path('multi-level-table-header.xml')
+    with open(xml_input, 'r') as fh:
+        xml_data = fh.read()
+    chunks = extract_text_chunks([etree.fromstring(xml_data)])
+    table_header = [c.text for c in chunks if c.xml_path.endswith('thead')]
+    assert table_header == [
+        'p53 MUTATION\tFUNCTIONAL a STATUS\tIARC DATABASE b SOMATIC TOTAL\tIARC DATABASE b SOMATIC BREAST\tIARC DATABASE b GERMLINE FAMILIES\tFEATURES c'
+    ]
+
+
 @pytest.mark.parametrize(
     'input,output',
     [

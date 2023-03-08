@@ -210,6 +210,94 @@ def get_tag_path(mapping: Dict[etree.Element, etree.Element], node: etree.Elemen
     return '/'.join((path[::-1]))
 
 
+def first_empty_index(items) -> int:
+    """
+    Return the index of the first falsy item in an iterable. Defaults to 0 if no items are falsy
+    """
+    for i, item in enumerate(items):
+        if not item:
+            return i
+    return 0
+
+
+def get_unique_child_element_index(elem: etree.Element, child_elem_type: str) -> int:
+    """
+    Get a child element from an XML parent node and ensure that 1 and exactly 1 element is returned
+
+    Args:
+        elem: the element to search children of
+        child_elem_type: the tag type of the element in question
+    """
+    indices = []
+    for i, child in enumerate(elem):
+        if child.tag == child_elem_type:
+            indices.append(i)
+    if not indices:
+        raise KeyError(f'unable to find child element with tag type = {child_elem_type}')
+    if len(indices) > 1:
+        raise ValueError(f'found multiple child elements with tag type = {child_elem_type}')
+    return indices[0]
+
+
+def normalize_table(elem: etree.Element) -> etree.Element:
+    """
+    Replace any multi-row table header with a single-row header by repeating col-spanning labels as prefixes on their sub-columns
+    """
+    header_elem_index = get_unique_child_element_index(elem, 'thead')
+    header = elem[header_elem_index]
+
+    header_cols = 0
+    header_rows = len(header)
+    for row in header:
+        for header_cell in row:
+            header_cols += int(header_cell.attrib.get('colspan', 1))
+        break
+
+    header_matrix = []
+    filled_cells = []
+    for _ in range(header_rows):
+        row = []
+        for _ in range(header_cols):
+            row.append('')
+        header_matrix.append(row)
+        filled_cells.append([0 for _ in row])
+
+    for i_row, row in enumerate(header):
+        i_col = 0
+        for header_cell in row:
+            text = str(merge_text_chunks(chunk for chunk in tag_handler(header_cell)))
+            row_cells = [r + i_row for r in range(int(header_cell.attrib.get('rowspan', 1)))]
+            col_cells = [
+                r + first_empty_index(filled_cells[i_row])
+                for r in range(int(header_cell.attrib.get('colspan', 1)))
+            ]
+
+            for r in row_cells:
+                for c in col_cells:
+                    header_matrix[r][c] = text
+                    filled_cells[r][c] = 1
+
+    for col in range(header_cols):
+        for row in range(1, header_rows)[::-1]:
+            if header_matrix[row][col] == header_matrix[row - 1][col]:
+                header_matrix[row][col] = ''
+
+    # now flatten the header rows
+    for row in header_matrix[1:]:
+        for i_col, col in enumerate(row):
+            if col:
+                header_matrix[0][i_col] += ' ' + col
+
+    result = [re.sub(r'[\s\n]+', ' ', col.strip()) for col in header_matrix[0]]
+    new_xml = []
+    for col in result:
+        new_xml.append(f'<th>{col}</th>')
+
+    new_header_elem = etree.fromstring(f'<thead><tr>{"".join(new_xml)}</tr></thead>')
+    elem[header_elem_index] = new_header_elem
+    return elem
+
+
 def tag_handler(
     elem: etree.Element, custom_handlers: Dict[str, TagHandlerFunction] = {}
 ) -> List[TextChunk]:
@@ -226,6 +314,8 @@ def tag_handler(
             return custom_handlers[elem.tag](elem, custom_handlers=custom_handlers)
         except NotImplementedError:
             pass
+    if elem.tag == 'table':
+        elem = normalize_table(elem)
     # Extract any raw text directly in XML element or just after
     head = elem.text or ""
     tail = elem.tail or ""
