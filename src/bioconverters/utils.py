@@ -319,7 +319,8 @@ def strip_annotation_markers(
         transformed_text = transformed_text[: start - offset] + transformed_text[end - offset :]
 
         # since the token place-holder is removed, must be start - 1 (and previous offset) for the new position
-        ann.add_location(bioc.BioCLocation(start - offset - 1, 0))
+        annotation_offset = max(start - offset - 1, 0)  # if annotation is the first thing in a passage it may have a -1 start, should reset to 0
+        ann.add_location(bioc.BioCLocation(annotation_offset, 0))
 
         offset += end - start
         transformed_annotations.append(ann)

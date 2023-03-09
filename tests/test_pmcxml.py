@@ -2,7 +2,7 @@ from io import StringIO
 
 import bioc
 import pytest
-import requests
+
 from bioconverters.main import docs2bioc
 from bioconverters.utils import TABLE_DELIMITER, TextChunk
 
@@ -18,6 +18,12 @@ def table_article():
 @pytest.fixture(scope='module')
 def formula_article():
     article = fetch_xml('PMC2939780', 'pmc')
+    return article
+
+
+@pytest.fixture(scope='module')
+def citation_offset_article():
+    article = fetch_xml('PMC8466798', 'pmc')
     return article
 
 
@@ -50,21 +56,26 @@ def test_custom_tag_handler(table_article):
 
     assert any([expected_content in p.text for p in all_passages])
 
-@pytest.mark.skip(reason="Test is currently disabled as mark_citations issue (#9) is unresolved")
+
 def test_sibling_intext_citations(table_article):
     all_passages = []
     all_annotations = []
     file = StringIO(table_article)
 
-    for doc in docs2bioc(file, 'pmcxml', trim_sentences=False):
+    for doc in docs2bioc(file, 'pmcxml', trim_sentences=False, mark_citations=True):
         all_passages.extend(doc.passages)
-        all_annotations.extend(bioc.annotations(doc))
+        all_annotations.extend([a.annotation for a in bioc.annotations(doc)])
 
     for chunk in all_passages:
-        print(chunk.text)
         if 'PyMOL' in chunk.text:
             break
     assert any(
         ['inspected using the graphics program PyMOL.' in chunk.text for chunk in all_passages]
     )
     assert '[14],[16],[23]\u2013[25]' in [a.infons['citation_text'] for a in all_annotations]
+
+
+def test_citation_offset(citation_offset_article):
+    # https://github.com/jakelever/biotext/issues/9
+    file = StringIO(citation_offset_article)
+    list(docs2bioc(file, 'pmcxml', trim_sentences=False, mark_citations=True))
