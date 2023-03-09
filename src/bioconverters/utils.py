@@ -316,11 +316,13 @@ def tag_handler(
         except NotImplementedError:
             pass
     if elem.tag == 'table':
-        elem = normalize_table(elem)
+        try:
+            elem = normalize_table(elem)
+        except KeyError:
+            pass  # ignore headerless tables
     # Extract any raw text directly in XML element or just after
     head = elem.text or ""
     tail = elem.tail or ""
-
     # Then get the text from all child XML nodes recursively
     child_passages = []
 
