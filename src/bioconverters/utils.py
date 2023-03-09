@@ -2,6 +2,7 @@ import re
 import unicodedata
 import uuid
 import xml.etree.cElementTree as etree
+import xml.sax.saxutils as saxutils
 from copy import copy
 from typing import Callable, Dict, Iterable, List, Optional, Tuple
 
@@ -291,7 +292,7 @@ def normalize_table(elem: etree.Element) -> etree.Element:
     result = [re.sub(r'[\s\n]+', ' ', col.strip()) for col in header_matrix[0]]
     new_xml = []
     for col in result:
-        new_xml.append(f'<th>{col}</th>')
+        new_xml.append(f'<th>{saxutils.escape(col)}</th>')
 
     new_header_elem = etree.fromstring(f'<thead><tr>{"".join(new_xml)}</tr></thead>')
     elem[header_elem_index] = new_header_elem
