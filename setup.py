@@ -6,7 +6,7 @@ with open('docs/bioconverters.md', 'r') as fh:
     long_description = fh.read()
 
 
-DEV_REQS = ['black', 'flake8', 'isort', 'mypy']
+DEV_REQS = ['black', 'flake8', 'isort', 'mypy', 'requests-cache']
 TEST_REQS = ['biopython', 'snakemake', 'ftputil', 'requests', 'pytest', 'pytest-cov', 'hypothesis']
 
 setup(
@@ -17,7 +17,7 @@ setup(
     description='Convert between NCBI pubmed/PMC and BIOC formats',
     long_description=long_description,
     long_description_content_type='text/markdown',
-    install_requires=['bioc>=2.0', 'typing_extensions'],
+    install_requires=['bioc>=2.0', 'typing_extensions', 'unidecode'],
     extras_require={'dev': DEV_REQS + TEST_REQS, 'test': TEST_REQS},
     python_requires='>=3.6',
     author='Jake Lever',
