@@ -587,4 +587,10 @@ def extract_text_chunks(
     for chunk in merged_chunks:
         chunk.xml_path = get_tag_path(mapping, chunk.xml_node)
 
+    result = []
+    for chunk in merged_chunks:
+        if chunk.text:
+            if result and result[-1].text[-1] != '\n':
+                result[-1].text = result[-1].text + '\n'
+            result.append(chunk)
     return [c for c in merged_chunks if c.text]

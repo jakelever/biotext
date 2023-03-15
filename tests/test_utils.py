@@ -188,6 +188,10 @@ GATA-1,
         'The 2-year invasive disease-free survival rate was 93.9%',
     ],
     [
+        '<sec><title>Title of a thing</title><p>paragraph content</p></sec>',
+        'Title of a thing\nparagraph content',
+    ],
+    [
         'Compared with <italic>KRAS</italic> wild type and empty vector controls, <italic>KRAS</italic> <sup>10</sup>G<sup>11</sup> and <sup>11</sup>GA<sup>12</sup> significantly enhanced in vivo tumor growth',
         'Compared with KRAS wild type and empty vector controls, KRAS 10G11 and 11GA12 significantly enhanced in vivo tumor growth',
     ],
@@ -241,7 +245,7 @@ def test_extract_figure_label():
     assert not annotations_map
     xml_paths = [c.xml_path for c in chunks]
     assert 'article/fig/label' in xml_paths
-    assert 'Figure 3' in [c.text for c in chunks if c.xml_path == 'article/fig/label']
+    assert 'Figure 3\n' in [c.text for c in chunks if c.xml_path == 'article/fig/label']
 
 
 @pytest.mark.parametrize(
@@ -404,7 +408,7 @@ def test_floating_table():
 
     assert len(table_header) == 1
     header = table_header[0].split(TABLE_DELIMITER)
-    assert header == ['Patient sample', 'Exon', 'DNA', 'Protein', 'Domain', 'Germline/ Somatic']
+    assert header == ['Patient sample', 'Exon', 'DNA', 'Protein', 'Domain', 'Germline/ Somatic\n']
 
     table_body = [c.text for c in chunks if c.xml_path.endswith('tbody')]
     assert len(table_body) == 1
@@ -418,8 +422,10 @@ def test_multilevel_table_header():
     chunks = extract_text_chunks([etree.fromstring(xml_data)])
     table_header = [c.text for c in chunks if c.xml_path.endswith('thead')]
     assert table_header == [
-        'p53 MUTATION\tFUNCTIONAL a STATUS\tIARC DATABASE b SOMATIC TOTAL\tIARC DATABASE b SOMATIC BREAST\tIARC DATABASE b GERMLINE FAMILIES\tFEATURES c'
+        'p53 MUTATION\tFUNCTIONAL a STATUS\tIARC DATABASE b SOMATIC TOTAL\tIARC DATABASE b SOMATIC BREAST\tIARC DATABASE b GERMLINE FAMILIES\tFEATURES c\n'
     ]
+    table_body = [c.text for c in chunks if c.xml_path.endswith('tbody')]
+    assert 'L130V\tALTERED\t' in table_body[0]
 
 
 @pytest.mark.parametrize(
