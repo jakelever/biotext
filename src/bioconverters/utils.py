@@ -200,6 +200,23 @@ def merge_adjacent_xref_siblings(elem_list):
     return siblings
 
 
+def drop_adjacent_sup_siblings(elem_list: List[etree.Element]) -> List[etree.Element]:
+    """
+    If there are 2 adjacent superscript tags, drop them and append their text to the preceding element
+    """
+    result = []
+
+    for elem in elem_list:
+        if elem.tag == 'sup' and len(result) > 1 and result[-1].tag == 'sup':
+            # must have a non-sup element to append to the tail of
+            text = [result[-1].text, result[-1].tail, elem.text, elem.tail]
+            result[-2].tail += ''.join([t or '' for t in text])
+            result.pop()
+        else:
+            result.append(elem)
+    return result
+
+
 def get_tag_path(mapping: Dict[etree.Element, etree.Element], node: etree.Element) -> str:
     """
     Get a string representing the path of the current XML node in the hierarchy of the XML file
@@ -328,7 +345,7 @@ def tag_handler(
     # Then get the text from all child XML nodes recursively
     child_passages = []
 
-    for child in merge_adjacent_xref_siblings(elem):
+    for child in drop_adjacent_sup_siblings(merge_adjacent_xref_siblings(elem)):
         child_passages.extend(tag_handler(child, custom_handlers=custom_handlers))
 
     if elem.tag == 'xref' and 'xref' in IGNORE_LIST:
