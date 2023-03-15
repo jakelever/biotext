@@ -210,7 +210,9 @@ def drop_adjacent_sup_siblings(elem_list: List[etree.Element]) -> List[etree.Ele
         if elem.tag == 'sup' and len(result) > 1 and result[-1].tag == 'sup':
             # must have a non-sup element to append to the tail of
             text = [result[-1].text, result[-1].tail, elem.text, elem.tail]
-            result[-2].tail += ''.join([t or '' for t in text])
+            if result[-2].tail is None:
+                result[-2].tail = ''
+            result[-2].tail += ''.join([(t or '') for t in text])
             result.pop()
         else:
             result.append(elem)
