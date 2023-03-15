@@ -123,7 +123,6 @@ GATA-1,
         'due to RB1 inhibition [<xref rid="R38" ref-type="bibr">38</xref>], the specific',
         'due to RB1 inhibition, the specific',
     ],
-    # TODO: discuss with jake best moves for cases below
     [
         'the specific HPV<sup>+</sup> gene expression',
         'the specific HPV+ gene expression',
@@ -183,6 +182,10 @@ GATA-1,
     [
         '<p>The predominant type of mutation i.e. loss of function, was well represented in the NTD. Mutations L57Q, E198G, D221H, A234T, S296R; S334P, P340L, P504L and D528G all displayed loss of function with E198G showing the greatest reduction (50% at 1 nM) and P340L also being present in AIS. The loss of transactivational ability was generally seen in both basal activity and across a wide range of DHT concentrations. A possible explanation for the loss of function of mutation A234T is that it is located at the start of the highly conserved motif (residues 234 to 247 <xref rid="pone.0032514-Betney1" ref-type="bibr">[56]</xref>) immediately carboxyl-terminal of TAU-1 which forms the interaction site for the Hsp70-interacting protein E3 ligase CHIP <xref rid="pone.0032514-He2" ref-type="bibr">[57]</xref>.</p>',
         'The predominant type of mutation i.e. loss of function, was well represented in the NTD. Mutations L57Q, E198G, D221H, A234T, S296R; S334P, P340L, P504L and D528G all displayed loss of function with E198G showing the greatest reduction (50% at 1 nM) and P340L also being present in AIS. The loss of transactivational ability was generally seen in both basal activity and across a wide range of DHT concentrations. A possible explanation for the loss of function of mutation A234T is that it is located at the start of the highly conserved motif (residues 234 to 247) immediately carboxyl-terminal of TAU-1 which forms the interaction site for the Hsp70-interacting protein E3 ligase CHIP.',
+    ],
+    [
+        'The 2-year invasive disease-free survival rate was 93·9%',
+        'The 2-year invasive disease-free survival rate was 93.9%',
     ],
 ]
 
@@ -433,6 +436,10 @@ def test_multilevel_table_header():
             'the oncometabolite R(–)-2-hydroxyglutarate at the',
             'the oncometabolite R(-)-2-hydroxyglutarate at the',
         ),
+        [
+            'The 2-year invasive disease-free survival rate was 93·9%',
+            'The 2-year invasive disease-free survival rate was 93.9%',
+        ],
     ],
 )
 def test_cleanup_text(input, output):

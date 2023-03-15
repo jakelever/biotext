@@ -122,6 +122,8 @@ def cleanup_text(text: str) -> str:
     # Remove some "control-like" characters (left/right separator)
     text = text.replace(u"\u2028", " ").replace(u"\u2029", " ")
     text = text.replace('°', ' ° ')
+    # unidecode will default convert this to * but it is more appropriate to be converted to . as that is how it is generally used in the XML articles
+    text = text.replace('·', '.')
     text = "".join(ch for ch in text if unicodedata.category(ch)[0] != "C" or ch == TABLE_DELIMITER)
     text = "".join(ch if unicodedata.category(ch)[0] != "Z" else " " for ch in text)
 
