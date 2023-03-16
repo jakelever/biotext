@@ -372,6 +372,8 @@ def tag_handler(
             return [
                 TextChunk(tail, elem, is_tail=True),
             ]
+    elif elem.tag == 'AbstractText' and elem.attrib.get('Label'):
+        head = elem.attrib['Label'] + ': ' + head
 
     return [TextChunk(head, elem)] + child_passages + [TextChunk(tail, elem, is_tail=True)]
 

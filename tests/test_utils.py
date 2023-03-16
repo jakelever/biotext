@@ -195,6 +195,10 @@ GATA-1,
         'Compared with <italic>KRAS</italic> wild type and empty vector controls, <italic>KRAS</italic> <sup>10</sup>G<sup>11</sup> and <sup>11</sup>GA<sup>12</sup> significantly enhanced in vivo tumor growth',
         'Compared with KRAS wild type and empty vector controls, KRAS 10G11 and 11GA12 significantly enhanced in vivo tumor growth',
     ],
+    [
+        '<AbstractText Label="AIM" NlmCategory="OBJECTIVE">To investigate the impact of KRAS mutation variants on the activity of regorafenib in SW48 colorectal cancer cells.</AbstractText>',
+        'AIM: To investigate the impact of KRAS mutation variants on the activity of regorafenib in SW48 colorectal cancer cells.',
+    ],
 ]
 
 
