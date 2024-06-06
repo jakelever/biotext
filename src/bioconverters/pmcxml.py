@@ -182,7 +182,7 @@ def get_meta_info_for_pmc_article(
     for a in article_id:
         if a.text and "pub-id-type" in a.attrib and a.attrib["pub-id-type"] == "pmid":
             pmid_text = a.text.strip().replace("\n", " ")
-        if a.text and "pub-id-type" in a.attrib and a.attrib["pub-id-type"] == "pmc":
+        if a.text and "pub-id-type" in a.attrib and a.attrib["pub-id-type"] in ["pmc","pmcid"]:
             pmcid_text = a.text.strip().replace("\n", " ")
         if a.text and "pub-id-type" in a.attrib and a.attrib["pub-id-type"] == "doi":
             doi_text = a.text.strip().replace("\n", " ")

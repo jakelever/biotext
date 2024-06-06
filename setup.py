@@ -11,7 +11,7 @@ TEST_REQS = ['biopython', 'snakemake', 'ftputil', 'requests', 'pytest', 'pytest-
 
 setup(
     name='bioconverters',
-    version='1.0.2',
+    version='1.0.3',
     packages=['bioconverters'],
     package_dir={'': 'src'},
     description='Convert between NCBI pubmed/PMC and BIOC formats',
