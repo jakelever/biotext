@@ -1,3 +1,4 @@
+import logging
 import re
 import unicodedata
 import uuid
@@ -43,8 +44,10 @@ SEPARATION_LIST = [
 TABLE_DELIMITER = '\t'
 TABLE_DELIMITED_TAGS = {'tr', 'th', 'td'}
 # Tags that should be pre-pended with a space on merge
-PSEUDO_SPACE_TAGS = {'sup', 'break'}
-ANNOTATION_MARKER_PATTERN = r'ANN_[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}'
+PSEUDO_SPACE_TAGS = {"sup", "break", "AbstractText"}
+ANNOTATION_MARKER_PATTERN = (
+    r"ANN_[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}"
+)
 
 
 class TextChunk:
@@ -291,13 +294,10 @@ def get_unique_child_element_index(elem: etree.Element, child_elem_type: str) ->
     return indices[0]
 
 
-def normalize_table(elem: etree.Element) -> etree.Element:
+def normalize_table_header(header) -> etree.Element:
     """
     Replace any multi-row table header with a single-row header by repeating col-spanning labels as prefixes on their sub-columns
     """
-    header_elem_index = get_unique_child_element_index(elem, 'thead')
-    header = elem[header_elem_index]
-
     header_cols = 0
     header_rows = len(header)
     for row in header:
@@ -342,11 +342,99 @@ def normalize_table(elem: etree.Element) -> etree.Element:
 
     result = [re.sub(r'[\s\n]+', ' ', col.strip()) for col in header_matrix[0]]
     new_xml = []
+
     for col in result:
         new_xml.append(f'<th>{saxutils.escape(col)}</th>')
 
     new_header_elem = etree.fromstring(f'<thead><tr>{"".join(new_xml)}</tr></thead>')
-    elem[header_elem_index] = new_header_elem
+    return new_header_elem
+
+
+def split_and_repeat_spans(table_body: etree.Element):
+    # replace any rowspans with multiple cells and repeat the content
+    total_rows = len(table_body)
+    total_cols = 0
+
+    for row in table_body:
+        total_colspans = sum(int(cell.attrib.get("colspan", 1)) for cell in row)
+        total_cols = max([total_colspans, total_cols])
+
+    assert total_cols > 0
+
+    occupancy: List[List[Optional[etree.Element]]] = []
+
+    for row in range(total_rows):
+        occupancy.append([None for _ in range(total_cols)])
+
+    for row_pos, row in enumerate(table_body):
+        for cell in row:
+            colspan = int(cell.attrib.get("colspan", 1))
+            rowspan = min(
+                [int(cell.attrib.get("rowspan", 1)), total_rows - row_pos]
+            )  # fix for bad span attribute inputs where the span may be larger than the table
+            for rowspan_i in range(rowspan):
+                col_pos = first_empty_index(occupancy[row_pos + rowspan_i], True)
+                for colspan_i in range(colspan):
+                    occ_row = occupancy[row_pos + rowspan_i]
+                    occ_row[col_pos + colspan_i] = cell
+
+    for row_i, row in enumerate(table_body):
+        # remove old cell elements
+        for child in list(row):
+            row.remove(child)
+        # replace with new cell elements
+        for cell in occupancy[row_i]:
+            if cell is not None:
+                row.append(cell)
+
+
+def normalize_table_body(table_body: etree.Element, header_size: int):
+    # remove any divisor rows (rows which span the entire width of the table) and repeat their content on the rows that are indented below them
+    divisor_rows = []
+    divider = ""
+
+    for row_i, row in enumerate(table_body):
+        if (
+            len(row) == 1
+            and row[0].attrib.get("colspan")
+            and int(row[0].attrib.get("colspan")) == header_size
+            and row_i < len(table_body) - 1
+        ):
+            # divider row
+            divider = merge_text_chunks(tag_handler(row[0])).text
+            divisor_rows.append(row)
+        elif divider:
+            # prefix current row element
+            row[0].text = f'{divider}: {row[0].text or ""}'
+
+    for row in divisor_rows:
+        table_body.remove(row)
+
+    split_and_repeat_spans(table_body)
+
+
+def normalize_table(elem: etree.Element) -> etree.Element:
+    """
+    Simplify tables to replace any multi-row or multi-col spans
+    """
+    header_elem_index = get_unique_child_element_index(elem, "thead")
+    elem[header_elem_index] = normalize_table_header(elem[header_elem_index])
+
+    header_size = len(elem[header_elem_index][0])
+
+    table_body_index = get_unique_child_element_index(elem, "tbody")
+    table_body = elem[table_body_index]
+    if header_size > 1:
+        # if header size is 1, all cells will be spans
+        normalize_table_body(table_body, header_size)
+
+    def chain_tag_names(node):
+        result = [node.tag]
+        for elem in node:
+            result.extend(chain_tag_names(elem))
+        result.append("/" + node.tag)
+        return result
+
     return elem
 
 
@@ -369,8 +457,8 @@ def tag_handler(
     if elem.tag == 'table':
         try:
             elem = normalize_table(elem)
-        except KeyError:
-            pass  # ignore headerless tables
+        except Exception as err:
+            logging.warning(f"error during table normalization, skipping: {err}")
     # Extract any raw text directly in XML element or just after
     head = elem.text or ""
     tail = elem.tail or ""
@@ -607,8 +695,16 @@ def extract_text_chunks(
         raw_text_chunks.extend(tag_handler(elem, tag_handlers))
     chunks_to_be_merged = [[]]
 
+    in_table_body = False  # don't split passages inside a table
+
     for chunk in raw_text_chunks:
-        if chunk.xml_node is not None and chunk.tag in passage_tags:
+        if chunk.tag == "tbody":
+            in_table_body = not in_table_body
+        if (
+            chunk.xml_node is not None
+            and chunk.tag in passage_tags
+            and not in_table_body
+        ):
             # start a new tag set
             chunks_to_be_merged.append([chunk])
         else:

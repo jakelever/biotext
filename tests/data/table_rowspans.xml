@@ -1,0 +1,267 @@
+<!-- PMC5029658 -->
+
+<table-wrap id="T1" orientation="portrait" position="float">
+  <label>Table 1</label>
+  <caption>
+    <title>Kinase domain mutations leading to acquired resistance</title>
+  </caption>
+  <table frame="box" rules="all">
+    <thead>
+      <tr>
+        <th align="center" valign="top" rowspan="1" colspan="1">Cell line</th>
+        <th align="center" valign="top" rowspan="1" colspan="1">Observed mutation from this study</th>
+        <th align="center" valign="top" rowspan="1" colspan="1">Variants observed by others</th>
+        <th align="center" valign="top" rowspan="1" colspan="1">Disease observed in</th>
+        <th align="center" valign="top" rowspan="1" colspan="1">Reported resistance phenotype</th>
+        <th align="center" valign="top" rowspan="1" colspan="1">Reference</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td align="left" valign="middle" rowspan="8" colspan="1">SUP-CR500-2</td>
+        <td align="left" valign="middle" rowspan="8" colspan="1">I1171S</td>
+        <td align="left" valign="middle" rowspan="2" colspan="1">I1171S</td>
+        <td align="left" valign="middle" rowspan="1" colspan="1">NPM-ALK ALCL</td>
+        <td align="left" valign="middle" rowspan="1" colspan="1">ASP-3026-R<sup>
+          <xref ref-type="table-fn" rid="tfn_001">*</xref>
+        </sup>
+      </td>
+      <td align="left" valign="top" rowspan="1" colspan="1">[        <xref rid="R39" ref-type="bibr">39</xref>]
+      </td>
+    </tr>
+    <tr>
+      <td align="left" valign="middle" rowspan="1" colspan="1">EML4-ALK NSCLC</td>
+      <td align="left" valign="middle" rowspan="1" colspan="1">Crizotinib-R<break/>
+Alectinib-R</td>
+      <td align="left" valign="top" rowspan="1" colspan="1">[        <xref rid="R38" ref-type="bibr">38</xref>]
+      </td>
+    </tr>
+    <tr>
+      <td align="left" valign="middle" rowspan="2" colspan="1">I1171T</td>
+      <td align="left" valign="middle" rowspan="1" colspan="1">NPM-ALK ALCL</td>
+      <td align="left" valign="middle" rowspan="1" colspan="1">Crizotinib-R<break/>
+Ceritinib-R<break/>
+Alectinib-R<break/>
+AP26113-R<break/>
+ASP3026-R</td>
+<td align="left" valign="top" rowspan="1" colspan="1">[  <xref rid="R39" ref-type="bibr">39</xref>,  <xref rid="R46" ref-type="bibr">46</xref>]
+</td>
+</tr>
+<tr>
+<td align="left" valign="middle" rowspan="1" colspan="1">EML4-ALK NSCLC</td>
+<td align="left" valign="middle" rowspan="1" colspan="1">Crizotinib-R<break/>
+Ceritinib-S<break/>
+Alectinib-R</td>
+<td align="left" valign="top" rowspan="1" colspan="1">[<xref rid="R36" ref-type="bibr">36</xref>,<xref rid="R43" ref-type="bibr">43</xref>&#x2013;<xref rid="R45" ref-type="bibr">45</xref>,<xref rid="R47" ref-type="bibr">47</xref>,<xref rid="R48" ref-type="bibr">48</xref>]
+</td>
+</tr>
+<tr>
+<td align="left" valign="middle" rowspan="3" colspan="1">I1171N</td>
+<td align="left" valign="middle" rowspan="1" colspan="1">NPM-ALK ALCL</td>
+<td align="left" valign="middle" rowspan="1" colspan="1">Crizotinib-R<break/>
+Ceritinib-R<break/>
+Alectinib-R<break/>
+AP26113-R<break/>
+ASP3026-S</td>
+<td align="left" valign="top" rowspan="1" colspan="1">[<xref rid="R39" ref-type="bibr">39</xref>,<xref rid="R41" ref-type="bibr">41</xref>,<xref rid="R42" ref-type="bibr">42</xref>]
+</td>
+</tr>
+<tr>
+<td align="left" valign="middle" rowspan="1" colspan="1">EML4-ALK NSCLC</td>
+<td align="left" valign="middle" rowspan="1" colspan="1">Alectinib-R</td>
+<td align="left" valign="top" rowspan="1" colspan="1">[<xref rid="R38" ref-type="bibr">38</xref>,<xref rid="R45" ref-type="bibr">45</xref>]
+</td>
+</tr>
+<tr>
+<td align="left" valign="middle" rowspan="1" colspan="1">Neuroblastoma</td>
+<td align="left" valign="middle" rowspan="1" colspan="1">Somatic</td>
+<td align="left" valign="top" rowspan="1" colspan="1">[<xref rid="R10" ref-type="bibr">10</xref>,<xref rid="R37" ref-type="bibr">37</xref>,<xref rid="R70" ref-type="bibr">70</xref>]
+</td>
+</tr>
+<tr>
+<td align="left" valign="middle" rowspan="1" colspan="1">I1171H</td>
+<td align="left" valign="middle" rowspan="1" colspan="1">EML4-ALK NSCLC</td>
+<td align="left" valign="middle" rowspan="1" colspan="1">Crizotinib-R</td>
+<td align="left" valign="top" rowspan="1" colspan="1">[<xref rid="R36" ref-type="bibr">36</xref>]
+</td>
+</tr>
+<tr>
+<td align="left" valign="middle" rowspan="12" colspan="1">SUP-LR150</td>
+<td align="left" valign="middle" rowspan="12" colspan="1">F1174L</td>
+<td align="left" valign="middle" rowspan="3" colspan="1">F1174L</td>
+<td align="left" valign="middle" rowspan="1" colspan="1">EML4-ALK NSCLC</td>
+<td align="left" valign="middle" rowspan="1" colspan="1">Crizotinib-R<break/>
+Alectinib-S</td>
+<td align="left" valign="top" rowspan="1" colspan="1">[<xref rid="R55" ref-type="bibr">55</xref>,<xref rid="R57" ref-type="bibr">57</xref>,<xref rid="R71" ref-type="bibr">71</xref>]
+</td>
+</tr>
+<tr>
+<td align="left" valign="middle" rowspan="1" colspan="1">RANBP2-ALK IMT</td>
+<td align="left" valign="middle" rowspan="1" colspan="1">Crizotinib-R</td>
+<td align="left" valign="top" rowspan="1" colspan="1">[<xref rid="R56" ref-type="bibr">56</xref>]
+</td>
+</tr>
+<tr>
+<td align="left" valign="middle" rowspan="1" colspan="1">Neuroblastoma</td>
+<td align="left" valign="middle" rowspan="1" colspan="1">Somatic</td>
+<td align="left" valign="top" rowspan="1" colspan="1">[<xref rid="R7" ref-type="bibr">7</xref>&#x2013;<xref rid="R10" ref-type="bibr">10</xref>,<xref rid="R37" ref-type="bibr">37</xref>,<xref rid="R54" ref-type="bibr">54</xref>,<xref rid="R72" ref-type="bibr">72</xref>]
+</td>
+</tr>
+<tr>
+<td align="left" valign="middle" rowspan="3" colspan="1">F1174V</td>
+<td align="left" valign="middle" rowspan="1" colspan="1">NPM-ALK ALCL</td>
+<td align="left" valign="middle" rowspan="1" colspan="1">Crizotinib-S<break/>
+Ceritinib-S<break/>
+Alectinib-R<break/>
+AP26113-S<break/>
+ASP3026-R</td>
+<td align="left" valign="top" rowspan="1" colspan="1">[<xref rid="R60" ref-type="bibr">60</xref>]
+</td>
+</tr>
+<tr>
+<td align="left" valign="middle" rowspan="1" colspan="1">EML4-ALK NSCLC</td>
+<td align="left" valign="middle" rowspan="1" colspan="1">Crizotinib-R<break/>
+Ceritinib-R</td>
+<td align="left" valign="top" rowspan="1" colspan="1">[<xref rid="R43" ref-type="bibr">43</xref>,<xref rid="R44" ref-type="bibr">44</xref>,<xref rid="R47" ref-type="bibr">47</xref>,<xref rid="R58" ref-type="bibr">58</xref>]
+</td>
+</tr>
+<tr>
+<td align="left" valign="middle" rowspan="1" colspan="1">Neuroblastoma</td>
+<td align="left" valign="middle" rowspan="1" colspan="1">Somatic</td>
+<td align="left" valign="top" rowspan="1" colspan="1">[<xref rid="R7" ref-type="bibr">7</xref>,<xref rid="R9" ref-type="bibr">9</xref>,<xref rid="R10" ref-type="bibr">10</xref>,<xref rid="R37" ref-type="bibr">37</xref>]
+</td>
+</tr>
+<tr>
+<td align="left" valign="middle" rowspan="3" colspan="1">F1174C</td>
+<td align="left" valign="middle" rowspan="1" colspan="1">NPM-ALK ALCL</td>
+<td align="left" valign="middle" rowspan="1" colspan="1">Alectinib-R</td>
+<td align="left" valign="top" rowspan="1" colspan="1">[<xref rid="R46" ref-type="bibr">46</xref>]
+</td>
+</tr>
+<tr>
+<td align="left" valign="middle" rowspan="1" colspan="1">EML4-ALK NSCLC</td>
+<td align="left" valign="middle" rowspan="1" colspan="1">Crizotinib-R<break/>
+Ceritinib-R</td>
+<td align="left" valign="top" rowspan="1" colspan="1">[<xref rid="R36" ref-type="bibr">36</xref>,<xref rid="R47" ref-type="bibr">47</xref>]
+</td>
+</tr>
+<tr>
+<td align="left" valign="middle" rowspan="1" colspan="1">Neuroblastoma</td>
+<td align="left" valign="middle" rowspan="1" colspan="1">Somatic</td>
+<td align="left" valign="top" rowspan="1" colspan="1">[<xref rid="R7" ref-type="bibr">7</xref>,<xref rid="R9" ref-type="bibr">9</xref>,<xref rid="R10" ref-type="bibr">10</xref>,<xref rid="R37" ref-type="bibr">37</xref>]
+</td>
+</tr>
+<tr>
+<td align="left" valign="middle" rowspan="2" colspan="1">F1174I</td>
+<td align="left" valign="middle" rowspan="1" colspan="1">NPM-ALK ALCL</td>
+<td align="left" valign="middle" rowspan="1" colspan="1">Crizotinib-S<break/>
+Ceritnib-S<break/>
+Alectinib-S<break/>
+AP26113-S<break/>
+ASP3026-R</td>
+<td align="left" valign="top" rowspan="1" colspan="1">[<xref rid="R39" ref-type="bibr">39</xref>]
+</td>
+</tr>
+<tr>
+<td align="left" valign="middle" rowspan="1" colspan="1">Neuroblastoma</td>
+<td align="left" valign="middle" rowspan="1" colspan="1">Somatic</td>
+<td align="left" valign="top" rowspan="1" colspan="1">[<xref rid="R10" ref-type="bibr">10</xref>,<xref rid="R37" ref-type="bibr">37</xref>,<xref rid="R62" ref-type="bibr">62</xref>]
+</td>
+</tr>
+<tr>
+<td align="left" valign="middle" rowspan="1" colspan="1">F1174S</td>
+<td align="left" valign="middle" rowspan="1" colspan="1">Neuroblastoma</td>
+<td align="left" valign="middle" rowspan="1" colspan="1">Somatic</td>
+<td align="left" valign="top" rowspan="1" colspan="1">[<xref rid="R73" ref-type="bibr">73</xref>]
+</td>
+</tr>
+<tr>
+<td align="left" valign="middle" rowspan="2" colspan="1">DHL1-CR500</td>
+<td align="left" valign="middle" rowspan="2" colspan="1">R1192P</td>
+<td align="left" valign="middle" rowspan="1" colspan="1">R1192P</td>
+<td align="left" valign="middle" rowspan="1" colspan="1">Neuroblastoma</td>
+<td align="left" valign="middle" rowspan="1" colspan="1">Germline</td>
+<td align="left" valign="top" rowspan="1" colspan="1">[<xref rid="R10" ref-type="bibr">10</xref>]
+</td>
+</tr>
+<tr>
+<td align="left" valign="middle" rowspan="1" colspan="1">R1192Q</td>
+<td align="left" valign="middle" rowspan="1" colspan="1">Uterine leiomyosarcoma</td>
+<td align="left" valign="middle" rowspan="1" colspan="1"/>
+<td align="left" valign="top" rowspan="1" colspan="1">[<xref rid="R74" ref-type="bibr">74</xref>]
+</td>
+</tr>
+<tr>
+<td align="left" valign="middle" rowspan="4" colspan="1">DHL1-LR150</td>
+<td align="left" valign="middle" rowspan="4" colspan="1">T1151M</td>
+<td align="left" valign="middle" rowspan="1" colspan="1">T1151M</td>
+<td align="left" valign="middle" rowspan="1" colspan="1">Neuroblastoma</td>
+<td align="left" valign="middle" rowspan="1" colspan="1">Germline</td>
+<td align="left" valign="top" rowspan="1" colspan="1">[<xref rid="R8" ref-type="bibr">8</xref>,<xref rid="R62" ref-type="bibr">62</xref>]
+</td>
+</tr>
+<tr>
+<td align="left" valign="middle" rowspan="1" colspan="1">T1151R</td>
+<td align="left" valign="middle" rowspan="1" colspan="1">Neuroblastoma</td>
+<td align="left" valign="middle" rowspan="1" colspan="1">Germline</td>
+<td align="left" valign="top" rowspan="1" colspan="1">[<xref rid="R75" ref-type="bibr">75</xref>]
+</td>
+</tr>
+<tr>
+<td align="left" valign="middle" rowspan="1" colspan="1">T1151K</td>
+<td align="left" valign="middle" rowspan="1" colspan="1">EML4-ALK NSCLC</td>
+<td align="left" valign="middle" rowspan="1" colspan="1">Crizotinib-R</td>
+<td align="left" valign="top" rowspan="1" colspan="1">[<xref rid="R36" ref-type="bibr">36</xref>]
+</td>
+</tr>
+<tr>
+<td align="left" valign="middle" rowspan="1" colspan="1">1151Tins</td>
+<td align="left" valign="middle" rowspan="1" colspan="1">EML4-ALK NSCLC</td>
+<td align="left" valign="middle" rowspan="1" colspan="1">Crizotinib-R<break/>
+Ceritinib-R<break/>
+AP26113-R<break/>
+ASP3026-R</td>
+<td align="left" valign="top" rowspan="1" colspan="1">[<xref rid="R25" ref-type="bibr">25</xref>,<xref rid="R47" ref-type="bibr">47</xref>,<xref rid="R58" ref-type="bibr">58</xref>,<xref rid="R61" ref-type="bibr">61</xref>]
+</td>
+</tr>
+<tr>
+<td align="left" valign="middle" rowspan="3" colspan="1">DHL1-CR500-2</td>
+<td align="left" valign="middle" rowspan="3" colspan="1">G1269A</td>
+<td align="left" valign="middle" rowspan="2" colspan="1">G1269A</td>
+<td align="left" valign="middle" rowspan="1" colspan="1">NPM-ALK ALCL</td>
+<td align="left" valign="middle" rowspan="1" colspan="1">Crizotinib-R<break/>
+Ceritinib-S<break/>
+Alectinib-R<break/>
+AP26113-S<break/>
+ASP3026-R</td>
+<td align="left" valign="top" rowspan="1" colspan="1">[<xref rid="R64" ref-type="bibr">64</xref>]
+</td>
+</tr>
+<tr>
+<td align="left" valign="middle" rowspan="1" colspan="1">EML4-ALK NSCLC</td>
+<td align="left" valign="middle" rowspan="1" colspan="1">Crizotinib-R<break/>
+Ceritinib-S<break/>
+Alectinib-R [<xref rid="R64" ref-type="bibr">64</xref>]<break/>
+Alectinib-S [<xref rid="R48" ref-type="bibr">48</xref>,<xref rid="R76" ref-type="bibr">76</xref>]<break/>
+AP26113-S<break/>
+ASP3026-R</td>
+<td align="left" valign="top" rowspan="1" colspan="1">[<xref rid="R47" ref-type="bibr">47</xref>,<xref rid="R48" ref-type="bibr">48</xref>,<xref rid="R58" ref-type="bibr">58</xref>,<xref rid="R63" ref-type="bibr">63</xref>,<xref rid="R64" ref-type="bibr">64</xref>,<xref rid="R66" ref-type="bibr">66</xref>,<xref rid="R76" ref-type="bibr">76</xref>]
+</td>
+</tr>
+<tr>
+<td align="left" valign="middle" rowspan="1" colspan="1">G1269S</td>
+<td align="left" valign="middle" rowspan="1" colspan="1">EML4-ALK NSCLC</td>
+<td align="left" valign="middle" rowspan="1" colspan="1">Crizotinib-R</td>
+<td align="left" valign="top" rowspan="1" colspan="1">[<xref rid="R36" ref-type="bibr">36</xref>,<xref rid="R55" ref-type="bibr">55</xref>]
+</td>
+</tr>
+</tbody>
+</table>
+<table-wrap-foot>
+<p>Abbreviations: ALCL = Anaplastic Large Cell Lymphoma; NSCLC = Non-Small Cell Lung Cancer; IMT = Inflammatory Myofibroblastic Tumor; R = Resistant; S = Sensitive.</p>
+<fn id="tfn_001">
+<label>*</label>
+<p>Seen by ultra-deep sequencing at low frequency.</p>
+</fn>
+</table-wrap-foot>
+</table-wrap>

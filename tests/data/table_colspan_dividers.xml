@@ -1,0 +1,202 @@
+<?xml version="1.0" ?>
+<!-- PMC7461630 -->
+<article>
+  <table-wrap id="T1" position="float" orientation="portrait">
+    <label>Table 1:</label>
+    <caption>
+      <p id="P65">Baseline characteristics</p>
+    </caption>
+    <table frame="void" rules="groups">
+      <colgroup span="1">
+        <col align="left" valign="middle" span="1"/>
+        <col align="left" valign="middle" span="1"/>
+      </colgroup>
+      <thead>
+        <tr>
+          <th align="left" valign="top" rowspan="1" colspan="1"/>
+          <th align="left" valign="top" rowspan="1" colspan="1">All patients in <italic>NTRK</italic> gene fusion-positive efficacy-evaluable population (n=54)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td align="left" valign="top" rowspan="1" colspan="1">Age, years</td>
+          <td align="left" valign="top" rowspan="1" colspan="1">58 (48–67)</td>
+        </tr>
+        <tr>
+          <td colspan="2" align="left" valign="top" rowspan="1">Sex</td>
+        </tr>
+        <tr>
+          <td align="left" valign="top" rowspan="1" colspan="1"> Female</td>
+          <td align="left" valign="top" rowspan="1" colspan="1">32 (59%)</td>
+        </tr>
+        <tr>
+          <td align="left" valign="top" rowspan="1" colspan="1"> Male</td>
+          <td align="left" valign="top" rowspan="1" colspan="1">22 (41%)</td>
+        </tr>
+        <tr>
+          <td colspan="2" align="left" valign="top" rowspan="1">Race</td>
+        </tr>
+        <tr>
+          <td align="left" valign="top" rowspan="1" colspan="1"> White</td>
+          <td align="left" valign="top" rowspan="1" colspan="1">43 (80%)</td>
+        </tr>
+        <tr>
+          <td align="left" valign="top" rowspan="1" colspan="1"> Asian</td>
+          <td align="left" valign="top" rowspan="1" colspan="1">7 (13%)</td>
+        </tr>
+        <tr>
+          <td align="left" valign="top" rowspan="1" colspan="1"> Other</td>
+          <td align="left" valign="top" rowspan="1" colspan="1">4 (7%)</td>
+        </tr>
+        <tr>
+          <td colspan="2" align="left" valign="top" rowspan="1">Eastern Cooperative Oncology Group performance status</td>
+        </tr>
+        <tr>
+          <td align="left" valign="top" rowspan="1" colspan="1"> 0</td>
+          <td align="left" valign="top" rowspan="1" colspan="1">23 (43%)</td>
+        </tr>
+        <tr>
+          <td align="left" valign="top" rowspan="1" colspan="1"> 1</td>
+          <td align="left" valign="top" rowspan="1" colspan="1">25 (46%)</td>
+        </tr>
+        <tr>
+          <td align="left" valign="top" rowspan="1" colspan="1"> 2</td>
+          <td align="left" valign="top" rowspan="1" colspan="1">6 (11%)</td>
+        </tr>
+        <tr>
+          <td colspan="2" align="left" valign="top" rowspan="1">Previous lines of systemic therapy</td>
+        </tr>
+        <tr>
+          <td align="left" valign="top" rowspan="1" colspan="1"> 0</td>
+          <td align="left" valign="top" rowspan="1" colspan="1">20 (37%)</td>
+        </tr>
+        <tr>
+          <td align="left" valign="top" rowspan="1" colspan="1"> 1</td>
+          <td align="left" valign="top" rowspan="1" colspan="1">11 (20%)</td>
+        </tr>
+        <tr>
+          <td align="left" valign="top" rowspan="1" colspan="1"> 2</td>
+          <td align="left" valign="top" rowspan="1" colspan="1">14 (26%)</td>
+        </tr>
+        <tr>
+          <td align="left" valign="top" rowspan="1" colspan="1"> 3</td>
+          <td align="left" valign="top" rowspan="1" colspan="1">4 (7%)</td>
+        </tr>
+        <tr>
+          <td align="left" valign="top" rowspan="1" colspan="1"> ≥4</td>
+          <td align="left" valign="top" rowspan="1" colspan="1">5 (9%)</td>
+        </tr>
+        <tr>
+          <td colspan="2" align="left" valign="top" rowspan="1">Previous treatment<xref rid="TFN2" ref-type="table-fn">*</xref>
+          </td>
+        </tr>
+        <tr>
+          <td align="left" valign="top" rowspan="1" colspan="1"> Chemotherapy</td>
+          <td align="left" valign="top" rowspan="1" colspan="1">46 (85%)</td>
+        </tr>
+        <tr>
+          <td align="left" valign="top" rowspan="1" colspan="1"> Targeted therapy</td>
+          <td align="left" valign="top" rowspan="1" colspan="1">13 (24%)</td>
+        </tr>
+        <tr>
+          <td align="left" valign="top" rowspan="1" colspan="1"> Hormonal therapy</td>
+          <td align="left" valign="top" rowspan="1" colspan="1">9 (17%)</td>
+        </tr>
+        <tr>
+          <td align="left" valign="top" rowspan="1" colspan="1"> Immunotherapy</td>
+          <td align="left" valign="top" rowspan="1" colspan="1">7 (13%)</td>
+        </tr>
+        <tr>
+          <td colspan="2" align="left" valign="top" rowspan="1">CNS metastases at baseline</td>
+        </tr>
+        <tr>
+          <td align="left" valign="top" rowspan="1" colspan="1"> Yes</td>
+          <td align="left" valign="top" rowspan="1" colspan="1">12 (22%)</td>
+        </tr>
+        <tr>
+          <td align="left" valign="top" rowspan="1" colspan="1"> No</td>
+          <td align="left" valign="top" rowspan="1" colspan="1">42 (78%)</td>
+        </tr>
+        <tr>
+          <td colspan="2" align="left" valign="top" rowspan="1">Previous radiotherapy to the brain</td>
+        </tr>
+        <tr>
+          <td align="left" valign="top" rowspan="1" colspan="1"> Yes</td>
+          <td align="left" valign="top" rowspan="1" colspan="1">7 (13%)</td>
+        </tr>
+        <tr>
+          <td align="left" valign="top" rowspan="1" colspan="1"> No</td>
+          <td align="left" valign="top" rowspan="1" colspan="1">47 (87%)</td>
+        </tr>
+        <tr>
+          <td colspan="2" align="left" valign="top" rowspan="1">Time from end of previous radiotherapy of the brain to first dose of entrectinib<xref rid="TFN3" ref-type="table-fn">†</xref>
+          </td>
+        </tr>
+        <tr>
+          <td align="left" valign="top" rowspan="1" colspan="1"> &lt;2 months</td>
+          <td align="left" valign="top" rowspan="1" colspan="1">2 (29%)</td>
+        </tr>
+        <tr>
+          <td align="left" valign="top" rowspan="1" colspan="1"> 2 to &lt;6 months</td>
+          <td align="left" valign="top" rowspan="1" colspan="1">4 (57%)</td>
+        </tr>
+        <tr>
+          <td align="left" valign="top" rowspan="1" colspan="1"> ≥6 months</td>
+          <td align="left" valign="top" rowspan="1" colspan="1">1 (14%)</td>
+        </tr>
+        <tr>
+          <td colspan="2" align="left" valign="top" rowspan="1">Tumour type</td>
+        </tr>
+        <tr>
+          <td align="left" valign="top" rowspan="1" colspan="1"> Sarcoma<xref rid="TFN4" ref-type="table-fn">‡</xref>
+          </td>
+          <td align="left" valign="top" rowspan="1" colspan="1">13 (24%)</td>
+        </tr>
+        <tr>
+          <td align="left" valign="top" rowspan="1" colspan="1"> NSCLC</td>
+          <td align="left" valign="top" rowspan="1" colspan="1">10 (19%)</td>
+        </tr>
+        <tr>
+          <td align="left" valign="top" rowspan="1" colspan="1"> Mammary analogue secretory carcinoma (salivary)</td>
+          <td align="left" valign="top" rowspan="1" colspan="1">7 (13%)</td>
+        </tr>
+        <tr>
+          <td align="left" valign="top" rowspan="1" colspan="1"> Breast</td>
+          <td align="left" valign="top" rowspan="1" colspan="1">6 (11%)</td>
+        </tr>
+        <tr>
+          <td align="left" valign="top" rowspan="1" colspan="1"> Thyroid</td>
+          <td align="left" valign="top" rowspan="1" colspan="1">5 (9%)</td>
+        </tr>
+        <tr>
+          <td align="left" valign="top" rowspan="1" colspan="1"> Colorectal</td>
+          <td align="left" valign="top" rowspan="1" colspan="1">4 (7%)</td>
+        </tr>
+        <tr>
+          <td align="left" valign="top" rowspan="1" colspan="1"> Neuroendocrine</td>
+          <td align="left" valign="top" rowspan="1" colspan="1">3 (6%)</td>
+        </tr>
+        <tr>
+          <td align="left" valign="top" rowspan="1" colspan="1"> Pancreatic</td>
+          <td align="left" valign="top" rowspan="1" colspan="1">3 (6%)</td>
+        </tr>
+        <tr>
+          <td align="left" valign="top" rowspan="1" colspan="1"> Gynaecological</td>
+          <td align="left" valign="top" rowspan="1" colspan="1">2 (4%)</td>
+        </tr>
+        <tr>
+          <td align="left" valign="top" rowspan="1" colspan="1">  Ovarian</td>
+          <td align="left" valign="top" rowspan="1" colspan="1">1 (2%)</td>
+        </tr>
+        <tr>
+          <td align="left" valign="top" rowspan="1" colspan="1">  Endometrial</td>
+          <td align="left" valign="top" rowspan="1" colspan="1">1 (2%)</td>
+        </tr>
+        <tr>
+          <td align="left" valign="top" rowspan="1" colspan="1"> Cholangiocarcinoma</td>
+          <td align="left" valign="top" rowspan="1" colspan="1">1 (2%)</td>
+        </tr>
+      </tbody>
+    </table>
+  </table-wrap>
+</article>

@@ -1,0 +1,232 @@
+<?xml version="1.0" ?>
+<!DOCTYPE pmc-articleset PUBLIC "-//NLM//DTD ARTICLE SET 2.0//EN" "https://dtd.nlm.nih.gov/ncbi/pmc/articleset/nlm-articleset-2.0.dtd">
+<pmc-articleset>
+  <article xmlns:xlink="http://www.w3.org/1999/xlink"
+    xmlns:mml="http://www.w3.org/1998/Math/MathML" article-type="case-report">
+    <?properties open_access?>
+    <front>
+      <journal-meta>
+        <journal-id journal-id-type="nlm-ta">Case Rep Oncol</journal-id>
+        <journal-id journal-id-type="iso-abbrev">Case Rep Oncol</journal-id>
+        <journal-id journal-id-type="publisher-id">CRO</journal-id>
+        <journal-title-group>
+          <journal-title>Case Reports in Oncology</journal-title>
+        </journal-title-group>
+        <issn pub-type="epub">1662-6575</issn>
+        <publisher>
+          <publisher-name>S. Karger AG</publisher-name>
+          <publisher-loc>Allschwilerstrasse 10, P.O. Box &#xB7; Postfach &#xB7; Case postale, CH&#x2013;4009, Basel, Switzerland &#xB7; Schweiz &#xB7; Suisse, Phone: +41 61 306 11 11, Fax: +41 61 306 12 34, karger@karger.ch</publisher-loc>
+        </publisher>
+      </journal-meta>
+      <article-meta>
+        <article-id pub-id-type="pmid">25408655</article-id>
+        <article-id pub-id-type="pmc">4209277</article-id>
+        <article-id pub-id-type="doi">10.1159/000367780</article-id>
+        <article-id pub-id-type="publisher-id">cro-0007-0628</article-id>
+        <article-categories>
+          <subj-group subj-group-type="heading">
+            <subject>Published online: September, 2014</subject>
+          </subj-group>
+        </article-categories>
+        <title-group>
+          <article-title>A Poorly Differentiated Malignant Neoplasm Lacking Lung Markers Harbors an EML4-ALK Rearrangement and Responds to Crizotinib</article-title>
+        </title-group>
+        <contrib-group>
+          <contrib contrib-type="author">
+            <name>
+              <surname>Chung</surname>
+              <given-names>Jon H.</given-names>
+            </name>
+            <xref ref-type="aff" rid="aff1">
+              <sup>a</sup>
+            </xref>
+          </contrib>
+          <contrib contrib-type="author">
+            <name>
+              <surname>Ali</surname>
+              <given-names>Siraj M.</given-names>
+            </name>
+            <xref ref-type="aff" rid="aff1">
+              <sup>a</sup>
+            </xref>
+          </contrib>
+          <contrib contrib-type="author">
+            <name>
+              <surname>Davis</surname>
+              <given-names>Jenni</given-names>
+            </name>
+            <xref ref-type="aff" rid="aff2">
+              <sup>b</sup>
+            </xref>
+          </contrib>
+          <contrib contrib-type="author">
+            <name>
+              <surname>Robstad</surname>
+              <given-names>Karl</given-names>
+            </name>
+            <xref ref-type="aff" rid="aff2">
+              <sup>b</sup>
+            </xref>
+          </contrib>
+          <contrib contrib-type="author">
+            <name>
+              <surname>McNally</surname>
+              <given-names>Richard</given-names>
+            </name>
+            <xref ref-type="aff" rid="aff3">
+              <sup>c</sup>
+            </xref>
+          </contrib>
+          <contrib contrib-type="author">
+            <name>
+              <surname>Gay</surname>
+              <given-names>Laurie M.</given-names>
+            </name>
+            <xref ref-type="aff" rid="aff1">
+              <sup>a</sup>
+            </xref>
+          </contrib>
+          <contrib contrib-type="author">
+            <name>
+              <surname>Erlich</surname>
+              <given-names>Rachel L.</given-names>
+            </name>
+            <xref ref-type="aff" rid="aff1">
+              <sup>a</sup>
+            </xref>
+          </contrib>
+          <contrib contrib-type="author">
+            <name>
+              <surname>Palma</surname>
+              <given-names>Norma A.</given-names>
+            </name>
+            <xref ref-type="aff" rid="aff1">
+              <sup>a</sup>
+            </xref>
+          </contrib>
+          <contrib contrib-type="author">
+            <name>
+              <surname>Stephens</surname>
+              <given-names>Phil J.</given-names>
+            </name>
+            <xref ref-type="aff" rid="aff2">
+              <sup>b</sup>
+            </xref>
+          </contrib>
+          <contrib contrib-type="author">
+            <name>
+              <surname>Miller</surname>
+              <given-names>Vincent A.</given-names>
+            </name>
+            <xref ref-type="aff" rid="aff2">
+              <sup>b</sup>
+            </xref>
+          </contrib>
+          <contrib contrib-type="author">
+            <name>
+              <surname>Cutugno</surname>
+              <given-names>Alfonso</given-names>
+            </name>
+            <xref ref-type="aff" rid="aff4">
+              <sup>d</sup>
+            </xref>
+          </contrib>
+          <contrib contrib-type="author">
+            <name>
+              <surname>Ross</surname>
+              <given-names>Jeffrey S.</given-names>
+            </name>
+            <xref ref-type="aff" rid="aff1">
+              <sup>a</sup>
+            </xref>
+            <xref ref-type="aff" rid="aff3">
+              <sup>c</sup>
+            </xref>
+            <xref ref-type="corresp" rid="cor1">*</xref>
+          </contrib>
+        </contrib-group>
+        <aff id="aff1">
+          <sup>a</sup>Foundation Medicine, Inc., Cambridge, Mass., USA</aff>
+        <aff id="aff2">
+          <sup>b</sup>Affliated Pathology Services, N.Y., USA</aff>
+        <aff id="aff3">
+          <sup>c</sup>Albany Medical College, Albany, N.Y., USA</aff>
+        <aff id="aff4">
+          <sup>d</sup>Cutugno Hematology Oncology, Kingston, N.Y., USA</aff>
+        <author-notes>
+          <corresp id="cor1">*Jeffrey S. Ross, Department of Pathology and Laboratory Medicine, Albany Medical College, Albany, NY (USA) E-Mail <email>rossj@mail.amc.edu</email>
+          </corresp>
+        </author-notes>
+        <pub-date pub-type="collection">
+          <season>Sep-Dec</season>
+          <year>2014</year>
+        </pub-date>
+        <pub-date pub-type="epub">
+          <day>9</day>
+          <month>9</month>
+          <year>2014</year>
+        </pub-date>
+        <pub-date pub-type="pmc-release">
+          <day>9</day>
+          <month>9</month>
+          <year>2014</year>
+        </pub-date>
+        <!-- PMC Release delay is 0 months and 0 days and was based on the
+							<pub-date pub-type="epub"/>. -->
+        <volume>7</volume>
+        <issue>3</issue>
+        <fpage>628</fpage>
+        <lpage>632</lpage>
+        <permissions>
+          <copyright-statement>Copyright &#xA9; 2014 by S. Karger AG, Basel</copyright-statement>
+          <copyright-year>2014</copyright-year>
+          <license license-type="open-access" xlink:href="http://creativecommons.org/licenses/by-nc/3.0/">
+            <license-p>This is an Open Access article licensed under the terms of the Creative Commons Attribution-NonCommercial 3.0 Unported license (CC BY-NC) (www.karger.com/OA-license), applicable to the online version of the article only. Users may download, print and share this work on the Internet for noncommercial purposes only, provided the original work is properly cited, and a link to the original work on http://www.karger.com and the terms of this license are included in any shared versions.</license-p>
+          </license>
+        </permissions>
+        <abstract>
+          <p>Suspected metastatic site lesions that are poorly differentiated present a diagnostic challenge when morphologic and immunohistochemical profiling cannot establish the primary tumor site. Here we present a patient diagnosed with both a malignant neoplasm in the lung and a right upper extremity (RUE) neoplasm of unclear histogenetic origin. Immunohistochemical staining performed on the latter specimen was inconclusive in determining the site of origin. Although the lung biopsy sample was insufficient for molecular testing, hybrid capture-based comprehensive genomic profiling (FoundationOne) identified an <italic>EML4-ALK</italic> rearrangement in the RUE lesion. Crizotinib treatment resulted in a major response in both the RUE and the lung lesions. This report illustrates the utility of comprehensive genomic profiling employed at the initial presentation of an unknown primary malignant neoplasm, which resulted in the front-line use of targeted therapy and a significant and sustained antitumor response.</p>
+        </abstract>
+        <kwd-group>
+          <title>Key Words</title>
+          <kwd>Crizotinib</kwd>
+          <kwd>ALK</kwd>
+          <kwd>Unknown primary tumor site</kwd>
+          <kwd>Poorly differentiated lung neoplasm</kwd>
+        </kwd-group>
+        <counts>
+          <fig-count count="1"/>
+          <ref-count count="12"/>
+          <page-count count="5"/>
+        </counts>
+      </article-meta>
+    </front>
+    <body>
+      <sec id="sec1_1">
+        <title>Case Presentation</title>
+        <p>A 53-year-old never-smoker Caucasian female presented with a 3-week history of worsening fatigue and severe exertional dyspnea. Physical examination identified a 3-cm nontender, hard, subcutaneous, proximal right upper extremity (RUE) mass with erythematous discoloration of the overlying skin. A 1-cm nontender, subcutaneous nodule was also identified in the left parietal area of the scalp. Positron emission tomography (PET) and computed tomography (CT) imaging revealed multiple metabolically active masses in the right lung, with the largest mass in the upper lobe measuring 5.8 &#xD7; 5.0 cm [standardized uptake value (SUV): 23.4]; a left lung mass measuring 2.3 &#xD7; 2.2 cm (SUV: 12.8) was also identified. Right hilar and mediastinal lymphadenopathy and subcarinal lymphadenopathy were also noted, with the subcarinal nodal mass measuring 4.4 &#xD7; 4.3 cm (SUV: 21.7). Extrathoracic, metabolically active lesions were also noted, including a mass located in the celiac nodal basin and a mass in the anterior right upper arm that correlated with the mass identified during physical examination. Magnetic resonance imaging of the brain showed a 3-cm transcranial lesion in the left frontal bone which was 1.8 cm thick.</p>
+      </sec>
+      <sec sec-type="methods" id="sec1_2">
+        <title>Methods</title>
+        <p>The patient underwent an endobronchial ultrasound-guided fine needle aspirate of a hilar node, which revealed a poorly differentiated malignant neoplasm that could not be further characterized definitively by ancillary studies due to insufficient sample volume. As a consequence, multiple core biopsies of the RUE mass were obtained and submitted for both pathology and hybrid capture-based comprehensive genomic profiling (FoundationOne). These NGS assay sequences of the entire coding sequence of 236 cancer-related genes and select intronic regions from 19 genes commonly rearranged in cancer.</p>
+      </sec>
+      <sec sec-type="results" id="sec1_3">
+        <title>Results</title>
+        <p>Morphologic examination of the biopsy from the RUE mass revealed a malignant neoplasm of unknown histogenesis (fig. <xref ref-type="fig" rid="F1">1a</xref>). Immunohistochemical staining was positive for vimentin but negative for epithelial and lung markers including TTF1, Napsin A, AE1/AE3, CK5, CK6, CK7, CAM5.2, and mCEA. The initial clinical impression that the RUE mass was a metastatic tumor originating from the lung could not be confirmed. Comprehensive genomic profiling revealed an <italic>EML4-ALK</italic> rearrangement (fig. <xref ref-type="fig" rid="F1">1b</xref>). The other genomic alterations included amplification of the <italic>MCL1</italic> gene and homozygous deletion of the tumor suppressor genes <italic>CDKN2A</italic> and <italic>CDKN2B</italic>. Based on the presence of the <italic>EML4-ALK</italic> rearrangement, a known oncogenic driver in a subset of pulmonary adenocarcinomas [<xref rid="B1" ref-type="bibr">1</xref>], the patient was started on crizotinib 250 mg orally twice daily.</p>
+        <p>A follow-up 1 week later suggested a marked clinical improvement, with a significant size reduction of both the right-arm and scalp lesions, which became barely palpable, as well as a symptomatic improvement. A CT scan performed 1 month after treatment initiation demonstrated a significant size reduction of the lesions in the right lung (fig. <xref ref-type="fig" rid="F1">1c, d</xref>). There was also a marked improvement in lymphadenopathy, including a significant size reduction of the subcarinal lymph node. A restaging PET scan was obtained after 2 months of therapy and showed near-complete resolution of all hypermetabolic masses (fig. <xref ref-type="fig" rid="F1">1e, f</xref>). At the last examination, 5 months after the start of crizotinib treatment, the patient was completely asymptomatic with an entirely negative examination.</p>
+      </sec>
+      <sec sec-type="discussion" id="sec1_4">
+        <title>Discussion</title>
+        <p>Our patient was diagnosed with a nonsmall cell malignant neoplasm situated in the lung, but the initial diagnostic sample obtained from the lung was insufficient for further testing. The biopsy of the RUE tumor to perform molecular profiling prevented an additional transthoracic or bronchoscopic procedure [<xref rid="B2" ref-type="bibr">2</xref>] and possibly other invasive studies to identify an anatomic site of origin. Although the pathologic findings on this RUE mass biopsy were not consistent with a metastatic lesion originating from the lung, the comprehensive NGS assay (FoundationOne) identified an <italic>EML4-ALK</italic> rearrangement, which is most frequently observed in nonsmall cell lung cancer (NSCLC) [<xref rid="B1" ref-type="bibr">1</xref>]. However, <italic>EML4-ALK</italic> rearrangements are not exclusive to NSCLC and have also been observed in colorectal carcinoma [<xref rid="B3" ref-type="bibr">3</xref>,          <xref rid="B4" ref-type="bibr">4</xref>], papillary thyroid carcinoma [<xref rid="B5" ref-type="bibr">5</xref>,          <xref rid="B6" ref-type="bibr">6</xref>], renal cell carcinoma [<xref rid="B7" ref-type="bibr">7</xref>] and breast carcinoma [<xref rid="B4" ref-type="bibr">4</xref>] as well as in inflammatory myofibroblastic tumors (IMT), which are generally considered to be a type of soft tissue sarcoma [<xref rid="B8" ref-type="bibr">8</xref>,          <xref rid="B9" ref-type="bibr">9</xref>]. Although a definitive morphologic diagnosis was not possible for our patient, the decision to treat her with crizotinib was made given the aggressive disease and the favorable responses of patients with <italic>ALK</italic>-rearranged NSCLC to crizotinib treatment [<xref rid="B10" ref-type="bibr">10</xref>]. This decision also avoided the risks and delays associated with obtaining and testing a further lung biopsy.</p>
+        <p>The patient responded to crizotinib with rapid and significant volume decreases of the masses from both sites. This concordance in response suggests that these lesions harbor a genomic alteration conferring sensitivity to crizotinib, i.e. <italic>EML4-ALK</italic> rearrangement, and are part of the same neoplastic process. However, due to insufficient sample volume from the initial diagnostic biopsy, the presence of the <italic>EML4-ALK</italic> rearrangement in the lung lesions could not be confirmed.</p>
+        <p>
+          <italic>EML4-ALK</italic> rearrangements are most frequently encountered in NSCLC and occur in approximately 7% of cases [<xref rid="B1" ref-type="bibr">1</xref>].          <italic>ALK-</italic>rearrangements, including <italic>EML4-ALK</italic> [          <xref rid="B10" ref-type="bibr">10</xref>] have been reported in 50% of IMT cases [<xref rid="B8" ref-type="bibr">8</xref>,          <xref rid="B11" ref-type="bibr">11</xref>]. Therefore, the immunophenotype coupled with the identification of an <italic>EML4-ALK</italic> genomic alteration could be consistent with a diagnosis of either poorly differentiated NSCLC, which does not stain positively for TTF1, Napsin A, or CK5/6 in 25% of cases [<xref rid="B12" ref-type="bibr">12</xref>], or IMT.</p>
+        <p>This case is an example of how genomic profiling can provide additional insight beyond an indeterminate histologic diagnosis and lead to immediate implications for treatment. It shows the promise of comprehensive genomic profiling in patients who present with advanced cancers of unknown primary site where the identification of genomic alterations may simultaneously provide additional diagnostic information and allow for targeted therapy as the first line of treatment.</p>
+      </sec>
+      <sec id="sec1_5">
+        <title>Disclosure Statement</title>
+        <p>J.H.C., S.M.A., L.M.G., R.L.E., P.J.S., N.A.P., J.S.R. and V.A.M. are employees of and have equity interest in Foundation Medicine, Inc. J.D., K.R. and A.C. have no conflicts of interest to declare. R.M. is a consultant to Foundation Medicine, Inc.</p>
+      </sec>
+    </body>
+  </article>
+</pmc-articleset>

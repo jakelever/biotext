@@ -1,0 +1,84 @@
+<table-wrap id="T3" orientation="portrait" position="float">
+        <label>Table 3</label>
+        <caption>
+          <title>FL5.12 NPM-ALK mutant IC50s</title>
+        </caption>
+        <table frame="box" rules="all">
+          <thead>
+            <tr>
+              <th colspan="2" rowspan="3" align="left" valign="top"/>
+              <th colspan="12" align="center" valign="middle" rowspan="1">FL5.12 NPM-ALK</th>
+            </tr>
+            <tr>
+              <th colspan="2" align="center" valign="middle" rowspan="1">WT</th>
+              <th colspan="2" align="center" valign="middle" rowspan="1">I1171S</th>
+              <th colspan="2" align="center" valign="middle" rowspan="1">F1174L</th>
+              <th colspan="2" align="center" valign="middle" rowspan="1">R1192P</th>
+              <th colspan="2" align="center" valign="middle" rowspan="1">T1151M</th>
+              <th colspan="2" align="center" valign="middle" rowspan="1">G1269A</th>
+            </tr>
+            <tr>
+              <th align="center" valign="middle" rowspan="1" colspan="1">IC50</th>
+              <th align="center" valign="middle" rowspan="1" colspan="1">Fold Change</th>
+              <th align="center" valign="middle" rowspan="1" colspan="1">IC50</th>
+              <th align="center" valign="middle" rowspan="1" colspan="1">Fold Change</th>
+              <th align="center" valign="middle" rowspan="1" colspan="1">IC50</th>
+              <th align="center" valign="middle" rowspan="1" colspan="1">Fold Change</th>
+              <th align="center" valign="middle" rowspan="1" colspan="1">IC50</th>
+              <th align="center" valign="middle" rowspan="1" colspan="1">Fold Change</th>
+              <th align="center" valign="middle" rowspan="1" colspan="1">IC50</th>
+              <th align="center" valign="middle" rowspan="1" colspan="1">Fold Change</th>
+              <th align="center" valign="middle" rowspan="1" colspan="1">IC50</th>
+              <th align="center" valign="middle" rowspan="1" colspan="1">Fold Change</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td rowspan="6" align="left" valign="middle" colspan="1">TKI</td>
+              <td align="left" valign="middle" rowspan="1" colspan="1">Crizotinib</td>
+              <td align="center" valign="middle" rowspan="1" colspan="1">171.85</td>
+              <td align="center" valign="middle" rowspan="1" colspan="1">1</td>
+              <td align="center" valign="middle" rowspan="1" colspan="1">345.03</td>
+              <td align="center" valign="middle" rowspan="1" colspan="1">2.01</td>
+              <td align="center" valign="middle" rowspan="1" colspan="1">347.63</td>
+              <td align="center" valign="middle" rowspan="1" colspan="1">2.02</td>
+              <td align="center" valign="middle" rowspan="1" colspan="1">421.5</td>
+              <td align="center" valign="middle" rowspan="1" colspan="1">2.45</td>
+              <td align="center" valign="middle" rowspan="1" colspan="1">346.65</td>
+              <td align="center" valign="middle" rowspan="1" colspan="1">2.02</td>
+              <td align="center" valign="middle" rowspan="1" colspan="1">871.75</td>
+              <td align="center" valign="middle" rowspan="1" colspan="1">5.07</td>
+            </tr>
+            <tr>
+              <td align="left" valign="middle" rowspan="1" colspan="1">Ceritnib</td>
+              <td align="center" valign="middle" rowspan="1" colspan="1">34.03</td>
+              <td align="center" valign="middle" rowspan="1" colspan="1">1</td>
+              <td align="center" valign="middle" rowspan="1" colspan="1">75.8</td>
+              <td align="center" valign="middle" rowspan="1" colspan="1">2.23</td>
+              <td align="center" valign="middle" rowspan="1" colspan="1">140.45</td>
+              <td align="center" valign="middle" rowspan="1" colspan="1">4.13</td>
+              <td align="center" valign="middle" rowspan="1" colspan="1">167.08</td>
+              <td align="center" valign="middle" rowspan="1" colspan="1">4.91</td>
+              <td align="center" valign="middle" rowspan="1" colspan="1">95.78</td>
+              <td align="center" valign="middle" rowspan="1" colspan="1">2.81</td>
+              <td align="center" valign="middle" rowspan="1" colspan="1">46.04</td>
+              <td align="center" valign="middle" rowspan="1" colspan="1">1.35</td>
+            </tr>
+            <tr>
+              <td align="left" valign="middle" rowspan="1" colspan="1">Alectinib</td>
+              <td align="center" valign="middle" rowspan="1" colspan="1">11.13</td>
+              <td align="center" valign="middle" rowspan="1" colspan="1">1</td>
+              <td align="center" valign="middle" rowspan="1" colspan="1">192.5</td>
+              <td align="center" valign="middle" rowspan="1" colspan="1">17.29</td>
+              <td align="center" valign="middle" rowspan="1" colspan="1">46.43</td>
+              <td align="center" valign="middle" rowspan="1" colspan="1">4.17</td>
+              <td align="center" valign="middle" rowspan="1" colspan="1">48.84</td>
+              <td align="center" valign="middle" rowspan="1" colspan="1">4.39</td>
+              <td align="center" valign="middle" rowspan="1" colspan="1">25.42</td>
+              <td align="center" valign="middle" rowspan="1" colspan="1">2.28</td>
+              <td align="center" valign="middle" rowspan="1" colspan="1">89.27</td>
+              <td align="center" valign="middle" rowspan="1" colspan="1">8.02</td>
+            </tr>
+          </tbody>
+        </table>
+      </table-wrap>

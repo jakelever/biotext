@@ -1,23 +1,18 @@
 import textwrap
 import xml.etree.cElementTree as etree
-from typing import List, Optional
+from typing import Optional
 from unittest.mock import MagicMock
-from xml.sax.saxutils import escape
 
 import pytest
 from hypothesis import given, infer
-from hypothesis import strategies as st
 
 from bioconverters.utils import (
-    TABLE_DELIMITER,
     cleanup_text,
     extract_text_chunks,
     merge_adjacent_xref_siblings,
     remove_brackets_without_words,
     strip_annotation_markers,
 )
-
-from .util import data_file_path
 
 
 @pytest.mark.parametrize(
@@ -196,8 +191,8 @@ GATA-1,
         'Compared with KRAS wild type and empty vector controls, KRAS 10G11 and 11GA12 significantly enhanced in vivo tumor growth',
     ],
     [
-        '<AbstractText Label="AIM" NlmCategory="OBJECTIVE">To investigate the impact of KRAS mutation variants on the activity of regorafenib in SW48 colorectal cancer cells.</AbstractText>',
-        'AIM: To investigate the impact of KRAS mutation variants on the activity of regorafenib in SW48 colorectal cancer cells.',
+        '<AbstractText Label="AIM" NlmCategory="OBJECTIVE">To investigate the impact of KRAS mutation variants on the activity of regorafenib in SW48 colorectal cancer cells.</AbstractText><AbstractText Label="MATERIALS &amp; METHODS" NlmCategory="METHODS">Activity of regorafenib</AbstractText>',
+        'AIM: To investigate the impact of KRAS mutation variants on the activity of regorafenib in SW48 colorectal cancer cells. MATERIALS & METHODS: Activity of regorafenib',
     ],
 ]
 
@@ -311,125 +306,6 @@ def test_strip_annotation_markers(text, annotations_map, expected_text, expected
         for loc in ann.locations:
             locations.append(loc.offset)
     assert locations == expected_locations
-
-
-@given(
-    values=st.lists(
-        st.text(alphabet=st.characters(blacklist_categories=['Cc', 'Cs'])), min_size=1, max_size=50
-    ),
-    rows=st.integers(min_value=1, max_value=3),
-    cols=st.integers(min_value=1, max_value=3),
-)
-def test_extract_delimited_table(values: List[str or int or float or None], rows: int, cols: int):
-    values = [escape(v) for v in values]
-    rows_xml = []
-    values_used = set()
-
-    for row_index in range(rows):
-        tr = []
-        for col_index in range(cols):
-            value = values[(row_index * col_index + col_index) % len(values)]
-            tr.append(
-                f'\n<td rowspan="1" colspan="1" id="cell_{row_index}_{col_index}">{value}</td>'
-            )
-            values_used.add(value)
-        rows_xml.append('\n<tr>' + "".join(tr) + '\n</tr>')
-
-    table_body_xml = '<tbody>' + "".join(rows_xml) + '\n</tbody>'
-
-    thead = []
-    for col_index in range(cols):
-        thead.append(f'<td rowspan="1" colspan="1">Column {col_index}</td>')
-    table_header_xml = '<thead><tr>' + "".join(thead) + '</tr></thead>'
-
-    table_xml = f'''
-    <?xml version="1.1" encoding="utf8" ?>
-    <article><table-wrap>
-        <object-id pub-id-type="doi">some doi url</object-id>
-        <label>Table 1</label>
-        <caption>
-            <title>The title of the table</title>
-        </caption>
-        <alternatives>
-            <graphic />
-            <table frame="hsides" rules="groups">
-            {table_header_xml}
-            {table_body_xml}
-            </table>
-        </alternatives>
-        <table-wrap-foot>
-            <fn>
-            <label/>
-            <p>some long description of the table contents in the table footer
-            </p>
-            </fn>
-        </table-wrap-foot>
-    </table-wrap></article>
-    '''
-    chunks = extract_text_chunks([etree.fromstring(table_xml.strip())])
-
-    table_header = [c.text for c in chunks if c.xml_path.endswith('thead')]
-
-    assert len(table_header) == 1
-    assert len(table_header[0].split(TABLE_DELIMITER)) == cols
-
-    table_body = [c.text for c in chunks if c.xml_path.endswith('tbody')]
-
-    if cols == 1 and rows == 1 and all([cleanup_text(v) == '' for v in values_used]):
-        # will omit the table body if it is entirely empty
-        assert not table_body
-    else:
-        assert len(table_body) == 1
-        assert len(table_body[0].split(TABLE_DELIMITER)) == cols * rows
-
-
-@pytest.mark.parametrize('xml_file,rows,cols', [('format_chars_table.xml', 1, 2)])
-def test_extract_explicit_table(xml_file, rows, cols):
-    with open(data_file_path(xml_file), 'r') as fh:
-        table_xml = fh.read()
-
-    chunks = extract_text_chunks([etree.fromstring(table_xml.strip())])
-
-    table_header = [c.text for c in chunks if c.xml_path.endswith('thead')]
-
-    assert len(table_header) == 1
-    assert len(table_header[0].split(TABLE_DELIMITER)) == cols
-
-    table_body = [c.text for c in chunks if c.xml_path.endswith('tbody')]
-    assert len(table_body) == 1
-    assert len(table_body[0].split(TABLE_DELIMITER)) == cols * rows
-
-
-def test_floating_table():
-    xml_input = data_file_path('floating_table.xml')
-    with open(xml_input, 'r') as fh:
-        xml_data = fh.read()
-    chunks = extract_text_chunks([etree.fromstring(xml_data)])
-    expected_columns = 6
-    expected_rows = 16
-
-    table_header = [c.text for c in chunks if c.xml_path.endswith('thead')]
-
-    assert len(table_header) == 1
-    header = table_header[0].split(TABLE_DELIMITER)
-    assert header == ['Patient sample', 'Exon', 'DNA', 'Protein', 'Domain', 'Germline/ Somatic\n']
-
-    table_body = [c.text for c in chunks if c.xml_path.endswith('tbody')]
-    assert len(table_body) == 1
-    assert len(table_body[0].split(TABLE_DELIMITER)) == expected_columns * expected_rows
-
-
-def test_multilevel_table_header():
-    xml_input = data_file_path('multi-level-table-header.xml')
-    with open(xml_input, 'r') as fh:
-        xml_data = fh.read()
-    chunks = extract_text_chunks([etree.fromstring(xml_data)])
-    table_header = [c.text for c in chunks if c.xml_path.endswith('thead')]
-    assert table_header == [
-        'p53 MUTATION\tFUNCTIONAL a STATUS\tIARC DATABASE b SOMATIC TOTAL\tIARC DATABASE b SOMATIC BREAST\tIARC DATABASE b GERMLINE FAMILIES\tFEATURES c\n'
-    ]
-    table_body = [c.text for c in chunks if c.xml_path.endswith('tbody')]
-    assert 'L130V\tALTERED\t' in table_body[0]
 
 
 @pytest.mark.parametrize(
