@@ -61,12 +61,18 @@ class TextChunk:
         xml_path=None,
         is_tail=False,
         is_annotation=False,
+        sections: Optional[List[str]] = None,
     ):
         self.text = text
         self.xml_node = xml_node
         self.xml_path = xml_path
         self.is_tail = is_tail
         self.is_annotation = is_annotation
+        self.sections = sections or []
+
+    @property
+    def section(self) -> str:
+        return self.sections[0] if self.sections else ""
 
     def __str__(self) -> str:
         return self.text
@@ -232,12 +238,36 @@ def get_tag_path(mapping: Dict[etree.Element, etree.Element], node: etree.Elemen
     return '/'.join((path[::-1]))
 
 
-def first_empty_index(items) -> int:
+def get_tag_section(
+    mapping: Dict[etree.Element, etree.Element], node: etree.Element
+) -> List[str]:
+    """
+    Get a string representing the section/subsection of the current XML node in the hierarchy of the XML file
+
+    Args:
+        mapping: mapping of each XML node to their parent/containing XML node
+        node: the current XML node for which we are determining the section titles
+    """
+    current_node: Optional[etree.Element] = node
+    section_name = []
+    while current_node is not None:
+        if current_node.tag == "sec":
+            titles = [t for t in current_node if t.tag == "title"]
+            if len(titles) == 1 and titles[0].text:
+                section_name.append(titles[0].text.strip())
+
+        current_node = mapping.get(current_node)
+    return section_name[::-1]
+
+
+def first_empty_index(items, strict_none=False) -> int:
     """
     Return the index of the first falsy item in an iterable. Defaults to 0 if no items are falsy
     """
     for i, item in enumerate(items):
-        if not item:
+        if not item and not strict_none:
+            return i
+        elif strict_none and item is None:
             return i
     return 0
 
@@ -590,6 +620,7 @@ def extract_text_chunks(
     mapping = build_xml_parent_mapping(element_list)
     for chunk in merged_chunks:
         chunk.xml_path = get_tag_path(mapping, chunk.xml_node)
+        chunk.sections = get_tag_section(mapping, chunk.xml_node)
 
     result = []
     for chunk in merged_chunks:

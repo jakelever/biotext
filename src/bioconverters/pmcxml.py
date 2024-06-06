@@ -33,6 +33,7 @@ allowed_subsections = {
     "authors’ contributions",
     "background",
     "case report",
+    "case presentation",
     "competing interests",
     "conclusion",
     "conclusions",
@@ -41,6 +42,7 @@ allowed_subsections = {
     "consent",
     "data analysis",
     "data collection",
+    "disclosure statement",
     "discussion",
     "ethics statement",
     "funding",
@@ -90,7 +92,7 @@ class PmcArticle(TypedDict):
     journal: str
     journalISO: str
     textSources: TextSource
-    annotations: Dict[str, str] = {}
+    annotations: Dict[str, str]
 
 
 def extract_article_content(
@@ -372,6 +374,7 @@ def pmcxml2bioc(
     trim_sentences: bool = False,
     all_xml_path_infon: bool = False,
     mark_citations: bool = False,
+    sectioning_delimiter: str = "//",
 ) -> Iterator[Iterable[bioc.BioCDocument]]:
     """
     Convert a PMC XML file into its Bioc equivalent
@@ -419,9 +422,16 @@ def pmcxml2bioc(
                     subsection_check = text_source.lower().strip("01234567890. ")
                     if subsection_check in allowed_subsections:
                         subsection = subsection_check
+                    elif chunk.section:
+                        subsection = re.sub(
+                            r"^\s*\d+(\.\d+)*\s*\.\s*", "", chunk.section.lower()
+                        )
 
                     passage.infons["section"] = group_name
                     passage.infons["subsection"] = subsection
+                    passage.infons["sectioning"] = sectioning_delimiter.join(
+                        chunk.sections
+                    )
 
                     if chunk.xml_path:
                         if all_xml_path_infon or set(chunk.xml_path.split('/')) & {

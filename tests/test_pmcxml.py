@@ -62,20 +62,65 @@ def test_sibling_intext_citations(table_article):
     all_annotations = []
     file = StringIO(table_article)
 
-    for doc in docs2bioc(file, 'pmcxml', trim_sentences=False, mark_citations=True):
+    for doc in docs2bioc(file, "pmcxml", trim_sentences=False, mark_citations=True):
         all_passages.extend(doc.passages)
         all_annotations.extend([a.annotation for a in bioc.annotations(doc)])
 
     for chunk in all_passages:
-        if 'PyMOL' in chunk.text:
+        if "PyMOL" in chunk.text:
             break
     assert any(
-        ['inspected using the graphics program PyMOL.' in chunk.text for chunk in all_passages]
+        [
+            "inspected using the graphics program PyMOL." in chunk.text
+            for chunk in all_passages
+        ]
     )
-    assert '[14],[16],[23]\u2013[25]' in [a.infons['citation_text'] for a in all_annotations]
+    assert "[14],[16],[23]\u2013[25]" in [
+        a.infons["citation_text"] for a in all_annotations
+    ]
 
 
 def test_citation_offset(citation_offset_article):
     # https://github.com/jakelever/biotext/issues/9
     file = StringIO(citation_offset_article)
-    list(docs2bioc(file, 'pmcxml', trim_sentences=False, mark_citations=True))
+    list(docs2bioc(file, "pmcxml", trim_sentences=False, mark_citations=True))
+
+
+def test_fetches_section_labels():
+    file = "tests/data/section_labels.xml"
+    parsed = list(
+        docs2bioc(file, "pmcxml", trim_sentences=False, mark_citations=False)
+    )[0]
+
+    article_sections = {
+        passage.infons.get("subsection")
+        for passage in parsed.passages
+        if passage.infons.get("section") == "article"
+    }
+    assert {
+        "discussion",
+        "results",
+        "methods",
+        "disclosure statement",
+        "case presentation",
+    } == article_sections
+
+
+def test_sectioning(citation_offset_article):
+    sectioning_delim = "//"
+    file = StringIO(citation_offset_article)
+    doc = list(
+        docs2bioc(
+            file, "pmcxml", trim_sentences=False, sectioning_delimiter=sectioning_delim
+        )
+    )[0]
+    result = {
+        p.infons.get("sectioning") for p in doc.passages if p.infons.get("sectioning")
+    }
+    print(result)
+    for expected_result in [
+        "1. Introduction",
+        "2. Results and Discussion//2.1. Effects of LSAS on Clotting Times of Normal and Deficient Human Plasmas",
+        "3. Materials and Methods//3.2. Effect of LSAS on Clotting Times of Deficient and Normal Human Plasmas",
+    ]:
+        assert expected_result in result
