@@ -56,6 +56,7 @@ class TextChunk:
     xml_path: str
     is_tail: bool = False
     is_annotation: bool = False
+    sections: List[str] = []
 
     def __init__(
         self,
@@ -213,7 +214,7 @@ def drop_adjacent_sup_siblings(elem_list: List[etree.Element]) -> List[etree.Ele
     """
     If there are 2 adjacent superscript tags, drop them and append their text to the preceding element
     """
-    result = []
+    result: List[etree.Element] = []
 
     for elem in elem_list:
         if elem.tag == 'sup' and len(result) > 1 and result[-1].tag == 'sup':
@@ -233,7 +234,7 @@ def get_tag_path(mapping: Dict[etree.Element, etree.Element], node: etree.Elemen
     Get a string representing the path of the current XML node in the hierarchy of the XML file
     """
     path = []
-    current_node = node
+    current_node: Optional[etree.Element] = node
     while current_node is not None:
         path.append(current_node.tag)
         current_node = mapping.get(current_node)
@@ -674,7 +675,7 @@ def extract_text_chunks(
     element_list: Iterable[etree.Element],
     passage_tags=SEPARATION_LIST,
     tag_handlers: Dict[str, TagHandlerFunction] = {},
-    annotations_map: Optional[Dict[str, str]] = None,
+    annotations_map: Optional[Dict[str, TextChunk]] = None,
 ) -> List[TextChunk]:
     """
     Extract and beautify text from a series of XML elements
