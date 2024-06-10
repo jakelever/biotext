@@ -1,0 +1,1217 @@
+<?xml version="1.0" ?>
+<!DOCTYPE pmc-articleset PUBLIC "-//NLM//DTD ARTICLE SET 2.0//EN" "https://dtd.nlm.nih.gov/ncbi/pmc/articleset/nlm-articleset-2.0.dtd">
+<pmc-articleset><article xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mml="http://www.w3.org/1998/Math/MathML" article-type="research-article">
+  <?properties open_access?>
+  <front>
+    <journal-meta>
+      <journal-id journal-id-type="nlm-ta">PLoS One</journal-id>
+      <journal-id journal-id-type="iso-abbrev">PLoS ONE</journal-id>
+      <journal-id journal-id-type="publisher-id">plos</journal-id>
+      <journal-id journal-id-type="pmc">plosone</journal-id>
+      <journal-title-group>
+        <journal-title>PLoS ONE</journal-title>
+      </journal-title-group>
+      <issn pub-type="epub">1932-6203</issn>
+      <publisher>
+        <publisher-name>Public Library of Science</publisher-name>
+        <publisher-loc>San Francisco, CA USA</publisher-loc>
+      </publisher>
+    </journal-meta>
+    <article-meta>
+      <article-id pub-id-type="pmid">27032107</article-id>
+      <article-id pub-id-type="pmc">4816447</article-id>
+      <article-id pub-id-type="doi">10.1371/journal.pone.0147599</article-id>
+      <article-id pub-id-type="publisher-id">PONE-D-15-00077</article-id>
+      <article-categories>
+        <subj-group subj-group-type="heading">
+          <subject>Research Article</subject>
+        </subj-group>
+        <subj-group subj-group-type="Discipline-v3">
+          <subject>Medicine and Health Sciences</subject>
+          <subj-group>
+            <subject>Oncology</subject>
+            <subj-group>
+              <subject>Cancer Treatment</subject>
+            </subj-group>
+          </subj-group>
+        </subj-group>
+        <subj-group subj-group-type="Discipline-v3">
+          <subject>Biology and Life Sciences</subject>
+          <subj-group>
+            <subject>Genetics</subject>
+            <subj-group>
+              <subject>Gene Identification and Analysis</subject>
+              <subj-group>
+                <subject>Mutation Detection</subject>
+              </subj-group>
+            </subj-group>
+          </subj-group>
+        </subj-group>
+        <subj-group subj-group-type="Discipline-v3">
+          <subject>Medicine and Health Sciences</subject>
+          <subj-group>
+            <subject>Oncology</subject>
+            <subj-group>
+              <subject>Cancer Treatment</subject>
+              <subj-group>
+                <subject>Chemotherapy</subject>
+              </subj-group>
+            </subj-group>
+          </subj-group>
+        </subj-group>
+        <subj-group subj-group-type="Discipline-v3">
+          <subject>Medicine and Health Sciences</subject>
+          <subj-group>
+            <subject>Clinical Medicine</subject>
+            <subj-group>
+              <subject>Clinical Oncology</subject>
+              <subj-group>
+                <subject>Chemotherapy</subject>
+              </subj-group>
+            </subj-group>
+          </subj-group>
+        </subj-group>
+        <subj-group subj-group-type="Discipline-v3">
+          <subject>Medicine and Health Sciences</subject>
+          <subj-group>
+            <subject>Oncology</subject>
+            <subj-group>
+              <subject>Clinical Oncology</subject>
+              <subj-group>
+                <subject>Chemotherapy</subject>
+              </subj-group>
+            </subj-group>
+          </subj-group>
+        </subj-group>
+        <subj-group subj-group-type="Discipline-v3">
+          <subject>Medicine and Health Sciences</subject>
+          <subj-group>
+            <subject>Pharmaceutics</subject>
+            <subj-group>
+              <subject>Drug Therapy</subject>
+              <subj-group>
+                <subject>Chemotherapy</subject>
+              </subj-group>
+            </subj-group>
+          </subj-group>
+        </subj-group>
+        <subj-group subj-group-type="Discipline-v3">
+          <subject>Biology and Life Sciences</subject>
+          <subj-group>
+            <subject>Genetics</subject>
+            <subj-group>
+              <subject>Mutation</subject>
+            </subj-group>
+          </subj-group>
+        </subj-group>
+        <subj-group subj-group-type="Discipline-v3">
+          <subject>Medicine and Health Sciences</subject>
+          <subj-group>
+            <subject>Oncology</subject>
+            <subj-group>
+              <subject>Cancers and Neoplasms</subject>
+              <subj-group>
+                <subject>Lung and Intrathoracic Tumors</subject>
+              </subj-group>
+            </subj-group>
+          </subj-group>
+        </subj-group>
+        <subj-group subj-group-type="Discipline-v3">
+          <subject>Research and Analysis Methods</subject>
+          <subj-group>
+            <subject>Database and Informatics Methods</subject>
+            <subj-group>
+              <subject>Biological Databases</subject>
+              <subj-group>
+                <subject>Mutation Databases</subject>
+              </subj-group>
+            </subj-group>
+          </subj-group>
+        </subj-group>
+        <subj-group subj-group-type="Discipline-v3">
+          <subject>Biology and Life Sciences</subject>
+          <subj-group>
+            <subject>Genetics</subject>
+            <subj-group>
+              <subject>Mutation</subject>
+              <subj-group>
+                <subject>Mutation Databases</subject>
+              </subj-group>
+            </subj-group>
+          </subj-group>
+        </subj-group>
+        <subj-group subj-group-type="Discipline-v3">
+          <subject>Medicine and Health Sciences</subject>
+          <subj-group>
+            <subject>Oncology</subject>
+            <subj-group>
+              <subject>Cancers and Neoplasms</subject>
+              <subj-group>
+                <subject>Lung and Intrathoracic Tumors</subject>
+                <subj-group>
+                  <subject>Non-Small Cell Lung Cancer</subject>
+                </subj-group>
+              </subj-group>
+            </subj-group>
+          </subj-group>
+        </subj-group>
+        <subj-group subj-group-type="Discipline-v3">
+          <subject>Medicine and Health Sciences</subject>
+          <subj-group>
+            <subject>Oncology</subject>
+            <subj-group>
+              <subject>Cancers and Neoplasms</subject>
+              <subj-group>
+                <subject>Carcinomas</subject>
+                <subj-group>
+                  <subject>Adenocarcinomas</subject>
+                  <subj-group>
+                    <subject>Adenocarcinoma of the Lung</subject>
+                  </subj-group>
+                </subj-group>
+              </subj-group>
+            </subj-group>
+          </subj-group>
+        </subj-group>
+        <subj-group subj-group-type="Discipline-v3">
+          <subject>Medicine and Health Sciences</subject>
+          <subj-group>
+            <subject>Oncology</subject>
+            <subj-group>
+              <subject>Cancers and Neoplasms</subject>
+              <subj-group>
+                <subject>Lung and Intrathoracic Tumors</subject>
+                <subj-group>
+                  <subject>Adenocarcinoma of the Lung</subject>
+                </subj-group>
+              </subj-group>
+            </subj-group>
+          </subj-group>
+        </subj-group>
+      </article-categories>
+      <title-group>
+        <article-title>Prospective Evaluation of First-Line Erlotinib in Advanced Non-Small Cell Lung Cancer (NSCLC) Carrying an Activating EGFR Mutation: A Multicenter Academic Phase II Study in Caucasian Patients (FIELT)</article-title>
+        <alt-title alt-title-type="running-head">First-Line Erlotinib in EGFR Mutant Lung Cancer</alt-title>
+      </title-group>
+      <contrib-group>
+        <contrib contrib-type="author">
+          <name>
+            <surname>De Gr&#xE8;ve</surname>
+            <given-names>Jacques</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff001">
+            <sup>1</sup>
+          </xref>
+          <xref ref-type="corresp" rid="cor001">*</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <name>
+            <surname>Van Meerbeeck</surname>
+            <given-names>Jan</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff002">
+            <sup>2</sup>
+          </xref>
+          <xref ref-type="author-notes" rid="currentaff001">
+            <sup>&#xA4;</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <name>
+            <surname>Vansteenkiste</surname>
+            <given-names>Johan F.</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff003">
+            <sup>3</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <name>
+            <surname>Decoster</surname>
+            <given-names>Lore</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff001">
+            <sup>1</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <name>
+            <surname>Meert</surname>
+            <given-names>Anne-Pascale</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff004">
+            <sup>4</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <name>
+            <surname>Vuylsteke</surname>
+            <given-names>Peter</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff005">
+            <sup>5</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <name>
+            <surname>Focan</surname>
+            <given-names>Christian</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff006">
+            <sup>6</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <name>
+            <surname>Canon</surname>
+            <given-names>Jean-Luc</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff007">
+            <sup>7</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <name>
+            <surname>Humblet</surname>
+            <given-names>Yves</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff008">
+            <sup>8</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <name>
+            <surname>Berchem</surname>
+            <given-names>Guy</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff009">
+            <sup>9</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <name>
+            <surname>Colinet</surname>
+            <given-names>Benoit</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff007">
+            <sup>7</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <name>
+            <surname>Galdermans</surname>
+            <given-names>Danny</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff010">
+            <sup>10</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <name>
+            <surname>Bosqu&#xE9;e</surname>
+            <given-names>Lionel</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff011">
+            <sup>11</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <name>
+            <surname>Vermeij</surname>
+            <given-names>Joanna</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff012">
+            <sup>12</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <name>
+            <surname>Dewaele</surname>
+            <given-names>Alex</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff001">
+            <sup>1</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <name>
+            <surname>Geers</surname>
+            <given-names>Caroline</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff001">
+            <sup>1</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <name>
+            <surname>Schallier</surname>
+            <given-names>Denis</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff001">
+            <sup>1</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <name>
+            <surname>Teugels</surname>
+            <given-names>Erik</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff001">
+            <sup>1</sup>
+          </xref>
+        </contrib>
+      </contrib-group>
+      <aff id="aff001"><label>1</label>
+<addr-line>Department of Medical Oncology, Oncologisch Centrum, Universitair Ziekenhuis Brussel, Brussels, Belgium</addr-line></aff>
+      <aff id="aff002"><label>2</label>
+<addr-line>Department of Thoracic Oncology, University Hospital, Gent, Belgium</addr-line></aff>
+      <aff id="aff003"><label>3</label>
+<addr-line>Department of Pneumology, University Hospital KU Leuven, Leuven, Belgium</addr-line></aff>
+      <aff id="aff004"><label>4</label>
+<addr-line>Department of Pneumology, Institut Jules Bordet, Brussels, Belgium</addr-line></aff>
+      <aff id="aff005"><label>5</label>
+<addr-line>Department of Medical Oncology, Clinique et Maternit&#xE9; Sainte-Elisabeth, Namur, Belgium</addr-line></aff>
+      <aff id="aff006"><label>6</label>
+<addr-line>Department of Medical Oncology, CHC Clinique Saint Joseph, Li&#xE8;ge, Belgium</addr-line></aff>
+      <aff id="aff007"><label>7</label>
+<addr-line>Department of Medical Oncology, Grand H&#xF4;pital de Charleroi, Charleroi, Belgium</addr-line></aff>
+      <aff id="aff008"><label>8</label>
+<addr-line>Department of Medical Oncology, Centre du Cancer de l'Universit&#xE9; Catholique de Louvain, Brussels, Belgium</addr-line></aff>
+      <aff id="aff009"><label>9</label>
+<addr-line>Department of Medical Oncology, Centre Hospitalier du Luxembourg, Luxembourg, Luxembourg</addr-line></aff>
+      <aff id="aff010"><label>10</label>
+<addr-line>Department of Medical Oncology, ZNA Middelheim Hospital, Antwerp, Belgium</addr-line></aff>
+      <aff id="aff011"><label>11</label>
+<addr-line>Department of Respiratory Medicine, CHU Sart-Tilman, Li&#xE8;ge, Belgium</addr-line></aff>
+      <aff id="aff012"><label>12</label>
+<addr-line>Department of Medical Oncology, ZNA Jan Palfijn, Merksem, Belgium</addr-line></aff>
+      <contrib-group>
+        <contrib contrib-type="editor">
+          <name>
+            <surname>Rosell</surname>
+            <given-names>Rafael</given-names>
+          </name>
+          <role>Editor</role>
+          <xref ref-type="aff" rid="edit1"/>
+        </contrib>
+      </contrib-group>
+      <aff id="edit1">
+        <addr-line>Catalan Institute of Oncology, SPAIN</addr-line>
+      </aff>
+      <author-notes>
+        <fn fn-type="COI-statement" id="coi001">
+          <p><bold>Competing Interests: </bold>The authors have declared that no competing interests exist.</p>
+        </fn>
+        <fn fn-type="con" id="contrib001">
+          <p>Conceived and designed the experiments: JDG ET. Performed the experiments: JDG JVM JFV LD APM PV CF JC YH GB BC DG LB JV AD CG DS ET. Analyzed the data: JDG LD AD ET. Contributed reagents/materials/analysis tools: JDG JVM JFV LD APM PV CF JC YH GB BC DG LB JV AD CG DS ET. Wrote the paper: JDG JVM JFV LD DS ET.</p>
+        </fn>
+        <fn fn-type="current-aff" id="currentaff001">
+          <label>&#xA4;</label>
+          <p>Current address: Department of Thoracic Oncology, Antwerp University Hospital, Edegem, Belgium</p>
+        </fn>
+        <corresp id="cor001">* E-mail: <email>jacques.degreve@uzbrussel.be</email></corresp>
+      </author-notes>
+      <pub-date pub-type="epub">
+        <day>31</day>
+        <month>3</month>
+        <year>2016</year>
+      </pub-date>
+      <pub-date pub-type="collection">
+        <year>2016</year>
+      </pub-date>
+      <volume>11</volume>
+      <issue>3</issue>
+      <elocation-id>e0147599</elocation-id>
+      <history>
+        <date date-type="received">
+          <day>6</day>
+          <month>5</month>
+          <year>2015</year>
+        </date>
+        <date date-type="accepted">
+          <day>4</day>
+          <month>1</month>
+          <year>2016</year>
+        </date>
+      </history>
+      <permissions>
+        <copyright-statement>&#xA9; 2016 De Gr&#xE8;ve et al</copyright-statement>
+        <copyright-year>2016</copyright-year>
+        <copyright-holder>De Gr&#xE8;ve et al</copyright-holder>
+        <license xlink:href="http://creativecommons.org/licenses/by/4.0/">
+          <license-p>This is an open access article distributed under the terms of the <ext-link ext-link-type="uri" xlink:href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License</ext-link>, which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.</license-p>
+        </license>
+      </permissions>
+      <self-uri content-type="pdf" xlink:type="simple" xlink:href="pone.0147599.pdf"/>
+      <abstract>
+        <sec id="sec001">
+          <title>Introduction</title>
+          <p>Epidermal Growth Factor Receptor (EGFR) tyrosine kinase inhibition is the preferred first-line treatment of advanced adenocarcinoma of the lung that harbors EGFR activating tyrosine kinase domain mutations. Most data available pertain to Asian populations in which such mutations are more prevalent. We report on the long-term results of first-line treatment with erlotinib in Caucasian patients with advanced adenocarcinoma of the lung that have a somatic EGFR mutation in their tumor.</p>
+        </sec>
+        <sec id="sec002">
+          <title>Methods</title>
+          <p>Multicenter academic prospective phase II study with erlotinib in patients with an activating EGFR tyrosine kinase (TK) domain somatic mutation (any exon encoding the kinase domain) in the tumor and no prior treatment for their advanced disease.</p>
+        </sec>
+        <sec id="sec003">
+          <title>Results</title>
+          <p>Phenotypic preselecting of 229 patients led to a high EGFR mutation detection rate of 24% of which 46 patients were included in the phase II study. With a progression free survival (PFS) of 81% at three months the study met its primary endpoint for presumed superiority over chemotherapy. With an overall median PFS of 11 months and a median overall survival (OS) of 23 months, the results compare favorably with results obtained in randomized studies using TKI in first line in EGFR mutation positive adenocarcinoma of the lung.</p>
+        </sec>
+        <sec id="sec004">
+          <title>Conclusion</title>
+          <p>The present study reinforces the use of EGFR tyrosine kinase inhibition (TKI) as a first line treatment of choice for advanced adenocarcinoma of the lung carrying an activating EGFR mutation. The mutation rate in preselected Caucasian patients is higher than previously reported. Issues relevant for clinical practice are discussed.</p>
+        </sec>
+        <sec id="sec005">
+          <title>Trial Registration</title>
+          <p>ClinicalTrials.gov <ext-link ext-link-type="uri" xlink:href="https://clinicaltrials.gov/ct2/show/NCT00339586?term=FIELT&amp;rank=1">NCT00339586</ext-link></p>
+        </sec>
+      </abstract>
+      <funding-group>
+        <funding-statement>This work was supported by the following sources of funding: Stichting Tegen Kanker STK (JDG); Wetenschappelijk Fonds Willy Gepts UZ Brussel (JDG); Cancer plan 19 Grant 29-039 (JDG); and Roche Belgium (JDG). The funders had no role in study design, data collection and analysis, decision to publish, or preparation of the manuscript.</funding-statement>
+      </funding-group>
+      <counts>
+        <fig-count count="2"/>
+        <table-count count="4"/>
+        <page-count count="14"/>
+      </counts>
+      <custom-meta-group>
+        <custom-meta id="data-availability">
+          <meta-name>Data Availability</meta-name>
+          <meta-value>All relevant data are within the paper and its Supporting Information files.</meta-value>
+        </custom-meta>
+      </custom-meta-group>
+    </article-meta>
+    <notes>
+      <title>Data Availability</title>
+      <p>All relevant data are within the paper and its Supporting Information files.</p>
+    </notes>
+  </front>
+  <body>
+    <sec sec-type="intro" id="sec006">
+      <title>Introduction</title>
+      <p>Patients with advanced non-small cell lung cancer (NSCLC) are incurable with a low probability for long-term survival. With platinum-based doublet chemotherapy a response rate of around 25% and a median OS of about 10&#x2013;12 months can be obtained in metastatic disease [<xref rid="pone.0147599.ref001" ref-type="bibr">1</xref>] corresponding to a PFS of 60% or less at 3 months [<xref rid="pone.0147599.ref002" ref-type="bibr">2</xref>]</p>
+      <p>A novel approach to the treatment of advanced NSCLC was introduced with the use of agents blocking the tyrosine kinase part of the Epidermal Growth Factor Receptor (EGFR). Some patients had dramatic responses to these EGFR tyrosine kinase inhibitors (TKI&#x2019;s) [<xref rid="pone.0147599.ref003" ref-type="bibr">3</xref>, <xref rid="pone.0147599.ref004" ref-type="bibr">4</xref>]. Ten years ago it became clear that mutations in the exons coding for the intracellular EGFR kinase domain, in particular in exon 19 and 21 highly increase the sensitivity to EGFR TKI&#x2019;s [<xref rid="pone.0147599.ref005" ref-type="bibr">5</xref>, <xref rid="pone.0147599.ref006" ref-type="bibr">6</xref>]. These mutations have been observed in 10% or less of all lung cancers tested, in 30% of adenocarcinoma of the lung if the smoking history was maximally 15 years and up to 50% in never-smokers [<xref rid="pone.0147599.ref007" ref-type="bibr">7</xref>], although these figures depend highly on the ethnicity of the population tested, being much higher in East-Asian populations than in Caucasians.</p>
+      <p>Most (90%) sensitizing mutations are found in exon 19 and 21. Mutations in exon 20 are generally not associated with increased sensitivity towards reversible TKI&#x2019;s [<xref rid="pone.0147599.ref008" ref-type="bibr">8</xref>]. The overall response rate (ORR) to TKI in EGFR mutant lung cancers varies between 60 and 90% [<xref rid="pone.0147599.ref009" ref-type="bibr">9</xref>].</p>
+      <p>Gefitinib in an Asian population [<xref rid="pone.0147599.ref010" ref-type="bibr">10</xref>, <xref rid="pone.0147599.ref011" ref-type="bibr">11</xref>], and erlotinib, in both a Caucasian [<xref rid="pone.0147599.ref012" ref-type="bibr">12</xref>] and an Asian [<xref rid="pone.0147599.ref013" ref-type="bibr">13</xref>] population, were validated as superior to chemotherapy in terms of PFS in patients whose tumors harbor sensitizing driver mutations in the EGFR gene and are therefore recommended as the preferred first-line therapies for these patients.</p>
+      <p>FIELT (First line Inhibitor of EGFR in Lung cancer Treatment) is a prospective academic study investigating the efficacy and tolerability of first-line treatment with erlotinib in newly diagnosed advanced adenocarcinoma of the lung carrying EGFR kinase domain mutations, as well as the feasibility of inserting genomic testing in a multicenter clinical setting (<xref ref-type="supplementary-material" rid="pone.0147599.s001">S1 Text</xref>). The study aimed to estimate whether first-line erlotinib could reach an efficacy threshold higher than chemotherapy.</p>
+      <p>At the time of initiation of FIELT in 2006, advanced lung cancer was treated indiscriminately with platinum-based chemotherapy and no data were available on the prospective first-line use of any EGFR TKI in phenotypically or genotypically selected NSCLC, while only retrospective data were available for gefitinib [<xref rid="pone.0147599.ref014" ref-type="bibr">14</xref>].</p>
+    </sec>
+    <sec sec-type="materials|methods" id="sec007">
+      <title>Materials and Methods</title>
+      <p>The study was an academic study registered at clinicaltrials.gov as NCT00339586 (<xref ref-type="supplementary-material" rid="pone.0147599.s001">S1 Text</xref>).</p>
+      <sec id="sec008">
+        <title>Patient eligibility</title>
+        <p>Key eligibility criteria were locally advanced or metastatic (Stage IIIB or Stage IV) adenocarcinoma of the lung. Radiotherapy and adjuvant or neo-adjuvant chemotherapy completed more than six months before inclusion were allowed. Patients should not have received previous chemotherapy for metastatic disease and had to have a smoking history of less than 15 years and have stopped smoking more than one year before diagnosis.</p>
+        <p>Measurable disease was not mandatory. An ECOG performance status of 0&#x2013;3 was required. Previously diagnosed and treated central nervous system metastases or spinal cord compression with evidence of stable disease for at least two months was permitted. Specific exclusion criteria were: pre-existing symptomatic interstitial lung disease, not related to the current malignancy, and gastrointestinal disease or concomitant food or drug intake which could impair absorption and metabolism of erlotinib. Significant ophthalmological abnormalities, especially severe dry eye syndrome, keratoconjunctivitis sicca, Sj&#xF6;gren syndrome, severe exposure keratitis or any other disorder likely to increase the risk of corneal epithelial lesions were also exclusion criteria.</p>
+        <p>Standard phase II selection criteria were applicable for organ function. Separate signed informed consents were required for mutation testing and subsequent inclusion in the erlotinib treatment phase.</p>
+      </sec>
+      <sec id="sec009">
+        <title>Study design and treatment</title>
+        <p>The study was a multicenter academic single arm phase II study in 17 university and non-university centers in Belgium and Luxemburg (NCT00339586).</p>
+        <p>The study was approved by the institutional medical ethics review board of each participating center. The study was approved by the ethics committee of the Academisch Ziekenhuis-Vrije Universiteit Brussel which was the leading ethics committee that according to Belgian law approved the study in a single opinion form. Academisch Ziekenhuis-Vrije Universiteit Brussel is the former name of the current UZ Brussel of the Vrije Universiteit Brussel (<xref ref-type="supplementary-material" rid="pone.0147599.s002">S2 Text</xref>). Participants provided a written informed consent.</p>
+      </sec>
+      <sec id="sec010">
+        <title>Mutation analysis</title>
+        <p>Patients had a central tumor EGFR mutation testing in the Laboratory of Medical and Molecular Oncology (LMMO) of the Oncologisch Centrum, UZ Brussel. Mutation analysis was performed on DNA extracted from three consecutive 10&#x3BC;m thick sections of formalin fixed and paraffin embedded material. Tissue sections were verified for the presence of a sufficient proportion of malignant cells and manually macro-dissected when necessary. The collected DNA was used to perform a hemi-nested PCR followed by a denaturing gradient gel electrophoresis (DGGE). The PCR/DGGE method requires only very small amounts of template DNA and is able to detect any mutation found in exon 18&#x2013;21, but could not reliably detect mutations in samples in which the tumor DNA represented less than 25% of the total DNA. Mutations were confirmed by Sanger sequencing, but to minimize waiting time for physicians, patients could be entered in the treatment phase of the trial, based on the DGGE results. No results had to be revoked based on the subsequent Sanger sequence. Results were delivered to the participating clinicians within two weeks except for cases in which the material was insufficient to obtain a reliable result in a first round. If a second analysis was needed for such inconclusive results, the responsible physician was informed of the delay.</p>
+      </sec>
+      <sec id="sec011">
+        <title>Treatment phase</title>
+        <p>Upon ascertainment of an EGFR mutation in the tumor sample, consenting patients started erlotinib treatment 150 mg daily plus best supportive care within one week. Any mutation found in exon 18&#x2013;21 made the patient eligible for inclusion in the treatment phase of the study. Treatment was until disease progression (RECIST definition, both for patients with or without measurable lesions) or prohibitive toxicity. Response assessments (CT imaging and physical) and ancillary parameters were scheduled at 6, 12, 18 and 24 weeks after treatment initiation, thereafter every 12 weeks.</p>
+        <p>Toxicity was scored every four weeks during treatment according to the common toxicity criteria adverse events version 3.0 [<xref rid="pone.0147599.ref015" ref-type="bibr">15</xref>].</p>
+        <p>The primary endpoint of the study was to establish a significant clinical benefit by achieving at least a 70% PFS rate at three months on erlotinib. Secondary objectives and endpoints were ORR according to RECIST criteria, response duration under erlotinib treatment, the effect on Quality of Life (QOL), ECOG performance score, weight, the PFS and OS. The QOL results will be reported elsewhere. The analysis of the primary efficacy endpoint was based on all subjects who received at least one dose of study treatment. Data analysis cut-off was done in May 2013. If scheduled follow-up evaluations were missing, patients were considered progressive, unless a later examination confirmed persistent remission.</p>
+        <p>The premises for the sample size determination were as follows. With platinum based chemotherapy, a PFS of 60% or less is obtained at 3 months follow-up in advanced NSCLC [<xref rid="pone.0147599.ref001" ref-type="bibr">1</xref>, <xref rid="pone.0147599.ref016" ref-type="bibr">16</xref>]. Taking into account the known general better tolerability of erlotinib it was proposed that if a PFS of more than 70% could be obtained at three months, then this treatment deserved further evaluation in the first-line treatment of advanced NSCLC. If the study would result in a PFS less than 50% at three months, single agent erlotinib should not be further evaluated in this setting as outcomes inferior in terms of efficacy to the current standard were not acceptable.</p>
+      </sec>
+      <sec id="sec012">
+        <title>Statistical considerations</title>
+        <p>Based on these premises, a one-step Fleming design required at least 33 patients to be included in the study (&#x3B1; = 10%; &#x3B2; = 10%). With the provision of a margin for eligibility/evaluation issues, a prospective number to be included was set at 40 patients.</p>
+        <p>PFS and OS were estimated from the date of registration until respectively the documentation of progression and the date of death, irrespective of the cause of death. Patients who had not progressed or died at the time of the analysis were censored at the date of last contact. PFS and OS were calculated according to the Kaplan-Meier method with SPSS statistical software (version 20.0; SPSS Inc., Chicago, IL). Results are presented with 95% confidence intervals (CIs).</p>
+      </sec>
+    </sec>
+    <sec sec-type="results" id="sec013">
+      <title>Results</title>
+      <sec id="sec014">
+        <title>Mutation analysis</title>
+        <p>From January 2006 through March 2010, tumor tissue from 229 phenotypically selected patients was analyzed for the presence of EGFR kinase domain mutations. Tissue area ranged from 1 mm<sup>2</sup> to 600 mm<sup>2</sup>, with 40% of the sections smaller than 5 mm<sup>2</sup> (mostly needle biopsies).</p>
+        <p>Baseline material was insufficient for analysis in 24/229 samples (10%) due to the lack of adequate material (almost no tissue material available, no tumor cells in tissue, no amplifiable DNA). An EGFR kinase domain mutation was found in 56 out of 205 evaluable patients (27% or 24% of the original phenotypically selected population) (<xref rid="pone.0147599.t001" ref-type="table">Table 1</xref>). Five mutations were previously unreported (two in exon 19, three in exon 20). The samples in which the tumor DNA was less than 25% of the total DNA represented 30% of all samples. Although we stated to the referring clinical investigators that a negative result should be considered as unreliable in these cases, we did find mutations in 23% of these cases, a similar proportion as in the overall population. A subsequent analysis with a more sensitive PNA (Peptide Nucleic Acid) PCR method [<xref rid="pone.0147599.ref017" ref-type="bibr">17</xref>] showed four more mutations (7% of all mutations). The overall sensitivity of the mutation detection method used in this study was thus 93% in evaluable samples or 90% in all samples, also considering the pathology limitations (absence of analyzable material). Other mutations found were: KRAS in 16%, BRAF in 2%, HER2 in 2%, HER3 in 0.4%, all mutually exclusive. The FIELT study flow is detailed in <xref ref-type="fig" rid="pone.0147599.g001">Fig 1</xref>.</p>
+        <fig id="pone.0147599.g001" orientation="portrait" position="float">
+          <object-id pub-id-type="doi">10.1371/journal.pone.0147599.g001</object-id>
+          <label>Fig 1</label>
+          <caption>
+            <title>FIELT study flow.</title>
+          </caption>
+          <graphic xlink:href="pone.0147599.g001"/>
+        </fig>
+        <table-wrap id="pone.0147599.t001" orientation="portrait" position="float">
+          <object-id pub-id-type="doi">10.1371/journal.pone.0147599.t001</object-id>
+          <label>Table 1</label>
+          <caption>
+            <title>Mutations found.</title>
+          </caption>
+          <alternatives>
+            <graphic id="pone.0147599.t001g" xlink:href="pone.0147599.t001"/>
+            <table frame="hsides" rules="groups">
+              <colgroup span="1">
+                <col align="left" valign="middle" span="1"/>
+                <col align="left" valign="middle" span="1"/>
+                <col align="left" valign="middle" span="1"/>
+                <col align="left" valign="middle" span="1"/>
+                <col align="left" valign="middle" span="1"/>
+              </colgroup>
+              <thead>
+                <tr>
+                  <th align="center" rowspan="1" colspan="1">Exon</th>
+                  <th align="center" colspan="2" rowspan="1">Mutations</th>
+                  <th align="center" rowspan="1" colspan="1">Times found (in COSMIC)</th>
+                  <th align="center" rowspan="1" colspan="1">DXS/COBAS<xref ref-type="table-fn" rid="t001fn001">*</xref></th>
+                </tr>
+                <tr>
+                  <th align="left" rowspan="1" colspan="1"/>
+                  <th align="left" rowspan="1" colspan="1">Nucleotide/s Change</th>
+                  <th align="left" rowspan="1" colspan="1">Amino acid/s Change</th>
+                  <th align="left" rowspan="1" colspan="1"/>
+                  <th align="left" rowspan="1" colspan="1"/>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1">
+                    <bold>18</bold>
+                  </td>
+                  <td align="left" rowspan="1" colspan="1">c.2156G&gt;C</td>
+                  <td align="left" rowspan="1" colspan="1">p.Gly719Ala</td>
+                  <td align="center" rowspan="1" colspan="1">1 (31x)</td>
+                  <td align="center" rowspan="1" colspan="1">yes/yes</td>
+                </tr>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1">
+                    <bold>19</bold>
+                  </td>
+                  <td align="left" rowspan="1" colspan="1">c.2235_2249del</td>
+                  <td align="left" rowspan="1" colspan="1">p.Glu746_Ala750del</td>
+                  <td align="center" rowspan="1" colspan="1">22 (785x)</td>
+                  <td align="center" rowspan="1" colspan="1">yes/yes</td>
+                </tr>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1"/>
+                  <td align="left" rowspan="1" colspan="1">c.2236_2250del</td>
+                  <td align="left" rowspan="1" colspan="1">p.Glu746_Ala750del</td>
+                  <td align="center" rowspan="1" colspan="1">3 (360x)</td>
+                  <td align="center" rowspan="1" colspan="1">yes/yes</td>
+                </tr>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1"/>
+                  <td align="left" rowspan="1" colspan="1">c.2237_2257delinsTCT</td>
+                  <td align="left" rowspan="1" colspan="1">p.Glu746_Pro753delinsValSer</td>
+                  <td align="center" rowspan="1" colspan="1">1 (2x)</td>
+                  <td align="center" rowspan="1" colspan="1">no/yes</td>
+                </tr>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1"/>
+                  <td align="left" rowspan="1" colspan="1">c.2237_2253delinsTTCCT</td>
+                  <td align="left" rowspan="1" colspan="1">p.Glu746_Thr751delinsValPr</td>
+                  <td align="center" rowspan="1" colspan="1">1 (2x)</td>
+                  <td align="center" rowspan="1" colspan="1">no/no</td>
+                </tr>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1"/>
+                  <td align="left" rowspan="1" colspan="1">c.2239_2248delinsC</td>
+                  <td align="left" rowspan="1" colspan="1">p.Leu747_A750del insPro</td>
+                  <td align="center" rowspan="1" colspan="1">1 (77x)</td>
+                  <td align="center" rowspan="1" colspan="1">yes/yes</td>
+                </tr>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1"/>
+                  <td align="left" rowspan="1" colspan="1">c.2240_2254del</td>
+                  <td align="left" rowspan="1" colspan="1">p.Leu747_Thr751del</td>
+                  <td align="center" rowspan="1" colspan="1">1 (51x)</td>
+                  <td align="center" rowspan="1" colspan="1">yes/yes</td>
+                </tr>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1"/>
+                  <td align="left" rowspan="1" colspan="1">c.2240_2257del</td>
+                  <td align="left" rowspan="1" colspan="1">p.Leu747_Pro753delins Ser</td>
+                  <td align="center" rowspan="1" colspan="1">2 (121x)</td>
+                  <td align="center" rowspan="1" colspan="1">yes/yes</td>
+                </tr>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1"/>
+                  <td align="left" rowspan="1" colspan="1">c.2248_2276delinsCCAAC</td>
+                  <td align="left" rowspan="1" colspan="1">p.Ala750_Ile759delinsProThr</td>
+                  <td align="center" rowspan="1" colspan="1">1 (0x)</td>
+                  <td align="center" rowspan="1" colspan="1">no/no</td>
+                </tr>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1"/>
+                  <td align="left" rowspan="1" colspan="1">c.2249_2277delinsGAAGT</td>
+                  <td align="left" rowspan="1" colspan="1">p.Ala750_Ile759del insGlySer</td>
+                  <td align="center" rowspan="1" colspan="1">1 (0x)</td>
+                  <td align="center" rowspan="1" colspan="1">no/no</td>
+                </tr>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1"/>
+                  <td align="left" rowspan="1" colspan="1">c.2253_2276del</td>
+                  <td align="left" rowspan="1" colspan="1">p.Ser752_Ile759del</td>
+                  <td align="center" rowspan="1" colspan="1">1 (5x)</td>
+                  <td align="center" rowspan="1" colspan="1">no/no</td>
+                </tr>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1">
+                    <bold>20</bold>
+                  </td>
+                  <td align="left" rowspan="1" colspan="1">c.2303_2311dup9</td>
+                  <td align="left" rowspan="1" colspan="1">p.Ser768_Asp770dup</td>
+                  <td align="center" rowspan="1" colspan="1">1 (1x)?</td>
+                  <td align="center" rowspan="1" colspan="1">no/no</td>
+                </tr>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1"/>
+                  <td align="left" rowspan="1" colspan="1">c.2319_2320insAACCAC</td>
+                  <td align="left" rowspan="1" colspan="1">p.Pro772_His773insHisAsn</td>
+                  <td align="center" rowspan="1" colspan="1">1 (0x)</td>
+                  <td align="center" rowspan="1" colspan="1">no/no</td>
+                </tr>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1"/>
+                  <td align="left" rowspan="1" colspan="1">c.2311delAinsGTCC</td>
+                  <td align="left" rowspan="1" colspan="1">p.Asn771del insValHis</td>
+                  <td align="center" rowspan="1" colspan="1">1 (0x)</td>
+                  <td align="center" rowspan="1" colspan="1">no/no</td>
+                </tr>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1"/>
+                  <td align="left" rowspan="1" colspan="1">c.2311_2312insCCA</td>
+                  <td align="left" rowspan="1" colspan="1">p.Asp770_Asn771insThr</td>
+                  <td align="center" rowspan="1" colspan="1">1 (0x)</td>
+                  <td align="center" rowspan="1" colspan="1">no/no</td>
+                </tr>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1"/>
+                  <td align="left" rowspan="1" colspan="1">c.2310_2311insGGT</td>
+                  <td align="left" rowspan="1" colspan="1">p.Asp770_Asn771insGly</td>
+                  <td align="center" rowspan="1" colspan="1">1 (x5)</td>
+                  <td align="center" rowspan="1" colspan="1">yes/yes</td>
+                </tr>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1">
+                    <bold>21</bold>
+                  </td>
+                  <td align="left" rowspan="1" colspan="1">c.2573T&gt;G</td>
+                  <td align="left" rowspan="1" colspan="1">p.Leu858Arg</td>
+                  <td align="center" rowspan="1" colspan="1">15 (1607x)</td>
+                  <td align="center" rowspan="1" colspan="1">yes/yes</td>
+                </tr>
+              </tbody>
+            </table>
+          </alternatives>
+          <table-wrap-foot>
+            <fn id="t001fn001">
+              <p>*indicates whether mutation is listed as detectable by Dxs Therascreen or COBAS.? = mutation that supposedly has been misnamed in the COSMIC database</p>
+            </fn>
+          </table-wrap-foot>
+        </table-wrap>
+        <p>Ten patients (18%) in whom an EGFR mutation was found did not enter the phase II part of the study because of various reasons: three became ineligible between an inconclusive first mutation screen and identification of the EGFR mutation in a second sample, three patients died before inclusion, one deteriorated and became ineligible and in three patients the reasons are unknown.</p>
+      </sec>
+      <sec id="sec015">
+        <title>Patient characteristics</title>
+        <p>The characteristics of the 46 patients included in the phase II study are provided in <xref rid="pone.0147599.t002" ref-type="table">Table 2</xref>. Eighty five percent of patients were female. The median age was 72 yrs. (35&#x2013;83 yrs.) and 37% of the patients were aged 75 or older. Two patients were included although not strictly fulfilling the selection criteria: one patient had a 25 pack-year of cigarette smoking history, but had since stopped smoking for 30 years and received therefore a waiver and one patient was stage IB (T2N0M0) recurrent disease after prior curative intent radiotherapy and was not any longer eligible for local curative intent treatment. Thirty eight were never smokers, seven were past smokers and one was a current smoker.</p>
+        <table-wrap id="pone.0147599.t002" orientation="portrait" position="float">
+          <object-id pub-id-type="doi">10.1371/journal.pone.0147599.t002</object-id>
+          <label>Table 2</label>
+          <caption>
+            <title>Characteristics of the 46 patients included in the phase II study and treated with erlotinib.</title>
+          </caption>
+          <alternatives>
+            <graphic id="pone.0147599.t002g" xlink:href="pone.0147599.t002"/>
+            <table frame="hsides" rules="groups">
+              <colgroup span="1">
+                <col align="left" valign="middle" span="1"/>
+                <col align="left" valign="middle" span="1"/>
+              </colgroup>
+              <tbody>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1">
+                    <bold>Age</bold>
+                  </td>
+                  <td align="left" rowspan="1" colspan="1">72 median (35&#x2013;83 yrs.)</td>
+                </tr>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1">
+                    <bold>Performance status</bold>
+                  </td>
+                  <td align="left" rowspan="1" colspan="1">PSO = 11</td>
+                </tr>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1"/>
+                  <td align="left" rowspan="1" colspan="1">PS1 = 28</td>
+                </tr>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1"/>
+                  <td align="left" rowspan="1" colspan="1">PS2 = 6</td>
+                </tr>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1"/>
+                  <td align="left" rowspan="1" colspan="1">PS3 = 1</td>
+                </tr>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1">
+                    <bold>Stage</bold>
+                  </td>
+                  <td align="left" rowspan="1" colspan="1">Stage IB = 1</td>
+                </tr>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1"/>
+                  <td align="left" rowspan="1" colspan="1">Stage IIIB = 4</td>
+                </tr>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1"/>
+                  <td align="left" rowspan="1" colspan="1">Stage IV = 41</td>
+                </tr>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1">
+                    <bold>Sex</bold>
+                  </td>
+                  <td align="left" rowspan="1" colspan="1">7 male;39 female</td>
+                </tr>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1">
+                    <bold>EGFR Mutation</bold>
+                  </td>
+                  <td align="left" rowspan="1" colspan="1">Exon 19 = 27</td>
+                </tr>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1"/>
+                  <td align="left" rowspan="1" colspan="1">Exon 21 = 15</td>
+                </tr>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1"/>
+                  <td align="left" rowspan="1" colspan="1">Exon 20 = 3</td>
+                </tr>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1"/>
+                  <td align="left" rowspan="1" colspan="1">Exon 18 = 1</td>
+                </tr>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1">
+                    <bold>Cigarette smoking history (pack years)</bold>
+                  </td>
+                  <td align="left" rowspan="1" colspan="1">Median 0 yrs. (0&#x2013;25 yrs.)</td>
+                </tr>
+              </tbody>
+            </table>
+          </alternatives>
+        </table-wrap>
+      </sec>
+      <sec id="sec016">
+        <title>Efficacy</title>
+        <p>The efficacy results are reported on intent to treat basis including the two ineligible patients. A separate analysis with these two patients removed did not alter the results.</p>
+        <p>The PFS rate (PFSR) at three months was 81% and at six months 72%. The median PFS was 11 months (95% CI = 9.7&#x2013;12.3 months) (<xref ref-type="fig" rid="pone.0147599.g002">Fig 2</xref>).</p>
+        <fig id="pone.0147599.g002" orientation="portrait" position="float">
+          <object-id pub-id-type="doi">10.1371/journal.pone.0147599.g002</object-id>
+          <label>Fig 2</label>
+          <caption>
+            <title>Survival outcome.</title>
+            <p>Kaplan-Meier curves for overall and progression free survival of the FIELT cohort.</p>
+          </caption>
+          <graphic xlink:href="pone.0147599.g002"/>
+        </fig>
+        <p>Twenty six patients achieved a partial remission (PR) (57%), one a complete remission (CR) (2%); ten a stable disease (SD) (22%) and nine had progressive disease (PD) as best response (20%). Although this was not the primary endpoint, responses were confirmed by a second measurement at least four weeks later. The clinical benefit rate (CR+PR+SD) was thus 81%. The distribution of responses was similar in exon 19 and 21 mutations.</p>
+        <p>Median duration of response was 9.7 months (2.7&#x2013;29 + months) (+ means patient alive beyond); 9.7 months for cases with objective remissions (2.7&#x2013;29+ months) and 10.3 months for those with stable disease (4.1&#x2013;23.5 months).</p>
+        <p>With a median follow-up from treatment initiation of 45 months (36&#x2013;84 months), median OS was 23 months (95% CI = 21.3&#x2013;28.6+ months) (<xref ref-type="fig" rid="pone.0147599.g002">Fig 2</xref>). For patients achieving an objective response (PR or CR), median OS was 23.9 months (3.9&#x2013;52.5 months), for patients that with SD as best response 14.5 months (3.2&#x2013;39.6 months) and for progressing patients 3.9 months (0.9&#x2013;9.2 months).</p>
+        <p>There was a numeric difference in OS between PS 0/1 and 2/3 patients: median 23 months (95%CI = 20&#x2013;26 months) vs 13 months (95%CI = 7&#x2013;21 months). The difference is statistically not significant according to log rank test p = 0.687, probably due to the small numbers.</p>
+        <p>Median overall survival was 25 months (95%CI = 20&#x2013;29 months) for the younger patients and 15 months (95%CI = 0&#x2013;30 months) OS for the elderly patients with a p-value of 0.222. Despite the numeric difference there is extensive overlap in outcomes.</p>
+        <p>A similar non-significant ratio was observed with a cut-off of 70 years (used in geriatrics) with a median OS of 26 months (95%CI = 23&#x2013;28 months) vs 20 months (95%CI = 10&#x2013;29 months)</p>
+        <p>At the time of analysis six patients were alive with median treatment duration on erlotinib of 18 months (11&#x2013;32 months) of which three had been switched to gefitinib for tolerance reasons.</p>
+        <p>Median treatment duration was 12.8 months (0.6&#x2013;33 months) and average treatment duration was 13.3 months. When we also consider the patients that were eligible, but never received erlotinib the median treatment duration is 10.4 months (0&#x2013;33 months).</p>
+        <p>Eight patients (17%) (<xref rid="pone.0147599.t003" ref-type="table">Table 3</xref>) failed within 12 weeks on erlotinib, (median PFS 2.8 months) of treatment initiation, and they were therefore considered as being <underline>de novo</underline> resistant to erlotinib. These patients had a much shorter OS of 5.6 months (1&#x2013;26 months) compared to the overall 24 months median OS of the other patients (p&lt; 0.002, two-sided). One patient however had a survival of 26 months despite an erlotinib treatment that lasted only four months, reflecting the impact of subsequent chemotherapy in this patient population. Factors that could explain a lack of response are an exon 20 mutation for two patients [<xref rid="pone.0147599.ref018" ref-type="bibr">18</xref>] and a heavy smoking history for one patient. Other past smokers benefited from erlotinib treatment albeit less than the overall study population: one 15 pack year: one 8 month PFS; one 5 pack year: one 18 month PFS; one 1 pack year, immediate progression.</p>
+        <table-wrap id="pone.0147599.t003" orientation="portrait" position="float">
+          <object-id pub-id-type="doi">10.1371/journal.pone.0147599.t003</object-id>
+          <label>Table 3</label>
+          <caption>
+            <title>Characteristics of patients that failed early on erlotinib.</title>
+          </caption>
+          <alternatives>
+            <graphic id="pone.0147599.t003g" xlink:href="pone.0147599.t003"/>
+            <table frame="hsides" rules="groups">
+              <colgroup span="1">
+                <col align="left" valign="middle" span="1"/>
+                <col align="left" valign="middle" span="1"/>
+                <col align="left" valign="middle" span="1"/>
+                <col align="left" valign="middle" span="1"/>
+                <col align="left" valign="middle" span="1"/>
+                <col align="left" valign="middle" span="1"/>
+              </colgroup>
+              <thead>
+                <tr>
+                  <th align="left" rowspan="1" colspan="1">Initials</th>
+                  <th align="left" rowspan="1" colspan="1">Sex</th>
+                  <th align="left" rowspan="1" colspan="1">Age</th>
+                  <th align="left" rowspan="1" colspan="1">EGFR mutation</th>
+                  <th align="left" rowspan="1" colspan="1">Smoking status</th>
+                  <th align="left" rowspan="1" colspan="1">Survival (months)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1">180 CV</td>
+                  <td align="left" rowspan="1" colspan="1">F</td>
+                  <td align="left" rowspan="1" colspan="1">73</td>
+                  <td align="left" rowspan="1" colspan="1">EX 19 (p.Glu746_Ala750del)</td>
+                  <td align="left" rowspan="1" colspan="1">Never</td>
+                  <td align="left" rowspan="1" colspan="1">0.9</td>
+                </tr>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1">173 LAL</td>
+                  <td align="left" rowspan="1" colspan="1">F</td>
+                  <td align="left" rowspan="1" colspan="1">72</td>
+                  <td align="left" rowspan="1" colspan="1">EX 20 (p.Asn771del insValHis)<xref ref-type="table-fn" rid="t003fn001">*</xref></td>
+                  <td align="left" rowspan="1" colspan="1">Never</td>
+                  <td align="left" rowspan="1" colspan="1">3.2</td>
+                </tr>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1">229 FM</td>
+                  <td align="left" rowspan="1" colspan="1">F</td>
+                  <td align="left" rowspan="1" colspan="1">64</td>
+                  <td align="left" rowspan="1" colspan="1">EX 19 (p.Glu746_Ala750del)</td>
+                  <td align="left" rowspan="1" colspan="1">Never</td>
+                  <td align="left" rowspan="1" colspan="1">3.7</td>
+                </tr>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1">241 DEL</td>
+                  <td align="left" rowspan="1" colspan="1">M</td>
+                  <td align="left" rowspan="1" colspan="1">78</td>
+                  <td align="left" rowspan="1" colspan="1">EX 21 p.Leu858Arg</td>
+                  <td align="left" rowspan="1" colspan="1">25 pack year</td>
+                  <td align="left" rowspan="1" colspan="1">3.9</td>
+                </tr>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1">224 FPM</td>
+                  <td align="left" rowspan="1" colspan="1">F</td>
+                  <td align="left" rowspan="1" colspan="1">42</td>
+                  <td align="left" rowspan="1" colspan="1">EX 19 p.Leu747_Pro753delins Ser</td>
+                  <td align="left" rowspan="1" colspan="1">Never</td>
+                  <td align="left" rowspan="1" colspan="1">7.4</td>
+                </tr>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1">208 VEC</td>
+                  <td align="left" rowspan="1" colspan="1">F</td>
+                  <td align="left" rowspan="1" colspan="1">48</td>
+                  <td align="left" rowspan="1" colspan="1">EX 18 p.Gly719Ala</td>
+                  <td align="left" rowspan="1" colspan="1">One year</td>
+                  <td align="left" rowspan="1" colspan="1">9.2</td>
+                </tr>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1">42 TF</td>
+                  <td align="left" rowspan="1" colspan="1">F</td>
+                  <td align="left" rowspan="1" colspan="1">38</td>
+                  <td align="left" rowspan="1" colspan="1">EX 20 p.Ser768_Asp770dup<xref ref-type="table-fn" rid="t003fn002">**</xref></td>
+                  <td align="left" rowspan="1" colspan="1">Never</td>
+                  <td align="left" rowspan="1" colspan="1">14</td>
+                </tr>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1">8 MI</td>
+                  <td align="left" rowspan="1" colspan="1">F</td>
+                  <td align="left" rowspan="1" colspan="1">35</td>
+                  <td align="left" rowspan="1" colspan="1">EX 21 p.Leu858Arg</td>
+                  <td align="left" rowspan="1" colspan="1">Never</td>
+                  <td align="left" rowspan="1" colspan="1">26.2</td>
+                </tr>
+              </tbody>
+            </table>
+          </alternatives>
+          <table-wrap-foot>
+            <fn id="t003fn001">
+              <p>* Novel mutation</p>
+            </fn>
+            <fn id="t003fn002">
+              <p>** reported once in COSMIC database; all other mutations are recurrent.</p>
+            </fn>
+            <fn id="t003fn003">
+              <p>PY: pack years; F: female; M: male; ex: exon</p>
+            </fn>
+          </table-wrap-foot>
+        </table-wrap>
+        <p>Some never smokers with an exon 19 deletion mutation were also <underline>de novo</underline> resistant (<xref rid="pone.0147599.t003" ref-type="table">Table 3</xref>).</p>
+        <p>One patient with an exon 18 mutation that is generally sensitive to EGFR TKI [<xref rid="pone.0147599.ref019" ref-type="bibr">19</xref>], failed immediately, received one second line of therapy and survived for 9 months.</p>
+      </sec>
+      <sec id="sec017">
+        <title>Post-study treatment</title>
+        <p>All patients had stopped erlotinib treatment at the time of analysis. Second- and further- lines of treatment were as reported by the participating centers. Twenty-nine (64%) of the 45 patients for whom the information was available received one or more second or further line treatments. For sixteen patients (36%) no second-line treatment was reported. For one patient the information was not available. Seventeen of the 29 (59%; 38% of total) received only one second-line therapy, nine (31%) received also a third-line and three (10%) also received also a fourth-line. Of the 29 patients who did receive further therapy, 17 received a targeted agent (7 gefitinib, 9 afatinib, one continued erlotinib beyond progression).</p>
+        <p>Seventeen patients received chemotherapy, of which ten a platinum-based doublet. Seven patients received only (sequential) single agent chemotherapies. Three of these patients were more than 75 years old. Four patients received radiotherapy to the brain (three) and the chest (one).</p>
+      </sec>
+      <sec id="sec018">
+        <title>Safety</title>
+        <p>Treatment with erlotinib was generally well tolerated with manageable toxicity as reported by the participating investigators (<xref rid="pone.0147599.t004" ref-type="table">Table 4</xref>). One patient died without disease progression and one stopped because of skin toxicity while still responding after 18.9 months of treatment and subsequently received gefitinib with a continued sustained response and good tolerance.</p>
+        <table-wrap id="pone.0147599.t004" orientation="portrait" position="float">
+          <object-id pub-id-type="doi">10.1371/journal.pone.0147599.t004</object-id>
+          <label>Table 4</label>
+          <caption>
+            <title>Common toxicities.</title>
+          </caption>
+          <alternatives>
+            <graphic id="pone.0147599.t004g" xlink:href="pone.0147599.t004"/>
+            <table frame="hsides" rules="groups">
+              <colgroup span="1">
+                <col align="left" valign="middle" span="1"/>
+                <col align="left" valign="middle" span="1"/>
+                <col align="left" valign="middle" span="1"/>
+                <col align="left" valign="middle" span="1"/>
+              </colgroup>
+              <thead>
+                <tr>
+                  <th align="center" rowspan="1" colspan="1"/>
+                  <th align="justify" rowspan="1" colspan="1">Grade 1</th>
+                  <th align="justify" rowspan="1" colspan="1">Grade 2</th>
+                  <th align="justify" rowspan="1" colspan="1">Grade 3</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td align="justify" rowspan="1" colspan="1">Skin rash</td>
+                  <td align="justify" rowspan="1" colspan="1">14</td>
+                  <td align="justify" rowspan="1" colspan="1">17</td>
+                  <td align="justify" rowspan="1" colspan="1">10</td>
+                </tr>
+                <tr>
+                  <td align="justify" rowspan="1" colspan="1">Diarrhea</td>
+                  <td align="justify" rowspan="1" colspan="1">16</td>
+                  <td align="justify" rowspan="1" colspan="1">14</td>
+                  <td align="justify" rowspan="1" colspan="1">4</td>
+                </tr>
+                <tr>
+                  <td align="justify" rowspan="1" colspan="1">Ocular toxicity</td>
+                  <td align="justify" rowspan="1" colspan="1">10</td>
+                  <td align="justify" rowspan="1" colspan="1">11</td>
+                  <td align="justify" rowspan="1" colspan="1">0</td>
+                </tr>
+              </tbody>
+            </table>
+          </alternatives>
+        </table-wrap>
+      </sec>
+    </sec>
+    <sec sec-type="conclusions" id="sec019">
+      <title>Discussion</title>
+      <p>At the time of initiation of the current phase II study no prospective data were available about the efficacy of EGFR TKI in EGFR mutant lung cancers. This has changed dramatically since, as several randomized studies have shown that both gefitinib and erlotinib as reversible EGFR inhibitors and afatinib as a covalent pan-HER inhibitor outperform chemotherapy as a first-line therapy in these patients with regard to PFS and QOL [<xref rid="pone.0147599.ref010" ref-type="bibr">10</xref>&#x2013;<xref rid="pone.0147599.ref013" ref-type="bibr">13</xref>]. Most of the studies have been performed in Asian or predominantly Asian populations. Only a few studies have been conducted in homogeneous Caucasian populations, and the current study is the only one to supplement the data generated with erlotinib in the EURTAC study [<xref rid="pone.0147599.ref012" ref-type="bibr">12</xref>].</p>
+      <p>The two most representative landmark studies are the iPASS study with gefitinib in an Asian population [<xref rid="pone.0147599.ref011" ref-type="bibr">11</xref>] and the EURTAC study with erlotinib in a European Caucasian population [<xref rid="pone.0147599.ref012" ref-type="bibr">12</xref>]. More recently, similar results were obtained in the LUX-Lung 3 study with the irreversible pan-HER inhibitor afatinib [<xref rid="pone.0147599.ref020" ref-type="bibr">20</xref>]. Afatinib resulted in a major improvement in PFS versus the optimal standard chemotherapy (pemetrexed and cisplatin) for this type of lung cancer. No survival benefit has generally been observed in these studies, attributed to the important crossover to TKI as a second-line treatment in the chemotherapy arms, except for afatinib in patients with a del19 EGFR mutations in the tumor [<xref rid="pone.0147599.ref021" ref-type="bibr">21</xref>].</p>
+      <p>The PFSR at three months of 81% in the current study exceeds the primary endpoint of the study that hypothesized a PFSR of &gt; 70%.</p>
+      <p>The inclusion of 10% of mutations in exon 20 that are less sensitive to EGFR TKI [<xref rid="pone.0147599.ref022" ref-type="bibr">22</xref>] makes our population less favorable than in the two randomized studies with erlotinib that included only patients with sensitizing mutations. Despite this, the PFS of 11 months in our study is intermediate between the PFS of 13 months in the Optimal study [<xref rid="pone.0147599.ref023" ref-type="bibr">23</xref>] and the PFS of 9.7 months in the EURTAC study [<xref rid="pone.0147599.ref012" ref-type="bibr">12</xref>]. In the more recent Lux-Lung 3 study with afatinib that also included other mutations than exon 19/21, the PFS was 11.1 months, similar to our outcome [<xref rid="pone.0147599.ref020" ref-type="bibr">20</xref>].</p>
+      <p>The median OS was 23 months in the current study, 22 months in the Optimal and 19.3 months in the EURTAC study. The current phase II study thus further clarifies the exact impact of erlotinib in Caucasian patients with an EGFR mutation-positive adenocarcinoma, indicating that erlotinib has a similar therapeutic impact in Caucasian as in Asian patients.</p>
+      <p>Treatment beyond progression was limited as median treatment duration was approximately two months longer than the PFS, similar to the OPTIMAL study. This occurred despite the protocol specification that patients could be treated until progression and indicates clinical benefit beyond progression.</p>
+      <p>Of interest, older patients benefited as much as younger patients. Most of these patients might otherwise not have benefited from optimal doublet chemotherapy and consequently the availability of EGFR targeted treatments has a large impact on this population introducing an effective treatment for a previously unmet medical need. This is in line with other data obtained with gefitinib [<xref rid="pone.0147599.ref024" ref-type="bibr">24</xref>].</p>
+      <p>The mutation detection rate was high (24%) in this phenotypically preselected population. In a more diluted general Caucasian lung cancer population the mutation rate is 10% or less. In the EURTAC study in a population similar to ours, the mutation rate (only exons 19 and 21) was 16.6%. Today, in routine practice upfront reflex EGFR mutation testing should be performed in all patients with adenocarcinoma of the lung and in squamous cell lung cancer with a non-smoking history.</p>
+      <p>We used a generic method for mutation testing that covered all exons encoding the kinase domain of EGFR. This method had a high sensitivity of 93% similar to the sensitivity of commercial kits such as Cobas&#xAE; and Dxs Therascreen&#xAE;. In the current cohort five novel mutations were identified, not present in the Cosmic data-base (<ext-link ext-link-type="uri" xlink:href="http://cancer.sanger.ac.uk/cancergenome/projects/cosmic/">http://cancer.sanger.ac.uk/cancergenome/projects/cosmic/</ext-link>). Several unique mutations would possibly not have been detected by the DxS Therascreen (9/56) and Cobas (8/56) commercial diagnostic mutation detection kits (<xref rid="pone.0147599.t001" ref-type="table">Table 1</xref>). This includes sensitizing mutations which would have been denied an EGFR TKI therapy when using these commercial kits.</p>
+      <p>The small proportion of false negatives (7%) is not overlapping between both approaches: in the commercial kits some not listed sensitizing mutations can be missed but these methods can detect highly diluted mutations whereas our method was limited with regard to the dilution of the mutant DNA, which we proved subsequently by using a more sensitive technique. For the same reason, our method was unable to identify minority mutations such as the T790M, which at that time seemed of minor importance for the first-line therapy as it had no impact on the therapeutic strategy. This has changed with the documentation of a negative prognostic impact [<xref rid="pone.0147599.ref025" ref-type="bibr">25</xref>] and with the development of novel third generation EGFR inhibitors that can inhibit the T790M EGFR and their exploration in first-line setting [<xref rid="pone.0147599.ref026" ref-type="bibr">26</xref>].</p>
+      <p>The few false negatives with either method are unacceptable when one considers the therapeutic implications. Therefore, we and others have switched to an amplicon-based deep sequencing method (Roche 454 technology, Roche Diagnostics Belgium) that allows maximal detection of mutations and also allows simultaneous examination of other drugable genes without having to resort to sequential diagnostics. It is thereby important that all EGFR kinase domain exons are included in the analysis.</p>
+      <p>In the 10% of patients in whom biopsies are quantitatively or qualitatively insufficient, repeat biopsies in metastatic sites (immediately or later in the disease course) should be done as soon as feasible and acceptable to the patient. It is important that this specific recommendation is included in the report to the clinician whenever this might be relevant. An alternative would be to develop the collection and molecular analysis of circulating tumor cells which, for lung cancer, is not yet optimally developed. Analyzing plasma DNA (cfDNA) has been validated as a more efficient and straightforward method for the diagnosis of EGFR mutations in patients in whom a tissue diagnosis is not possible [<xref rid="pone.0147599.ref027" ref-type="bibr">27</xref>].</p>
+      <p>The incomplete translation of mutation detection to treatment in a prospective setting is surprising as 18% eligible patients did not enter the treatment phase with erlotinib. A similar drop-out rate (16%) has also been observed in the phase II study by Rosell et al [<xref rid="pone.0147599.ref028" ref-type="bibr">28</xref>]. In the EURTAC study 10% of patients did not receive erlotinib per protocol after randomization [<xref rid="pone.0147599.ref012" ref-type="bibr">12</xref>]. In the Chinese Optimal study, 99% of those allocated to erlotinib received at least one dose of study drug [<xref rid="pone.0147599.ref013" ref-type="bibr">13</xref>], a remarkable compliance that might have a cultural basis.</p>
+      <p>Seventeen percent of the patients failed early and were considered as being <underline>de novo</underline> resistant to erlotinib. The median OS for these patients was much shorter, but not necessarily in each patient. Indeed one patient, treated in second- line with carboplatin-gemcitabine survived for 26 months, illustrating the complementarity of therapeutics for these patients. There are several mechanisms of <underline>de novo</underline> resistance to EGFR TKI [<xref rid="pone.0147599.ref029" ref-type="bibr">29</xref>], but an explanation cannot be found in all patients.</p>
+      <p>We were unable to identify characteristics that could predict TKI resistance in most of these patients. Three patients with an exon 20 mutation did not do well, with two failing early and one achieving SD but with an OS of only 9 months. But there were also three non-smokers with an exon 19 mutation that failed early. In one series a KRAS mutation was found to coexist with EGFR mutation in 2/40 cases [<xref rid="pone.0147599.ref029" ref-type="bibr">29</xref>], but this was not the case in our patients. One of these patients was a heavy and current smoker who failed immediately. We hypothesize that in smokers the EGFR mutation occurs in a context in which a large number of cigarette induced mutations also drive the malignant phenotype and dilute the pathogenic and therapeutic relevance of the mutant EGFR. There is also evidence that in current smokers nicotine diminishes the effectiveness of EGFR-TKI [<xref rid="pone.0147599.ref030" ref-type="bibr">30</xref>].</p>
+      <p>Further genomic studies could in the future bring to light mechanisms of de novo and acquired resistance and prompt the investigation of upfront combined therapeutic strategies.</p>
+      <p>The proportion of patients receiving a second-line treatment was low (only 33% chemotherapy and 28% TKI). Only twelve patients received two or more lines of further treatment, one of which received five lines of further therapy and is still alive at 38+ months. For eighteen patients (39%) the local investigators reported no second-line systemic treatment. A similar observation was made in the Optimal study in which 31% of the patients in the erlotinib arm did not receive a second-line treatment [<xref rid="pone.0147599.ref013" ref-type="bibr">13</xref>].</p>
+      <p>These data are surprising in view of the relatively high efficacy of chemotherapy in such patients. It suggests that in practice erlotinib might be continued beyond progression until the disease rapidly deteriorates, the patient&#x2019;s condition might become less eligible or the patient is less willing to be further treated with chemotherapy. The general consensus is that EGFR-TKI should be given upfront considering their tolerability compared to chemotherapy leading to a more prolonged preservation of QOL [<xref rid="pone.0147599.ref031" ref-type="bibr">31</xref>]. If the opportunity is missed in the first-line, then these patients should receive a TKI in any subsequent line, as early as possible. In patients in whom baseline genotyping was non-conclusive, attempts should be made to repeat biopsies and genotyping upon progression.</p>
+    </sec>
+    <sec sec-type="conclusions" id="sec020">
+      <title>Conclusion</title>
+      <p>In this prospective phase II study in phenotypically selected patients with a somatic EGFR mutation in their tumor erlotinib was well tolerated and highly effective in the majority of the patients. The study further clarifies the impact of first-line erlotinib in EGFR mutant lung cancer in Caucasian patients. Elderly patients seem to benefit from EGFR-TKI as well as younger patients, thus filling an important medical need.</p>
+      <p>In order to minimize the false negativity rate, the most sensitive method for mutation detection should be used (deep sequencing of all kinase domain exons) in order not to deny patients a TKI treatment. Mechanisms underlining primary resistance to EGFR TKI need further exploration.</p>
+    </sec>
+    <sec sec-type="supplementary-material" id="sec021">
+      <title>Supporting Information</title>
+      <supplementary-material content-type="local-data" id="pone.0147599.s001">
+        <label>S1 Text</label>
+        <caption>
+          <title>FIELT protocol version 2.0.</title>
+          <p>(DOC)</p>
+        </caption>
+        <media xlink:href="pone.0147599.s001.doc">
+          <caption>
+            <p>Click here for additional data file.</p>
+          </caption>
+        </media>
+      </supplementary-material>
+      <supplementary-material content-type="local-data" id="pone.0147599.s002">
+        <label>S2 Text</label>
+        <caption>
+          <title>Ethical committee 05&#x2013;122 Advice.</title>
+          <p>(PDF)</p>
+        </caption>
+        <media xlink:href="pone.0147599.s002.pdf">
+          <caption>
+            <p>Click here for additional data file.</p>
+          </caption>
+        </media>
+      </supplementary-material>
+      <supplementary-material content-type="local-data" id="pone.0147599.s003">
+        <label>S3 Text</label>
+        <caption>
+          <title>TREND Statement checklist.</title>
+          <p>(PDF)</p>
+        </caption>
+        <media xlink:href="pone.0147599.s003.pdf">
+          <caption>
+            <p>Click here for additional data file.</p>
+          </caption>
+        </media>
+      </supplementary-material>
+    </sec>
+  </body>
+  <back>
+    <ack>
+      <p>We thank all patients, their families and personnel involved in the care of these patients as well as Carine Keppens, MD for her support in the initiation of this study.</p>
+      <p>The study was an academic study registered at clinicaltrials.gov as NCT00339586.</p>
+    </ack>
+    <ref-list>
+      <title>References</title>
+      <ref id="pone.0147599.ref001">
+        <label>1</label>
+        <mixed-citation publication-type="journal"><name><surname>Bunn</surname><given-names>PA</given-names><suffix>Jr</suffix></name>. <article-title>Treatment of advanced non-small-cell lung cancer with two-drug combinations</article-title>. <source>Journal of clinical oncology: official journal of the American Society of Clinical Oncology</source>. <year>2002</year>;<volume>20</volume>(<issue>17</issue>):<fpage>3565</fpage>&#x2013;<lpage>7</lpage>. Epub 2002/08/31. .<pub-id pub-id-type="pmid">12202651</pub-id></mixed-citation>
+      </ref>
+      <ref id="pone.0147599.ref002">
+        <label>2</label>
+        <mixed-citation publication-type="journal"><name><surname>Scagliotti</surname><given-names>GV</given-names></name>, <name><surname>Parikh</surname><given-names>P</given-names></name>, <name><surname>von Pawel</surname><given-names>J</given-names></name>, <name><surname>Biesma</surname><given-names>B</given-names></name>, <name><surname>Vansteenkiste</surname><given-names>J</given-names></name>, <name><surname>Manegold</surname><given-names>C</given-names></name>, <etal>et al</etal>
+<article-title>Phase III study comparing cisplatin plus gemcitabine with cisplatin plus pemetrexed in chemotherapy-naive patients with advanced-stage non-small-cell lung cancer</article-title>. <source>Journal of clinical oncology: official journal of the American Society of Clinical Oncology</source>. <year>2008</year>;<volume>26</volume>(<issue>21</issue>):<fpage>3543</fpage>&#x2013;<lpage>51</lpage>. Epub 2008/05/29. <pub-id pub-id-type="doi">10.1200/JCO.2007.15.0375</pub-id> .<pub-id pub-id-type="pmid">18506025</pub-id></mixed-citation>
+      </ref>
+      <ref id="pone.0147599.ref003">
+        <label>3</label>
+        <mixed-citation publication-type="journal"><name><surname>Shepherd</surname><given-names>FA</given-names></name>, <name><surname>Rodrigues Pereira</surname><given-names>J</given-names></name>, <name><surname>Ciuleanu</surname><given-names>T</given-names></name>, <name><surname>Tan</surname><given-names>EH</given-names></name>, <name><surname>Hirsh</surname><given-names>V</given-names></name>, <name><surname>Thongprasert</surname><given-names>S</given-names></name>, <etal>et al</etal>
+<article-title>Erlotinib in previously treated non-small-cell lung cancer</article-title>. <source>The New England journal of medicine</source>. <year>2005</year>;<volume>353</volume>(<issue>2</issue>):<fpage>123</fpage>&#x2013;<lpage>32</lpage>. Epub 2005/07/15. <pub-id pub-id-type="doi">10.1056/NEJMoa050753</pub-id> .<pub-id pub-id-type="pmid">16014882</pub-id></mixed-citation>
+      </ref>
+      <ref id="pone.0147599.ref004">
+        <label>4</label>
+        <mixed-citation publication-type="journal"><name><surname>Thatcher</surname><given-names>N</given-names></name>, <name><surname>Chang</surname><given-names>A</given-names></name>, <name><surname>Parikh</surname><given-names>P</given-names></name>, <name><surname>Rodrigues Pereira</surname><given-names>J</given-names></name>, <name><surname>Ciuleanu</surname><given-names>T</given-names></name>, <name><surname>von Pawel</surname><given-names>J</given-names></name>, <etal>et al</etal>
+<article-title>Gefitinib plus best supportive care in previously treated patients with refractory advanced non-small-cell lung cancer: results from a randomised, placebo-controlled, multicentre study (Iressa Survival Evaluation in Lung Cancer)</article-title>. <source>Lancet</source>. <year>2005</year>;<volume>366</volume>(<issue>9496</issue>):<fpage>1527</fpage>&#x2013;<lpage>37</lpage>. Epub 2005/11/01. <pub-id pub-id-type="doi">10.1016/S0140-6736(05)67625-8</pub-id> .<pub-id pub-id-type="pmid">16257339</pub-id></mixed-citation>
+      </ref>
+      <ref id="pone.0147599.ref005">
+        <label>5</label>
+        <mixed-citation publication-type="journal"><name><surname>Paez</surname><given-names>JG</given-names></name>, <name><surname>Janne</surname><given-names>PA</given-names></name>, <name><surname>Lee</surname><given-names>JC</given-names></name>, <name><surname>Tracy</surname><given-names>S</given-names></name>, <name><surname>Greulich</surname><given-names>H</given-names></name>, <name><surname>Gabriel</surname><given-names>S</given-names></name>, <etal>et al</etal>
+<article-title>EGFR mutations in lung cancer: correlation with clinical response to gefitinib therapy</article-title>. <source>Science</source>. <year>2004</year>;<volume>304</volume>(<issue>5676</issue>):<fpage>1497</fpage>&#x2013;<lpage>500</lpage>. Epub 2004/05/01. <pub-id pub-id-type="doi">10.1126/science.1099314</pub-id> .<pub-id pub-id-type="pmid">15118125</pub-id></mixed-citation>
+      </ref>
+      <ref id="pone.0147599.ref006">
+        <label>6</label>
+        <mixed-citation publication-type="journal"><name><surname>Lynch</surname><given-names>TJ</given-names></name>, <name><surname>Bell</surname><given-names>DW</given-names></name>, <name><surname>Sordella</surname><given-names>R</given-names></name>, <name><surname>Gurubhagavatula</surname><given-names>S</given-names></name>, <name><surname>Okimoto</surname><given-names>RA</given-names></name>, <name><surname>Brannigan</surname><given-names>BW</given-names></name>, <etal>et al</etal>
+<article-title>Activating mutations in the epidermal growth factor receptor underlying responsiveness of non-small-cell lung cancer to gefitinib</article-title>. <source>The New England journal of medicine</source>. <year>2004</year>;<volume>350</volume>(<issue>21</issue>):<fpage>2129</fpage>&#x2013;<lpage>39</lpage>. Epub 2004/05/01. <pub-id pub-id-type="doi">10.1056/NEJMoa040938</pub-id> .<pub-id pub-id-type="pmid">15118073</pub-id></mixed-citation>
+      </ref>
+      <ref id="pone.0147599.ref007">
+        <label>7</label>
+        <mixed-citation publication-type="journal"><name><surname>Pham</surname><given-names>D</given-names></name>, <name><surname>Kris</surname><given-names>MG</given-names></name>, <name><surname>Riely</surname><given-names>GJ</given-names></name>, <name><surname>Sarkaria</surname><given-names>IS</given-names></name>, <name><surname>McDonough</surname><given-names>T</given-names></name>, <name><surname>Chuai</surname><given-names>S</given-names></name>, <etal>et al</etal>
+<article-title>Use of cigarette-smoking history to estimate the likelihood of mutations in epidermal growth factor receptor gene exons 19 and 21 in lung adenocarcinomas</article-title>. <source>Journal of clinical oncology: official journal of the American Society of Clinical Oncology</source>. <year>2006</year>;<volume>24</volume>(<issue>11</issue>):<fpage>1700</fpage>&#x2013;<lpage>4</lpage>. Epub 2006/03/01. <pub-id pub-id-type="doi">10.1200/JCO.2005.04.3224</pub-id> .<pub-id pub-id-type="pmid">16505411</pub-id></mixed-citation>
+      </ref>
+      <ref id="pone.0147599.ref008">
+        <label>8</label>
+        <mixed-citation publication-type="journal"><name><surname>Yasuda</surname><given-names>H</given-names></name>, <name><surname>Park</surname><given-names>E</given-names></name>, <name><surname>Yun</surname><given-names>CH</given-names></name>, <name><surname>Sng</surname><given-names>NJ</given-names></name>, <name><surname>Lucena-Araujo</surname><given-names>AR</given-names></name>, <name><surname>Yeo</surname><given-names>WL</given-names></name>, <etal>et al</etal>
+<article-title>Structural, biochemical, and clinical characterization of epidermal growth factor receptor (EGFR) exon 20 insertion mutations in lung cancer</article-title>. <source>Science translational medicine</source>. <year>2013</year>;<volume>5</volume>(<issue>216</issue>):<fpage>216ra177</fpage> Epub 2013/12/20. <pub-id pub-id-type="doi">10.1126/scitranslmed.3007205</pub-id>
+<pub-id pub-id-type="pmid">24353160</pub-id></mixed-citation>
+      </ref>
+      <ref id="pone.0147599.ref009">
+        <label>9</label>
+        <mixed-citation publication-type="journal"><name><surname>Morita</surname><given-names>S</given-names></name>, <name><surname>Okamoto</surname><given-names>I</given-names></name>, <name><surname>Kobayashi</surname><given-names>K</given-names></name>, <name><surname>Yamazaki</surname><given-names>K</given-names></name>, <name><surname>Asahina</surname><given-names>H</given-names></name>, <name><surname>Inoue</surname><given-names>A</given-names></name>, <etal>et al</etal>
+<article-title>Combined survival analysis of prospective clinical trials of gefitinib for non-small cell lung cancer with EGFR mutations</article-title>. <source>Clinical cancer research: an official journal of the American Association for Cancer Research</source>. <year>2009</year>;<volume>15</volume>(<issue>13</issue>):<fpage>4493</fpage>&#x2013;<lpage>8</lpage>. Epub 2009/06/18. <pub-id pub-id-type="doi">10.1158/1078-0432.CCR-09-0391</pub-id> .<pub-id pub-id-type="pmid">19531624</pub-id></mixed-citation>
+      </ref>
+      <ref id="pone.0147599.ref010">
+        <label>10</label>
+        <mixed-citation publication-type="journal"><name><surname>Mok</surname><given-names>TS</given-names></name>, <name><surname>Wu</surname><given-names>YL</given-names></name>, <name><surname>Thongprasert</surname><given-names>S</given-names></name>, <name><surname>Yang</surname><given-names>CH</given-names></name>, <name><surname>Chu</surname><given-names>DT</given-names></name>, <name><surname>Saijo</surname><given-names>N</given-names></name>, <etal>et al</etal>
+<article-title>Gefitinib or carboplatin-paclitaxel in pulmonary adenocarcinoma</article-title>. <source>The New England journal of medicine</source>. <year>2009</year>;<volume>361</volume>(<issue>10</issue>):<fpage>947</fpage>&#x2013;<lpage>57</lpage>. Epub 2009/08/21. <pub-id pub-id-type="doi">10.1056/NEJMoa0810699</pub-id> .<pub-id pub-id-type="pmid">19692680</pub-id></mixed-citation>
+      </ref>
+      <ref id="pone.0147599.ref011">
+        <label>11</label>
+        <mixed-citation publication-type="journal"><name><surname>Fukuoka</surname><given-names>M</given-names></name>, <name><surname>Wu</surname><given-names>YL</given-names></name>, <name><surname>Thongprasert</surname><given-names>S</given-names></name>, <name><surname>Sunpaweravong</surname><given-names>P</given-names></name>, <name><surname>Leong</surname><given-names>SS</given-names></name>, <name><surname>Sriuranpong</surname><given-names>V</given-names></name>, <etal>et al</etal>
+<article-title>Biomarker analyses and final overall survival results from a phase III, randomized, open-label, first-line study of gefitinib versus carboplatin/paclitaxel in clinically selected patients with advanced non-small-cell lung cancer in Asia (IPASS)</article-title>. <source>Journal of clinical oncology: official journal of the American Society of Clinical Oncology</source>. <year>2011</year>;<volume>29</volume>(<issue>21</issue>):<fpage>2866</fpage>&#x2013;<lpage>74</lpage>. Epub 2011/06/15. <pub-id pub-id-type="doi">10.1200/JCO.2010.33.4235</pub-id> .<pub-id pub-id-type="pmid">21670455</pub-id></mixed-citation>
+      </ref>
+      <ref id="pone.0147599.ref012">
+        <label>12</label>
+        <mixed-citation publication-type="journal"><name><surname>Rosell</surname><given-names>R</given-names></name>, <name><surname>Carcereny</surname><given-names>E</given-names></name>, <name><surname>Gervais</surname><given-names>R</given-names></name>, <name><surname>Vergnenegre</surname><given-names>A</given-names></name>, <name><surname>Massuti</surname><given-names>B</given-names></name>, <name><surname>Felip</surname><given-names>E</given-names></name>, <etal>et al</etal>
+<article-title>Erlotinib versus standard chemotherapy as first-line treatment for European patients with advanced EGFR mutation-positive non-small-cell lung cancer (EURTAC): a multicentre, open-label, randomised phase 3 trial</article-title>. <source>The lancet oncology</source>. <year>2012</year>;<volume>13</volume>(<issue>3</issue>):<fpage>239</fpage>&#x2013;<lpage>46</lpage>. Epub 2012/01/31. <pub-id pub-id-type="doi">10.1016/S1470-2045(11)70393-X</pub-id> .<pub-id pub-id-type="pmid">22285168</pub-id></mixed-citation>
+      </ref>
+      <ref id="pone.0147599.ref013">
+        <label>13</label>
+        <mixed-citation publication-type="journal"><name><surname>Zhou</surname><given-names>C</given-names></name>, <name><surname>Wu</surname><given-names>YL</given-names></name>, <name><surname>Chen</surname><given-names>G</given-names></name>, <name><surname>Feng</surname><given-names>J</given-names></name>, <name><surname>Liu</surname><given-names>XQ</given-names></name>, <name><surname>Wang</surname><given-names>C</given-names></name>, <etal>et al</etal>
+<article-title>Erlotinib versus chemotherapy as first-line treatment for patients with advanced EGFR mutation-positive non-small-cell lung cancer (OPTIMAL, CTONG-0802): a multicentre, open-label, randomised, phase 3 study</article-title>. <source>The lancet oncology</source>. <year>2011</year>;<volume>12</volume>(<issue>8</issue>):<fpage>735</fpage>&#x2013;<lpage>42</lpage>. Epub 2011/07/26. <pub-id pub-id-type="doi">10.1016/S1470-2045(11)70184-X</pub-id> .<pub-id pub-id-type="pmid">21783417</pub-id></mixed-citation>
+      </ref>
+      <ref id="pone.0147599.ref014">
+        <label>14</label>
+        <mixed-citation publication-type="journal"><name><surname>Janne</surname><given-names>PA</given-names></name>, <name><surname>Johnson</surname><given-names>BE</given-names></name>. <article-title>Effect of epidermal growth factor receptor tyrosine kinase domain mutations on the outcome of patients with non-small cell lung cancer treated with epidermal growth factor receptor tyrosine kinase inhibitors</article-title>. <source>Clinical cancer research: an official journal of the American Association for Cancer Research</source>. <year>2006</year>;<volume>12</volume>(<issue>14</issue> Pt 2):<fpage>4416s</fpage>&#x2013;<lpage>20s</lpage>. Epub 2006/07/22. <pub-id pub-id-type="doi">10.1158/1078-0432.CCR-06-0555</pub-id> .<pub-id pub-id-type="pmid">16857820</pub-id></mixed-citation>
+      </ref>
+      <ref id="pone.0147599.ref015">
+        <label>15</label>
+        <mixed-citation publication-type="journal"><name><surname>Trotti</surname><given-names>A</given-names></name>, <name><surname>Colevas</surname><given-names>AD</given-names></name>, <name><surname>Setser</surname><given-names>A</given-names></name>, <name><surname>Rusch</surname><given-names>V</given-names></name>, <name><surname>Jaques</surname><given-names>D</given-names></name>, <name><surname>Budach</surname><given-names>V</given-names></name>, <etal>et al</etal>
+<article-title>CTCAE v3.0: development of a comprehensive grading system for the adverse effects of cancer treatment</article-title>. <source>Seminars in radiation oncology</source>. <year>2003</year>;<volume>13</volume>(<issue>3</issue>):<fpage>176</fpage>&#x2013;<lpage>81</lpage>. Epub 2003/08/07. <pub-id pub-id-type="doi">10.1016/S1053-4296(03)00031-6</pub-id> .<pub-id pub-id-type="pmid">12903007</pub-id></mixed-citation>
+      </ref>
+      <ref id="pone.0147599.ref016">
+        <label>16</label>
+        <mixed-citation publication-type="journal"><name><surname>Smit</surname><given-names>EF</given-names></name>, <name><surname>van Meerbeeck</surname><given-names>JP</given-names></name>, <name><surname>Lianes</surname><given-names>P</given-names></name>, <name><surname>Debruyne</surname><given-names>C</given-names></name>, <name><surname>Legrand</surname><given-names>C</given-names></name>, <name><surname>Schramel</surname><given-names>F</given-names></name>, <etal>et al</etal>
+<article-title>Three-arm randomized study of two cisplatin-based regimens and paclitaxel plus gemcitabine in advanced non-small-cell lung cancer: a phase III trial of the European Organization for Research and Treatment of Cancer Lung Cancer Group&#x2014;EORTC 08975</article-title>. <source>Journal of clinical oncology: official journal of the American Society of Clinical Oncology</source>. <year>2003</year>;<volume>21</volume>(<issue>21</issue>):<fpage>3909</fpage>&#x2013;<lpage>17</lpage>. Epub 2003/10/29. <pub-id pub-id-type="doi">10.1200/JCO.2003.03.195</pub-id> .<pub-id pub-id-type="pmid">14581415</pub-id></mixed-citation>
+      </ref>
+      <ref id="pone.0147599.ref017">
+        <label>17</label>
+        <mixed-citation publication-type="journal"><name><surname>Shahi</surname><given-names>RB</given-names></name>, <name><surname>De Brakeleer</surname><given-names>S</given-names></name>, <name><surname>De Greve</surname><given-names>J</given-names></name>, <name><surname>Geers</surname><given-names>C</given-names></name>, <name><surname>In't Veld</surname><given-names>P</given-names></name>, <name><surname>Teugels</surname><given-names>E</given-names></name>. <article-title>Detection of EGFR-TK Domain-activating Mutations in NSCLC With Generic PCR-based Methods</article-title>. <source>Diagnostic molecular pathology: the American journal of surgical pathology, part B</source>. <year>2014</year> Epub 2014/02/04. <pub-id pub-id-type="doi">10.1097/PDM.0000000000000035</pub-id> .</mixed-citation>
+      </ref>
+      <ref id="pone.0147599.ref018">
+        <label>18</label>
+        <mixed-citation publication-type="journal"><name><surname>Yasuda</surname><given-names>H</given-names></name>, <name><surname>Kobayashi</surname><given-names>S</given-names></name>, <name><surname>Costa</surname><given-names>DB</given-names></name>. <article-title>EGFR exon 20 insertion mutations in non-small-cell lung cancer: preclinical data and clinical implications</article-title>. <source>The lancet oncology</source>. <year>2012</year>;<volume>13</volume>(<issue>1</issue>):<fpage>e23</fpage>&#x2013;<lpage>31</lpage>. Epub 2011/07/19. <pub-id pub-id-type="doi">10.1016/S1470-2045(11)70129-2</pub-id> .<pub-id pub-id-type="pmid">21764376</pub-id></mixed-citation>
+      </ref>
+      <ref id="pone.0147599.ref019">
+        <label>19</label>
+        <mixed-citation publication-type="journal"><name><surname>Sharma</surname><given-names>SV</given-names></name>, <name><surname>Bell</surname><given-names>DW</given-names></name>, <name><surname>Settleman</surname><given-names>J</given-names></name>, <name><surname>Haber</surname><given-names>DA</given-names></name>. <article-title>Epidermal growth factor receptor mutations in lung cancer</article-title>. <source>Nature reviews Cancer</source>. <year>2007</year>;<volume>7</volume>(<issue>3</issue>):<fpage>169</fpage>&#x2013;<lpage>81</lpage>. Epub 2007/02/24. <pub-id pub-id-type="doi">10.1038/nrc2088</pub-id> .<pub-id pub-id-type="pmid">17318210</pub-id></mixed-citation>
+      </ref>
+      <ref id="pone.0147599.ref020">
+        <label>20</label>
+        <mixed-citation publication-type="journal"><name><surname>Sequist</surname><given-names>LV</given-names></name>, <name><surname>Yang</surname><given-names>JC</given-names></name>, <name><surname>Yamamoto</surname><given-names>N</given-names></name>, <name><surname>O'Byrne</surname><given-names>K</given-names></name>, <name><surname>Hirsh</surname><given-names>V</given-names></name>, <name><surname>Mok</surname><given-names>T</given-names></name>, <etal>et al</etal>
+<article-title>Phase III study of afatinib or cisplatin plus pemetrexed in patients with metastatic lung adenocarcinoma with EGFR mutations</article-title>. <source>Journal of clinical oncology: official journal of the American Society of Clinical Oncology</source>. <year>2013</year>;<volume>31</volume>(<issue>27</issue>):<fpage>3327</fpage>&#x2013;<lpage>34</lpage>. Epub 2013/07/03. <pub-id pub-id-type="doi">10.1200/JCO.2012.44.2806</pub-id> .<pub-id pub-id-type="pmid">23816960</pub-id></mixed-citation>
+      </ref>
+      <ref id="pone.0147599.ref021">
+        <label>21</label>
+        <mixed-citation publication-type="journal"><name><surname>Yang</surname><given-names>JC</given-names></name>, <name><surname>Wu</surname><given-names>YL</given-names></name>, <name><surname>Schuler</surname><given-names>M</given-names></name>, <name><surname>Sebastian</surname><given-names>M</given-names></name>, <name><surname>Popat</surname><given-names>S</given-names></name>, <name><surname>Yamamoto</surname><given-names>N</given-names></name>, <etal>et al</etal>
+<article-title>Afatinib versus cisplatin-based chemotherapy for EGFR mutation-positive lung adenocarcinoma (LUX-Lung 3 and LUX-Lung 6): analysis of overall survival data from two randomised, phase 3 trials</article-title>. <source>The lancet oncology</source>. <year>2015</year>;<volume>16</volume>(<issue>2</issue>):<fpage>141</fpage>&#x2013;<lpage>51</lpage>. Epub 2015/01/16. <pub-id pub-id-type="doi">10.1016/S1470-2045(14)71173-8</pub-id> .<pub-id pub-id-type="pmid">25589191</pub-id></mixed-citation>
+      </ref>
+      <ref id="pone.0147599.ref022">
+        <label>22</label>
+        <mixed-citation publication-type="journal"><name><surname>Wu</surname><given-names>JY</given-names></name>, <name><surname>Wu</surname><given-names>SG</given-names></name>, <name><surname>Yang</surname><given-names>CH</given-names></name>, <name><surname>Gow</surname><given-names>CH</given-names></name>, <name><surname>Chang</surname><given-names>YL</given-names></name>, <name><surname>Yu</surname><given-names>CJ</given-names></name>, <etal>et al</etal>
+<article-title>Cancer with epidermal growth factor receptor exon 20 mutations is associated with poor gefitinib treatment response</article-title>. <source>Clin Cancer Res</source>. <year>2008</year>;<volume>14</volume>(<issue>15</issue>):<fpage>4877</fpage>&#x2013;<lpage>82</lpage>. <pub-id pub-id-type="doi">10.1158/1078-0432.CCR-07-5123</pub-id> .<pub-id pub-id-type="pmid">18676761</pub-id></mixed-citation>
+      </ref>
+      <ref id="pone.0147599.ref023">
+        <label>23</label>
+        <mixed-citation publication-type="journal"><name><surname>Zhou</surname><given-names>C</given-names></name>, <name><surname>Wu</surname><given-names>YL</given-names></name>, <name><surname>Chen</surname><given-names>G</given-names></name>, <name><surname>Feng</surname><given-names>J</given-names></name>, <name><surname>Liu</surname><given-names>XQ</given-names></name>, <name><surname>Wang</surname><given-names>C</given-names></name>, <etal>et al</etal>
+<article-title>Final overall survival results from a randomised, phase III study of erlotinib versus chemotherapy as first-line treatment of EGFR mutation-positive advanced non-small-cell lung cancer (OPTIMAL, CTONG-0802)</article-title>. <source>Annals of oncology: official journal of the European Society for Medical Oncology / ESMO</source>. <year>2015</year> Epub 2015/07/05. <pub-id pub-id-type="doi">10.1093/annonc/mdv276</pub-id> .<pub-id pub-id-type="pmid">26141208</pub-id></mixed-citation>
+      </ref>
+      <ref id="pone.0147599.ref024">
+        <label>24</label>
+        <mixed-citation publication-type="journal"><name><surname>Tateishi</surname><given-names>K</given-names></name>, <name><surname>Ichiyama</surname><given-names>T</given-names></name>, <name><surname>Hirai</surname><given-names>K</given-names></name>, <name><surname>Agatsuma</surname><given-names>T</given-names></name>, <name><surname>Koyama</surname><given-names>S</given-names></name>, <name><surname>Hachiya</surname><given-names>T</given-names></name>, <etal>et al</etal>
+<article-title>Clinical outcomes in elderly patients administered gefitinib as first-line treatment in epidermal growth factor receptor-mutated non-small-cell lung cancer: retrospective analysis in a Nagano Lung Cancer Research Group study</article-title>. <source>Medical oncology</source>. <year>2013</year>;<volume>30</volume>(<issue>1</issue>):<fpage>450</fpage> Epub 2013/01/15. <pub-id pub-id-type="doi">10.1007/s12032-012-0450-2</pub-id> .<pub-id pub-id-type="pmid">23315220</pub-id></mixed-citation>
+      </ref>
+      <ref id="pone.0147599.ref025">
+        <label>25</label>
+        <mixed-citation publication-type="journal"><name><surname>Ding</surname><given-names>D</given-names></name>, <name><surname>Yu</surname><given-names>Y</given-names></name>, <name><surname>Li</surname><given-names>Z</given-names></name>, <name><surname>Niu</surname><given-names>X</given-names></name>, <name><surname>Lu</surname><given-names>S</given-names></name>. <article-title>The predictive role of pretreatment epidermal growth factor receptor T790M mutation on the progression-free survival of tyrosine-kinase inhibitor-treated non-small cell lung cancer patients: a meta-analysis</article-title>. <source>OncoTargets and therapy</source>. <year>2014</year>;<volume>7</volume>:<fpage>387</fpage>&#x2013;<lpage>93</lpage>. Epub 2014/03/14. <pub-id pub-id-type="doi">10.2147/OTT.S58870</pub-id>
+<pub-id pub-id-type="pmid">24623981</pub-id></mixed-citation>
+      </ref>
+      <ref id="pone.0147599.ref026">
+        <label>26</label>
+        <mixed-citation publication-type="journal"><name><surname>Cortot</surname><given-names>AB</given-names></name>, <name><surname>Janne</surname><given-names>PA</given-names></name>. <article-title>Molecular mechanisms of resistance in epidermal growth factor receptor-mutant lung adenocarcinomas</article-title>. <source>European respiratory review: an official journal of the European Respiratory Society</source>. <year>2014</year>;<volume>23</volume>(<issue>133</issue>):<fpage>356</fpage>&#x2013;<lpage>66</lpage>. Epub 2014/09/02. <pub-id pub-id-type="doi">10.1183/09059180.00004614</pub-id> .<pub-id pub-id-type="pmid">25176972</pub-id></mixed-citation>
+      </ref>
+      <ref id="pone.0147599.ref027">
+        <label>27</label>
+        <mixed-citation publication-type="journal"><name><surname>Karachaliou</surname><given-names>N</given-names></name>, <name><surname>Mayo-de Las Casas</surname><given-names>C</given-names></name>, <name><surname>Queralt</surname><given-names>C</given-names></name>, <name><surname>de Aguirre</surname><given-names>I</given-names></name>, <name><surname>Melloni</surname><given-names>B</given-names></name>, <name><surname>Cardenal</surname><given-names>F</given-names></name>, <etal>et al</etal>
+<article-title>Association of EGFR L858R Mutation in Circulating Free DNA With Survival in the EURTAC Trial</article-title>. <source>JAMA oncology</source>. <year>2015</year>;<volume>1</volume>(<issue>2</issue>):<fpage>149</fpage>&#x2013;<lpage>57</lpage>. Epub 2015/07/17. <pub-id pub-id-type="doi">10.1001/jamaoncol.2014.257</pub-id> .<pub-id pub-id-type="pmid">26181014</pub-id></mixed-citation>
+      </ref>
+      <ref id="pone.0147599.ref028">
+        <label>28</label>
+        <mixed-citation publication-type="journal"><name><surname>Rosell</surname><given-names>R</given-names></name>, <name><surname>Moran</surname><given-names>T</given-names></name>, <name><surname>Queralt</surname><given-names>C</given-names></name>, <name><surname>Porta</surname><given-names>R</given-names></name>, <name><surname>Cardenal</surname><given-names>F</given-names></name>, <name><surname>Camps</surname><given-names>C</given-names></name>, <etal>et al</etal>
+<article-title>Screening for epidermal growth factor receptor mutations in lung cancer</article-title>. <source>The New England journal of medicine</source>. <year>2009</year>;<volume>361</volume>(<issue>10</issue>):<fpage>958</fpage>&#x2013;<lpage>67</lpage>. Epub 2009/08/21. <pub-id pub-id-type="doi">10.1056/NEJMoa0904554</pub-id> .<pub-id pub-id-type="pmid">19692684</pub-id></mixed-citation>
+      </ref>
+      <ref id="pone.0147599.ref029">
+        <label>29</label>
+        <mixed-citation publication-type="journal"><name><surname>Takeda</surname><given-names>M</given-names></name>, <name><surname>Okamoto</surname><given-names>I</given-names></name>, <name><surname>Fujita</surname><given-names>Y</given-names></name>, <name><surname>Arao</surname><given-names>T</given-names></name>, <name><surname>Ito</surname><given-names>H</given-names></name>, <name><surname>Fukuoka</surname><given-names>M</given-names></name>, <etal>et al</etal>
+<article-title>De novo resistance to epidermal growth factor receptor-tyrosine kinase inhibitors in EGFR mutation-positive patients with non-small cell lung cancer</article-title>. <source>Journal of thoracic oncology: official publication of the International Association for the Study of Lung Cancer</source>. <year>2010</year>;<volume>5</volume>(<issue>3</issue>):<fpage>399</fpage>&#x2013;<lpage>400</lpage>. Epub 2010/02/27. <pub-id pub-id-type="doi">10.1097/JTO.0b013e3181cee47e</pub-id> .<pub-id pub-id-type="pmid">20186026</pub-id></mixed-citation>
+      </ref>
+      <ref id="pone.0147599.ref030">
+        <label>30</label>
+        <mixed-citation publication-type="journal"><name><surname>Filosto</surname><given-names>S</given-names></name>, <name><surname>Becker</surname><given-names>CR</given-names></name>, <name><surname>Goldkorn</surname><given-names>T</given-names></name>. <article-title>Cigarette smoke induces aberrant EGF receptor activation that mediates lung cancer development and resistance to tyrosine kinase inhibitors</article-title>. <source>Molecular cancer therapeutics</source>. <year>2012</year>;<volume>11</volume>(<issue>4</issue>):<fpage>795</fpage>&#x2013;<lpage>804</lpage>. Epub 2012/02/04. <pub-id pub-id-type="doi">10.1158/1535-7163.MCT-11-0698</pub-id> .<pub-id pub-id-type="pmid">22302097</pub-id></mixed-citation>
+      </ref>
+      <ref id="pone.0147599.ref031">
+        <label>31</label>
+        <mixed-citation publication-type="journal"><name><surname>Oizumi</surname><given-names>S</given-names></name>, <name><surname>Kobayashi</surname><given-names>K</given-names></name>, <name><surname>Inoue</surname><given-names>A</given-names></name>, <name><surname>Maemondo</surname><given-names>M</given-names></name>, <name><surname>Sugawara</surname><given-names>S</given-names></name>, <name><surname>Yoshizawa</surname><given-names>H</given-names></name>, <etal>et al</etal>
+<article-title>Quality of life with gefitinib in patients with EGFR-mutated non-small cell lung cancer: quality of life analysis of North East Japan Study Group 002 Trial</article-title>. <source>The oncologist</source>. <year>2012</year>;<volume>17</volume>(<issue>6</issue>):<fpage>863</fpage>&#x2013;<lpage>70</lpage>. Epub 2012/05/15. <pub-id pub-id-type="doi">10.1634/theoncologist.2011-0426</pub-id>
+<pub-id pub-id-type="pmid">22581822</pub-id></mixed-citation>
+      </ref>
+    </ref-list>
+  </back>
+</article>
+</pmc-articleset>

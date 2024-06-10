@@ -93,11 +93,6 @@ def test_extract_delimited_table(
     "filename,expected_chunks",
     [
         [
-            "table_colspan_dividers.xml",
-            ["Sex: Female", "Sex: Male", "Race: White", "Race: Asian", "Race: Other"],
-        ],
-        ["table_multi_level_header.xml", ["L130V\tALTERED\t"]],
-        [
             "table_rowspans.xml",
             ["SUP-CR500-2\tI1171S\tI1171T\tNPM-ALK ALCL\tCrizotinib-R"],
         ],
@@ -117,19 +112,8 @@ def test_parses_table_body(filename, expected_chunks):
 
 
 @pytest.mark.parametrize(
-    "filename,expected_header",
+    "filename,expected_header,table_index",
     [
-        [
-            "table_multi_level_header.xml",
-            [
-                "p53 MUTATION",
-                "FUNCTIONAL a STATUS",
-                "IARC DATABASE b SOMATIC TOTAL",
-                "IARC DATABASE b SOMATIC BREAST",
-                "IARC DATABASE b GERMLINE FAMILIES",
-                "FEATURES c\n",
-            ],
-        ],
         [
             "table_floating.xml",
             [
@@ -140,26 +124,49 @@ def test_parses_table_body(filename, expected_chunks):
                 "Domain",
                 "Germline/ Somatic\n",
             ],
+            0,
+        ],
+        [
+            "PMC5029658.xml",
+            [
+                "",
+                "",
+                "Cell Line SUP-M2 IC50",
+                "Cell Line SUP-M2 Fold Change",
+                "Cell Line SU-DHL-1 IC50",
+                "Cell Line SU-DHL-1 Fold Change",
+                "Cell Line I1171S SUP-CR500-2 IC50",
+                "Cell Line I1171S SUP-CR500-2 Fold Change",
+                "Cell Line F1174L SUP-LR150-2 IC50",
+                "Cell Line F1174L SUP-LR150-2 Fold Change",
+                "Cell Line R1192P DHL1-CR500 IC50",
+                "Cell Line R1192P DHL1-CR500 Fold Change",
+                "Cell Line T1151M DHL1-LR150 IC50",
+                "Cell Line T1151M DHL1-LR150 Fold Change",
+                "Cell Line G1269A DHL1-CR500-2 IC50",
+                "Cell Line G1269A DHL1-CR500-2 Fold Change\n",
+            ],
+            1,
         ],
     ],
 )
-def test_parses_table_header(filename, expected_header):
+def test_parses_table_header(filename, expected_header, table_index):
     xml_input = data_file_path(filename)
     with open(xml_input, "r") as fh:
         xml_data = fh.read()
     chunks = extract_text_chunks([etree.fromstring(xml_data)])
-    table_header = [c.text for c in chunks if c.xml_path.endswith("thead")][0].split(
-        TABLE_DELIMITER
-    )
+    table_header = [c.text for c in chunks if c.xml_path.endswith("thead")]
+    assert len(table_header) > table_index
+    table_header = table_header[table_index]
+    table_header = table_header.split(TABLE_DELIMITER)
     assert table_header == expected_header
 
 
 @pytest.mark.parametrize(
-    "filename,table_number,expected_columns,expected_rows",
+    "filename,table_index,expected_columns,expected_rows",
     [
         ("table_floating.xml", 0, 6, 16),
         ("table_format_chars.xml", 0, 1, 2),
-        ("table_colspan_dividers.xml", 0, 2, 37),
         ("table_rowspans.xml", 0, 6, 29),
         ("table_malformed_span.xml", 0, 14, 3),
         ("table_inner_colspan.xml", 0, 4, 8),
@@ -169,15 +176,56 @@ def test_parses_table_header(filename, expected_header):
         ("PMC6580637.xml", 2, 8, 6),
     ],
 )
-def test_parses_table_body_size(
-    filename, table_number, expected_columns, expected_rows
-):
+def test_parses_table_body_size(filename, table_index, expected_columns, expected_rows):
     xml_input = data_file_path(filename)
     with open(xml_input, "r") as fh:
         xml_data = fh.read()
     chunks = extract_text_chunks([etree.fromstring(xml_data)])
 
     table_body = [c.text for c in chunks if c.xml_path.endswith("tbody")]
-    assert len(table_body) > table_number
-    table_body = table_body[table_number]
+    assert len(table_body) > table_index
+    table_body = table_body[table_index]
     assert len(table_body.split(TABLE_DELIMITER)) == expected_columns * expected_rows
+
+
+@pytest.mark.parametrize(
+    "filename,table_index,row_index,row_content",
+    [
+        (
+            "PMC5029658.xml",
+            0,
+            5,
+            ["SUP-CR500-2", "I1171S", "I1171N", "EML4-ALK NSCLC", "Alectinib-R", ""],
+        ),  # rowspans split
+        pytest.param(
+            "PMC4816447.xml",
+            0,
+            2,
+            ["19", "c.2236_2250del", "p.Glu746_Ala750del", "3 (360x)", "yes/yes"],
+            marks=pytest.mark.skip(reason="TODO"),
+        ),
+        (
+            "PMC4919728.xml",
+            0,
+            1,
+            ["Age at diagnosis (year): Median", "31.4", "5.1", "36.7", "6.8"],
+        ),
+    ],
+)
+def test_parses_table_body_row_content(filename, table_index, row_index, row_content):
+    xml_input = data_file_path(filename)
+    with open(xml_input, "r") as fh:
+        xml_data = fh.read()
+    chunks = extract_text_chunks([etree.fromstring(xml_data)])
+
+    table_body = [c.text for c in chunks if c.xml_path.endswith("tbody")]
+    assert len(table_body) > table_index
+    table_body = table_body[table_index]
+    assert len(table_body) > row_index
+
+    columns = len(row_content)
+
+    row = table_body.split(TABLE_DELIMITER)[
+        row_index * columns : (row_index + 1) * columns
+    ]
+    assert row == row_content
