@@ -1,0 +1,2853 @@
+<?xml version="1.0"?>
+<!DOCTYPE pmc-articleset PUBLIC "-//NLM//DTD ARTICLE SET 2.0//EN" "https://dtd.nlm.nih.gov/ncbi/pmc/articleset/nlm-articleset-2.0.dtd">
+<pmc-articleset>
+  <article xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:xlink="http://www.w3.org/1999/xlink"
+    article-type="research-article">
+    <?properties open_access?>
+    <front>
+      <journal-meta>
+        <journal-id journal-id-type="nlm-ta">BMC Cancer</journal-id>
+        <journal-id journal-id-type="iso-abbrev">BMC Cancer</journal-id>
+        <journal-title-group>
+          <journal-title>BMC Cancer</journal-title>
+        </journal-title-group>
+        <issn pub-type="epub">1471-2407</issn>
+        <publisher>
+          <publisher-name>BioMed Central</publisher-name>
+          <publisher-loc>London</publisher-loc>
+        </publisher>
+      </journal-meta>
+      <article-meta>
+        <article-id pub-id-type="pmid">31208370</article-id>
+        <article-id pub-id-type="pmc">6580637</article-id>
+        <article-id pub-id-type="publisher-id">5820</article-id>
+        <article-id pub-id-type="doi">10.1186/s12885-019-5820-0</article-id>
+        <article-categories>
+          <subj-group subj-group-type="heading">
+            <subject>Research Article</subject>
+          </subj-group>
+        </article-categories>
+        <title-group>
+          <article-title>EGFR exon 20 insertion mutations and response to osimertinib in
+            non-small-cell lung cancer</article-title>
+        </title-group>
+        <contrib-group>
+          <contrib contrib-type="author" corresp="yes" equal-contrib="yes">
+            <name>
+              <surname>Fang</surname>
+              <given-names>Wenfeng</given-names>
+            </name>
+            <address>
+              <email>fangwf@sysucc.org.cn</email>
+            </address>
+            <xref ref-type="aff" rid="Aff1">1</xref>
+          </contrib>
+          <contrib contrib-type="author" equal-contrib="yes">
+            <name>
+              <surname>Huang</surname>
+              <given-names>Yihua</given-names>
+            </name>
+            <address>
+              <email>huangyh2@sysucc.org.cn</email>
+            </address>
+            <xref ref-type="aff" rid="Aff1">1</xref>
+          </contrib>
+          <contrib contrib-type="author" equal-contrib="yes">
+            <name>
+              <surname>Hong</surname>
+              <given-names>Shaodong</given-names>
+            </name>
+            <address>
+              <email>hongshd@sysucc.org.cn</email>
+            </address>
+            <xref ref-type="aff" rid="Aff1">1</xref>
+          </contrib>
+          <contrib contrib-type="author" equal-contrib="yes">
+            <name>
+              <surname>Zhang</surname>
+              <given-names>Zhonghan</given-names>
+            </name>
+            <address>
+              <email>zhangzhongh@sysucc.org.cn</email>
+            </address>
+            <xref ref-type="aff" rid="Aff1">1</xref>
+          </contrib>
+          <contrib contrib-type="author" equal-contrib="yes">
+            <name>
+              <surname>Wang</surname>
+              <given-names>Minghui</given-names>
+            </name>
+            <address>
+              <email>wangminghui01@aliyun.com</email>
+            </address>
+            <xref ref-type="aff" rid="Aff2">2</xref>
+          </contrib>
+          <contrib contrib-type="author">
+            <name>
+              <surname>Gan</surname>
+              <given-names>Jiadi</given-names>
+            </name>
+            <address>
+              <email>gjdaaa@outlook.com</email>
+            </address>
+            <xref ref-type="aff" rid="Aff1">1</xref>
+          </contrib>
+          <contrib contrib-type="author">
+            <name>
+              <surname>Wang</surname>
+              <given-names>Wenjing</given-names>
+            </name>
+            <address>
+              <email>wangwj@origimed.com</email>
+            </address>
+            <xref ref-type="aff" rid="Aff3">3</xref>
+          </contrib>
+          <contrib contrib-type="author">
+            <name>
+              <surname>Guo</surname>
+              <given-names>Honglin</given-names>
+            </name>
+            <address>
+              <email>guohl@origimed.com</email>
+            </address>
+            <xref ref-type="aff" rid="Aff3">3</xref>
+          </contrib>
+          <contrib contrib-type="author">
+            <name>
+              <surname>Wang</surname>
+              <given-names>Kai</given-names>
+            </name>
+            <address>
+              <email>wangk@origimed.com</email>
+            </address>
+            <xref ref-type="aff" rid="Aff3">3</xref>
+          </contrib>
+          <contrib contrib-type="author" corresp="yes">
+            <name>
+              <surname>Zhang</surname>
+              <given-names>Li</given-names>
+            </name>
+            <address>
+              <email>zhangli@sysucc.org.cn</email>
+            </address>
+            <xref ref-type="aff" rid="Aff1">1</xref>
+          </contrib>
+          <aff id="Aff1"><label>1</label><institution-wrap>
+              <institution-id institution-id-type="ISNI">0000 0004 1803 6191</institution-id>
+              <institution-id institution-id-type="GRID">grid.488530.2</institution-id>
+              <institution>Department of Medical Oncology, State Key Laboratory of Oncology in South
+            China, Collaborative Innovation Center for Cancer Medicine, </institution>
+              <institution>Sun Yat-Sen University Cancer Center, </institution>
+            </institution-wrap>Guangzhou,
+            510060 People&#x2019;s Republic of China </aff>
+          <aff id="Aff2"><label>2</label><institution-wrap>
+              <institution-id institution-id-type="ISNI">0000 0001 2360 039X</institution-id>
+              <institution-id institution-id-type="GRID">grid.12981.33</institution-id>
+              <institution>Sun Yat-Sen Memorial Hospital, </institution>
+              <institution>Sun Yat-Sen University, </institution>
+            </institution-wrap>Guangzhou,
+            510220 People&#x2019;s Republic of China </aff>
+          <aff id="Aff3"><label>3</label>OrigiMed, Inc, NO.115 XinJunhuan Road, Shanghai, 201114
+            People&#x2019;s Republic of China </aff>
+        </contrib-group>
+        <pub-date pub-type="epub">
+          <day>17</day>
+          <month>6</month>
+          <year>2019</year>
+        </pub-date>
+        <pub-date pub-type="pmc-release">
+          <day>17</day>
+          <month>6</month>
+          <year>2019</year>
+        </pub-date>
+        <pub-date pub-type="collection">
+          <year>2019</year>
+        </pub-date>
+        <volume>19</volume>
+        <elocation-id>595</elocation-id>
+        <history>
+          <date date-type="received">
+            <day>24</day>
+            <month>1</month>
+            <year>2019</year>
+          </date>
+          <date date-type="accepted">
+            <day>11</day>
+            <month>6</month>
+            <year>2019</year>
+          </date>
+        </history>
+        <permissions>
+          <copyright-statement>&#xA9; The Author(s). 2019</copyright-statement>
+          <license license-type="OpenAccess">
+            <license-p><bold>Open Access</bold>This article is distributed under the terms of the
+              Creative Commons Attribution 4.0 International License (<ext-link ext-link-type="uri"
+                xlink:href="http://creativecommons.org/licenses/by/4.0/">
+              http://creativecommons.org/licenses/by/4.0/</ext-link>), which permits unrestricted
+              use, distribution, and reproduction in any medium, provided you give appropriate
+              credit to the original author(s) and the source, provide a link to the Creative
+              Commons license, and indicate if changes were made. The Creative Commons Public Domain
+              Dedication waiver (<ext-link ext-link-type="uri"
+                xlink:href="http://creativecommons.org/publicdomain/zero/1.0/">
+              http://creativecommons.org/publicdomain/zero/1.0/</ext-link>) applies to the data made
+              available in this article, unless otherwise stated.</license-p>
+          </license>
+        </permissions>
+        <abstract id="Abs1">
+          <sec>
+            <title>Background</title>
+            <p id="Par1">Epidermal growth factor receptor exon 20 insertion (EGFRex20ins) mutations
+              represent approximately 4&#x2013;12% of EGFR mutations and are generally refractory to
+              the 1st and 2nd generation EGFR tyrosine kinase inhibitors (TKIs). Development of
+              effective therapies for patients with EGFRex20ins mutant non-small-cell lung carcinoma
+              (NSCLC) represents a great unmet need. Preclinical models have shown that osimertinib
+              is active in NSCLC harboring EGFRex20ins, while the antitumor activity of osimertinib
+              remains to be evaluated in patients with EGFRex20ins mutations.</p>
+          </sec>
+          <sec>
+            <title>Methods</title>
+            <p id="Par2">Tumor genotyping was performed in 2316 Chinese NSCLC cases with targeted
+              next generation sequencing (NGS) covering the whole exons of EGFR gene. The frequency
+              and genetic characteristics of EGFRexon20ins mutations were analyzed. Furthermore, six
+              patients with specific EGFRexon20ins mutations and receiving osimertinib 80&#x2009;mg
+              once daily were retrospectively included to assess the antitumor activity and safety
+              of monotherapy osimertinib.</p>
+          </sec>
+          <sec>
+            <title>Results</title>
+            <p id="Par3">EGFRex20ins mutations were identified in 4.8% (53/1095) of EGFR mutant
+              NSCLC and 2.3% (53/2316) of all NSCLC cases. The most frequently identified
+              EGFRexon20ins is A767_V769dup (17/53,32.1%). We found that the genetic characteristics
+              of EGFRex20ins mutations in Chinese patients with NSCLC were comparable to those
+              reported in Caucasian patients. Four patients with osimertinib therapy achieved
+              partial response and the rest stable disease. Median progression free survival (PFS)
+              was 6.2&#x2009;months (95% confidence interval 5.0&#x2013;12.9&#x2009;months; range
+              4.9&#x2013;14.6&#x2009;months). The most common adverse events (AEs) were diarrhea
+              (2/6), pruritis (2/6), stomatitis (1/6) and nausea (1/6). No grade 3 or more AEs were
+              documented.</p>
+          </sec>
+          <sec>
+            <title>Conclusions</title>
+            <p id="Par4">This study revealed that the genetic characteristics of EGFRex20ins
+              mutations in Chinese patients with NSCLC were comparable to those reported in
+              Caucasian patients. Furthermore, our study firstly demonstrated promising antitumor
+              activity of osimertinib in certain EGFRex20ins mutant advanced NSCLC patients,
+              indicating that osimertinib treatment for EGFRex20ins positive patients deserves
+              further study.</p>
+          </sec>
+          <sec>
+            <title>Electronic supplementary material</title>
+            <p>The online version of this article (10.1186/s12885-019-5820-0) contains supplementary
+              material, which is available to authorized users.</p>
+          </sec>
+        </abstract>
+        <kwd-group xml:lang="en">
+          <title>Keywords</title>
+          <kwd>NSCLC</kwd>
+          <kwd>EGFRex20ins</kwd>
+          <kwd>NGS</kwd>
+          <kwd>Osimertinib</kwd>
+        </kwd-group>
+        <funding-group>
+          <award-group>
+            <funding-source>
+              <institution>National Key R&amp;D Program of China</institution>
+            </funding-source>
+            <award-id>2016YFC0905500</award-id>
+            <award-id>2016YFC0905503</award-id>
+            <principal-award-recipient>
+              <name>
+                <surname>Zhang</surname>
+                <given-names>Li</given-names>
+              </name>
+            </principal-award-recipient>
+          </award-group>
+        </funding-group>
+        <funding-group>
+          <award-group>
+            <funding-source>
+              <institution-wrap>
+                <institution-id institution-id-type="FundRef">
+                  http://dx.doi.org/10.13039/501100001809</institution-id>
+                <institution>National Natural Science Foundation of China</institution>
+              </institution-wrap>
+            </funding-source>
+            <award-id>81772476</award-id>
+            <award-id>81872499</award-id>
+            <award-id>81702283</award-id>
+            <award-id>81602005</award-id>
+            <principal-award-recipient>
+              <name>
+                <surname>Fang</surname>
+                <given-names>Wenfeng</given-names>
+              </name>
+              <name>
+                <surname>Hong</surname>
+                <given-names>Shaodong</given-names>
+              </name>
+              <name>
+                <surname>Zhang</surname>
+                <given-names>Li</given-names>
+              </name>
+            </principal-award-recipient>
+          </award-group>
+        </funding-group>
+        <funding-group>
+          <award-group>
+            <funding-source>
+              <institution>Science and Technology Program of Guangdong</institution>
+            </funding-source>
+            <award-id>2017B020227001</award-id>
+            <principal-award-recipient>
+              <name>
+                <surname>Zhang</surname>
+                <given-names>Li</given-names>
+              </name>
+            </principal-award-recipient>
+          </award-group>
+        </funding-group>
+        <custom-meta-group>
+          <custom-meta>
+            <meta-name>issue-copyright-statement</meta-name>
+            <meta-value>&#xA9; The Author(s) 2019</meta-value>
+          </custom-meta>
+        </custom-meta-group>
+      </article-meta>
+    </front>
+    <body>
+      <sec id="Sec1">
+        <title>Background</title>
+        <p id="Par19">During the past decades, the identification of specific genomic aberrations
+          and their corresponding targeted therapies have significantly improved the outcome and
+          quality of life for patients with non-small-cell lung cancer (NSCLC). Epidermal growth
+          factor receptor (EGFR) mutation is the first identified targetable driver mutation that
+          was reported in about 17 and 50% of lung adenocarcinoma in Caucasians and Asians,
+          respectively [<xref ref-type="bibr" rid="CR1">1</xref>&#x2013;<xref ref-type="bibr"
+            rid="CR3">3</xref>]. The most common cluster of mutations in EGFR gene include inframe
+          deletions around the LeuArgGluAla motif (residues 746&#x2013;750) of exon 19, and the
+          Leu858Arg (L858R) point mutation in exon 21, each accounting for about 45% of all EGFR
+          mutations. These mutations are termed classic EGFR mutations and are more common in tumors
+          in women, Asians, never smokers, and those with adenocarcinoma [<xref ref-type="bibr"
+            rid="CR4">4</xref>&#x2013;<xref ref-type="bibr" rid="CR6">6</xref>]. The frequency and
+          distribution of EGFR mutations in patients with different ethnic backgrounds also differ [<xref
+            ref-type="bibr" rid="CR7">7</xref>, <xref ref-type="bibr" rid="CR8">8</xref>].</p>
+        <p id="Par20">Patients with classic EGFR mutations generally have profound radiographic and
+          clinical response to monotherapy EGFR tyrosine kinase inhibitors (TKIs) [<xref
+            ref-type="bibr" rid="CR9">9</xref>&#x2013;<xref ref-type="bibr" rid="CR12">12</xref>].
+          However, some unclassical EGFR mutations are associated with poor responses with
+          reversible EGFR TKIs [<xref ref-type="bibr" rid="CR13">13</xref>, <xref ref-type="bibr"
+            rid="CR14">14</xref>]. Among these are most EGFR exon 20 insertion (EGFRex20ins)
+          mutations reported as far. Exon 20 of EGFR encompasses nucleotides that translate into
+          amino acid at position 762 to 823. It contains a C-helix (residues 762&#x2013;766) and the
+          loop following C-helix (residues 767&#x2013;774), where the insertions could induce
+          ligand-independent EGFR pathway activation and give rise to tumorigenesis [<xref
+            ref-type="bibr" rid="CR15">15</xref>]. The true frequency of EGFRex20ins mutations
+          within the EGFR mutant lung cancer is inconsistent, contributing to roughly 4&#x2013;12%
+          of all EGFR mutations identified [<xref ref-type="bibr" rid="CR16">16</xref>&#x2013;<xref
+            ref-type="bibr" rid="CR18">18</xref>]. In most reports, EGFRex20ins mutations are more
+          common in tumors among never-smokers [<xref ref-type="bibr" rid="CR16">16</xref>, <xref
+            ref-type="bibr" rid="CR18">18</xref>]. However, the genetic and clinical characteristics
+          of NSCLCs harboring EGFRex20ins mutations in Asian populations remain unknown due to the
+          lack of large comprehensive genomic studies.</p>
+        <p id="Par21">Preclinical and clinical studies have shown that most EGFRex20ins (except for
+          few subtypes such as EGFR A763_Y764insFQEA) mutant tumors confer resistance to the 1st and
+          2nd generation EGFR TKIs because the insertions produce steric hindrance and activate EGFR
+          without saliently decreasing affinity for ATP or enhancing affinity for EGFR TKIs [<xref
+            ref-type="bibr" rid="CR15">15</xref>, <xref ref-type="bibr" rid="CR19">19</xref>&#x2013;<xref
+            ref-type="bibr" rid="CR23">23</xref>]. Several clinical studies specifically involving
+          tumors with EGFRex20ins mutations are ongoing, with some of them showing preliminary
+          promising activity [<xref ref-type="bibr" rid="CR24">24</xref>, <xref ref-type="bibr"
+            rid="CR25">25</xref>]. However, there are still no established molecular targeted drugs
+          for NSCLC patients with EGFRx20ins mutations. Development of more effective therapeutics
+          for these specific patients represents a great unmet need.</p>
+        <p id="Par22">Osimertinib is an oral, potent, irreversible EGFR TKI selective for
+          sensitizing EGFR and EGFR T790&#x2009;M resistance mutations. Preclinical studies have
+          reported that osimertinib was active in EGFRex20ins mutant cell lines and tumor xenografts
+          with a wide therapeutic window [<xref ref-type="bibr" rid="CR26">26</xref>&#x2013;<xref
+            ref-type="bibr" rid="CR29">29</xref>]. However, whether the preclinical activity of
+          osimertinib could translate into clinical effect remains unclear.</p>
+        <p id="Par23">Herein, we explored the characteristics of EGFRex20ins, as well as the
+          patterns of co-mutations (mutually exclusive or inclusive) in Chinese NSCLC patients. In
+          addition, we assessed the safety and antitumor activity of osimertinib in six advanced
+          NSCLC patients with various EGFRex20ins mutations.</p>
+      </sec>
+      <sec id="Sec2">
+        <title>Methods</title>
+        <sec id="Sec3">
+          <title>Patients</title>
+          <p id="Par24">The study included a cohort of patients who were referred to OrigiMed
+            (Shanghai, China) for targeted next generation sequencing (NGS) test in China between
+            August 2016 and July 2018. Patient samples and clinical information including gender,
+            age and histologic subtypes were retrieved at the time of referral. Six patients with
+            EGFRex20ins mutant stage IV NSCLC who were treated with osimertinib 80&#x2009;mg once
+            daily were included to evaluate the antitumor activity of osimertinib. Data were
+            retrospectively collected from digital medical records. The study was approved by the
+            Institutional Review Board of SYSUCC and written informed consent was obtained for each
+            patient prior to sample collection. Written consents were obtained from parents if
+            patients were under 16&#x2009;years old.</p>
+        </sec>
+        <sec id="Sec4">
+          <title>EGFR ex20ins and co-mutations analysis</title>
+          <p id="Par25">DNA from Formalin-fixed, paraffin-embedded tumor tissue and matched blood
+            samples was extracted. Comprehensive genomic profiling was performed by NGS with a 37 or
+            450 cancer related gene panel covering the whole exons of EGFR gene at a mean coverage
+            depth of &gt;800X (1547 cases with 37 panel, and 769 cases with 450 panel). The genomic
+            alterations including single base substitution, insertions/deletions, copy number
+            variations, as well as gene rearrangement and fusions were assessed. As for six patients
+            treated with osimertinib, genetic status was also determined through NGS prior to
+            osimertinib.</p>
+        </sec>
+        <sec id="Sec5">
+          <title>Response evaluation</title>
+          <p id="Par26">All six patients received oral osimertinib 80&#x2009;mg once daily.
+            Radiological follow-up was performed at the first months then once every 2 months with
+            computed tomography (CT) of the thorax and upper abdomen. Regular cerebral magnetic
+            resonance imaging (MRI) with CT was carried out once any patient was confirmed brain
+            metastasis. Response was assessed according to Response Criteria in Solid Tumors
+            (RECIST) 1.1 [<xref ref-type="bibr" rid="CR30">30</xref>]. Progression-free survival
+            (PFS) was defined as the interval from the date of initiation of osimertinib therapy to
+            the date of disease progression or death from any cause, whichever occurred first.</p>
+        </sec>
+        <sec id="Sec6">
+          <title>Statistical analyses</title>
+          <p id="Par27">The statistical analyses were performed using the SPSS 20.0 (Chicago, IL,
+            USA). The difference in the frequency of each group was analyzed by the Chi-square test
+            or Fisher&#x2019;s exact test. The median age between groups was compared using
+            nonparametric test. A two-sided <italic>p</italic> value &lt;&#x2009;0.05 was considered
+            statistically significant.</p>
+        </sec>
+      </sec>
+      <sec id="Sec7">
+        <title>Results</title>
+        <sec id="Sec8">
+          <title>Frequency and genetic characteristics of EGFRex20ins mutations</title>
+          <p id="Par28">Among the 2316 unselective NSCLC tumors, EGFR mutations were identified in
+            1095 cases (47.3%). EGFRex20ins mutations were detected in 53 cases, contributing 2.3%
+            of all NSCLC cases and 4.8% of EGFR-mutant tumors. Compared with Foundation Medicine
+            (FM) data representing the largest EGFRex20ins cohort, we found that although EGFR
+            mutations were much more common in our Chinese NSCLC patients than that of Western
+            population (47.3% vs 15.5% in FM), EGFRex20ins mutation represented a much smaller group
+            in EGFR mutant NSCLC (4.8% vs 11.7% in FM, <italic>p</italic>&#x2009;&lt;&#x2009;0.001)
+            [<xref ref-type="bibr" rid="CR17">17</xref>]. Of note, our result was comparable with FM
+            cohort in frequency of EGFRex20ins in total NSCLC (2.3% vs. 1.8% in FM, <italic>p</italic>&#x2009;=&#x2009;0.12,
+            Fig.&#xA0;<xref rid="Fig1" ref-type="fig">1</xref>). The smaller proportion of
+            EGFRex20ins in Chinese populations is due to the larger scale of EGFR mutations than
+            western groups.<fig id="Fig1">
+              <label>Fig. 1</label>
+              <caption>
+                <p>Frequency of EGFRex20ins mutations. <bold>a</bold>. Comparison of EGFRex20ins
+            frequency in total NSCLC patients (OrigiMed 2.3% vs. FM 1.8%, <italic>p</italic>&#x2009;=&#x2009;0.12)
+            and adenocarcinoma patients (OrigiMed 2.7% vs. FM 2.3%, <italic>p</italic>
+            &#x2009;=&#x2009;0.32). <bold>b</bold>. Comparison of EGFRex20ins frequency in
+            EGFR-mutant NSCLC patients (OrigiMed 4.8% vs. FM 11.7%, <italic>p</italic>&#x2009;&lt;&#x2009;0.001)
+            and EGFR-mutant adenocarcinoma patients (OrigiMed 4.8% vs. FM 13.9%, <italic>p</italic>&#x2009;&lt;&#x2009;0.001).
+            EGFRex20ins, epidermal growth factor receptor exon 20 insertions; NSCLC, non-small cell
+            lung cancer; FM: Foundation Medicine. * <italic>p</italic>&#x2009;&lt;&#x2009;0.001</p>
+              </caption>
+              <graphic xlink:href="12885_2019_5820_Fig1_HTML" id="MO1" />
+            </fig></p>
+          <p id="Par29">The demographic and clinical characteristics of these patients are
+            summarized in Tables <xref rid="Tab1" ref-type="table">1</xref> and <xref rid="Tab2"
+              ref-type="table">2</xref>. Of the patients with EGFR mutations, EGFRex20ins ranked the
+            fourth most common type, following EGFR exon 19 deletions (436/1095, 39.8%), L858R
+            (410/1095, 37.4%) and T790&#x2009;M mutations (58/1095, 5.3%) (Fig.&#xA0;<xref
+              rid="Fig2" ref-type="fig">2</xref>a). The majority of EGFRex20ins mutations were
+            identified in lung adenocarcinoma (92.5%, 49/53). EGFRex20ins were also detected in two
+            adenosquamous cases and two NSCLC not otherwise specified (NOS). Median age of patients
+            with exon 20 insertion is 57 (31&#x2013;85) years.<table-wrap id="Tab1">
+              <label>Table 1</label>
+              <caption>
+                <p>Histologic and clinical characteristics of non-small cell lung cancer patients
+            tested in this study</p>
+              </caption>
+              <table frame="hsides" rules="groups">
+                <thead>
+                  <tr>
+                    <th />
+                    <th>Adenocarcinoma</th>
+                    <th>Squamous</th>
+                    <th>Others <sup>a</sup></th>
+                    <th>Total</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Total cases</td>
+                    <td>1820</td>
+                    <td>290</td>
+                    <td>206</td>
+                    <td>2316</td>
+                  </tr>
+                  <tr>
+                    <td>&#x2003;Median age</td>
+                    <td>60(26&#x2013;92)</td>
+                    <td>62(30&#x2013;88)</td>
+                    <td>60(12&#x2013;83)</td>
+                    <td>61(12&#x2013;92)</td>
+                  </tr>
+                  <tr>
+                    <td>&#x2003;Sex, M/F</td>
+                    <td>917/903</td>
+                    <td>247/43</td>
+                    <td>144/62</td>
+                    <td>1308/1008</td>
+                  </tr>
+                  <tr>
+                    <td>EGFR mutant cases</td>
+                    <td>1021</td>
+                    <td>11</td>
+                    <td>63</td>
+                    <td>1095</td>
+                  </tr>
+                  <tr>
+                    <td>&#x2003;Frequency in total</td>
+                    <td>56.1%</td>
+                    <td>3.8%</td>
+                    <td>30.6%</td>
+                    <td>47.3%</td>
+                  </tr>
+                  <tr>
+                    <td>&#x2003;Median age</td>
+                    <td>60(26&#x2013;86)</td>
+                    <td>64(38&#x2013;89)</td>
+                    <td>57(27&#x2013;74)</td>
+                    <td>60(26&#x2013;89)</td>
+                  </tr>
+                  <tr>
+                    <td>&#x2003;Sex, M/F</td>
+                    <td>397/624</td>
+                    <td>5/6</td>
+                    <td>28/35</td>
+                    <td>430/665</td>
+                  </tr>
+                  <tr>
+                    <td>EGFRex20ins cases</td>
+                    <td>49</td>
+                    <td>0</td>
+                    <td>4</td>
+                    <td>53</td>
+                  </tr>
+                  <tr>
+                    <td>&#x2003;Frequency in EGFR mutant</td>
+                    <td>4.8%</td>
+                    <td>0</td>
+                    <td>6.3%</td>
+                    <td>4.8%</td>
+                  </tr>
+                  <tr>
+                    <td>&#x2003;Frequency in total</td>
+                    <td>2.7%</td>
+                    <td>0</td>
+                    <td>1.9%</td>
+                    <td>2.3%</td>
+                  </tr>
+                  <tr>
+                    <td>&#x2003;Median age</td>
+                    <td>57(31&#x2013;85)</td>
+                    <td>&#x2013;</td>
+                    <td>56.5(49&#x2013;70)</td>
+                    <td>57(31&#x2013;85)</td>
+                  </tr>
+                  <tr>
+                    <td>&#x2003;Sex, M/F</td>
+                    <td>26/23</td>
+                    <td>&#x2013;</td>
+                    <td>2/2</td>
+                    <td>28/25</td>
+                  </tr>
+                </tbody>
+              </table>
+              <table-wrap-foot>
+                <p><sup>a</sup> Other pathological type in NSCLC, including adenosquamous lung
+            cancer, NSCLC not otherwise specified, large cell lung cancer, neuroendocrine carcinoma
+            and sarcomatoid carcinoma</p>
+                <p><italic>M/F</italic> male/female; EGFRex20ins, epidermal growth factor receptor
+            exon 20 insertions, <italic>NSCLC</italic> non-small cell lung cancer</p>
+              </table-wrap-foot>
+            </table-wrap><table-wrap
+              id="Tab2">
+              <label>Table 2</label>
+              <caption>
+                <p>Clinical comparison of EGFR ex20ins NSCLC with EGFR</p>
+              </caption>
+              <table frame="hsides" rules="groups">
+                <thead>
+                  <tr>
+                    <th />
+                    <th>EGFR 20ins</th>
+                    <th>EGFR WT</th>
+                    <th>EGFR 19del</th>
+                    <th>EGFR L858R</th>
+                    <th>EGFR T790&#x2009;M</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Median age</td>
+                    <td>57</td>
+                    <td>61</td>
+                    <td>59.5</td>
+                    <td>62</td>
+                    <td>59</td>
+                  </tr>
+                  <tr>
+                    <td>&#x2003;<italic>p</italic> value vs. EGFR ex20ins</td>
+                    <td />
+                    <td>0.399</td>
+                    <td>0.897</td>
+                    <td>0.206</td>
+                    <td>0.792</td>
+                  </tr>
+                  <tr>
+                    <td>Sex, M/F(%M)</td>
+                    <td>28/25(53%)</td>
+                    <td>878/343(72%)</td>
+                    <td>177/259(41%)</td>
+                    <td>130/280(32%)</td>
+                    <td>21/37(36%)</td>
+                  </tr>
+                  <tr>
+                    <td>&#x2003;<italic>p</italic> value vs. EGFR ex20ins</td>
+                    <td />
+                    <td>0.003</td>
+                    <td>0.088</td>
+                    <td>0.002</td>
+                    <td>0.078</td>
+                  </tr>
+                </tbody>
+              </table>
+              <table-wrap-foot>
+                <p>WT and EGFR mutant (19del/L858R/ T790&#x2009;M) NSCLC</p>
+                <p><italic>WT</italic>wild type</p>
+              </table-wrap-foot>
+            </table-wrap><fig
+              id="Fig2">
+              <label>Fig. 2</label>
+              <caption>
+                <p>Distribution of EGFR mutations and EGFR exon 20 mutation types and EGFRex20ins in
+            this study. <bold>a</bold>. Distribution of EGFR mutations. <bold>b</bold>. Distribution
+            of EGFR exon 20 mutation types and EGFRex20ins mutations</p>
+              </caption>
+              <graphic xlink:href="12885_2019_5820_Fig2_HTML" id="MO2" />
+            </fig></p>
+          <p id="Par30">In total, 20 different variants of exon EGFRex20ins were identified in 53
+            NSCLC patients. The most frequent variant is A767_V769dup (32.1%, 17/53), followed by
+            P772_H773dup (4/53, 7.5%), S768_D770dup (4/53, 7.5%), N771_H773dup (4/53, 7.5%),
+            A763_Y764insFQEA (3/53, 5.7%). Unique EGFRex20ins mutations detected by NGS were
+            summarized in Fig. <xref rid="Fig2" ref-type="fig">2</xref>b.</p>
+          <p id="Par31">EGFRex20ins tended to be exclusive with NSCLC driver genes such as <italic>
+            EGFR</italic> mutation ERBB2, ALK, BRAF and RET mutations. The most common co-mutations
+            were TP53 (49.1%). Co-mutation pattern compared with EGFR ex19dels, L858R, T790&#x2009;M
+            and other EGFR uncommon mutations were summarized in Additional file <xref rid="MOESM1"
+              ref-type="media">1</xref>: Figure S1 and Additional file <xref rid="MOESM2"
+              ref-type="media">2</xref>: Figure S2.</p>
+        </sec>
+        <sec id="Sec9">
+          <title>Antitumor activity of monotherapy Osimertinib for patients with EGFRex20ins
+            mutations</title>
+          <p id="Par32">From August 28th, 2017 to April 30th, 2018, six patients with stage IV lung
+            adenocarcinoma bearing EGFRex20ins started osimertinib treatment. Median follow-up time
+            was 6.2&#x2009;months. Previous treatment, detailed mutation characteristics and the
+            outcome of osimertinib are shown in Table&#xA0;<xref rid="Tab3" ref-type="table">3</xref>.
+            All the patients had stage IV lung adenocarcinoma and predominantly females (5/6).
+            Before osimertinib treatment, four patients were observed metastasis in lungs and
+            pleura. Patient 5 was diagnosed with brain metastasis and patient 6 with bone
+            metastasis. The median age is 64&#x2009;years old. Two patients received osimertinib as
+            first line therapy and two patients had previous treatment with other EGFR TKIs. Per
+            RECISIT 1.1, four (67.7%) patients achieved partial response (PR) and the remaining two
+            patients (33.3%) obtained stable disease (SD). Median progression-free survival (PFS)
+            was 6.2&#x2009;months (95% confidence interval 5.0&#x2013;12.9&#x2009;months; range
+            4.9&#x2013;14.6&#x2009;months). Treatment-related adverse events (AEs) included diarrhea
+            (2/6), pruritus (2/6), stomatitis (1/6) and nausea (1/6). No grade 3 or more AEs were
+            documented. At data cut-off (December 1st, 2018), Two patients had sustaining disease
+            control and remained on osimertinib treatment, while the other four patients had
+            progressive disease (PD) ultimately.<table-wrap id="Tab3">
+              <label>Table 3</label>
+              <caption>
+                <p>Mutation characteristics and outcome of osimertinib treatment</p>
+              </caption>
+              <table frame="hsides" rules="groups">
+                <thead>
+                  <tr>
+                    <th>Patient</th>
+                    <th>Age</th>
+                    <th>Sex</th>
+                    <th>Previous Systematic therapy</th>
+                    <th>Previous EGFR TKI Treatment</th>
+                    <th>Mutations <sup>a</sup> Before osimertinib (MAF)</th>
+                    <th>Best Response</th>
+                    <th>PFS</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1</td>
+                    <td>63Y</td>
+                    <td>F</td>
+                    <td>None</td>
+                    <td>None</td>
+                    <td>
+                      <p>EGFR</p>
+                      <p>p. A767_V769dup</p>
+                      <p>(3.48%)</p>
+                    </td>
+                    <td>PR</td>
+                    <td>6.0&#x2009;m</td>
+                  </tr>
+                  <tr>
+                    <td>2</td>
+                    <td>59Y</td>
+                    <td>F</td>
+                    <td>Yes</td>
+                    <td>None</td>
+                    <td>
+                      <p>EGFR</p>
+                      <p>p. S768_D770dup</p>
+                      <p>(1.75%)</p>
+                    </td>
+                    <td>PR Treatment ongoing</td>
+                    <td>14.6&#x2009;m</td>
+                  </tr>
+                  <tr>
+                    <td>3</td>
+                    <td>69Y</td>
+                    <td>M</td>
+                    <td>None</td>
+                    <td>None</td>
+                    <td>
+                      <p>EGFR</p>
+                      <p>p. N771_P772insL</p>
+                      <p>(47%)</p>
+                    </td>
+                    <td>SD</td>
+                    <td>4.9&#x2009;m</td>
+                  </tr>
+                  <tr>
+                    <td>4</td>
+                    <td>70Y</td>
+                    <td>F</td>
+                    <td>Yes</td>
+                    <td>afatinib</td>
+                    <td>
+                      <p>EGFR</p>
+                      <p>p. S768_D770dup</p>
+                      <p>(3%)</p>
+                    </td>
+                    <td>SD Treatment ongoing</td>
+                    <td>11.2&#x2009;m</td>
+                  </tr>
+                  <tr>
+                    <td>5</td>
+                    <td>63Y</td>
+                    <td>F</td>
+                    <td>Yes</td>
+                    <td>None</td>
+                    <td>
+                      <p>EGFR</p>
+                      <p>p. D770_N771insG</p>
+                      <p>(24%)</p>
+                    </td>
+                    <td>PR</td>
+                    <td>6.4&#x2009;m</td>
+                  </tr>
+                  <tr>
+                    <td>6</td>
+                    <td>65Y</td>
+                    <td>F</td>
+                    <td>None</td>
+                    <td>gefitinib</td>
+                    <td>
+                      <p>EGFR</p>
+                      <p>p. A763_Y764insFQEA (0.2%)</p>
+                      <p>T790&#x2009;M (0.3%)</p>
+                    </td>
+                    <td>PR</td>
+                    <td>5.1&#x2009;m</td>
+                  </tr>
+                </tbody>
+              </table>
+              <table-wrap-foot>
+                <p><sup>a</sup> Mutations predicting EGFR TKI treatment</p>
+                <p><italic>TKI</italic> tyrosine kinase inhibitor, <italic>MAF</italic> mutation
+            allele fraction, <italic>PFS</italic> progression free survival, <italic>PR</italic>
+            partial response, <italic>SD</italic> stable disease</p>
+              </table-wrap-foot>
+            </table-wrap></p>
+          <p id="Par33">Patient 1 had EGFR A767_V769dup mutation and received first-line therapy
+            with osimertinib. The patient achieved PR and the PFS was 6.0&#x2009;months. PR was also
+            observed in patient 2 (EGFR S768_D770dup), with a PFS of 14.6+ months. The patient was
+            still on treatment at data cutoff. Patient 3 was identified with a novel EGFRex20ins
+            mutation (EGFR N771_P772insL), which had not been reported before. The patient had SD as
+            best response under first line osimertinib treatment and transferred to other treatment
+            after 4.9&#x2009;months due to enlarged pleural nodules. Patient 4 harbored the same
+            EGFRex20ins mutation as that of patient 2 and attained SD with a PFS of 11.2+ months.
+            Both patient 2 and patient 4 remained on osimertinib treatment. Patient 5 was confirmed
+            with multiple cerebral metastasis and experienced dizzy and vomiting when diagnosed as
+            stage IV adenocarcinoma. The patient was treated with first line chemotherapy with the
+            best response of PD. Thereafter, the patient started osimertinib and exhibited salient
+            clinical improvement and a reduction of nearly half the tumor burden. The patient had PD
+            finally due to new onset bone metastasis, with a PFS of 6.4&#x2009;months. Patient 6 was
+            initially diagnosed as lung adenocarcinoma harboring EGFR A763_Y764insFQEA. The patients
+            started gefitinib treatment with a best response of PR and PFS of 9.0&#x2009;months. At
+            disease progression, the patients had rebiopsy and his tumor was found to had EGFR
+            A763_Y764insFQEA and EGFR T790&#x2009;M. Thereafter, the patient was treated with
+            osimertinib and attained PR. The patient experienced PD eventually due to brain
+            metastasis and achieved a PFS of 5.1&#x2009;months. CT scans performed prior to
+            (baseline) and after osimertinib treatment are demonstrated in Fig.&#xA0;<xref
+              rid="Fig3" ref-type="fig">3</xref>. Tumor shrinkage for each patient is shown in
+            Fig.&#xA0;<xref rid="Fig4" ref-type="fig">4</xref>.<fig id="Fig3">
+              <label>Fig. 3</label>
+              <caption>
+                <p>CT scans of the thorax performed before (baseline) and after osimertinib
+                  treatment (PR or SD). CT, computed tomography; PR, partial response; SD, stable
+            disease</p>
+              </caption>
+              <graphic xlink:href="12885_2019_5820_Fig3_HTML" id="MO3" />
+            </fig><fig
+              id="Fig4">
+              <label>Fig. 4</label>
+              <caption>
+                <p>Maximum change in tumor size according to Response Criteria in Solid Tumors
+            (RECIST) 1.1. Orange grid indicates partial response and gray grid stable disease</p>
+              </caption>
+              <graphic xlink:href="12885_2019_5820_Fig4_HTML" id="MO4" />
+            </fig></p>
+        </sec>
+      </sec>
+      <sec id="Sec10">
+        <title>Discussion</title>
+        <p id="Par34">Based on a large-scale study including 2316 NSCLC patient, our study
+          demonstrated the EGFRex20ins distribution in EGFR mutant Chinese patients (4.8%), the most
+          common EGFRex20ins mutation (A767_V769dup) and co-mutation (TP53), as well as clinical
+          characteristics of EGFRex20ins in Chinese NSCLC patients. As for six EGFRex20ins positive
+          patients with osimertinib treatment, four (67.7%) patients achieved PR and two SD, with
+          disease control rate 100%.</p>
+        <p id="Par35">To our knowledge, our study represents the largest NGS based study on Chinese
+          EGFRex20ins mutant NSCLC patients. We found that frequency of Chinese EGFRex20ins in total
+          NSCLC (2.3%) was comparable with that of western groups in FM cohort [<xref
+            ref-type="bibr" rid="CR17">17</xref>]. Although the proportion of EGFR mutant patients
+          was much larger in our Chinese cohort (47.3% vs 15.5%), which consists with previous
+          studies [<xref ref-type="bibr" rid="CR1">1</xref>, <xref ref-type="bibr" rid="CR2">2</xref>],
+          exon 20 insertions accounted for a smaller proportion compared to FM cohort in EGFR mutant
+          NSCLC (4.8% vs. 11.7%, <italic>p</italic>&#x2009;&lt;&#x2009;0.001) [<xref ref-type="bibr"
+            rid="CR17">17</xref>]. This might mainly due to different EGFR mutation proportion
+          between Asians and Americans, rather than sequencing technology issue as discussed in
+          a&#xA0;previous study [<xref ref-type="bibr" rid="CR17">17</xref>]. In the contrast,
+          proportion of exon 20 insertion in EGFR- mutant patients in our study is similar to those
+          reported in other Asian cohorts, ranging from 3.6&#x2013;4% [<xref ref-type="bibr"
+            rid="CR31">31</xref>, <xref ref-type="bibr" rid="CR32">32</xref>]. These results
+          revealed a concordance in the prevalence of EGFRex20ins between Chinese and Western
+          populations in NSCLC.</p>
+        <p id="Par36">The genetic Chinese characteristics of EGFRex20ins is similar to that of
+          western populations, including the majority of unique mutations and the most prevalent
+          co-mutation [<xref ref-type="bibr" rid="CR17">17</xref>]. EGFRex20ins detected in our
+          study also tended to be exclusive with other NSCLC oncogenic drivers including ERBB2,
+          BRAF, ALK, KRAS and RET mutations.</p>
+        <p id="Par37">Most EGFRex20ins mutations (with the exception of a few subtypes such as
+          A763_Y764insFQEA) are associated with poor responses with the 1st and 2nd generation EGFR
+          TKIs [<xref ref-type="bibr" rid="CR19">19</xref>&#x2013;<xref ref-type="bibr" rid="CR23">
+          23</xref>]. Previous clinical studies including combination therapy of afatinib plus
+          cetuximab or monotherapy of Poziotinib have demonstrated good therapeutic efficacy in some
+          EGFRex20ins mutations positive NSCLC patients [<xref ref-type="bibr" rid="CR24">24</xref>, <xref
+            ref-type="bibr" rid="CR25">25</xref>]. However, the high proportion of severe AEs
+          including skin toxicity and diarrhea of these therapies might limit their universal
+          clinical applying in future. Several preclinical studies have proved that osimertinib was
+          active in specific lung cancer cell lines with EGFRex20ins mutations [<xref
+            ref-type="bibr" rid="CR26">26</xref>&#x2013;<xref ref-type="bibr" rid="CR29">29</xref>],
+          while the clinical activity of the 3rd generation EGFR TKIs in EGFRex20ins tumors remains
+          unknown. Our study showed promising antitumor activity of osimertinib in NSCLC patients
+          harboring certain EGFRex20ins mutations, with four patients attaining PR and two patients
+          SD. Median PFS with osimertinib was 6.2&#x2009;months, which was numerically higher than
+          that with the 1st generation TKIs and afatinib [<xref ref-type="bibr" rid="CR19">19</xref>
+          , <xref ref-type="bibr" rid="CR22">22</xref>]. We also for the first time reported a novel
+          EGFRex20ins mutation, EGFR N771_P772insL, in lung adenocarcinoma.</p>
+        <p id="Par38">Despite the documented activity of osimertinib in our six patients, in vitro
+          study still demonstrated limited osimertinib effect in several EGFRex20ins mutant cell
+          lines [<xref ref-type="bibr" rid="CR26">26</xref>&#x2013;<xref ref-type="bibr" rid="CR29">
+          29</xref>]. Whether other EGFRex20ins mutant tumors could response to osimertinib warrants
+          further study. These studies indicate EGFRex20ins is a heterogeneous group of EGFR
+          mutation and deserves more researches to fully determine osimertinib sensitivity in
+          different EGFRex20ins tumors.</p>
+        <p id="Par39">A recent case report has showed that an advanced NSCLC patient with
+          EGFRex20ins mutation, S768_D770dup, responded to osimertinib 160&#x2009;mg daily [<xref
+            ref-type="bibr" rid="CR33">33</xref>]. The mutation detected was the same as that of
+          patient 2 and patient 4, which might suggest favorable lower-dose osimertinib efficacy in
+          tumors bearing EGFR S768_D770dup mutation. Another case report also suggested that EGFR
+          H773L/V774&#x2009;M, an EGFR exon 20 mutation, could be suppressed by osimertinib [<xref
+            ref-type="bibr" rid="CR34">34</xref>], further supporting the osimertinib effect in
+          specific EGFR exon 20 mutations.</p>
+        <p id="Par40">In addition, considering that EGFR T790&#x2009;M was identified in patient 6
+          harboring EGFR A763_Y764insFQEA after acquired resistance to gefitinib, we found that <italic>
+          EGFR</italic> T790&#x2009;M served as a potential resistant mechanism in EGFR
+          A763_Y764insFQEA positive NSCLC patients and occurrence of both mutations could be
+          targeted by osimertinib. This is the first case showing that T790&#x2009;M mediated the
+          acquired resistance to gefitinib for patient with EGFR A763_Y764insFQEA and osimertinib
+          treatment was effective for patient with both EGFR A763_Y764insFQEA and EGFR
+          T790&#x2009;M.</p>
+        <p id="Par41">Still, there are several limitations in the study. Firstly, panels of NGS
+          performed on patients are not uniform, contributing to relatively incomprehensive genetics
+          statistics in patients with small panels. Secondly, although all six patients in our study
+          acquired disease control, the sample size is too small to establish the therapeutic
+          efficacy of osimertinib in patients with EGFRex20ins.</p>
+      </sec>
+      <sec id="Sec11">
+        <title>Conclusions</title>
+        <p id="Par42">In summary, our study revealed no significant difference in the prevalence and
+          genetic characteristics of EGFRex20ins between Chinese and Western populations in NSCLC.
+          Moreover, promising antitumor activity of osimertinib was observed in specific EGFRex20ins
+          positive NSCLC patients, more studies are urgently needed to fully determine osimertinib
+          effect in NSCLC patients with different EGFRex20ins mutations.</p>
+      </sec>
+      <sec sec-type="supplementary-material">
+        <title>Additional files</title>
+        <sec id="Sec12">
+          <p>
+            <supplementary-material content-type="local-data" id="MOESM1">
+              <media xlink:href="12885_2019_5820_MOESM1_ESM.jpg">
+                <label>Additional file 1:</label>
+                <caption>
+                  <p><bold>Figure S1.</bold> EGFR ex20ins and co-mutation pattern. (JPG 186 kb)</p>
+                </caption>
+              </media>
+            </supplementary-material>
+            <supplementary-material content-type="local-data" id="MOESM2">
+              <media xlink:href="12885_2019_5820_MOESM2_ESM.jpg">
+                <label>Additional file 2:</label>
+                <caption>
+                  <p><bold>Figure S2.</bold> Comparison of co-mutations in EGFR ex20ins (<italic>n</italic>&#x2009;=&#x2009;53),
+                    ex19del (<italic>n</italic>&#x2009;=&#x2009;436), L858R (<italic>n</italic>&#x2009;=&#x2009;410),
+                    T790&#x2009;M (primary and secondary mutation, <italic>n</italic>&#x2009;=&#x2009;58)
+                    and other EGFR sensitive mutations (<italic>n</italic>&#x2009;=&#x2009;90).
+                    Others: Other EGFR sensitive mutations, including G719X, L861Q, S768I and
+                    compound mutations. (JPG 1798 kb)</p>
+                </caption>
+              </media>
+            </supplementary-material>
+          </p>
+        </sec>
+      </sec>
+    </body>
+    <back>
+      <glossary>
+        <title>Abbreviations</title>
+        <def-list>
+          <def-item>
+            <term>AEs</term>
+            <def>
+              <p id="Par5">Adverse events</p>
+            </def>
+          </def-item>
+          <def-item>
+            <term>CT</term>
+            <def>
+              <p id="Par6">Computed tomography</p>
+            </def>
+          </def-item>
+          <def-item>
+            <term>EGFRex20ins</term>
+            <def>
+              <p id="Par7">Epidermal growth factor receptor exon 20 insertion</p>
+            </def>
+          </def-item>
+          <def-item>
+            <term>L858R</term>
+            <def>
+              <p id="Par8">Leu858Arg</p>
+            </def>
+          </def-item>
+          <def-item>
+            <term>MRI</term>
+            <def>
+              <p id="Par9">magnetic resonance imaging</p>
+            </def>
+          </def-item>
+          <def-item>
+            <term>NGS</term>
+            <def>
+              <p id="Par10">Next generation sequencing</p>
+            </def>
+          </def-item>
+          <def-item>
+            <term>NOS</term>
+            <def>
+              <p id="Par11">Non-small-cell lung cancer not otherwise specified</p>
+            </def>
+          </def-item>
+          <def-item>
+            <term>NSCLC</term>
+            <def>
+              <p id="Par12">Non-small-cell lung cancer</p>
+            </def>
+          </def-item>
+          <def-item>
+            <term>PD</term>
+            <def>
+              <p id="Par13">Progressive disease</p>
+            </def>
+          </def-item>
+          <def-item>
+            <term>PFS</term>
+            <def>
+              <p id="Par14">Progression-free survival</p>
+            </def>
+          </def-item>
+          <def-item>
+            <term>PR</term>
+            <def>
+              <p id="Par15">Partial response</p>
+            </def>
+          </def-item>
+          <def-item>
+            <term>RECIST</term>
+            <def>
+              <p id="Par16">Response criteria in solid tumors</p>
+            </def>
+          </def-item>
+          <def-item>
+            <term>SD</term>
+            <def>
+              <p id="Par17">Stable disease</p>
+            </def>
+          </def-item>
+          <def-item>
+            <term>TKIs</term>
+            <def>
+              <p id="Par18">Tyrosine kinase inhibitors</p>
+            </def>
+          </def-item>
+        </def-list>
+      </glossary>
+      <fn-group>
+        <fn>
+          <p>
+            <bold>Publisher&#x2019;s Note</bold>
+          </p>
+          <p>Springer Nature remains neutral with regard to jurisdictional claims in published maps
+            and institutional affiliations.</p>
+        </fn>
+        <fn>
+          <p>Wenfeng Fang, Yihua Huang, Shaodong Hong, Zhonghan Zhang and Minghui Wang contributed
+            equally to this work.</p>
+        </fn>
+      </fn-group>
+      <ack>
+        <title>Acknowledgements</title>
+        <p>The authors would like to thank Dr. Xiaoqian Chen from OrigiMed for her excellent work in
+          statistical support.</p>
+      </ack>
+      <notes notes-type="author-contribution">
+        <title>Authors&#x2019; contributions</title>
+        <p>WF, YH, SH, ZZ, MW conceived of the study; LZ and WF designed the study; YH, SH, ZZ, MW
+          analyzed data; JG, WW, HG, KW collected data; WF, YH, SH, ZZ wrote the manuscript. LZ, WF
+          and SH corrected and approved the final version of the manuscript. All authors read and
+          approved the final manuscript.</p>
+      </notes>
+      <notes notes-type="funding-information">
+        <title>Funding</title>
+        <p>This work was financially supported by National Key R&amp;D Program of China
+          (2016YFC0905500, 2016YFC0905503), Chinese National Natural Science Foundation (81772476,
+          81602005, 81872499, and 81702283), Science and Technology Program of Guangdong
+          (2017B020227001). All the grand supporters have no role in the design of the study and
+          collection, analysis, and interpretation of data and in writing the manuscript.</p>
+      </notes>
+      <notes notes-type="data-availability">
+        <title>Availability of data and materials</title>
+        <p>The datasets used and/or analyzed during the current study are available from the
+          corresponding author on reasonable request.</p>
+      </notes>
+      <notes>
+        <title>Ethics approval and consent to participate</title>
+        <p id="Par43">The study was approved by the Institutional Review Board of SYSUCC and written
+          informed consent was obtained for each patient prior to sample collection. Patients were
+          informed that the resected specimens were stored by the hospital and potentially used for
+          scientific research, and that their privacy would be maintained. Written consents were
+          obtained from parents if patients were under 16&#x2009;years old.</p>
+      </notes>
+      <notes>
+        <title>Consent for publication</title>
+        <p id="Par44">Not applicable.</p>
+      </notes>
+      <notes notes-type="COI-statement">
+        <title>Competing interests</title>
+        <p id="Par45">The authors declare that they have no competing interests.</p>
+      </notes>
+      <ref-list id="Bib1">
+        <title>References</title>
+        <ref id="CR1">
+          <label>1.</label>
+          <element-citation publication-type="journal">
+            <person-group person-group-type="author">
+              <name>
+                <surname>Kris</surname>
+                <given-names>MG</given-names>
+              </name>
+              <name>
+                <surname>Johnson</surname>
+                <given-names>BE</given-names>
+              </name>
+              <name>
+                <surname>Berry</surname>
+                <given-names>LD</given-names>
+              </name>
+              <name>
+                <surname>Kwiatkowski</surname>
+                <given-names>DJ</given-names>
+              </name>
+              <name>
+                <surname>Iafrate</surname>
+                <given-names>AJ</given-names>
+              </name>
+              <name>
+                <surname>Wistuba</surname>
+                <given-names>II</given-names>
+              </name>
+              <name>
+                <surname>Varella-Garcia</surname>
+                <given-names>M</given-names>
+              </name>
+              <name>
+                <surname>Franklin</surname>
+                <given-names>WA</given-names>
+              </name>
+              <name>
+                <surname>Aronson</surname>
+                <given-names>SL</given-names>
+              </name>
+              <name>
+                <surname>Su</surname>
+                <given-names>PF</given-names>
+              </name>
+              <etal />
+            </person-group>
+            <article-title>Using multiplexed assays of oncogenic drivers in lung cancers to select
+              targeted drugs</article-title>
+            <source>Jama-J Am Med Assoc</source>
+            <year>2014</year>
+            <volume>311</volume>
+            <issue>19</issue>
+            <fpage>1998</fpage>
+            <lpage>2006</lpage>
+            <pub-id pub-id-type="doi">10.1001/jama.2014.3741</pub-id>
+          </element-citation>
+        </ref>
+        <ref id="CR2">
+          <label>2.</label>
+          <element-citation publication-type="journal">
+            <person-group person-group-type="author">
+              <name>
+                <surname>Shi</surname>
+                <given-names>Y</given-names>
+              </name>
+              <name>
+                <surname>Li</surname>
+                <given-names>J</given-names>
+              </name>
+              <name>
+                <surname>Zhang</surname>
+                <given-names>S</given-names>
+              </name>
+              <name>
+                <surname>Wang</surname>
+                <given-names>M</given-names>
+              </name>
+              <name>
+                <surname>Yang</surname>
+                <given-names>S</given-names>
+              </name>
+              <name>
+                <surname>Li</surname>
+                <given-names>N</given-names>
+              </name>
+              <name>
+                <surname>Wu</surname>
+                <given-names>G</given-names>
+              </name>
+              <name>
+                <surname>Liu</surname>
+                <given-names>W</given-names>
+              </name>
+              <name>
+                <surname>Liao</surname>
+                <given-names>G</given-names>
+              </name>
+              <name>
+                <surname>Cai</surname>
+                <given-names>K</given-names>
+              </name>
+              <etal />
+            </person-group>
+            <article-title>Molecular epidemiology of EGFR mutations in Asian patients with advanced
+              non-small-cell lung cancer of adenocarcinoma histology - mainland China subset
+              analysis of the PIONEER study</article-title>
+            <source>PLoS One</source>
+            <year>2015</year>
+            <volume>10</volume>
+            <issue>11</issue>
+            <fpage>e0143515</fpage>
+            <pub-id pub-id-type="doi">10.1371/journal.pone.0143515</pub-id>
+            <pub-id pub-id-type="pmid">26599344</pub-id>
+          </element-citation>
+        </ref>
+        <ref id="CR3">
+          <label>3.</label>
+          <element-citation publication-type="journal">
+            <person-group person-group-type="author">
+              <name>
+                <surname>Travis</surname>
+                <given-names>WD</given-names>
+              </name>
+            </person-group>
+            <article-title>WHO classification of the pathology and genetics of tumors of the lung</article-title>
+            <source>J Thorac Oncol</source>
+            <year>2015</year>
+            <volume>10</volume>
+            <issue>9</issue>
+            <fpage>S68</fpage>
+          </element-citation>
+        </ref>
+        <ref id="CR4">
+          <label>4.</label>
+          <element-citation publication-type="journal">
+            <person-group person-group-type="author">
+              <name>
+                <surname>Tsao</surname>
+                <given-names>AS</given-names>
+              </name>
+              <name>
+                <surname>Tang</surname>
+                <given-names>XM</given-names>
+              </name>
+              <name>
+                <surname>Sabloff</surname>
+                <given-names>B</given-names>
+              </name>
+              <name>
+                <surname>Xiao</surname>
+                <given-names>L</given-names>
+              </name>
+              <name>
+                <surname>Shigematsu</surname>
+                <given-names>H</given-names>
+              </name>
+              <name>
+                <surname>Roth</surname>
+                <given-names>J</given-names>
+              </name>
+              <name>
+                <surname>Spitz</surname>
+                <given-names>M</given-names>
+              </name>
+              <name>
+                <surname>Hong</surname>
+                <given-names>WK</given-names>
+              </name>
+              <name>
+                <surname>Gazdar</surname>
+                <given-names>A</given-names>
+              </name>
+              <name>
+                <surname>Wistuba</surname>
+                <given-names>I</given-names>
+              </name>
+            </person-group>
+            <article-title>Clinicopathologic characteristics of the EGFR gene mutation in non-small
+              cell lung cancer</article-title>
+            <source>J Thorac Oncol</source>
+            <year>2006</year>
+            <volume>1</volume>
+            <issue>3</issue>
+            <fpage>231</fpage>
+            <lpage>239</lpage>
+            <pub-id pub-id-type="doi">10.1016/S1556-0864(15)31573-2</pub-id>
+            <pub-id pub-id-type="pmid">17409862</pub-id>
+          </element-citation>
+        </ref>
+        <ref id="CR5">
+          <label>5.</label>
+          <element-citation publication-type="journal">
+            <person-group person-group-type="author">
+              <name>
+                <surname>Lee</surname>
+                <given-names>SY</given-names>
+              </name>
+              <name>
+                <surname>Kim</surname>
+                <given-names>MJ</given-names>
+              </name>
+              <name>
+                <surname>Jin</surname>
+                <given-names>G</given-names>
+              </name>
+              <name>
+                <surname>Yoo</surname>
+                <given-names>SS</given-names>
+              </name>
+              <name>
+                <surname>Park</surname>
+                <given-names>JY</given-names>
+              </name>
+              <name>
+                <surname>Choi</surname>
+                <given-names>JE</given-names>
+              </name>
+              <name>
+                <surname>Jeon</surname>
+                <given-names>HS</given-names>
+              </name>
+              <name>
+                <surname>Cho</surname>
+                <given-names>S</given-names>
+              </name>
+              <name>
+                <surname>Lee</surname>
+                <given-names>EB</given-names>
+              </name>
+              <name>
+                <surname>Cha</surname>
+                <given-names>SI</given-names>
+              </name>
+              <etal />
+            </person-group>
+            <article-title>Somatic mutations in epidermal growth factor receptor signaling pathway
+              genes in non-small cell lung cancers</article-title>
+            <source>J Thorac Oncol</source>
+            <year>2010</year>
+            <volume>5</volume>
+            <issue>11</issue>
+            <fpage>1734</fpage>
+            <lpage>1740</lpage>
+            <pub-id pub-id-type="doi">10.1097/JTO.0b013e3181f0beca</pub-id>
+            <pub-id pub-id-type="pmid">20881644</pub-id>
+          </element-citation>
+        </ref>
+        <ref id="CR6">
+          <label>6.</label>
+          <element-citation publication-type="journal">
+            <person-group person-group-type="author">
+              <name>
+                <surname>Tokumo</surname>
+                <given-names>M</given-names>
+              </name>
+              <name>
+                <surname>Toyooka</surname>
+                <given-names>S</given-names>
+              </name>
+              <name>
+                <surname>Kiura</surname>
+                <given-names>K</given-names>
+              </name>
+              <name>
+                <surname>Shigematsu</surname>
+                <given-names>H</given-names>
+              </name>
+              <name>
+                <surname>Tomii</surname>
+                <given-names>K</given-names>
+              </name>
+              <name>
+                <surname>Aoe</surname>
+                <given-names>M</given-names>
+              </name>
+              <name>
+                <surname>Ichimura</surname>
+                <given-names>K</given-names>
+              </name>
+              <name>
+                <surname>Tsuda</surname>
+                <given-names>T</given-names>
+              </name>
+              <name>
+                <surname>Yano</surname>
+                <given-names>M</given-names>
+              </name>
+              <name>
+                <surname>Tsukuda</surname>
+                <given-names>K</given-names>
+              </name>
+              <etal />
+            </person-group>
+            <article-title>The relationship between epidermal growth factor receptor mutations and
+              clinicopathologic features in non-small cell lung cancers</article-title>
+            <source>Clin Cancer Res</source>
+            <year>2005</year>
+            <volume>11</volume>
+            <issue>3</issue>
+            <fpage>1167</fpage>
+            <lpage>1173</lpage>
+            <pub-id pub-id-type="pmid">15709185</pub-id>
+          </element-citation>
+        </ref>
+        <ref id="CR7">
+          <label>7.</label>
+          <element-citation publication-type="journal">
+            <person-group person-group-type="author">
+              <name>
+                <surname>Rosell</surname>
+                <given-names>R</given-names>
+              </name>
+              <name>
+                <surname>Moran</surname>
+                <given-names>T</given-names>
+              </name>
+              <name>
+                <surname>Queralt</surname>
+                <given-names>C</given-names>
+              </name>
+              <name>
+                <surname>Porta</surname>
+                <given-names>R</given-names>
+              </name>
+              <name>
+                <surname>Cardenal</surname>
+                <given-names>F</given-names>
+              </name>
+              <name>
+                <surname>Camps</surname>
+                <given-names>C</given-names>
+              </name>
+              <name>
+                <surname>Majem</surname>
+                <given-names>M</given-names>
+              </name>
+              <name>
+                <surname>Lopez-Vivanco</surname>
+                <given-names>G</given-names>
+              </name>
+              <name>
+                <surname>Isla</surname>
+                <given-names>D</given-names>
+              </name>
+              <name>
+                <surname>Provencio</surname>
+                <given-names>M</given-names>
+              </name>
+              <etal />
+            </person-group>
+            <article-title>Screening for epidermal growth factor receptor mutations in lung cancer</article-title>
+            <source>New Engl J Med</source>
+            <year>2009</year>
+            <volume>361</volume>
+            <issue>10</issue>
+            <fpage>958</fpage>
+            <lpage>967</lpage>
+            <pub-id pub-id-type="doi">10.1056/NEJMoa0904554</pub-id>
+            <pub-id pub-id-type="pmid">19692684</pub-id>
+          </element-citation>
+        </ref>
+        <ref id="CR8">
+          <label>8.</label>
+          <element-citation publication-type="journal">
+            <person-group person-group-type="author">
+              <name>
+                <surname>Shi</surname>
+                <given-names>Y</given-names>
+              </name>
+              <name>
+                <surname>Au</surname>
+                <given-names>JS</given-names>
+              </name>
+              <name>
+                <surname>Thongprasert</surname>
+                <given-names>S</given-names>
+              </name>
+              <name>
+                <surname>Srinivasan</surname>
+                <given-names>S</given-names>
+              </name>
+              <name>
+                <surname>Tsai</surname>
+                <given-names>CM</given-names>
+              </name>
+              <name>
+                <surname>Khoa</surname>
+                <given-names>MT</given-names>
+              </name>
+              <name>
+                <surname>Heeroma</surname>
+                <given-names>K</given-names>
+              </name>
+              <name>
+                <surname>Itoh</surname>
+                <given-names>Y</given-names>
+              </name>
+              <name>
+                <surname>Cornelio</surname>
+                <given-names>G</given-names>
+              </name>
+              <name>
+                <surname>Yang</surname>
+                <given-names>PC</given-names>
+              </name>
+            </person-group>
+            <article-title>A prospective, molecular epidemiology study of EGFR mutations in Asian
+              patients with advanced non-small-cell lung cancer of adenocarcinoma histology
+              (PIONEER)</article-title>
+            <source>J Thorac Oncol</source>
+            <year>2014</year>
+            <volume>9</volume>
+            <issue>2</issue>
+            <fpage>154</fpage>
+            <lpage>162</lpage>
+            <pub-id pub-id-type="doi">10.1097/JTO.0000000000000033</pub-id>
+            <pub-id pub-id-type="pmid">24419411</pub-id>
+          </element-citation>
+        </ref>
+        <ref id="CR9">
+          <label>9.</label>
+          <element-citation publication-type="journal">
+            <person-group person-group-type="author">
+              <name>
+                <surname>Mok</surname>
+                <given-names>TS</given-names>
+              </name>
+              <name>
+                <surname>Wu</surname>
+                <given-names>YL</given-names>
+              </name>
+              <name>
+                <surname>Thongprasert</surname>
+                <given-names>S</given-names>
+              </name>
+              <name>
+                <surname>Yang</surname>
+                <given-names>CH</given-names>
+              </name>
+              <name>
+                <surname>Chu</surname>
+                <given-names>DT</given-names>
+              </name>
+              <name>
+                <surname>Saijo</surname>
+                <given-names>N</given-names>
+              </name>
+              <name>
+                <surname>Sunpaweravong</surname>
+                <given-names>P</given-names>
+              </name>
+              <name>
+                <surname>Han</surname>
+                <given-names>B</given-names>
+              </name>
+              <name>
+                <surname>Margono</surname>
+                <given-names>B</given-names>
+              </name>
+              <name>
+                <surname>Ichinose</surname>
+                <given-names>Y</given-names>
+              </name>
+              <etal />
+            </person-group>
+            <article-title>Gefitinib or carboplatin-paclitaxel in pulmonary adenocarcinoma</article-title>
+            <source>New Engl J Med</source>
+            <year>2009</year>
+            <volume>361</volume>
+            <issue>10</issue>
+            <fpage>947</fpage>
+            <lpage>957</lpage>
+            <pub-id pub-id-type="doi">10.1056/NEJMoa0810699</pub-id>
+            <pub-id pub-id-type="pmid">19692680</pub-id>
+          </element-citation>
+        </ref>
+        <ref id="CR10">
+          <label>10.</label>
+          <element-citation publication-type="journal">
+            <person-group person-group-type="author">
+              <name>
+                <surname>Rosell</surname>
+                <given-names>R</given-names>
+              </name>
+              <name>
+                <surname>Carcereny</surname>
+                <given-names>E</given-names>
+              </name>
+              <name>
+                <surname>Gervais</surname>
+                <given-names>R</given-names>
+              </name>
+              <name>
+                <surname>Vergnenegre</surname>
+                <given-names>A</given-names>
+              </name>
+              <name>
+                <surname>Massuti</surname>
+                <given-names>B</given-names>
+              </name>
+              <name>
+                <surname>Felip</surname>
+                <given-names>E</given-names>
+              </name>
+              <name>
+                <surname>Palmero</surname>
+                <given-names>R</given-names>
+              </name>
+              <name>
+                <surname>Garcia-Gomez</surname>
+                <given-names>R</given-names>
+              </name>
+              <name>
+                <surname>Pallares</surname>
+                <given-names>C</given-names>
+              </name>
+              <name>
+                <surname>Sanchez</surname>
+                <given-names>JM</given-names>
+              </name>
+              <etal />
+            </person-group>
+            <article-title>Erlotinib versus standard chemotherapy as first-line treatment for
+              European patients with advanced EGFR mutation-positive non-small-cell lung cancer
+              (EURTAC): a multicentre, open-label, randomised phase 3 trial</article-title>
+            <source>Lancet Oncol</source>
+            <year>2012</year>
+            <volume>13</volume>
+            <issue>3</issue>
+            <fpage>239</fpage>
+            <lpage>246</lpage>
+            <pub-id pub-id-type="doi">10.1016/S1470-2045(11)70393-X</pub-id>
+            <pub-id pub-id-type="pmid">22285168</pub-id>
+          </element-citation>
+        </ref>
+        <ref id="CR11">
+          <label>11.</label>
+          <element-citation publication-type="journal">
+            <person-group person-group-type="author">
+              <name>
+                <surname>Sequist</surname>
+                <given-names>LV</given-names>
+              </name>
+              <name>
+                <surname>Yang</surname>
+                <given-names>JC</given-names>
+              </name>
+              <name>
+                <surname>Yamamoto</surname>
+                <given-names>N</given-names>
+              </name>
+              <name>
+                <surname>O'Byrne</surname>
+                <given-names>K</given-names>
+              </name>
+              <name>
+                <surname>Hirsh</surname>
+                <given-names>V</given-names>
+              </name>
+              <name>
+                <surname>Mok</surname>
+                <given-names>T</given-names>
+              </name>
+              <name>
+                <surname>Geater</surname>
+                <given-names>SL</given-names>
+              </name>
+              <name>
+                <surname>Orlov</surname>
+                <given-names>S</given-names>
+              </name>
+              <name>
+                <surname>Tsai</surname>
+                <given-names>CM</given-names>
+              </name>
+              <name>
+                <surname>Boyer</surname>
+                <given-names>M</given-names>
+              </name>
+              <etal />
+            </person-group>
+            <article-title>Phase III study of afatinib or cisplatin plus pemetrexed in patients with
+              metastatic lung adenocarcinoma with EGFR mutations</article-title>
+            <source>J Clin Oncol</source>
+            <year>2013</year>
+            <volume>31</volume>
+            <issue>27</issue>
+            <fpage>3327</fpage>
+            <lpage>3334</lpage>
+            <pub-id pub-id-type="doi">10.1200/JCO.2012.44.2806</pub-id>
+            <pub-id pub-id-type="pmid">23816960</pub-id>
+          </element-citation>
+        </ref>
+        <ref id="CR12">
+          <label>12.</label>
+          <element-citation publication-type="journal">
+            <person-group person-group-type="author">
+              <name>
+                <surname>Soria</surname>
+                <given-names>JC</given-names>
+              </name>
+              <name>
+                <surname>Ohe</surname>
+                <given-names>Y</given-names>
+              </name>
+              <name>
+                <surname>Vansteenkiste</surname>
+                <given-names>J</given-names>
+              </name>
+              <name>
+                <surname>Reungwetwattana</surname>
+                <given-names>T</given-names>
+              </name>
+              <name>
+                <surname>Chewaskulyong</surname>
+                <given-names>B</given-names>
+              </name>
+              <name>
+                <surname>Lee</surname>
+                <given-names>KH</given-names>
+              </name>
+              <name>
+                <surname>Dechaphunkul</surname>
+                <given-names>A</given-names>
+              </name>
+              <name>
+                <surname>Imamura</surname>
+                <given-names>F</given-names>
+              </name>
+              <name>
+                <surname>Nogami</surname>
+                <given-names>N</given-names>
+              </name>
+              <name>
+                <surname>Kurata</surname>
+                <given-names>T</given-names>
+              </name>
+              <etal />
+            </person-group>
+            <article-title>Osimertinib in untreated EGFR-mutated advanced non-small-cell lung Cancer</article-title>
+            <source>New Engl J Med</source>
+            <year>2018</year>
+            <volume>378</volume>
+            <issue>2</issue>
+            <fpage>113</fpage>
+            <lpage>125</lpage>
+            <pub-id pub-id-type="doi">10.1056/NEJMoa1713137</pub-id>
+            <pub-id pub-id-type="pmid">29151359</pub-id>
+          </element-citation>
+        </ref>
+        <ref id="CR13">
+          <label>13.</label>
+          <element-citation publication-type="journal">
+            <person-group person-group-type="author">
+              <name>
+                <surname>Xu</surname>
+                <given-names>J</given-names>
+              </name>
+              <name>
+                <surname>Jin</surname>
+                <given-names>B</given-names>
+              </name>
+              <name>
+                <surname>Chu</surname>
+                <given-names>T</given-names>
+              </name>
+              <name>
+                <surname>Dong</surname>
+                <given-names>X</given-names>
+              </name>
+              <name>
+                <surname>Yang</surname>
+                <given-names>H</given-names>
+              </name>
+              <name>
+                <surname>Zhang</surname>
+                <given-names>Y</given-names>
+              </name>
+              <name>
+                <surname>Wu</surname>
+                <given-names>D</given-names>
+              </name>
+              <name>
+                <surname>Lou</surname>
+                <given-names>Y</given-names>
+              </name>
+              <name>
+                <surname>Zhang</surname>
+                <given-names>X</given-names>
+              </name>
+              <name>
+                <surname>Wang</surname>
+                <given-names>H</given-names>
+              </name>
+              <etal />
+            </person-group>
+            <article-title>EGFR tyrosine kinase inhibitor (TKI) in patients with advanced non-small
+              cell lung cancer (NSCLC) harboring uncommon EGFR mutations: a real-world study in
+              China</article-title>
+            <source>Lung Cancer</source>
+            <year>2016</year>
+            <volume>96</volume>
+            <fpage>87</fpage>
+            <lpage>92</lpage>
+            <pub-id pub-id-type="doi">10.1016/j.lungcan.2016.01.018</pub-id>
+            <pub-id pub-id-type="pmid">27133756</pub-id>
+          </element-citation>
+        </ref>
+        <ref id="CR14">
+          <label>14.</label>
+          <element-citation publication-type="journal">
+            <person-group person-group-type="author">
+              <name>
+                <surname>Klughammer</surname>
+                <given-names>B</given-names>
+              </name>
+              <name>
+                <surname>Brugger</surname>
+                <given-names>W</given-names>
+              </name>
+              <name>
+                <surname>Cappuzzo</surname>
+                <given-names>F</given-names>
+              </name>
+              <name>
+                <surname>Ciuleanu</surname>
+                <given-names>T</given-names>
+              </name>
+              <name>
+                <surname>Mok</surname>
+                <given-names>T</given-names>
+              </name>
+              <name>
+                <surname>Reck</surname>
+                <given-names>M</given-names>
+              </name>
+              <name>
+                <surname>Tan</surname>
+                <given-names>EH</given-names>
+              </name>
+              <name>
+                <surname>Delmar</surname>
+                <given-names>P</given-names>
+              </name>
+              <name>
+                <surname>Klingelschmitt</surname>
+                <given-names>G</given-names>
+              </name>
+              <name>
+                <surname>Yin</surname>
+                <given-names>AY</given-names>
+              </name>
+              <etal />
+            </person-group>
+            <article-title>Examining treatment outcomes with Erlotinib in patients with advanced
+              non-small cell lung cancer whose Tumors Harbor uncommon EGFR mutations</article-title>
+            <source>J Thorac Oncol</source>
+            <year>2016</year>
+            <volume>11</volume>
+            <issue>4</issue>
+            <fpage>545</fpage>
+            <lpage>555</lpage>
+            <pub-id pub-id-type="doi">10.1016/j.jtho.2015.12.107</pub-id>
+            <pub-id pub-id-type="pmid">26773740</pub-id>
+          </element-citation>
+        </ref>
+        <ref id="CR15">
+          <label>15.</label>
+          <element-citation publication-type="journal">
+            <person-group person-group-type="author">
+              <name>
+                <surname>Yasuda</surname>
+                <given-names>H</given-names>
+              </name>
+              <name>
+                <surname>Park</surname>
+                <given-names>E</given-names>
+              </name>
+              <name>
+                <surname>Yun</surname>
+                <given-names>CH</given-names>
+              </name>
+              <name>
+                <surname>Sng</surname>
+                <given-names>NJ</given-names>
+              </name>
+              <name>
+                <surname>Lucena-Araujo</surname>
+                <given-names>AR</given-names>
+              </name>
+              <name>
+                <surname>Yeo</surname>
+                <given-names>WL</given-names>
+              </name>
+              <name>
+                <surname>Huberman</surname>
+                <given-names>MS</given-names>
+              </name>
+              <name>
+                <surname>Cohen</surname>
+                <given-names>DW</given-names>
+              </name>
+              <name>
+                <surname>Nakayama</surname>
+                <given-names>S</given-names>
+              </name>
+              <name>
+                <surname>Ishioka</surname>
+                <given-names>K</given-names>
+              </name>
+              <etal />
+            </person-group>
+            <article-title>Structural, biochemical, and clinical characterization of epidermal
+              growth factor receptor (EGFR) exon 20 insertion mutations in lung cancer</article-title>
+            <source>Sci Transl Med</source>
+            <year>2013</year>
+            <volume>5</volume>
+            <issue>216</issue>
+            <fpage>216ra177</fpage>
+            <pub-id pub-id-type="doi">10.1126/scitranslmed.3007205</pub-id>
+            <pub-id pub-id-type="pmid">24353160</pub-id>
+          </element-citation>
+        </ref>
+        <ref id="CR16">
+          <label>16.</label>
+          <element-citation publication-type="journal">
+            <person-group person-group-type="author">
+              <name>
+                <surname>Arcila</surname>
+                <given-names>ME</given-names>
+              </name>
+              <name>
+                <surname>Nafa</surname>
+                <given-names>K</given-names>
+              </name>
+              <name>
+                <surname>Chaft</surname>
+                <given-names>JE</given-names>
+              </name>
+              <name>
+                <surname>Rekhtman</surname>
+                <given-names>N</given-names>
+              </name>
+              <name>
+                <surname>Lau</surname>
+                <given-names>C</given-names>
+              </name>
+              <name>
+                <surname>Reva</surname>
+                <given-names>BA</given-names>
+              </name>
+              <name>
+                <surname>Zakowski</surname>
+                <given-names>MF</given-names>
+              </name>
+              <name>
+                <surname>Kris</surname>
+                <given-names>MG</given-names>
+              </name>
+              <name>
+                <surname>Ladanyi</surname>
+                <given-names>M</given-names>
+              </name>
+            </person-group>
+            <article-title>EGFR exon 20 insertion mutations in lung adenocarcinomas: prevalence,
+              molecular heterogeneity, and Clinicopathologic characteristics</article-title>
+            <source>Mol Cancer Ther</source>
+            <year>2013</year>
+            <volume>12</volume>
+            <issue>2</issue>
+            <fpage>220</fpage>
+            <lpage>229</lpage>
+            <pub-id pub-id-type="doi">10.1158/1535-7163.MCT-12-0620</pub-id>
+            <pub-id pub-id-type="pmid">23371856</pub-id>
+          </element-citation>
+        </ref>
+        <ref id="CR17">
+          <label>17.</label>
+          <element-citation publication-type="journal">
+            <person-group person-group-type="author">
+              <name>
+                <surname>Riess</surname>
+                <given-names>JW</given-names>
+              </name>
+              <name>
+                <surname>Gandara</surname>
+                <given-names>DR</given-names>
+              </name>
+              <name>
+                <surname>Frampton</surname>
+                <given-names>GM</given-names>
+              </name>
+              <name>
+                <surname>Madison</surname>
+                <given-names>R</given-names>
+              </name>
+              <name>
+                <surname>Peled</surname>
+                <given-names>N</given-names>
+              </name>
+              <name>
+                <surname>Bufill</surname>
+                <given-names>JA</given-names>
+              </name>
+              <name>
+                <surname>Dy</surname>
+                <given-names>G</given-names>
+              </name>
+              <name>
+                <surname>Ignatius Ou</surname>
+                <given-names>SH</given-names>
+              </name>
+              <name>
+                <surname>Stephens</surname>
+                <given-names>PJ</given-names>
+              </name>
+              <name>
+                <surname>McPherson</surname>
+                <given-names>J</given-names>
+              </name>
+              <etal />
+            </person-group>
+            <article-title>Diverse EGFR exon 20 insertions and co-occurring molecular alterations
+              identified by comprehensive genomic profiling of non-small cell lung Cancer</article-title>
+            <source>J Thorac Oncol</source>
+            <year>2018</year>
+            <volume>13</volume>
+            <issue>10</issue>
+            <fpage>1560</fpage>
+            <lpage>1568</lpage>
+            <pub-id pub-id-type="doi">10.1016/j.jtho.2018.06.019</pub-id>
+            <pub-id pub-id-type="pmid">29981927</pub-id>
+          </element-citation>
+        </ref>
+        <ref id="CR18">
+          <label>18.</label>
+          <element-citation publication-type="journal">
+            <person-group person-group-type="author">
+              <name>
+                <surname>Oxnard</surname>
+                <given-names>GR</given-names>
+              </name>
+              <name>
+                <surname>Lo</surname>
+                <given-names>PC</given-names>
+              </name>
+              <name>
+                <surname>Nishino</surname>
+                <given-names>M</given-names>
+              </name>
+              <name>
+                <surname>Dahlberg</surname>
+                <given-names>SE</given-names>
+              </name>
+              <name>
+                <surname>Lindeman</surname>
+                <given-names>NI</given-names>
+              </name>
+              <name>
+                <surname>Butaney</surname>
+                <given-names>M</given-names>
+              </name>
+              <name>
+                <surname>Jackman</surname>
+                <given-names>DM</given-names>
+              </name>
+              <name>
+                <surname>Johnson</surname>
+                <given-names>BE</given-names>
+              </name>
+              <name>
+                <surname>Janne</surname>
+                <given-names>PA</given-names>
+              </name>
+            </person-group>
+            <article-title>Natural history and molecular characteristics of lung cancers harboring
+              EGFR exon 20 insertions</article-title>
+            <source>J Thorac Oncol</source>
+            <year>2013</year>
+            <volume>8</volume>
+            <issue>2</issue>
+            <fpage>179</fpage>
+            <lpage>184</lpage>
+            <pub-id pub-id-type="doi">10.1097/JTO.0b013e3182779d18</pub-id>
+            <pub-id pub-id-type="pmid">23328547</pub-id>
+          </element-citation>
+        </ref>
+        <ref id="CR19">
+          <label>19.</label>
+          <element-citation publication-type="journal">
+            <person-group person-group-type="author">
+              <name>
+                <surname>Naidoo</surname>
+                <given-names>J</given-names>
+              </name>
+              <name>
+                <surname>Sima</surname>
+                <given-names>CS</given-names>
+              </name>
+              <name>
+                <surname>Rodriguez</surname>
+                <given-names>K</given-names>
+              </name>
+              <name>
+                <surname>Busby</surname>
+                <given-names>N</given-names>
+              </name>
+              <name>
+                <surname>Nafa</surname>
+                <given-names>K</given-names>
+              </name>
+              <name>
+                <surname>Ladanyi</surname>
+                <given-names>M</given-names>
+              </name>
+              <name>
+                <surname>Riely</surname>
+                <given-names>GJ</given-names>
+              </name>
+              <name>
+                <surname>Kris</surname>
+                <given-names>MG</given-names>
+              </name>
+              <name>
+                <surname>Arcila</surname>
+                <given-names>ME</given-names>
+              </name>
+              <name>
+                <surname>Yu</surname>
+                <given-names>HA</given-names>
+              </name>
+            </person-group>
+            <article-title>Epidermal growth factor receptor exon 20 insertions in advanced lung
+              adenocarcinomas: clinical outcomes and response to erlotinib</article-title>
+            <source>Cancer</source>
+            <year>2015</year>
+            <volume>121</volume>
+            <issue>18</issue>
+            <fpage>3212</fpage>
+            <lpage>3220</lpage>
+            <pub-id pub-id-type="doi">10.1002/cncr.29493</pub-id>
+            <pub-id pub-id-type="pmid">26096453</pub-id>
+          </element-citation>
+        </ref>
+        <ref id="CR20">
+          <label>20.</label>
+          <element-citation publication-type="journal">
+            <person-group person-group-type="author">
+              <name>
+                <surname>Yang</surname>
+                <given-names>M</given-names>
+              </name>
+              <name>
+                <surname>Xu</surname>
+                <given-names>X</given-names>
+              </name>
+              <name>
+                <surname>Cai</surname>
+                <given-names>J</given-names>
+              </name>
+              <name>
+                <surname>Ning</surname>
+                <given-names>J</given-names>
+              </name>
+              <name>
+                <surname>Wery</surname>
+                <given-names>JP</given-names>
+              </name>
+              <name>
+                <surname>Li</surname>
+                <given-names>QX</given-names>
+              </name>
+            </person-group>
+            <article-title>NSCLC harboring EGFR exon-20 insertions after the regulatory C-helix of
+              kinase domain responds poorly to known EGFR inhibitors</article-title>
+            <source>Int J Cancer</source>
+            <year>2016</year>
+            <volume>139</volume>
+            <issue>1</issue>
+            <fpage>171</fpage>
+            <lpage>176</lpage>
+            <pub-id pub-id-type="doi">10.1002/ijc.30047</pub-id>
+            <pub-id pub-id-type="pmid">26891175</pub-id>
+          </element-citation>
+        </ref>
+        <ref id="CR21">
+          <label>21.</label>
+          <element-citation publication-type="journal">
+            <person-group person-group-type="author">
+              <name>
+                <surname>Yasuda</surname>
+                <given-names>H</given-names>
+              </name>
+              <name>
+                <surname>Kobayashi</surname>
+                <given-names>S</given-names>
+              </name>
+              <name>
+                <surname>Costa</surname>
+                <given-names>DB</given-names>
+              </name>
+            </person-group>
+            <article-title>EGFR exon 20 insertion mutations in non-small-cell lung cancer:
+              preclinical data and clinical implications</article-title>
+            <source>Lancet Oncol</source>
+            <year>2012</year>
+            <volume>13</volume>
+            <issue>1</issue>
+            <fpage>e23</fpage>
+            <lpage>e31</lpage>
+            <pub-id pub-id-type="doi">10.1016/S1470-2045(11)70129-2</pub-id>
+            <pub-id pub-id-type="pmid">21764376</pub-id>
+          </element-citation>
+        </ref>
+        <ref id="CR22">
+          <label>22.</label>
+          <element-citation publication-type="journal">
+            <person-group person-group-type="author">
+              <name>
+                <surname>Yang</surname>
+                <given-names>JC</given-names>
+              </name>
+              <name>
+                <surname>Sequist</surname>
+                <given-names>LV</given-names>
+              </name>
+              <name>
+                <surname>Geater</surname>
+                <given-names>SL</given-names>
+              </name>
+              <name>
+                <surname>Tsai</surname>
+                <given-names>CM</given-names>
+              </name>
+              <name>
+                <surname>Mok</surname>
+                <given-names>TS</given-names>
+              </name>
+              <name>
+                <surname>Schuler</surname>
+                <given-names>M</given-names>
+              </name>
+              <name>
+                <surname>Yamamoto</surname>
+                <given-names>N</given-names>
+              </name>
+              <name>
+                <surname>Yu</surname>
+                <given-names>CJ</given-names>
+              </name>
+              <name>
+                <surname>Ou</surname>
+                <given-names>SH</given-names>
+              </name>
+              <name>
+                <surname>Zhou</surname>
+                <given-names>C</given-names>
+              </name>
+              <etal />
+            </person-group>
+            <article-title>Clinical activity of afatinib in patients with advanced non-small-cell
+              lung cancer harbouring uncommon EGFR mutations: a combined post-hoc analysis of
+              LUX-lung 2, LUX-lung 3, and LUX-lung 6</article-title>
+            <source>Lancet Oncol</source>
+            <year>2015</year>
+            <volume>16</volume>
+            <issue>7</issue>
+            <fpage>830</fpage>
+            <lpage>838</lpage>
+            <pub-id pub-id-type="doi">10.1016/S1470-2045(15)00026-1</pub-id>
+            <pub-id pub-id-type="pmid">26051236</pub-id>
+          </element-citation>
+        </ref>
+        <ref id="CR23">
+          <label>23.</label>
+          <element-citation publication-type="journal">
+            <person-group person-group-type="author">
+              <name>
+                <surname>Keam</surname>
+                <given-names>B</given-names>
+              </name>
+              <name>
+                <surname>Kim</surname>
+                <given-names>DW</given-names>
+              </name>
+              <name>
+                <surname>Park</surname>
+                <given-names>JH</given-names>
+              </name>
+              <name>
+                <surname>Lee</surname>
+                <given-names>JO</given-names>
+              </name>
+              <name>
+                <surname>Kim</surname>
+                <given-names>TM</given-names>
+              </name>
+              <name>
+                <surname>Lee</surname>
+                <given-names>SH</given-names>
+              </name>
+              <name>
+                <surname>Chung</surname>
+                <given-names>DH</given-names>
+              </name>
+              <name>
+                <surname>Heo</surname>
+                <given-names>DS</given-names>
+              </name>
+            </person-group>
+            <article-title>Rare and complex mutations of epidermal growth factor receptor, and
+              efficacy of tyrosine kinase inhibitor in patients with non-small cell lung cancer</article-title>
+            <source>Int J Clin Oncol</source>
+            <year>2014</year>
+            <volume>19</volume>
+            <issue>4</issue>
+            <fpage>594</fpage>
+            <lpage>600</lpage>
+            <pub-id pub-id-type="doi">10.1007/s10147-013-0602-1</pub-id>
+            <pub-id pub-id-type="pmid">23912954</pub-id>
+          </element-citation>
+        </ref>
+        <ref id="CR24">
+          <label>24.</label>
+          <element-citation publication-type="journal">
+            <person-group person-group-type="author">
+              <name>
+                <surname>Robichaux</surname>
+                <given-names>JP</given-names>
+              </name>
+              <name>
+                <surname>Elamin</surname>
+                <given-names>YY</given-names>
+              </name>
+              <name>
+                <surname>Tan</surname>
+                <given-names>Z</given-names>
+              </name>
+              <name>
+                <surname>Carter</surname>
+                <given-names>BW</given-names>
+              </name>
+              <name>
+                <surname>Zhang</surname>
+                <given-names>S</given-names>
+              </name>
+              <name>
+                <surname>Liu</surname>
+                <given-names>S</given-names>
+              </name>
+              <name>
+                <surname>Li</surname>
+                <given-names>S</given-names>
+              </name>
+              <name>
+                <surname>Chen</surname>
+                <given-names>T</given-names>
+              </name>
+              <name>
+                <surname>Poteete</surname>
+                <given-names>A</given-names>
+              </name>
+              <name>
+                <surname>Estrada-Bernal</surname>
+                <given-names>A</given-names>
+              </name>
+              <etal />
+            </person-group>
+            <article-title>Mechanisms and clinical activity of an EGFR and HER2 exon 20-selective
+              kinase inhibitor in non-small cell lung cancer</article-title>
+            <source>Nat Med</source>
+            <year>2018</year>
+            <volume>24</volume>
+            <issue>5</issue>
+            <fpage>638</fpage>
+            <lpage>646</lpage>
+            <pub-id pub-id-type="doi">10.1038/s41591-018-0007-9</pub-id>
+            <pub-id pub-id-type="pmid">29686424</pub-id>
+          </element-citation>
+        </ref>
+        <ref id="CR25">
+          <label>25.</label>
+          <element-citation publication-type="journal">
+            <person-group person-group-type="author">
+              <name>
+                <surname>van Veggel</surname>
+                <given-names>B</given-names>
+              </name>
+              <name>
+                <surname>de Langen</surname>
+                <given-names>AJ</given-names>
+              </name>
+              <name>
+                <surname>Hashemi</surname>
+                <given-names>SMS</given-names>
+              </name>
+              <name>
+                <surname>Monkhorst</surname>
+                <given-names>K</given-names>
+              </name>
+              <name>
+                <surname>Heideman</surname>
+                <given-names>DAM</given-names>
+              </name>
+              <name>
+                <surname>Thunnissen</surname>
+                <given-names>E</given-names>
+              </name>
+              <name>
+                <surname>Smit</surname>
+                <given-names>EF</given-names>
+              </name>
+            </person-group>
+            <article-title>Afatinib and Cetuximab in four patients with EGFR exon 20
+              insertion-positive advanced NSCLC</article-title>
+            <source>J Thorac Oncol</source>
+            <year>2018</year>
+            <volume>13</volume>
+            <issue>8</issue>
+            <fpage>1222</fpage>
+            <lpage>1226</lpage>
+            <pub-id pub-id-type="doi">10.1016/j.jtho.2018.04.012</pub-id>
+            <pub-id pub-id-type="pmid">29702285</pub-id>
+          </element-citation>
+        </ref>
+        <ref id="CR26">
+          <label>26.</label>
+          <element-citation publication-type="journal">
+            <person-group person-group-type="author">
+              <name>
+                <surname>Masuzawa</surname>
+                <given-names>K</given-names>
+              </name>
+              <name>
+                <surname>Yasuda</surname>
+                <given-names>H</given-names>
+              </name>
+              <name>
+                <surname>Hamamoto</surname>
+                <given-names>J</given-names>
+              </name>
+              <name>
+                <surname>Nukaga</surname>
+                <given-names>S</given-names>
+              </name>
+              <name>
+                <surname>Hirano</surname>
+                <given-names>T</given-names>
+              </name>
+              <name>
+                <surname>Kawada</surname>
+                <given-names>I</given-names>
+              </name>
+              <name>
+                <surname>Naoki</surname>
+                <given-names>K</given-names>
+              </name>
+              <name>
+                <surname>Soejima</surname>
+                <given-names>K</given-names>
+              </name>
+              <name>
+                <surname>Betsuyaku</surname>
+                <given-names>T</given-names>
+              </name>
+            </person-group>
+            <article-title>Characterization of the efficacies of osimertinib and nazartinib against
+              cells expressing clinically relevant epidermal growth factor receptor mutations</article-title>
+            <source>Oncotarget</source>
+            <year>2017</year>
+            <volume>8</volume>
+            <issue>62</issue>
+            <fpage>105479</fpage>
+            <lpage>105491</lpage>
+            <pub-id pub-id-type="doi">10.18632/oncotarget.22297</pub-id>
+            <pub-id pub-id-type="pmid">29285266</pub-id>
+          </element-citation>
+        </ref>
+        <ref id="CR27">
+          <label>27.</label>
+          <element-citation publication-type="journal">
+            <person-group person-group-type="author">
+              <name>
+                <surname>Hirano</surname>
+                <given-names>T</given-names>
+              </name>
+              <name>
+                <surname>Yasuda</surname>
+                <given-names>H</given-names>
+              </name>
+              <name>
+                <surname>Tani</surname>
+                <given-names>T</given-names>
+              </name>
+              <name>
+                <surname>Hamamoto</surname>
+                <given-names>J</given-names>
+              </name>
+              <name>
+                <surname>Oashi</surname>
+                <given-names>A</given-names>
+              </name>
+              <name>
+                <surname>Ishioka</surname>
+                <given-names>K</given-names>
+              </name>
+              <name>
+                <surname>Arai</surname>
+                <given-names>D</given-names>
+              </name>
+              <name>
+                <surname>Nukaga</surname>
+                <given-names>S</given-names>
+              </name>
+              <name>
+                <surname>Miyawaki</surname>
+                <given-names>M</given-names>
+              </name>
+              <name>
+                <surname>Kawada</surname>
+                <given-names>I</given-names>
+              </name>
+              <etal />
+            </person-group>
+            <article-title>In vitro modeling to determine mutation specificity of EGFR tyrosine
+              kinase inhibitors against clinically relevant EGFR mutants in non-small-cell lung
+              cancer</article-title>
+            <source>Oncotarget</source>
+            <year>2015</year>
+            <volume>6</volume>
+            <issue>36</issue>
+            <fpage>38789</fpage>
+            <lpage>38803</lpage>
+            <pub-id pub-id-type="doi">10.18632/oncotarget.5887</pub-id>
+            <pub-id pub-id-type="pmid">26515464</pub-id>
+          </element-citation>
+        </ref>
+        <ref id="CR28">
+          <label>28.</label>
+          <element-citation publication-type="journal">
+            <person-group person-group-type="author">
+              <name>
+                <surname>Floc'h</surname>
+                <given-names>N</given-names>
+              </name>
+              <name>
+                <surname>Martin</surname>
+                <given-names>MJ</given-names>
+              </name>
+              <name>
+                <surname>Riess</surname>
+                <given-names>JW</given-names>
+              </name>
+              <name>
+                <surname>Orme</surname>
+                <given-names>JP</given-names>
+              </name>
+              <name>
+                <surname>Staniszewska</surname>
+                <given-names>AD</given-names>
+              </name>
+              <name>
+                <surname>Menard</surname>
+                <given-names>L</given-names>
+              </name>
+              <name>
+                <surname>Cuomo</surname>
+                <given-names>ME</given-names>
+              </name>
+              <name>
+                <surname>O'Neill</surname>
+                <given-names>DJ</given-names>
+              </name>
+              <name>
+                <surname>Ward</surname>
+                <given-names>RA</given-names>
+              </name>
+              <name>
+                <surname>Finlay</surname>
+                <given-names>MRV</given-names>
+              </name>
+              <etal />
+            </person-group>
+            <article-title>Antitumor activity of Osimertinib, an irreversible mutant-selective EGFR
+              tyrosine kinase inhibitor, in NSCLC harboring EGFR exon 20 insertions</article-title>
+            <source>Mol Cancer Ther</source>
+            <year>2018</year>
+            <volume>17</volume>
+            <issue>5</issue>
+            <fpage>885</fpage>
+            <lpage>896</lpage>
+            <pub-id pub-id-type="doi">10.1158/1535-7163.MCT-17-0758</pub-id>
+            <pub-id pub-id-type="pmid">29483211</pub-id>
+          </element-citation>
+        </ref>
+        <ref id="CR29">
+          <label>29.</label>
+          <element-citation publication-type="journal">
+            <person-group person-group-type="author">
+              <name>
+                <surname>Ruan</surname>
+                <given-names>Z</given-names>
+              </name>
+              <name>
+                <surname>Kannan</surname>
+                <given-names>N</given-names>
+              </name>
+            </person-group>
+            <article-title>Altered conformational landscape and dimerization dependency underpins
+              the activation of EGFR by alphaC-beta4 loop insertion mutations</article-title>
+            <source>Proc Natl Acad Sci U S A</source>
+            <year>2018</year>
+            <volume>115</volume>
+            <issue>35</issue>
+            <fpage>E8162</fpage>
+            <lpage>E8171</lpage>
+            <pub-id pub-id-type="doi">10.1073/pnas.1803152115</pub-id>
+            <pub-id pub-id-type="pmid">30104348</pub-id>
+          </element-citation>
+        </ref>
+        <ref id="CR30">
+          <label>30.</label>
+          <element-citation publication-type="journal">
+            <person-group person-group-type="author">
+              <name>
+                <surname>Eisenhauer</surname>
+                <given-names>EA</given-names>
+              </name>
+              <name>
+                <surname>Therasse</surname>
+                <given-names>P</given-names>
+              </name>
+              <name>
+                <surname>Bogaerts</surname>
+                <given-names>J</given-names>
+              </name>
+              <name>
+                <surname>Schwartz</surname>
+                <given-names>LH</given-names>
+              </name>
+              <name>
+                <surname>Sargent</surname>
+                <given-names>D</given-names>
+              </name>
+              <name>
+                <surname>Ford</surname>
+                <given-names>R</given-names>
+              </name>
+              <name>
+                <surname>Dancey</surname>
+                <given-names>J</given-names>
+              </name>
+              <name>
+                <surname>Arbuck</surname>
+                <given-names>S</given-names>
+              </name>
+              <name>
+                <surname>Gwyther</surname>
+                <given-names>S</given-names>
+              </name>
+              <name>
+                <surname>Mooney</surname>
+                <given-names>M</given-names>
+              </name>
+              <etal />
+            </person-group>
+            <article-title>New response evaluation criteria in solid tumours: revised RECIST
+              guideline (version 1.1)</article-title>
+            <source>Eur J Cancer</source>
+            <year>2009</year>
+            <volume>45</volume>
+            <issue>2</issue>
+            <fpage>228</fpage>
+            <lpage>247</lpage>
+            <pub-id pub-id-type="doi">10.1016/j.ejca.2008.10.026</pub-id>
+            <pub-id pub-id-type="pmid">19097774</pub-id>
+          </element-citation>
+        </ref>
+        <ref id="CR31">
+          <label>31.</label>
+          <element-citation publication-type="journal">
+            <person-group person-group-type="author">
+              <name>
+                <surname>Tu</surname>
+                <given-names>HY</given-names>
+              </name>
+              <name>
+                <surname>Ke</surname>
+                <given-names>EE</given-names>
+              </name>
+              <name>
+                <surname>Yang</surname>
+                <given-names>JJ</given-names>
+              </name>
+              <name>
+                <surname>Sun</surname>
+                <given-names>YL</given-names>
+              </name>
+              <name>
+                <surname>Yan</surname>
+                <given-names>HH</given-names>
+              </name>
+              <name>
+                <surname>Zheng</surname>
+                <given-names>MY</given-names>
+              </name>
+              <name>
+                <surname>Bai</surname>
+                <given-names>XY</given-names>
+              </name>
+              <name>
+                <surname>Wang</surname>
+                <given-names>Z</given-names>
+              </name>
+              <name>
+                <surname>Su</surname>
+                <given-names>J</given-names>
+              </name>
+              <name>
+                <surname>Chen</surname>
+                <given-names>ZH</given-names>
+              </name>
+              <etal />
+            </person-group>
+            <article-title>A comprehensive review of uncommon EGFR mutations in patients with
+              non-small cell lung cancer</article-title>
+            <source>Lung Cancer</source>
+            <year>2017</year>
+            <volume>114</volume>
+            <fpage>96</fpage>
+            <lpage>102</lpage>
+            <pub-id pub-id-type="doi">10.1016/j.lungcan.2017.11.005</pub-id>
+            <pub-id pub-id-type="pmid">29173773</pub-id>
+          </element-citation>
+        </ref>
+        <ref id="CR32">
+          <label>32.</label>
+          <element-citation publication-type="journal">
+            <person-group person-group-type="author">
+              <name>
+                <surname>Shen</surname>
+                <given-names>YC</given-names>
+              </name>
+              <name>
+                <surname>Tseng</surname>
+                <given-names>GC</given-names>
+              </name>
+              <name>
+                <surname>Tu</surname>
+                <given-names>CY</given-names>
+              </name>
+              <name>
+                <surname>Chen</surname>
+                <given-names>WC</given-names>
+              </name>
+              <name>
+                <surname>Liao</surname>
+                <given-names>WC</given-names>
+              </name>
+              <name>
+                <surname>Chen</surname>
+                <given-names>WC</given-names>
+              </name>
+              <name>
+                <surname>Li</surname>
+                <given-names>CH</given-names>
+              </name>
+              <name>
+                <surname>Chen</surname>
+                <given-names>HJ</given-names>
+              </name>
+              <name>
+                <surname>Hsia</surname>
+                <given-names>TC</given-names>
+              </name>
+            </person-group>
+            <article-title>Comparing the effects of afatinib with gefitinib or Erlotinib in patients
+              with advanced-stage lung adenocarcinoma harboring non-classical epidermal growth
+              factor receptor mutations</article-title>
+            <source>Lung Cancer</source>
+            <year>2017</year>
+            <volume>110</volume>
+            <fpage>56</fpage>
+            <lpage>62</lpage>
+            <pub-id pub-id-type="doi">10.1016/j.lungcan.2017.06.007</pub-id>
+            <pub-id pub-id-type="pmid">28676220</pub-id>
+          </element-citation>
+        </ref>
+        <ref id="CR33">
+          <label>33.</label>
+          <element-citation publication-type="journal">
+            <person-group person-group-type="author">
+              <name>
+                <surname>Piotrowska</surname>
+                <given-names>Z</given-names>
+              </name>
+              <name>
+                <surname>Fintelmann</surname>
+                <given-names>FJ</given-names>
+              </name>
+              <name>
+                <surname>Sequist</surname>
+                <given-names>LV</given-names>
+              </name>
+              <name>
+                <surname>Jahagirdar</surname>
+                <given-names>B</given-names>
+              </name>
+            </person-group>
+            <article-title>Response to Osimertinib in an EGFR exon 20 insertion-positive lung
+              adenocarcinoma</article-title>
+            <source>J Thorac Oncol</source>
+            <year>2018</year>
+            <volume>13</volume>
+            <issue>10</issue>
+            <fpage>e204</fpage>
+            <lpage>e206</lpage>
+            <pub-id pub-id-type="doi">10.1016/j.jtho.2018.05.017</pub-id>
+            <pub-id pub-id-type="pmid">30244855</pub-id>
+          </element-citation>
+        </ref>
+        <ref id="CR34">
+          <label>34.</label>
+          <element-citation publication-type="journal">
+            <person-group person-group-type="author">
+              <name>
+                <surname>Yang</surname>
+                <given-names>M</given-names>
+              </name>
+              <name>
+                <surname>Tong</surname>
+                <given-names>X</given-names>
+              </name>
+              <name>
+                <surname>Xu</surname>
+                <given-names>X</given-names>
+              </name>
+              <name>
+                <surname>Zheng</surname>
+                <given-names>E</given-names>
+              </name>
+              <name>
+                <surname>Ni</surname>
+                <given-names>J</given-names>
+              </name>
+              <name>
+                <surname>Li</surname>
+                <given-names>J</given-names>
+              </name>
+              <name>
+                <surname>Yan</surname>
+                <given-names>J</given-names>
+              </name>
+              <name>
+                <surname>Shao</surname>
+                <given-names>YW</given-names>
+              </name>
+              <name>
+                <surname>Zhao</surname>
+                <given-names>G</given-names>
+              </name>
+            </person-group>
+            <article-title>Case report: Osimertinib achieved remarkable and sustained disease
+              control in an advanced non-small-cell lung cancer harboring EGFR H773L/V774M mutation
+              complex</article-title>
+            <source>Lung Cancer</source>
+            <year>2018</year>
+            <volume>121</volume>
+            <fpage>1</fpage>
+            <lpage>4</lpage>
+            <pub-id pub-id-type="doi">10.1016/j.lungcan.2018.04.006</pub-id>
+            <pub-id pub-id-type="pmid">29858019</pub-id>
+          </element-citation>
+        </ref>
+      </ref-list>
+    </back>
+  </article>
+</pmc-articleset>

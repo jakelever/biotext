@@ -1,10 +1,16 @@
+import logging
 import re
 import unicodedata
 import uuid
 import xml.etree.cElementTree as etree
+import xml.sax.saxutils as saxutils
+from copy import copy
 from typing import Callable, Dict, Iterable, List, Optional, Tuple
 
 import bioc
+from unidecode import unidecode
+
+from .constants import GREEK_ALPHABET
 
 # XML elements to ignore the contents of
 IGNORE_LIST = [
@@ -19,7 +25,7 @@ IGNORE_LIST = [
     "tex-math",
     "mml:math",
     "object-id",
-    "ext-link",
+    "ext-link",  # TODO: should we keep URL content? some of these have text rather than the URL as inner content
 ]
 
 # XML elements to separate text between (into different passages)
@@ -34,33 +40,43 @@ SEPARATION_LIST = [
     "label",
 ]
 
-TABLE_DELIMITER = '\t'
-TABLE_DELIMITED_TAGS = {'tr', 'th', 'td'}
+
+TABLE_DELIMITER = "\t"
+TABLE_DELIMITED_TAGS = {"tr", "th", "td"}
+# Tags that should be pre-pended with a space on merge
+PSEUDO_SPACE_TAGS = {"sup", "break", "AbstractText"}
+ANNOTATION_MARKER_PATTERN = (
+    r"ANN_[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}"
+)
 
 
 class TextChunk:
     text: str
     xml_node: str
     xml_path: str
-    non_separating: bool = False
     is_tail: bool = False
     is_annotation: bool = False
+    sections: List[str] = []
 
     def __init__(
         self,
         text,
         xml_node,
         xml_path=None,
-        non_separating=False,
         is_tail=False,
         is_annotation=False,
+        sections: Optional[List[str]] = None,
     ):
         self.text = text
         self.xml_node = xml_node
         self.xml_path = xml_path
-        self.non_separating = non_separating or is_annotation
         self.is_tail = is_tail
         self.is_annotation = is_annotation
+        self.sections = sections or []
+
+    @property
+    def section(self) -> str:
+        return self.sections[0] if self.sections else ""
 
     def __str__(self) -> str:
         return self.text
@@ -71,11 +87,11 @@ class TextChunk:
     def __repr__(self):
         tag = self.tag
         if self.is_tail:
-            tag = f'{tag}#'
-        ns = '-ns' if self.non_separating else ''
-        tag = f'{tag}{ns}'
+            tag = f"{tag}#"
         if self.text:
-            tag = f'{tag}+text[{len(self.text)}]'
+            tag = f"{tag}+text[{len(self.text)}]"
+        if self.is_annotation:
+            tag = f"{tag}@"
         return tag
 
     @property
@@ -92,9 +108,9 @@ def remove_brackets_without_words(text: str) -> str:
     changed = True
     previous_text = text
     while changed:
-        fixed = re.sub(r"\([^\w\t]*\)", "", previous_text)
-        fixed = re.sub(r"\[[^\w\t]*\]", "", fixed)
-        fixed = re.sub(r"\{[^\w\t]*\}", "", fixed)
+        fixed = re.sub(r"\([^\w\t-]*\)", "", previous_text)
+        fixed = re.sub(r"\[[^\w\t-]*\]", "", fixed)
+        fixed = re.sub(r"\{[^\w\t-]*\}", "", fixed)
         changed = bool(previous_text != fixed)
         previous_text = fixed
     return fixed
@@ -114,30 +130,42 @@ def cleanup_text(text: str) -> str:
     Clean up non-tab extra whitespace, remove control characters and extra leftover brackets etc
     """
     # Remove some "control-like" characters (left/right separator)
-    text = text.replace(u"\u2028", " ").replace(u"\u2029", " ")
-    text = "".join(ch for ch in text if unicodedata.category(ch)[0] != "C" or ch == TABLE_DELIMITER)
+    text = text.replace("\u2028", " ").replace("\u2029", " ")
+    text = text.replace("°", " ° ")
+    # unidecode will default convert this to * but it is more appropriate to be converted to . as that is how it is generally used in the XML articles
+    text = text.replace("·", ".")
+    text = "".join(
+        ch for ch in text if unicodedata.category(ch)[0] != "C" or ch == TABLE_DELIMITER
+    )
     text = "".join(ch if unicodedata.category(ch)[0] != "Z" else " " for ch in text)
+
+    # replace greek letters with their long-form equivalent
+    for greek_letter, replacement in GREEK_ALPHABET.items():
+        text = text.replace(greek_letter, replacement)
+
+    text = unidecode(text, errors="preserve")
 
     # Remove repeated commands and commas next to periods
     text = re.sub(r",([^\S\t]*,)*", ",", text)
     text = re.sub(r"(,[^\S\t]*)*\.", ".", text)
     text = remove_brackets_without_words(text)
 
-    # remove extra spaces from in-text figute/table citations
-    text = re.sub(r'\([^\S\t]*([^)]*[^\s)])[^\S\t]*\)', r'(\1)', text)
+    # remove extra spaces from in-text figure/table citations
+    text = re.sub(r"\([^\S\t]*([^)]*[^\s)])[^\S\t]*\)", r"(\1)", text)
 
     # remove trailing spaces before periods
-    text = re.sub(r'[^\S\t]+\.(\s|$)', r'.\1', text)
+    text = re.sub(r"[^\S\t]+\.(\s|$)", r".\1", text)
 
     # remove extra spaces around commas/semi-colons
-    text = re.sub(r'[^\S\t]*([,;])[^\S\t]+', r'\1 ', text)
+    text = re.sub(r"[^\S\t]*([,;:])([^\S\t]+)", r"\1 ", text)
+    text = re.sub(r"[^\S\t]*([,;:])$", r"\1", text)
 
     # trim leading and trailing non tab whitespace
-    text = re.sub(r'(^|\t)([^\S\t]+)', r'\1', text)
-    text = re.sub(r'([^\S\t]+)(\t|$)', r'\2', text)
+    text = re.sub(r"(^|\t)([^\S\t]+)", r"\1", text)
+    text = re.sub(r"([^\S\t]+)(\t|$)", r"\2", text)
 
     # trim multiple non-tab spaces
-    text = re.sub(r'[^\S\t][^\S\t]+', ' ', text)
+    text = re.sub(r"[^\S\t][^\S\t]+", " ", text)
 
     return text
 
@@ -168,36 +196,254 @@ def merge_adjacent_xref_siblings(elem_list):
     If two XML elements in a list are adjacent and both xrefs separated only by punctuation, merge them
     """
     siblings = []
-
     for elem in elem_list:
-        if siblings and elem.tag == 'xref' and siblings[-1].tag == 'xref':
+        if siblings and elem.tag == "xref" and siblings[-1].tag == "xref":
             # merge these 2 if the tail of the first element is a punctuation mark
-            prev_tail = (siblings[-1].tail or '').strip()
+            prev_tail = (siblings[-1].tail or "").strip()
             if (
-                siblings[-1].tail
-                and len(prev_tail) == 1
-                and unicodedata.category(prev_tail)[0] == 'P'
-                and elem.attrib.get('ref-type') == siblings[-1].attrib.get('ref-type')
-            ):
+                not prev_tail
+                or (
+                    len(prev_tail) == 1 and unicodedata.category(prev_tail[0])[0] == "P"
+                )
+            ) and elem.attrib.get("ref-type") == siblings[-1].attrib.get("ref-type"):
 
-                siblings[-1].text = (siblings[-1].text or '') + prev_tail + (elem.text or '')
+                siblings[-1].text = (
+                    (siblings[-1].text or "") + prev_tail + (elem.text or "")
+                )
                 siblings[-1].tail = elem.tail
                 continue
         siblings.append(elem)
     return siblings
 
 
-def get_tag_path(mapping: Dict[etree.Element, etree.Element], node: etree.Element) -> str:
+def drop_adjacent_sup_siblings(elem_list: List[etree.Element]) -> List[etree.Element]:
     """
-    Get a string representing the path of the currentl XML node in the heirachry of the XML file
+    If there are 2 adjacent superscript tags, drop them and append their text to the preceding element
+    """
+    result: List[etree.Element] = []
+
+    for elem in elem_list:
+        if elem.tag == "sup" and len(result) > 1 and result[-1].tag == "sup":
+            # must have a non-sup element to append to the tail of
+            text = [result[-1].text, result[-1].tail, elem.text, elem.tail]
+            if result[-2].tail is None:
+                result[-2].tail = ""
+            result[-2].tail += "".join([(t or "") for t in text])
+            result.pop()
+        else:
+            result.append(elem)
+    return result
+
+
+def get_tag_path(
+    mapping: Dict[etree.Element, etree.Element], node: etree.Element
+) -> str:
+    """
+    Get a string representing the path of the current XML node in the hierarchy of the XML file
     """
     path = []
-    current_node = node
+    current_node: Optional[etree.Element] = node
     while current_node is not None:
         path.append(current_node.tag)
         current_node = mapping.get(current_node)
 
-    return '/'.join((path[::-1]))
+    return "/".join((path[::-1]))
+
+
+def get_tag_section(
+    mapping: Dict[etree.Element, etree.Element], node: etree.Element
+) -> List[str]:
+    """
+    Get a string representing the section/subsection of the current XML node in the hierarchy of the XML file
+
+    Args:
+        mapping: mapping of each XML node to their parent/containing XML node
+        node: the current XML node for which we are determining the section titles
+    """
+    current_node: Optional[etree.Element] = node
+    section_name = []
+    while current_node is not None:
+        if current_node.tag == "sec":
+            titles = [t for t in current_node if t.tag == "title"]
+            if len(titles) == 1 and titles[0].text:
+                section_name.append(titles[0].text.strip())
+
+        current_node = mapping.get(current_node)
+    return section_name[::-1]
+
+
+def first_empty_index(items, strict_none=False) -> int:
+    """
+    Return the index of the first falsy item in an iterable. Defaults to 0 if no items are falsy
+    """
+    for i, item in enumerate(items):
+        if not item and not strict_none:
+            return i
+        elif strict_none and item is None:
+            return i
+    return 0
+
+
+def get_unique_child_element_index(elem: etree.Element, child_elem_type: str) -> int:
+    """
+    Get a child element from an XML parent node and ensure that 1 and exactly 1 element is returned
+
+    Args:
+        elem: the element to search children of
+        child_elem_type: the tag type of the element in question
+    """
+    indices = []
+    for i, child in enumerate(elem):
+        if child.tag == child_elem_type:
+            indices.append(i)
+    if not indices:
+        raise KeyError(
+            f"unable to find child element with tag type = {child_elem_type}"
+        )
+    if len(indices) > 1:
+        raise ValueError(
+            f"found multiple child elements with tag type = {child_elem_type}"
+        )
+    return indices[0]
+
+
+def normalize_table_header(header) -> etree.Element:
+    """
+    Replace any multi-row table header with a single-row header by repeating col-spanning labels as prefixes on their sub-columns
+    """
+    header_cols = 0
+    header_rows = len(header)
+    for row in header:
+        for header_cell in row:
+            header_cols += int(header_cell.attrib.get("colspan", 1))
+        break
+
+    header_matrix = []
+    filled_cells = []
+    for _ in range(header_rows):
+        row = []
+        for _ in range(header_cols):
+            row.append("")
+        header_matrix.append(row)
+        filled_cells.append([0 for _ in row])
+
+    for i_row, row in enumerate(header):
+        i_col = 0
+        for header_cell in row:
+            text = str(merge_text_chunks(chunk for chunk in tag_handler(header_cell)))
+            row_cells = [
+                r + i_row for r in range(int(header_cell.attrib.get("rowspan", 1)))
+            ]
+            col_cells = [
+                r + first_empty_index(filled_cells[i_row])
+                for r in range(int(header_cell.attrib.get("colspan", 1)))
+            ]
+
+            for r in row_cells:
+                for c in col_cells:
+                    header_matrix[r][c] = text
+                    filled_cells[r][c] = 1
+
+    for col in range(header_cols):
+        for row in range(1, header_rows)[::-1]:
+            if header_matrix[row][col] == header_matrix[row - 1][col]:
+                header_matrix[row][col] = ""
+
+    # now flatten the header rows
+    for row in header_matrix[1:]:
+        for i_col, col in enumerate(row):
+            if col:
+                header_matrix[0][i_col] += " " + col
+
+    result = [re.sub(r"[\s\n]+", " ", col.strip()) for col in header_matrix[0]]
+    new_xml = []
+
+    for col in result:
+        new_xml.append(f"<th>{saxutils.escape(col)}</th>")
+
+    new_header_elem = etree.fromstring(f'<thead><tr>{"".join(new_xml)}</tr></thead>')
+    return new_header_elem
+
+
+def split_and_repeat_spans(table_body: etree.Element):
+    # replace any rowspans with multiple cells and repeat the content
+    total_rows = len(table_body)
+    total_cols = 0
+
+    for row in table_body:
+        total_colspans = sum(int(cell.attrib.get("colspan", 1)) for cell in row)
+        total_cols = max([total_colspans, total_cols])
+
+    assert total_cols > 0
+
+    occupancy: List[List[Optional[etree.Element]]] = []
+
+    for row in range(total_rows):
+        occupancy.append([None for _ in range(total_cols)])
+
+    for row_pos, row in enumerate(table_body):
+        for cell in row:
+            colspan = int(cell.attrib.get("colspan", 1))
+            rowspan = min(
+                [int(cell.attrib.get("rowspan", 1)), total_rows - row_pos]
+            )  # fix for bad span attribute inputs where the span may be larger than the table
+            for rowspan_i in range(rowspan):
+                col_pos = first_empty_index(occupancy[row_pos + rowspan_i], True)
+                for colspan_i in range(colspan):
+                    occ_row = occupancy[row_pos + rowspan_i]
+                    occ_row[col_pos + colspan_i] = cell
+
+    for row_i, row in enumerate(table_body):
+        # remove old cell elements
+        for child in list(row):
+            row.remove(child)
+        # replace with new cell elements
+        for cell in occupancy[row_i]:
+            if cell is not None:
+                row.append(cell)
+
+
+def normalize_table_body(table_body: etree.Element, header_size: int):
+    # remove any divisor rows (rows which span the entire width of the table) and repeat their content on the rows that are indented below them
+    divisor_rows = []
+    divider = ""
+
+    for row_i, row in enumerate(table_body):
+        if (
+            len(row) == 1
+            and row[0].attrib.get("colspan")
+            and int(row[0].attrib.get("colspan")) == header_size
+            and row_i < len(table_body) - 1
+        ):
+            # divider row
+            divider = merge_text_chunks(tag_handler(row[0])).text
+            divisor_rows.append(row)
+        elif divider:
+            # prefix current row element
+            row[0].text = f'{divider}: {row[0].text or ""}'
+
+    for row in divisor_rows:
+        table_body.remove(row)
+
+    split_and_repeat_spans(table_body)
+
+
+def normalize_table(elem: etree.Element) -> etree.Element:
+    """
+    Simplify tables to replace any multi-row or multi-col spans
+    """
+    header_elem_index = get_unique_child_element_index(elem, "thead")
+    elem[header_elem_index] = normalize_table_header(elem[header_elem_index])
+
+    header_size = len(elem[header_elem_index][0])
+
+    table_body_index = get_unique_child_element_index(elem, "tbody")
+    table_body = elem[table_body_index]
+    if header_size > 1:
+        # if header size is 1, all cells will be spans
+        normalize_table_body(table_body, header_size)
+
+    return elem
 
 
 def tag_handler(
@@ -216,19 +462,23 @@ def tag_handler(
             return custom_handlers[elem.tag](elem, custom_handlers=custom_handlers)
         except NotImplementedError:
             pass
+    if elem.tag == "table":
+        try:
+            elem = normalize_table(elem)
+        except Exception as err:
+            logging.warning(f"error during table normalization, skipping: {err}")
     # Extract any raw text directly in XML element or just after
-    head = (elem.text or "").strip()
-    tail = (elem.tail or "").strip()
-
+    head = elem.text or ""
+    tail = elem.tail or ""
     # Then get the text from all child XML nodes recursively
     child_passages = []
 
-    for child in merge_adjacent_xref_siblings(elem):
+    for child in drop_adjacent_sup_siblings(merge_adjacent_xref_siblings(elem)):
         child_passages.extend(tag_handler(child, custom_handlers=custom_handlers))
 
-    if elem.tag == 'xref' and 'xref' in IGNORE_LIST:
+    if elem.tag == "xref" and "xref" in IGNORE_LIST:
         # keep xref tags that refer to internal elements like tables and figures
-        if elem.attrib.get('ref-type', '') == 'bibr':
+        if elem.attrib.get("ref-type", "") == "bibr":
             if tail:
                 return [
                     TextChunk(head, elem, is_annotation=True),
@@ -239,23 +489,28 @@ def tag_handler(
     elif elem.tag in IGNORE_LIST:
         if not all(
             [
-                elem.tag == 'ext-link',
+                elem.tag == "ext-link",
                 head,
-                re.search(r'(supp|suppl|supplementary)?\s*(table|figure)\s*s?\d+', head.lower()),
+                re.search(
+                    r"(supp|suppl|supplementary)?\s*(table|figure)\s*s?\d+",
+                    head.lower(),
+                ),
             ]
         ):
             # Check if the tag should be ignored (so don't use main contents)
             return [
-                TextChunk(tail, elem, non_separating=True, is_tail=True),
+                TextChunk(tail, elem, is_tail=True),
             ]
+    elif elem.tag == "AbstractText" and elem.attrib.get("Label"):
+        head = elem.attrib["Label"] + ": " + head
 
-    return [TextChunk(head, elem)] + child_passages + [TextChunk(tail, elem, is_tail=True)]
+    return (
+        [TextChunk(head, elem)] + child_passages + [TextChunk(tail, elem, is_tail=True)]
+    )
 
 
 def strip_annotation_markers(
-    text: str,
-    annotations_map: Dict[str, str],
-    marker_pattern=r'ANN_[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}',
+    text: str, annotations_map: Dict[str, str], marker_pattern=ANNOTATION_MARKER_PATTERN
 ) -> Tuple[str, List[bioc.BioCAnnotation]]:
     """
     Given a set of annotations, remove any which are found in the current text and return
@@ -271,13 +526,17 @@ def strip_annotation_markers(
     transformed_text = text
 
     pattern = (
-        r'([^\S\t]*)([\(\[\{][^\S\t]*)?(' + marker_pattern + r')([^\S\t]*[\)\]\}])?([^\S\t]*)(\.)?'
+        r"([^\S\t]*)([\(\[\{][^\S\t]*)?("
+        + marker_pattern
+        + r")([^\S\t]*[\)\]\}])?([^\S\t]*)([\.,;:])?"
     )
 
     matched_annotations: List[Tuple[int, int, str]] = []
 
     for match in re.finditer(pattern, text):
-        ws_start, br_open, marker, br_close, ws_end, period = [match.group(i) for i in range(1, 7)]
+        ws_start, br_open, marker, br_close, ws_end, period = [
+            match.group(i) for i in range(1, 7)
+        ]
 
         if marker not in annotations_map:
             continue
@@ -286,13 +545,21 @@ def strip_annotation_markers(
         end_offset = 0
 
         matched_brackets = (
-            br_open and br_close and br_open.strip() + br_close.strip() in {'\{\}', '[]', '()'}
+            br_open
+            and br_close
+            and br_open.strip() + br_close.strip() in {r"{}", "[]", "()"}
         )
 
         if not matched_brackets and (br_open or br_close):
             # do not include in the sequence to be removed from the text
-            start_offset += len(ws_start or '') + len(br_open or '')
-            end_offset += len(period or '') + len(ws_end or '') + len(br_close or '')
+            if br_open:
+                start_offset += len(ws_start or "") + len(br_open or "")
+                # end_offset += len(period or '') + len(ws_end or '') + len(br_close or '')
+            else:
+                # start_offset += len(ws_start or '') + len(br_open or '')
+                end_offset += (
+                    len(period or "") + len(ws_end or "") + len(br_close or "")
+                )
         elif not period:
             if ws_end:
                 end_offset += len(ws_end)
@@ -314,12 +581,16 @@ def strip_annotation_markers(
     for start, end, marker in sorted(matched_annotations):
         ann = bioc.BioCAnnotation()
         ann.id = marker
-        ann.infons['citation_text'] = annotations_map[marker]
-        ann.infons['type'] = 'citation'
-        transformed_text = transformed_text[: start - offset] + transformed_text[end - offset :]
+        ann.infons["citation_text"] = annotations_map[marker]
+        ann.infons["type"] = "citation"
+        transformed_text = (
+            transformed_text[: start - offset] + transformed_text[end - offset :]
+        )
 
         # since the token place-holder is removed, must be start - 1 (and previous offset) for the new position
-        annotation_offset = max(start - offset - 1, 0)  # if annotation is the first thing in a passage it may have a -1 start, should reset to 0
+        annotation_offset = max(
+            start - offset - 1, 0
+        )  # if annotation is the first thing in a passage it may have a -1 start, should reset to 0
         ann.add_location(bioc.BioCLocation(annotation_offset, 0))
 
         offset += end - start
@@ -327,7 +598,45 @@ def strip_annotation_markers(
     return transformed_text, transformed_annotations
 
 
-def merge_text_chunks(chunk_list, annotations_map=None) -> TextChunk:
+def remove_style_tags(
+    chunk_list_in: List[TextChunk], style_tags=["italic", "bold", "emph"]
+):
+    """
+    Given some list of text chunks, simplify the list to remove consecutive style-only tags
+    """
+    if len(chunk_list_in) < 4:
+        return chunk_list_in
+
+    start_index = 1
+    chunk_list = chunk_list_in[:]
+
+    while start_index < len(chunk_list) - 2:
+        current_tag = chunk_list[start_index]
+
+        if current_tag.tag not in style_tags or current_tag.is_tail:
+            start_index += 1
+            continue
+
+        closing_tag = chunk_list[start_index + 1]
+
+        if closing_tag.tag != current_tag.tag or not closing_tag.is_tail:
+            start_index += 1
+            continue
+
+        chunk_list[start_index - 1] = copy(chunk_list[start_index - 1])
+        chunk_list[start_index - 1].text = (
+            chunk_list[start_index - 1].text + current_tag.text + closing_tag.text
+        )
+        chunk_list = chunk_list[:start_index] + chunk_list[start_index + 2 :]
+
+    length_diff = sum([len(c.text) for c in chunk_list_in]) - sum(
+        [len(c.text) for c in chunk_list]
+    )
+    assert length_diff == 0, f"characters changed {length_diff}"
+    return chunk_list
+
+
+def merge_text_chunks(chunk_list: List[TextChunk], annotations_map=None) -> TextChunk:
     """
     Merge some list of text chunks and pick the most top-level xml node associated with the list to be the new node for the chunk
 
@@ -336,40 +645,52 @@ def merge_text_chunks(chunk_list, annotations_map=None) -> TextChunk:
     if annotations_map is None:
         # if no mapping is expected, simply drop annotation chunks
         chunk_list = [c for c in chunk_list if not c.is_annotation]
-
+    chunk_list = remove_style_tags(chunk_list)
     merge = []
 
     for i, current_chunk in enumerate(chunk_list):
         if i > 0:
             previous_chunk = chunk_list[i - 1]
-            join_char = ' '
+            join_char = ""
             tags = {previous_chunk.tag, current_chunk.tag}
-            if any(
-                [
-                    previous_chunk.is_annotation,
-                    current_chunk.is_annotation,
-                    previous_chunk.non_separating,
-                    current_chunk.non_separating,
-                    current_chunk.is_tail and not (current_chunk.text or previous_chunk.text),
-                ]
+            if current_chunk.tag == "sup":
+                if not current_chunk.is_tail:
+                    if re.match(r"^\s*(−|-)?\d+\s*$", current_chunk.text):
+                        if (
+                            previous_chunk.text
+                            and unicodedata.category(previous_chunk.text[-1])[0] != "P"
+                        ):
+                            join_char = "^"
+                    elif (
+                        current_chunk.text
+                        and previous_chunk.text
+                        and unicodedata.category(current_chunk.text[0])[0]
+                        == unicodedata.category(previous_chunk.text[-1])[0]
+                    ):
+                        join_char = "-"
+            elif current_chunk.tag in PSEUDO_SPACE_TAGS or (
+                current_chunk.tag == "xref" and not current_chunk.is_annotation
             ):
-                join_char = ''
-            elif len(tags) == 1 and tags & TABLE_DELIMITED_TAGS and not current_chunk.is_tail:
+                join_char = " "
+            elif (
+                len(tags) == 1
+                and tags & TABLE_DELIMITED_TAGS
+                and not current_chunk.is_tail
+            ):
                 join_char = TABLE_DELIMITER
 
             merge.append(join_char)
 
-        current_text = cleanup_text(current_chunk.text)
         if current_chunk.is_annotation:
-            ann_id = f'ANN_{uuid.uuid4()}'
-            annotations_map[ann_id] = current_text
+            ann_id = f"ANN_{uuid.uuid4()}"
+            annotations_map[ann_id] = current_chunk.text
             merge.append(ann_id)
         else:
-            merge.append(current_text)
+            merge.append(current_chunk.text)
 
-    text = ''.join(merge)
+    text = "".join(merge)
     # Remove any newlines (as they can be trusted to be syntactically important)
-    text = text.replace('\n', '')
+    text = text.replace("\n", " ")
     text = cleanup_text(text)
 
     first_non_tail_node = chunk_list[0].xml_node
@@ -384,7 +705,7 @@ def extract_text_chunks(
     element_list: Iterable[etree.Element],
     passage_tags=SEPARATION_LIST,
     tag_handlers: Dict[str, TagHandlerFunction] = {},
-    annotations_map: Optional[Dict[str, str]] = None,
+    annotations_map: Optional[Dict[str, TextChunk]] = None,
 ) -> List[TextChunk]:
     """
     Extract and beautify text from a series of XML elements
@@ -399,23 +720,41 @@ def extract_text_chunks(
     """
     if not isinstance(element_list, list):
         element_list = [element_list]
+
     raw_text_chunks = []
     for elem in element_list:
         raw_text_chunks.extend(tag_handler(elem, tag_handlers))
     chunks_to_be_merged = [[]]
 
+    in_table_body = False  # don't split passages inside a table
+
     for chunk in raw_text_chunks:
-        if chunk.xml_node is not None and chunk.tag in passage_tags:
+        if chunk.tag == "tbody":
+            in_table_body = not in_table_body
+        if (
+            chunk.xml_node is not None
+            and chunk.tag in passage_tags
+            and not in_table_body
+        ):
             # start a new tag set
             chunks_to_be_merged.append([chunk])
         else:
             chunks_to_be_merged[-1].append(chunk)
 
-    merged_chunks = [merge_text_chunks(m, annotations_map) for m in chunks_to_be_merged if m]
+    merged_chunks = [
+        merge_text_chunks(m, annotations_map) for m in chunks_to_be_merged if m
+    ]
 
     # assign the XML path to each passage
     mapping = build_xml_parent_mapping(element_list)
     for chunk in merged_chunks:
         chunk.xml_path = get_tag_path(mapping, chunk.xml_node)
+        chunk.sections = get_tag_section(mapping, chunk.xml_node)
 
+    result = []
+    for chunk in merged_chunks:
+        if chunk.text:
+            if result and result[-1].text[-1] != "\n":
+                result[-1].text = result[-1].text + "\n"
+            result.append(chunk)
     return [c for c in merged_chunks if c.text]

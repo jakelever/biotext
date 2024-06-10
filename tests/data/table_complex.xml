@@ -1,0 +1,91 @@
+<table-wrap id="T1" orientation="portrait" position="float">
+    <caption>
+        <title>
+            <bold>Table 1.</bold> Clinical characteristics of 1506 patients tested for <italic>KRAS</italic> status</title>
+    </caption>
+    <!--OASIS TABLE HERE-->
+    <table frame="hsides" rules="groups">
+        <colgroup>
+            <col width="16.67%"/>
+            <col width="28.05%"/>
+            <col width="20.63%"/>
+            <col width="20.61%"/>
+            <col width="14.04%"/>
+        </colgroup>
+        <thead>
+            <tr>
+                <th align="left" valign="middle">&#xA0;</th>
+                <th align="center" valign="middle">Total</th>
+                <th align="center" valign="middle">Female</th>
+                <th align="center" valign="middle">Male</th>
+                <th align="center" valign="middle">
+                    <italic>P</italic> value</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td align="center" valign="middle">
+                    <italic>n</italic> =
+                </td>
+                <td align="center" valign="middle">1506</td>
+                <td align="center" valign="middle">617 (41%)</td>
+                <td align="center" valign="middle">889 (59%)</td>
+                <td align="left" valign="middle">&#xA0;</td>
+            </tr>
+            <tr>
+                <td align="center" valign="middle">Age</td>
+                <td align="center" valign="middle">61 &#xB1; 11.3</td>
+                <td align="center" valign="middle">59 &#xB1; 12.1</td>
+                <td align="center" valign="middle">61 &#xB1; 11.2</td>
+                <td align="center" valign="middle">0.014</td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center" valign="middle">Tumor site (right vs left)</td>
+                <td align="left" valign="middle">&#xA0;</td>
+                <td align="left" valign="middle">&#xA0;</td>
+                <td align="center" valign="middle">0.001</td>
+            </tr>
+            <tr>
+                <td align="center" valign="middle">Right</td>
+                <td align="center" valign="middle">365 (24.2%)</td>
+                <td align="center" valign="middle">177 (28.7%)</td>
+                <td align="center" valign="middle">188 (21.1%)</td>
+                <td align="left" valign="middle">&#xA0;</td>
+            </tr>
+            <tr>
+                <td align="center" valign="middle">Left</td>
+                <td align="center" valign="middle">1141 (75.8%)</td>
+                <td align="center" valign="middle">440 (71.3%)</td>
+                <td align="center" valign="middle">701 (78.9%)</td>
+                <td align="left" valign="middle">&#xA0;</td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center" valign="middle">Tumor site (right vs left vs rectum)</td>
+                <td align="left" valign="middle">&#xA0;</td>
+                <td align="left" valign="middle">&#xA0;</td>
+                <td align="center" valign="middle">&lt; 0.0001</td>
+            </tr>
+            <tr>
+                <td align="center" valign="middle">Right</td>
+                <td align="center" valign="middle">365 (24.2%)</td>
+                <td align="center" valign="middle">177 (28.7%)</td>
+                <td align="center" valign="middle">188 (21.1%)</td>
+                <td align="left" valign="middle">&#xA0;</td>
+            </tr>
+            <tr>
+                <td align="center" valign="middle">Left</td>
+                <td align="center" valign="middle">538 (35.7%)</td>
+                <td align="center" valign="middle">228 (40.0%)</td>
+                <td align="center" valign="middle">310 (34.9%)</td>
+                <td align="left" valign="middle">&#xA0;</td>
+            </tr>
+            <tr>
+                <td align="center" valign="middle">Rectum</td>
+                <td align="center" valign="middle">603 (40.1%)</td>
+                <td align="center" valign="middle">212 (34.3%)</td>
+                <td align="center" valign="middle">391 (44.0%)</td>
+                <td align="left" valign="middle">&#xA0;</td>
+            </tr>
+        </tbody>
+    </table>
+</table-wrap>

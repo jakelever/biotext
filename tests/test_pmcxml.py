@@ -9,49 +9,55 @@ from bioconverters.utils import TABLE_DELIMITER, TextChunk
 from .util import fetch_xml
 
 
-@pytest.fixture(scope='module')
+@pytest.fixture(scope="module")
 def table_article():
-    article = fetch_xml('PMC3203921', 'pmc')  # has a table to be processed in it
+    article = fetch_xml("PMC3203921", "pmc")  # has a table to be processed in it
     return article
 
 
-@pytest.fixture(scope='module')
+@pytest.fixture(scope="module")
 def formula_article():
-    article = fetch_xml('PMC2939780', 'pmc')
+    article = fetch_xml("PMC2939780", "pmc")
     return article
 
 
-@pytest.fixture(scope='module')
+@pytest.fixture(scope="module")
 def citation_offset_article():
-    article = fetch_xml('PMC8466798', 'pmc')
+    article = fetch_xml("PMC8466798", "pmc")
     return article
 
 
 def test_convert_pmc_with_table(table_article):
     file = StringIO(table_article)
-    table_header = (
-        'ERBB2 mutation\tExon\tFunctional region\tCancer type\tLapatinib\tAEE788\tReference'
-    )
-    expected_content = "WT\tNA\tNA\tBreast cancer\t30\t257\tNA\tL755S\t19\tATP binding region\tBreast and gastric cancer\t>2000\t897\t4\tL755P	19\tATP binding region\tNSCLC\t1545\t1216\t2,3\tV773A\t20\tATP binding region\tSCCHN\t146\t200\t6\tV777L\t20\tATP binding region\tGastric, colon and lung\t27\t215\t3,4\tT798M\t20\tGate keeper residue\tNA\t1433\t>2000\tNA\tN857S\t21\tActivation loop\tOvarian cancer\t75\t246\t2\tT862A\t21\tActivation loop\tPrimary gastric cancer\t125\t191\t7\tH878Y\t21\tActivation loop\tHepatocellular carcinoma\t14\t168\t5"
+    table_header = "ERBB2 mutation\tExon\tFunctional region\tCancer type\tLapatinib\tAEE788\tReference\n"
+    expected_content = "WT\tNA\tNA\tBreast cancer\t30\t257\tNA\tL755S\t19\tATP binding region\tBreast and gastric cancer\t>2000\t897\t4\tL755P	19\tATP binding region\tNSCLC\t1545\t1216\t2,3\tV773A\t20\tATP binding region\tSCCHN\t146\t200\t6\tV777L\t20\tATP binding region\tGastric, colon and lung\t27\t215\t3,4\tT798M\t20\tGate keeper residue\tNA\t1433\t>2000\tNA\tN857S\t21\tActivation loop\tOvarian cancer\t75\t246\t2\tT862A\t21\tActivation loop\tPrimary gastric cancer\t125\t191\t7\tH878Y\t21\tActivation loop\tHepatocellular carcinoma\t14\t168\t5\n"
     all_passages = []
-    for doc in docs2bioc(file, 'pmcxml', trim_sentences=False, all_xml_path_infon=True):
+    for doc in docs2bioc(file, "pmcxml", trim_sentences=False, all_xml_path_infon=True):
         all_passages.extend(doc.passages)
-    table_body = [p.text for p in all_passages if 'tbody' in p.infons.get('xml_path', '')]
+    table_body = [
+        p.text for p in all_passages if "tbody" in p.infons.get("xml_path", "")
+    ]
     assert len(table_body) == 1
-    assert len(table_body[0].split(TABLE_DELIMITER)) == len(expected_content.split(TABLE_DELIMITER))
-    assert table_body[0].split(TABLE_DELIMITER) == expected_content.split(TABLE_DELIMITER)
-    assert table_header in [p.text for p in all_passages if 'thead' in p.infons.get('xml_path', '')]
+    assert len(table_body[0].split(TABLE_DELIMITER)) == len(
+        expected_content.split(TABLE_DELIMITER)
+    )
+    assert table_body[0].split(TABLE_DELIMITER) == expected_content.split(
+        TABLE_DELIMITER
+    )
+    assert table_header in [
+        p.text for p in all_passages if "thead" in p.infons.get("xml_path", "")
+    ]
 
 
 def test_custom_tag_handler(table_article):
-    expected_content = 'SOME DUMMY CAPTION TEXT'
+    expected_content = "SOME DUMMY CAPTION TEXT"
     all_passages = []
     file = StringIO(table_article)
 
     def dummy_handler(elem, custom_handlers):
-        return [TextChunk(expected_content, None, '')]
+        return [TextChunk(expected_content, None, "")]
 
-    for doc in docs2bioc(file, 'pmcxml', tag_handlers={'caption': dummy_handler}):
+    for doc in docs2bioc(file, "pmcxml", tag_handlers={"caption": dummy_handler}):
         all_passages.extend(doc.passages)
 
     assert any([expected_content in p.text for p in all_passages])
@@ -62,20 +68,65 @@ def test_sibling_intext_citations(table_article):
     all_annotations = []
     file = StringIO(table_article)
 
-    for doc in docs2bioc(file, 'pmcxml', trim_sentences=False, mark_citations=True):
+    for doc in docs2bioc(file, "pmcxml", trim_sentences=False, mark_citations=True):
         all_passages.extend(doc.passages)
         all_annotations.extend([a.annotation for a in bioc.annotations(doc)])
 
     for chunk in all_passages:
-        if 'PyMOL' in chunk.text:
+        if "PyMOL" in chunk.text:
             break
     assert any(
-        ['inspected using the graphics program PyMOL.' in chunk.text for chunk in all_passages]
+        [
+            "inspected using the graphics program PyMOL." in chunk.text
+            for chunk in all_passages
+        ]
     )
-    assert '[14],[16],[23]\u2013[25]' in [a.infons['citation_text'] for a in all_annotations]
+    assert "[14],[16],[23]\u2013[25]" in [
+        a.infons["citation_text"] for a in all_annotations
+    ]
 
 
 def test_citation_offset(citation_offset_article):
     # https://github.com/jakelever/biotext/issues/9
     file = StringIO(citation_offset_article)
-    list(docs2bioc(file, 'pmcxml', trim_sentences=False, mark_citations=True))
+    list(docs2bioc(file, "pmcxml", trim_sentences=False, mark_citations=True))
+
+
+def test_fetches_section_labels():
+    file = "tests/data/section_labels.xml"
+    parsed = list(
+        docs2bioc(file, "pmcxml", trim_sentences=False, mark_citations=False)
+    )[0]
+
+    article_sections = {
+        passage.infons.get("subsection")
+        for passage in parsed.passages
+        if passage.infons.get("section") == "article"
+    }
+    assert {
+        "discussion",
+        "results",
+        "methods",
+        "disclosure statement",
+        "case presentation",
+    } == article_sections
+
+
+def test_sectioning(citation_offset_article):
+    sectioning_delim = "//"
+    file = StringIO(citation_offset_article)
+    doc = list(
+        docs2bioc(
+            file, "pmcxml", trim_sentences=False, sectioning_delimiter=sectioning_delim
+        )
+    )[0]
+    result = {
+        p.infons.get("sectioning") for p in doc.passages if p.infons.get("sectioning")
+    }
+    print(result)
+    for expected_result in [
+        "1. Introduction",
+        "2. Results and Discussion//2.1. Effects of LSAS on Clotting Times of Normal and Deficient Human Plasmas",
+        "3. Materials and Methods//3.2. Effect of LSAS on Clotting Times of Deficient and Normal Human Plasmas",
+    ]:
+        assert expected_result in result

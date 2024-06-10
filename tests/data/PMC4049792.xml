@@ -1,0 +1,3029 @@
+<?xml version="1.0" ?>
+<!DOCTYPE pmc-articleset PUBLIC "-//NLM//DTD ARTICLE SET 2.0//EN" "https://dtd.nlm.nih.gov/ncbi/pmc/articleset/nlm-articleset-2.0.dtd">
+<pmc-articleset><article xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mml="http://www.w3.org/1998/Math/MathML" article-type="research-article">
+  <?properties open_access?>
+  <front>
+    <journal-meta>
+      <journal-id journal-id-type="nlm-ta">Cancer Biol Ther</journal-id>
+      <journal-id journal-id-type="iso-abbrev">Cancer Biol. Ther</journal-id>
+      <journal-id journal-id-type="publisher-id">CBT</journal-id>
+      <journal-title-group>
+        <journal-title>Cancer Biology &amp; Therapy</journal-title>
+      </journal-title-group>
+      <issn pub-type="ppub">1538-4047</issn>
+      <issn pub-type="epub">1555-8576</issn>
+      <publisher>
+        <publisher-name>Landes Bioscience</publisher-name>
+      </publisher>
+    </journal-meta>
+    <article-meta>
+      <article-id pub-id-type="pmid">24642870</article-id>
+      <article-id pub-id-type="pmc">4049792</article-id>
+      <article-id pub-id-type="publisher-id">2013CBT6689R</article-id>
+      <article-id pub-id-type="doi">10.4161/cbt.28550</article-id>
+      <article-id pub-id-type="pii">28550</article-id>
+      <article-categories>
+        <subj-group subj-group-type="heading">
+          <subject>Research Paper</subject>
+        </subj-group>
+      </article-categories>
+      <title-group>
+        <article-title>Characterization of rare transforming <italic>KRAS</italic> mutations in sporadic colorectal cancer</article-title>
+      </title-group>
+      <contrib-group>
+        <contrib contrib-type="author">
+          <name>
+            <surname>Tong</surname>
+            <given-names>Joanna HM</given-names>
+          </name>
+          <xref ref-type="aff" rid="A1">
+<sup>1</sup>
+</xref>
+          <xref ref-type="aff" rid="A2">
+<sup>2</sup>
+</xref>
+          <xref ref-type="aff" rid="A3">
+<sup>3</sup>
+</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <name>
+            <surname>Lung</surname>
+            <given-names>Raymond WM</given-names>
+          </name>
+          <xref ref-type="aff" rid="A1">
+<sup>1</sup>
+</xref>
+          <xref ref-type="aff" rid="A2">
+<sup>2</sup>
+</xref>
+          <xref ref-type="aff" rid="A3">
+<sup>3</sup>
+</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <name>
+            <surname>Sin</surname>
+            <given-names>Frankie MC</given-names>
+          </name>
+          <xref ref-type="aff" rid="A1">
+<sup>1</sup>
+</xref>
+          <xref ref-type="aff" rid="A2">
+<sup>2</sup>
+</xref>
+          <xref ref-type="aff" rid="A3">
+<sup>3</sup>
+</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <name>
+            <surname>Law</surname>
+            <given-names>Peggy PY</given-names>
+          </name>
+          <xref ref-type="aff" rid="A1">
+<sup>1</sup>
+</xref>
+          <xref ref-type="aff" rid="A2">
+<sup>2</sup>
+</xref>
+          <xref ref-type="aff" rid="A3">
+<sup>3</sup>
+</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <name>
+            <surname>Kang</surname>
+            <given-names>Wei</given-names>
+          </name>
+          <xref ref-type="aff" rid="A1">
+<sup>1</sup>
+</xref>
+          <xref ref-type="aff" rid="A2">
+<sup>2</sup>
+</xref>
+          <xref ref-type="aff" rid="A3">
+<sup>3</sup>
+</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <name>
+            <surname>Chan</surname>
+            <given-names>Anthony WH</given-names>
+          </name>
+          <xref ref-type="aff" rid="A1">
+<sup>1</sup>
+</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <name>
+            <surname>Ma</surname>
+            <given-names>Brigette BY</given-names>
+          </name>
+          <xref ref-type="aff" rid="A4">
+<sup>4</sup>
+</xref>
+          <xref ref-type="aff" rid="A5">
+<sup>5</sup>
+</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <name>
+            <surname>Mak</surname>
+            <given-names>Tony WC</given-names>
+          </name>
+          <xref ref-type="aff" rid="A6">
+<sup>6</sup>
+</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <name>
+            <surname>Ng</surname>
+            <given-names>Simon SM</given-names>
+          </name>
+          <xref ref-type="aff" rid="A2">
+<sup>2</sup>
+</xref>
+          <xref ref-type="aff" rid="A3">
+<sup>3</sup>
+</xref>
+          <xref ref-type="aff" rid="A6">
+<sup>6</sup>
+</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <name>
+            <surname>To</surname>
+            <given-names>Ka Fai</given-names>
+          </name>
+          <xref ref-type="aff" rid="A1">
+<sup>1</sup>
+</xref>
+          <xref ref-type="aff" rid="A2">
+<sup>2</sup>
+</xref>
+          <xref ref-type="aff" rid="A3">
+<sup>3</sup>
+</xref>
+          <xref ref-type="corresp" rid="cor1">*</xref>
+        </contrib>
+        <aff id="A1"><label>1</label>Department of Anatomical and Cellular Pathology; State Key Laboratory in Oncology in South China; Prince of Wales Hospital; The Chinese University of Hong Kong; Hong Kong SAR, PR China</aff>
+        <aff id="A2"><label>2</label>Institute of Digestive Disease; Partner State Key Laboratory of Digestive Disease; The Chinese University of Hong Kong; Hong Kong SAR, PR China</aff>
+        <aff id="A3"><label>3</label>Li Ka Shing Institute of Health Science; Hong Kong SAR, PR China</aff>
+        <aff id="A4"><label>4</label>Sir Y.K. Pao Cancer Center; Hong Kong SAR, PR China</aff>
+        <aff id="A5"><label>5</label>Department of Clinical Oncology; The Chinese University of Hong Kong; Hong Kong SAR, PR China</aff>
+        <aff id="A6"><label>6</label>Department of Surgery; The Chinese University of Hong Kong; Hong Kong SAR, PR China</aff>
+      </contrib-group>
+      <author-notes>
+        <corresp id="cor1"><label>*</label>Correspondence to: Ka Fai To, Email: <email xlink:href="kfto@cuhk.edu.hk">kfto@cuhk.edu.hk</email></corresp>
+      </author-notes>
+      <pub-date pub-type="ppub">
+        <day>01</day>
+        <month>6</month>
+        <year>2014</year>
+      </pub-date>
+      <pub-date pub-type="epub">
+        <day>18</day>
+        <month>3</month>
+        <year>2014</year>
+      </pub-date>
+      <pub-date pub-type="pmc-release">
+        <day>01</day>
+        <month>6</month>
+        <year>2015</year>
+      </pub-date>
+      <!-- PMC Release delay is 12 months and
+						0 days and was based on the <pub-date
+						pub-type="ppub"/>. -->
+      <volume>15</volume>
+      <issue>6</issue>
+      <fpage>768</fpage>
+      <lpage>776</lpage>
+      <history>
+        <date date-type="received">
+          <day>25</day>
+          <month>9</month>
+          <year>2013</year>
+        </date>
+        <date date-type="rev-recd">
+          <day>10</day>
+          <month>3</month>
+          <year>2014</year>
+        </date>
+        <date date-type="accepted">
+          <day>16</day>
+          <month>3</month>
+          <year>2014</year>
+        </date>
+      </history>
+      <permissions>
+        <copyright-statement>Copyright &#xA9; 2014 Landes Bioscience</copyright-statement>
+        <copyright-year>2014</copyright-year>
+        <license license-type="open-access" xlink:href="http://creativecommons.org/licenses/by-nc/3.0/">
+          <license-p>This is an open-access article licensed under a Creative Commons Attribution-NonCommercial 3.0 Unported License. The article may be redistributed, reproduced, and reused for non-commercial purposes, provided the original source is properly cited.</license-p>
+        </license>
+      </permissions>
+      <abstract>
+        <p><italic>KRAS</italic> mutational status has been shown to be a predictive biomarker of resistance to anti-EGFR monoclonal antibody (mAb) therapy in patients with metastatic colorectal cancer. We report the spectrum of <italic>KRAS</italic> mutation in 1506 patients with colorectal cancer and the identification and characterization of rare insertion mutations within the functional domain of KRAS. <italic>KRAS</italic> mutations are found in 44.5% (670/1506) of the patients. Two cases are found to harbor double mutations involving both codons 12 and 13. The frequencies of <italic>KRAS</italic> mutations at its codons 12, 13, 61, and 146 are 75.1%, 19.3%, 2.5%, and 2.7%, respectively. The most abundant mutation of codon 12 is G12D, followed by G12V and G12C while G13D is the predominant mutation in codon 13. Mutations in other codons are rare. The <italic>KRAS</italic> mutation rate is significantly higher in women (48%, 296/617) than in men (42.1%, 374/889, <italic>P</italic> = 0.023). Tumors on the right colon have a higher frequency of <italic>KRAS</italic> mutations than those on the left (57.3% vs. 40.4%, <italic>P</italic> &lt; 0.0001). Two in-frame insertion mutations affect the phosphate-binding loop (codon 10&#x2013;16) of <italic>KRAS</italic> are identified. One of them has never been reported before. Compared with wild-type protein, the insertion variants enhance the cellular accumulation of active RAS (RAS-GTP) and constitutively activate the downstream signaling pathway. NIH3T3 cells transfected with the insertion variants show enhanced anchorage-independent growth and in vivo tumorigenicity. Potentially these mutations contribute to primary resistance to anti-EGFR mAb therapy but the clinical implication requires further validation.</p>
+      </abstract>
+      <kwd-group kwd-group-type="author">
+        <title>Keywords: </title>
+        <kwd>colorectal cancer</kwd>
+        <kwd>
+          <italic>KRAS</italic>
+        </kwd>
+        <kwd>targeted therapy</kwd>
+      </kwd-group>
+    </article-meta>
+  </front>
+  <body>
+    <sec sec-type="intro">
+      <title>Introduction</title>
+      <p>Colorectal cancer (CRC) is one of the most common lethal cancers worldwide. In 2008, more than 1.2 million new cases were diagnosed, with approximately 608&#x2009;700 deaths estimated to have occurred.<xref rid="R1" ref-type="bibr"><sup>1</sup></xref> Epidermal growth factor receptor (EGFR), a critical molecule in CRC initiation and progression, is frequently overexpressed in metastatic CRC (mCRC) tumors.<xref rid="R2" ref-type="bibr"><sup>2</sup></xref><sup>,</sup><xref rid="R3" ref-type="bibr"><sup>3</sup></xref> The phenomena lead to the development of molecular targeting therapy to inhibit the EGFR signaling pathway. Using anti-EGFR monoclonal antibodies (mAbs) such as cetuximab and panitumumab, have been approved in treating mCRC to inhibit EGFR activity and hence switching off downstream pathways.<xref rid="R2" ref-type="bibr"><sup>2</sup></xref><sup>,</sup><xref rid="R3" ref-type="bibr"><sup>3</sup></xref></p>
+      <p>However, anti-EGFR therapy does not work on all CRCs, largely due to the resistance to the anti-EGFR mAbs.<xref rid="R4" ref-type="bibr"><sup>4</sup></xref> Different studies have reported the response and outcome of CRCs to the anti-EGFR mAbs was poor with <italic>KRAS</italic> mutation which accounting for 30&#x2013;40% of non-responsive cases.<xref rid="R4" ref-type="bibr"><sup>4</sup></xref><sup>-</sup><xref rid="R7" ref-type="bibr"><sup>7</sup></xref>
+<italic>KRAS</italic> mutation status is now considered to be a predictive biomarker of resistance to anti-EGFR mAbs treatment for mCRC patients. KRAS is one of the RAS superfamily of proto-oncoproteins which is small signal switch molecule called GTPase, cycling between inactive GDP-bound (RAS-GDP) and active GTP-bound (RAS-GTP) forms, to regulate cellular growth and differentiation.<xref rid="R8" ref-type="bibr"><sup>8</sup></xref> Activating mutations of RAS proto-oncogenes continuously elevate the cytoplasmic RAS-GTP level. Oncogenic signaling pathways, such as Raf-MEK-ERK and PI3K/AKT cascades, are then constitutively activated in an EGFR activation-independent manner and therefore promote cell cycle progression.<xref rid="R6" ref-type="bibr"><sup>6</sup></xref><sup>,</sup><xref rid="R8" ref-type="bibr"><sup>8</sup></xref>
+<italic>KRAS</italic> mutation is found in 40% of CRCs and missense point mutation is the most common mutation. The majority of the point mutation sites of <italic>KRAS</italic> in CRC patients are located at codons 12 and 13 (~80% and ~17%, respectively), together with rare mutations at codons 61 and 146 (~1&#x2013;4%).<xref rid="R3" ref-type="bibr"><sup>3</sup></xref><sup>,</sup><xref rid="R9" ref-type="bibr"><sup>9</sup></xref><sup>-</sup><xref rid="R11" ref-type="bibr"><sup>11</sup></xref></p>
+      <p>Most clinical studies of <italic>KRAS</italic> mutation in CRC were conducted in western countries. However, <italic>KRAS</italic> mutation rate or spectrum in CRCs may partially depends on the population studied.<xref rid="R12" ref-type="bibr"><sup>12</sup></xref> It has been reported that <italic>KRAS</italic> mutations were identified in CRC patients from the UK, Switzerland, and Spain, for 27.4%, 38%, and 41% respectively.<xref rid="R12" ref-type="bibr"><sup>12</sup></xref> This epidemiological variation indicates the essence of establishment of a local CRC <italic>KRAS</italic> mutation data in different populations. There has been a dramatic increase in reported incidence of colorectal cancer in Asian.<xref rid="R12" ref-type="bibr"><sup>12</sup></xref> It is of paramount importance to investigate the <italic>KRAS</italic> mutation spectrum in our locality in view of the implication in using anti-EGFR targeting therapy. We aim to analyze the <italic>KRAS</italic> mutation status and the clinical correlation in Chinese patients with CRC in Hong Kong. Here we report the spectrum of <italic>KRAS</italic> mutation in a large cohort of colorectal cancer and the identification and characterization of a novel insertion mutation within the function domain of KRAS.</p>
+    </sec>
+    <sec sec-type="results">
+      <title>Results</title>
+      <sec>
+        <title>Clinical characteristics of the patients</title>
+        <p>We tested a total of 1506 patients with colorectal cancer. Of them 889 (59%) were males and 617 (41%) were females. The median age at presentation was 61 &#xB1; 11.3 y (range 21&#x2013;89 y). The clinical characteristics were in keeping with other reported populations of colorectal cancer.<xref rid="R11" ref-type="bibr"><sup>11</sup></xref> The age of female patients were slightly younger than males (59 &#xB1; 12.1 vs 61 &#xB1; 11.2, <italic>P</italic> = 0.014). There was significantly higher frequency of left colon tumor (75.8%) than the right side (24.2%, <italic>P</italic> &lt; 0.0001). However, the right side tumors were more common in females (28.7%) compared with males (21.1%, <italic>P</italic> = 0.001). When rectal tumor was considered a separate entity, female patients had a higher frequency of right side tumor whereas the rectal tumors were more commonly found in male patients (<italic>P</italic> &lt; 0.0001). The clinical characteristics of the patients tested were summarized in <xref ref-type="table" rid="T1">Table 1</xref>.</p>
+        <table-wrap id="T1" orientation="portrait" position="float">
+          <caption>
+            <title><bold>Table 1.</bold> Clinical characteristics of 1506 patients tested for <italic>KRAS</italic> status</title>
+          </caption>
+          <!--OASIS TABLE HERE-->
+          <table frame="hsides" rules="groups">
+            <colgroup>
+              <col width="16.67%"/>
+              <col width="28.05%"/>
+              <col width="20.63%"/>
+              <col width="20.61%"/>
+              <col width="14.04%"/>
+            </colgroup>
+            <thead>
+              <tr>
+                <th align="left" valign="middle">&#xA0;</th>
+                <th align="center" valign="middle">Total</th>
+                <th align="center" valign="middle">Female</th>
+                <th align="center" valign="middle">Male</th>
+                <th align="center" valign="middle"><italic>P</italic> value</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td align="center" valign="middle"><italic>n</italic> =</td>
+                <td align="center" valign="middle">1506</td>
+                <td align="center" valign="middle">617 (41%)</td>
+                <td align="center" valign="middle">889 (59%)</td>
+                <td align="left" valign="middle">&#xA0;</td>
+              </tr>
+              <tr>
+                <td align="center" valign="middle">Age</td>
+                <td align="center" valign="middle">61 &#xB1; 11.3</td>
+                <td align="center" valign="middle">59 &#xB1; 12.1</td>
+                <td align="center" valign="middle">61 &#xB1; 11.2</td>
+                <td align="center" valign="middle">0.014</td>
+              </tr>
+              <tr>
+                <td colspan="2" align="center" valign="middle">Tumor site (right vs left)</td>
+                <td align="left" valign="middle">&#xA0;</td>
+                <td align="left" valign="middle">&#xA0;</td>
+                <td align="center" valign="middle">0.001</td>
+              </tr>
+              <tr>
+                <td align="center" valign="middle">Right</td>
+                <td align="center" valign="middle">365 (24.2%)</td>
+                <td align="center" valign="middle">177 (28.7%)</td>
+                <td align="center" valign="middle">188 (21.1%)</td>
+                <td align="left" valign="middle">&#xA0;</td>
+              </tr>
+              <tr>
+                <td align="center" valign="middle">Left</td>
+                <td align="center" valign="middle">1141 (75.8%)</td>
+                <td align="center" valign="middle">440 (71.3%)</td>
+                <td align="center" valign="middle">701 (78.9%)</td>
+                <td align="left" valign="middle">&#xA0;</td>
+              </tr>
+              <tr>
+                <td colspan="2" align="center" valign="middle">Tumor site (right vs left vs rectum)</td>
+                <td align="left" valign="middle">&#xA0;</td>
+                <td align="left" valign="middle">&#xA0;</td>
+                <td align="center" valign="middle">&lt; 0.0001</td>
+              </tr>
+              <tr>
+                <td align="center" valign="middle">Right</td>
+                <td align="center" valign="middle">365 (24.2%)</td>
+                <td align="center" valign="middle">177 (28.7%)</td>
+                <td align="center" valign="middle">188 (21.1%)</td>
+                <td align="left" valign="middle">&#xA0;</td>
+              </tr>
+              <tr>
+                <td align="center" valign="middle">Left</td>
+                <td align="center" valign="middle">538 (35.7%)</td>
+                <td align="center" valign="middle">228 (40.0%)</td>
+                <td align="center" valign="middle">310 (34.9%)</td>
+                <td align="left" valign="middle">&#xA0;</td>
+              </tr>
+              <tr>
+                <td align="center" valign="middle">Rectum</td>
+                <td align="center" valign="middle">603 (40.1%)</td>
+                <td align="center" valign="middle">212 (34.3%)</td>
+                <td align="center" valign="middle">391 (44.0%)</td>
+                <td align="left" valign="middle">&#xA0;</td>
+              </tr>
+            </tbody>
+          </table>
+        </table-wrap>
+      </sec>
+      <sec>
+        <title>Status of <italic>KRAS</italic> mutation</title>
+        <p><italic>KRAS</italic> mutations on codons 12, 13, 61 and 146 were analyzed by PCR-direct sequencing using microdissected FFPE tumor tissues from 1506 patients. A total of 672 <italic>KRAS</italic> mutations were identified from 670 patients (44.5%, 670 out of 1506, <xref ref-type="table" rid="T2">Table 2</xref>). Two cases were found to harbor double mutations. Both cases involved codon 12 and codon 13 of <italic>KRAS</italic> gene. One case harbored concomitant G12C and G13D, while the other had both G12V and G13D. Within 672 <italic>KRAS</italic> mutations identified, the frequencies of mutations at codons 12, 13, 61, and 146 were 75.1%, 19.3%, 2.5%, and 2.7%, respectively. Majority of the mutations occurred at codons 12 and 13 which accounted for more than 94% of all mutations identified. The most common mutation was glycine to aspartate on codon 12 (G12D), which accounted for 37.5% of all mutations (252 out of 672). Mutation from glycine to valine (G12V) was the second most common of all specified mutations (20.1%; 135 of 672). Mutation from glycine to aspartate on codon 13 (G13D) accounted for 19.0% (128 of 672) of specified mutations.</p>
+        <table-wrap id="T2" orientation="portrait" position="float">
+          <caption>
+            <title><bold>Table 2.</bold> KRAS mutations spectrum in 670 colorectal cancers</title>
+          </caption>
+          <!--OASIS TABLE HERE-->
+          <table frame="hsides" rules="groups">
+            <colgroup>
+              <col width="62.24%"/>
+              <col width="18.28%"/>
+              <col width="19.48%"/>
+            </colgroup>
+            <thead>
+              <tr>
+                <th align="center" valign="top">Mutation</th>
+                <th align="center" valign="top">Frequency</th>
+                <th align="center" valign="top">Percentage</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td align="center" valign="top">Codon 12</td>
+                <td align="center" valign="top">505</td>
+                <td align="center" valign="top">75.1%</td>
+              </tr>
+              <tr>
+                <td align="center" valign="top">G12D</td>
+                <td align="center" valign="top">252</td>
+                <td align="center" valign="top">37.5%</td>
+              </tr>
+              <tr>
+                <td align="center" valign="top">G12V</td>
+                <td align="center" valign="top">135</td>
+                <td align="center" valign="top">20.1%</td>
+              </tr>
+              <tr>
+                <td align="center" valign="top">G12C</td>
+                <td align="center" valign="top">46</td>
+                <td align="center" valign="top">6.8%</td>
+              </tr>
+              <tr>
+                <td align="center" valign="top">G12S</td>
+                <td align="center" valign="top">33</td>
+                <td align="center" valign="top">4.9%</td>
+              </tr>
+              <tr>
+                <td align="center" valign="top">G12A</td>
+                <td align="center" valign="top">29</td>
+                <td align="center" valign="top">4.3%</td>
+              </tr>
+              <tr>
+                <td align="center" valign="top">G12R</td>
+                <td align="center" valign="top">10</td>
+                <td align="center" valign="top">1.5%</td>
+              </tr>
+              <tr>
+                <td align="center" valign="top">Codon13</td>
+                <td align="center" valign="top">130</td>
+                <td align="center" valign="top">19.3%</td>
+              </tr>
+              <tr>
+                <td align="center" valign="top">G13D</td>
+                <td align="center" valign="top">128</td>
+                <td align="center" valign="top">19.0%</td>
+              </tr>
+              <tr>
+                <td align="center" valign="top">G13C</td>
+                <td align="center" valign="top">2</td>
+                <td align="center" valign="top">0.3%</td>
+              </tr>
+              <tr>
+                <td align="center" valign="top">Codon 61</td>
+                <td align="center" valign="top">17</td>
+                <td align="center" valign="top">2.5%</td>
+              </tr>
+              <tr>
+                <td align="center" valign="top">Q61H</td>
+                <td align="center" valign="top">9</td>
+                <td align="center" valign="top">1.3%</td>
+              </tr>
+              <tr>
+                <td align="center" valign="top">Q61L</td>
+                <td align="center" valign="top">5</td>
+                <td align="center" valign="top">0.7%</td>
+              </tr>
+              <tr>
+                <td align="center" valign="top">Q61K</td>
+                <td align="center" valign="top">1</td>
+                <td align="center" valign="top">0.1%</td>
+              </tr>
+              <tr>
+                <td align="center" valign="top">Q61R</td>
+                <td align="center" valign="top">2</td>
+                <td align="center" valign="top">0.3%</td>
+              </tr>
+              <tr>
+                <td align="center" valign="top">Codon 146</td>
+                <td align="center" valign="top">18</td>
+                <td align="center" valign="top">2.7%</td>
+              </tr>
+              <tr>
+                <td align="center" valign="top">A146T</td>
+                <td align="center" valign="top">18</td>
+                <td align="center" valign="top">2.7%</td>
+              </tr>
+              <tr>
+                <td align="center" valign="top">Others</td>
+                <td align="center" valign="top">2</td>
+                <td align="center" valign="top">0.3%</td>
+              </tr>
+              <tr>
+                <td align="center" valign="top">c.30_31insGGA, p.G10_A11insG</td>
+                <td align="center" valign="top">1</td>
+                <td align="center" valign="top">0.1%</td>
+              </tr>
+              <tr>
+                <td align="center" valign="top">c.33_34insGGAGCT:p.A11_G12insGA</td>
+                <td align="center" valign="top">1</td>
+                <td align="center" valign="top">0.1%</td>
+              </tr>
+              <tr>
+                <td align="center" valign="top">Total</td>
+                <td align="center" valign="top">672<sup>a</sup></td>
+                <td align="center" valign="top">100%</td>
+              </tr>
+            </tbody>
+          </table>
+          <table-wrap-foot>
+            <fn>
+              <p><sup>a</sup>A total of 672 KRAS mutations were detected from 670 colorectal tumors. Two tumors harbored double mutations.</p>
+            </fn>
+          </table-wrap-foot>
+        </table-wrap>
+        <p>The <italic>KRAS</italic> mutation rate was significantly higher in women (48%, 296 of 617, <xref ref-type="table" rid="T3">Table 3</xref>) than in men (42.1%, 374 of 889, <italic>P</italic> = 0.023). The mutation rate did not differ according to the primary tumor site if the tumor location was classified as either ascending, hepatic flexure, transverse, splenic flexure, descending, sigmoid, or rectum. If the tumors on the right side of the colon (ascending and transverse colon) were group together and compared with those on the left (splenic flexure to rectum), the frequency of <italic>KRAS</italic> mutations were significantly higher in the right colon (57.3% vs. 40.4%, <italic>P</italic> &lt; 0.0001). The <italic>KRAS</italic> mutation was not associated with the age of the patient. In comparison of the most frequently mutated codons between left and right colon, codon 12 mutations were significantly more likely to occur in rectum (right colon 28.8%, left colon 29.7%, rectum 41.6%), while codon 13 mutations were slightly more frequent in the right colon (right colon 40%, left colon 30.8%, rectum 29.2%, <italic>P</italic> = 0.013)</p>
+        <table-wrap id="T3" orientation="portrait" position="float">
+          <caption>
+            <title><bold>Table 3.</bold> Correlation of <italic>KRAS</italic> mutation status with clinical features</title>
+          </caption>
+          <!--OASIS TABLE HERE-->
+          <table frame="hsides" rules="groups">
+            <colgroup>
+              <col width="46.31%"/>
+              <col width="15.85%"/>
+              <col width="16.14%"/>
+              <col width="10.87%"/>
+              <col width="10.83%"/>
+            </colgroup>
+            <thead>
+              <tr>
+                <th rowspan="2" align="center" valign="middle">Characteristics</th>
+                <th colspan="2" align="center" valign="middle"><italic>KRAS</italic> mutation</th>
+                <th rowspan="2" align="center" valign="middle">Total</th>
+                <th rowspan="2" align="center" valign="middle"><italic>P</italic> value</th>
+              </tr>
+              <tr>
+                <th align="center" valign="middle">+</th>
+                <th align="center" valign="middle">&#x2212;</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td align="center" valign="middle"><italic>n</italic> = 1506</td>
+                <td align="left" valign="middle">&#xA0;</td>
+                <td align="left" valign="middle">&#xA0;</td>
+                <td align="left" valign="middle">&#xA0;</td>
+                <td align="left" valign="middle">&#xA0;</td>
+              </tr>
+              <tr>
+                <td align="center" valign="middle">No. cases</td>
+                <td align="center" valign="middle">670 (44.5%)</td>
+                <td align="center" valign="middle">836 (55.5%)</td>
+                <td align="left" valign="middle">&#xA0;</td>
+                <td align="left" valign="middle">&#xA0;</td>
+              </tr>
+              <tr>
+                <td align="center" valign="middle">Age</td>
+                <td align="center" valign="middle">61.3 &#xB1; 11.3</td>
+                <td align="center" valign="middle">60.5 &#xB1; 11.3</td>
+                <td align="left" valign="middle">&#xA0;</td>
+                <td align="center" valign="middle">NS</td>
+              </tr>
+              <tr>
+                <td align="center" valign="middle">
+                  <italic>Gender</italic>
+                </td>
+                <td align="left" valign="middle">&#xA0;</td>
+                <td align="left" valign="middle">&#xA0;</td>
+                <td align="left" valign="middle">&#xA0;</td>
+                <td align="center" valign="middle">0.023</td>
+              </tr>
+              <tr>
+                <td align="center" valign="middle">F</td>
+                <td align="center" valign="middle">296 (48%)</td>
+                <td align="center" valign="middle">321 (52%)</td>
+                <td align="center" valign="middle">617</td>
+                <td align="left" valign="middle">&#xA0;</td>
+              </tr>
+              <tr>
+                <td align="center" valign="middle">M</td>
+                <td align="center" valign="middle">374 (42.1%)</td>
+                <td align="center" valign="middle">515 (57.9%)</td>
+                <td align="center" valign="middle">889</td>
+                <td align="left" valign="middle">&#xA0;</td>
+              </tr>
+              <tr>
+                <td align="center" valign="middle">Age</td>
+                <td align="center" valign="middle">62.1 &#xB1; 10.1</td>
+                <td align="center" valign="middle">60.4 &#xB1; 9.0</td>
+                <td align="left" valign="middle">&#xA0;</td>
+                <td align="center" valign="middle">NS</td>
+              </tr>
+              <tr>
+                <td align="center" valign="middle">
+                  <italic>Tumor site (right vs left)</italic>
+                </td>
+                <td align="left" valign="middle">&#xA0;</td>
+                <td align="left" valign="middle">&#xA0;</td>
+                <td align="left" valign="middle">&#xA0;</td>
+                <td align="left" valign="middle">&#xA0;</td>
+              </tr>
+              <tr>
+                <td align="center" valign="middle">Right</td>
+                <td align="center" valign="middle">209 (57.3%)</td>
+                <td align="center" valign="middle">156 (42.7%)</td>
+                <td align="center" valign="middle">365</td>
+                <td align="center" valign="middle">&lt; 0.0001</td>
+              </tr>
+              <tr>
+                <td align="center" valign="middle">Left</td>
+                <td align="center" valign="middle">461 (40.4%)</td>
+                <td align="center" valign="middle">680 (59.6%)</td>
+                <td align="center" valign="middle">1141</td>
+                <td align="left" valign="middle">&#xA0;</td>
+              </tr>
+              <tr>
+                <td align="center" valign="middle">Total</td>
+                <td align="center" valign="middle">670</td>
+                <td align="center" valign="middle">836</td>
+                <td align="center" valign="middle">1506</td>
+                <td align="left" valign="middle">&#xA0;</td>
+              </tr>
+              <tr>
+                <td align="center" valign="middle">
+                  <italic>Tumor site (right vs left vs rectum)</italic>
+                </td>
+                <td align="left" valign="middle">&#xA0;</td>
+                <td align="left" valign="middle">&#xA0;</td>
+                <td align="left" valign="middle">&#xA0;</td>
+                <td align="center" valign="top">&lt; 0.0001</td>
+              </tr>
+              <tr>
+                <td align="center" valign="middle">Right</td>
+                <td align="center" valign="middle">209 (57.3%)</td>
+                <td align="center" valign="middle">156 (42.7%)</td>
+                <td align="center" valign="middle">365</td>
+                <td align="left" valign="middle">&#xA0;</td>
+              </tr>
+              <tr>
+                <td align="center" valign="middle">Left</td>
+                <td align="center" valign="middle">198 (36.8%)</td>
+                <td align="center" valign="middle">340 (63.2%)</td>
+                <td align="center" valign="middle">538</td>
+                <td align="left" valign="middle">&#xA0;</td>
+              </tr>
+              <tr>
+                <td align="center" valign="middle">Rectum</td>
+                <td align="center" valign="middle">263 (43.6%)</td>
+                <td align="center" valign="middle">340 (56.4%)</td>
+                <td align="center" valign="middle">603</td>
+                <td align="left" valign="middle">&#xA0;</td>
+              </tr>
+              <tr>
+                <td align="center" valign="middle">Total</td>
+                <td align="center" valign="middle">670</td>
+                <td align="center" valign="middle">836</td>
+                <td align="center" valign="middle">1506</td>
+                <td align="left" valign="middle">&#xA0;</td>
+              </tr>
+            </tbody>
+          </table>
+        </table-wrap>
+      </sec>
+      <sec>
+        <title>Identification of rare <italic>KRAS</italic> insertion mutations</title>
+        <p>In the pool of CRC cases, we identified two rare <italic>KRAS</italic> mutations which were defined as in-frame insertion mutations. The Insertion mutations in <italic>KRAS</italic> exon 2 of patient #286 and #833 were further validated by direct sequencing of the cloned PCR products (<xref ref-type="fig" rid="F1">Fig.&#xA0;1</xref>). In patient #286, an in-flame insertion of 3-nucleotide (GGA) between codons 10 and 11 was observed (c.30_31insGGA: p.G10_A11insG). This rare mutation, which suggested the insertion of a glycine residue between glycine (amino acid 10) and alanine (amino acid 11), was reported once in the patient with myeloid leukemia.<xref rid="R8" ref-type="bibr"><sup>8</sup></xref> In patient #833, a tandem repeat sequences of codon 10 and 11 (GGA GCT) was in-flame inserted after codons 11 and introduced extra glycine and alanine residues between alanine (codon 11) and glycine (codon 12). This insertion mutation (c.33_34insGGAGCT:p.A11_G12insGA) has never been reported before. These two mutations are named <sup>10</sup>G<sup>11</sup> and <sup>11</sup>GA<sup>12</sup> respectively.</p>
+        <fig id="F1" fig-type="figure" orientation="portrait" position="float">
+          <caption>
+            <p><bold>Figure&#xA0;1.</bold> Electropherogram for <italic>KRAS</italic> mutants. Tissue DNA from the patient with colorectal cancer were amplified and cloned for sequencing analysis. Two novel in-flame insertions (<sup>10</sup>G<sup>11</sup> and <sup>11</sup>GA<sup>12</sup>) in exon 2 of <italic>KRAS</italic> gene were identified.</p>
+          </caption>
+          <graphic xlink:href="cbt-15-768-g1"/>
+        </fig>
+      </sec>
+      <sec>
+        <title><italic>KRAS</italic> exon 2 insertions activate RAS signaling pathway and enhance NIH3T3 cells transformation</title>
+        <p>To investigate whether the newly found <sup>10</sup>G<sup>11</sup> and <sup>11</sup>GA<sup>12</sup>
+<italic>KRAS</italic> mutation activate RAS activity, we constructed expression plasmids and transiently transfected into 293FT and NIH3T3 cells. As a control, expression plasmids carrying wild-type <italic>KRAS</italic> (<italic>KRAS</italic>-WT) and a well-known active <italic>KRAS</italic> mutant (<italic>KRAS</italic>-G12V) were used for comparison during the basic functional assay.</p>
+        <p>Compared with the cells transfected with WT expression plasmid, overexpression of <sup>10</sup>G<sup>11</sup> and <sup>11</sup>GA<sup>12</sup>
+<italic>KRAS</italic> mutants in cell lines resulted in elevated protein levels of both active RAS (Ras-GTP) and its downstream signaling molecule, phosphorylated extracellular signal-regulated kinase (p-ERK). The elevated levels of these two proteins are similar to the cells transfected with the <italic>KRAS</italic>-G12V mutant construct (<xref ref-type="fig" rid="F2">Fig.&#xA0;2</xref>). To further demonstrate the biological effect of <sup>10</sup>G<sup>11</sup> and <sup>11</sup>GA<sup>12</sup>
+<italic>KRAS</italic> mutants, NIH3T3 cells which stably transfected with empty vector, <italic>KRAS</italic>-WT, <italic>KRAS</italic>-G12V, <sup>10</sup>G<sup>11</sup> or <sup>11</sup>GA<sup>12</sup> mutant were prepared. Although NIH3T3 stable transfectants showed similar proliferation rate in MTT assay (data not shown), they have apparent differences in anchorage-independent growth property. We demonstrated in soft-agar colony formation assay that only a few number of colonies of the cells transfected with either empty vector or <italic>KRAS</italic>-wild type expression vector were observed. In contrast, more colonies were counted in all three transfectants with mutant <italic>KRAS</italic> and the differences were statistically significant compared with cells transfected with <italic>KRAS</italic>-wild type (<xref ref-type="fig" rid="F3">Fig.&#xA0;3</xref>). Furthermore, the colony sizes of the mutant <italic>KRAS</italic> transfectants were, in general, bigger than that in <italic>KRAS</italic>-wild type transfectant. To assess the in vivo tumorigenicity of novel <italic>KRAS</italic> variants, NIH3T3 transfectants containing empty vector or different <italic>KRAS</italic> mutants were injected subcutaneously into the dorsal flank of Balb/c nude mice. Compared with <italic>KRAS</italic> wild type and empty vector controls, <italic>KRAS</italic>
+<sup>10</sup>G<sup>11</sup> and <sup>11</sup>GA<sup>12</sup> significantly enhanced in vivo tumor growth as showed in <xref ref-type="fig" rid="F4">Figure&#xA0;4</xref>. Collectively, these observations suggested that both newly identified <italic>KRAS</italic> mutants could activate the Raf-MEK-ERK pathway by elevating RAS-GTP level and contribute in vitro and in vivo cell transformation.</p>
+        <fig id="F2" fig-type="figure" orientation="portrait" position="float">
+          <caption>
+            <p><bold>Figure&#xA0;2.</bold><italic>KRAS</italic> insertion mutants activated RAS signaling by enhancing cellular accumulation of active RAS (RAS-GTP) and activating p-ERK. NIH3T3 and 293FT cells were transfected with <italic>KRAS</italic> mutants, and RAS-GTP protein in the cell extract were immunoprecipitated with agarose beads containing Ras binding domain of Raf-1. Protein levels in both whole cell extracts (pan-RAS and pERK) and precipitated samples (RAS-GTP) were analyzed by western blot analysis as indicated. Representative results from 3 independent experiments were shown.</p>
+          </caption>
+          <graphic xlink:href="cbt-15-768-g2"/>
+        </fig>
+        <fig id="F3" fig-type="figure" orientation="portrait" position="float">
+          <caption>
+            <p><bold>Figure&#xA0;3.</bold><italic>KRAS</italic> insertion mutants promoted anchorage-independent growth in soft agar. NIH3T3 cells stably transfected with pcDNA3.1 empty vector (EV), wild-type <italic>KRAS</italic> (WT), G12V <italic>KRAS</italic> mutant (G12V), <sup>10</sup>G<sup>11</sup> and <sup>11</sup>GA<sup>12</sup> mutants were cultured in soft agar for analysis. Representative microscopic pictures of colony from each transfectant were taken (Magnification, 400&#xD7;). The number of colony in each transfectant was plot in the bar chart and the results shown were mean and standard deviation from three independent experiments. The <italic>P</italic> value of &lt; 0.05 and &lt; 0.001 were denoted as * and ** respectively.</p>
+          </caption>
+          <graphic xlink:href="cbt-15-768-g3"/>
+        </fig>
+        <fig id="F4" fig-type="figure" orientation="portrait" position="float">
+          <caption>
+            <p><bold>Figure&#xA0;4.</bold><italic>KRAS</italic> insertion mutants promoted in vivo growth of NIH3T3 cells. In vivo tumorgenic assay in nude mice showed that tumors formed in the sites implanted with NIH3T3 cells expressing <italic>KRAS</italic> mutants (G12V, <sup>10</sup>G<sup>11</sup>, or <sup>11</sup>GA<sup>12</sup>) were consistently larger than that implanted with wild-type <italic>KRAS</italic> (WT) and empty vector (EV) controls. By western blotting, the expression of KRAS protein in the NIH3T3 transfectants and tumors dissected from the xenografts (T1&#x2013;T5) was detected.</p>
+          </caption>
+          <graphic xlink:href="cbt-15-768-g4"/>
+        </fig>
+      </sec>
+    </sec>
+    <sec sec-type="discussion">
+      <title>Discussion</title>
+      <p>In the current study, we report the <italic>KRAS</italic> mutation frequency in a large cohort of patients with colorectal cancer in Hong Kong. <italic>KRAS</italic> mutation is found in 44.5% (670 out of 1506) of colorectal cancers. The mutation rate is similar to <italic>KRAS</italic> studies previously reported.<xref rid="R13" ref-type="bibr"><sup>13</sup></xref><sup>-</sup><xref rid="R20" ref-type="bibr"><sup>20</sup></xref>
+<xref ref-type="table" rid="T4">Table 4</xref> summarized the <italic>KRAS</italic> mutation rates and the distribution of mutants in representative studies. Codon 12 is the most common <italic>KRAS</italic> mutation and the most frequently found mutation is G12D (35% of all mutations found). Our data demonstrate the predominance of <italic>KRAS</italic>-mutant carcinoma in right colon and in female patients. This is in keeping with some previous reports although other studies might not have demonstrated such relationship.<xref rid="R21" ref-type="bibr"><sup>21</sup></xref><sup>,</sup><xref rid="R22" ref-type="bibr"><sup>22</sup></xref> The preference of site of <italic>KRAS</italic> mutation might be correlate with the different molecular pathways involved in right and left side colon CRCs. The right and left side colon cancers have been considered as distinct tumor entities because of their epidemiological, clinicopathologic, and molecular biologic features. Right side colon cancer was found to be associated with female, older age, advanced stage, and poorly differentiated mucinous histology.<xref rid="R23" ref-type="bibr"><sup>23</sup></xref><sup>-</sup><xref rid="R26" ref-type="bibr"><sup>26</sup></xref> Higher rates of microsatellite instability and <italic>KRAS</italic> mutations were common molecular events found in right side colon cancer.<xref rid="R27" ref-type="bibr"><sup>27</sup></xref><sup>,</sup><xref rid="R28" ref-type="bibr"><sup>28</sup></xref> Whereas the left side tumor were more common to be chromosomal instable and harbor more <italic>TP53</italic> mutation.<xref rid="R27" ref-type="bibr"><sup>27</sup></xref><sup>-</sup><xref rid="R30" ref-type="bibr"><sup>30</sup></xref> The reason for the observed differences between left and right side colon adenocarcinoma remains unclear. It is likely to be multifactorial and complex including embryologic origin, and the effect of chemical and bacterial luminal microenvironments. Moreover, we have reported the predominant <italic>KRAS</italic> mutations in left colon are located in codon 12 and right colon in codon 13. This finding is different from a large population-based study which found significantly more codon-12 mutation cases in proximal (right colon) than distal (left colon) tumors (29.1% vs 20.5%; <italic>P</italic> &lt; 0.01).<xref rid="R21" ref-type="bibr"><sup>21</sup></xref> Another study also showed rectosigmoid tumor (left colon) had the highest frequency of codon 13 mutations.<xref rid="R31" ref-type="bibr"><sup>31</sup></xref> There is no consistent trend, further study is necessary.</p>
+      <table-wrap id="T4" orientation="portrait" position="float">
+        <caption>
+          <title><bold>Table 4.</bold> Comparison of <italic>KRAS</italic> mutation distribution in reported series</title>
+        </caption>
+        <!--OASIS TABLE HERE-->
+        <table frame="hsides" rules="groups">
+          <colgroup>
+            <col width="14.11%"/>
+            <col width="7.57%"/>
+            <col width="8.95%"/>
+            <col width="6.15%"/>
+            <col width="8.62%"/>
+            <col width="6.51%"/>
+            <col width="6.62%"/>
+            <col width="9.36%"/>
+            <col width="7.13%"/>
+            <col width="6.15%"/>
+            <col width="9.47%"/>
+            <col width="9.36%"/>
+          </colgroup>
+          <thead>
+            <tr>
+              <th align="center" valign="top">Studies</th>
+              <th align="center" valign="top">Current study</th>
+              <th align="center" valign="top">COSMIC database</th>
+              <th align="center" valign="top">Rosty 2013<xref ref-type="bibr" rid="R23"><sup>23</sup></xref></th>
+              <th align="center" valign="top">Imamura 2012<xref ref-type="bibr" rid="R41"><sup>41</sup></xref></th>
+              <th align="center" valign="top">De Roock 2010<xref ref-type="bibr" rid="R42"><sup>42</sup></xref></th>
+              <th align="center" valign="top">Chang 2009<xref ref-type="bibr" rid="R43"><sup>43</sup></xref></th>
+              <th align="center" valign="top">Karapetis 2008<xref ref-type="bibr" rid="R44"><sup>44</sup></xref></th>
+              <th align="center" valign="top">Amado 2008<xref ref-type="bibr" rid="R7"><sup>7</sup></xref></th>
+              <th align="center" valign="top">Brink 2003<xref ref-type="bibr" rid="R31"><sup>31</sup></xref></th>
+              <th align="center" valign="top">Samowitz 2000<xref ref-type="bibr" rid="R21"><sup>21</sup></xref></th>
+              <th align="center" valign="top">Andreyev 1998<xref ref-type="bibr" rid="R11"><sup>11</sup></xref></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td align="center" valign="top"><italic>n</italic> =</td>
+              <td align="center" valign="top">1506</td>
+              <td align="center" valign="top">17316</td>
+              <td align="center" valign="top">776</td>
+              <td align="center" valign="top">1261</td>
+              <td align="center" valign="top">747</td>
+              <td align="center" valign="top">228</td>
+              <td align="center" valign="top">394</td>
+              <td align="center" valign="top">427</td>
+              <td align="center" valign="top">737</td>
+              <td align="center" valign="top">1416</td>
+              <td align="center" valign="top">2214</td>
+            </tr>
+            <tr>
+              <td align="center" valign="bottom">Mutation rate %</td>
+              <td align="center" valign="top">44.5</td>
+              <td align="center" valign="top">34.9</td>
+              <td align="center" valign="top">28</td>
+              <td align="center" valign="top">35.8</td>
+              <td align="center" valign="top">36.3</td>
+              <td align="center" valign="top">36.4</td>
+              <td align="center" valign="top">41.6</td>
+              <td align="center" valign="top">43.1</td>
+              <td align="center" valign="top">36.8</td>
+              <td align="center" valign="top">31.8</td>
+              <td align="center" valign="top">37.7</td>
+            </tr>
+            <tr>
+              <td colspan="12" align="center" valign="bottom">
+                <italic>Relative mutation distribution (%) by codon</italic>
+              </td>
+            </tr>
+            <tr>
+              <td align="center" valign="top">Codon 12</td>
+              <td align="center" valign="top">75.1</td>
+              <td align="center" valign="top">79.3</td>
+              <td align="center" valign="top">87</td>
+              <td align="center" valign="top">74.6</td>
+              <td align="center" valign="top">69.3</td>
+              <td align="center" valign="top">69.9</td>
+              <td align="center" valign="top">63.8</td>
+              <td align="center" valign="top">84.2</td>
+              <td align="center" valign="top">70</td>
+              <td align="center" valign="top">77.9</td>
+              <td align="center" valign="top">54</td>
+            </tr>
+            <tr>
+              <td align="center" valign="top">Codon 13</td>
+              <td align="center" valign="top">19.1</td>
+              <td align="center" valign="top">17.6</td>
+              <td align="center" valign="top">13</td>
+              <td align="center" valign="top">25.4</td>
+              <td align="center" valign="top">20.1</td>
+              <td align="center" valign="top">25.3</td>
+              <td align="center" valign="top">11.7</td>
+              <td align="center" valign="top">15.8</td>
+              <td align="center" valign="top">21.6</td>
+              <td align="center" valign="top">22.1</td>
+              <td align="center" valign="top">16.7</td>
+            </tr>
+            <tr>
+              <td align="center" valign="top">Codon 61</td>
+              <td align="center" valign="top">2.5</td>
+              <td align="center" valign="top">0.58</td>
+              <td align="left" valign="top">&#xA0;</td>
+              <td align="left" valign="top">&#xA0;</td>
+              <td align="center" valign="top">5.3</td>
+              <td align="center" valign="top">1.2</td>
+              <td align="left" valign="top">&#xA0;</td>
+              <td align="left" valign="top">&#xA0;</td>
+              <td align="left" valign="top">&#xA0;</td>
+              <td align="left" valign="top">&#xA0;</td>
+              <td align="left" valign="top">&#xA0;</td>
+            </tr>
+            <tr>
+              <td align="center" valign="top">Codon 146</td>
+              <td align="center" valign="top">2.7</td>
+              <td align="center" valign="top">0.19</td>
+              <td align="left" valign="top">&#xA0;</td>
+              <td align="left" valign="top">&#xA0;</td>
+              <td align="center" valign="top">5</td>
+              <td align="center" valign="top">2.4</td>
+              <td align="left" valign="top">&#xA0;</td>
+              <td align="left" valign="top">&#xA0;</td>
+              <td align="left" valign="top">&#xA0;</td>
+              <td align="left" valign="top">&#xA0;</td>
+              <td align="left" valign="top">&#xA0;</td>
+            </tr>
+            <tr>
+              <td colspan="12" align="center" valign="bottom">
+                <italic>Relative mutation distribution (%) by nucleotide substitution</italic>
+              </td>
+            </tr>
+            <tr>
+              <td align="center" valign="top">G12D</td>
+              <td align="center" valign="top">37.6</td>
+              <td align="center" valign="top">35</td>
+              <td align="center" valign="top">161</td>
+              <td align="center" valign="top">35.2</td>
+              <td align="center" valign="top">27.4</td>
+              <td align="left" valign="top">&#xA0;</td>
+              <td align="center" valign="top">35.7</td>
+              <td align="center" valign="top">38</td>
+              <td align="center" valign="top">26.1</td>
+              <td align="center" valign="top">31.1</td>
+              <td align="center" valign="top">30.6</td>
+            </tr>
+            <tr>
+              <td align="center" valign="top">G12V</td>
+              <td align="center" valign="top">20.0</td>
+              <td align="center" valign="top">21.5</td>
+              <td align="center" valign="top">95</td>
+              <td align="center" valign="top">20.8</td>
+              <td align="center" valign="top">19.8</td>
+              <td align="left" valign="top">&#xA0;</td>
+              <td align="center" valign="top">28.1</td>
+              <td align="center" valign="top">21.7</td>
+              <td align="center" valign="top">24.4</td>
+              <td align="center" valign="top">21.4</td>
+              <td align="center" valign="top">23.4</td>
+            </tr>
+            <tr>
+              <td align="center" valign="top">G12C</td>
+              <td align="center" valign="top">6.7</td>
+              <td align="center" valign="top">8.3</td>
+              <td align="center" valign="top">44</td>
+              <td align="center" valign="top">9.6</td>
+              <td align="center" valign="top">7.3</td>
+              <td align="left" valign="top">&#xA0;</td>
+              <td align="left" valign="top">&#xA0;</td>
+              <td align="center" valign="top">7.6</td>
+              <td align="center" valign="top">5.9</td>
+              <td align="center" valign="top">9.5</td>
+              <td align="left" valign="top">&#xA0;</td>
+            </tr>
+            <tr>
+              <td align="center" valign="top">G12S</td>
+              <td align="center" valign="top">4.9</td>
+              <td align="center" valign="top">6.3</td>
+              <td align="center" valign="top">12</td>
+              <td align="center" valign="top">2.6</td>
+              <td align="center" valign="top">6.3</td>
+              <td align="left" valign="top">&#xA0;</td>
+              <td align="left" valign="top">&#xA0;</td>
+              <td align="center" valign="top">7.6</td>
+              <td align="center" valign="top">5.6</td>
+              <td align="center" valign="top">6.8</td>
+              <td align="left" valign="top">&#xA0;</td>
+            </tr>
+            <tr>
+              <td align="center" valign="top">G12A</td>
+              <td align="center" valign="top">4.3</td>
+              <td align="center" valign="top">6.7</td>
+              <td align="center" valign="top">20</td>
+              <td align="center" valign="top">4.4</td>
+              <td align="center" valign="top">6.9</td>
+              <td align="left" valign="top">&#xA0;</td>
+              <td align="left" valign="top">&#xA0;</td>
+              <td align="center" valign="top">8.2</td>
+              <td align="center" valign="top">5.6</td>
+              <td align="center" valign="top">3.5</td>
+              <td align="left" valign="top">&#xA0;</td>
+            </tr>
+            <tr>
+              <td align="center" valign="top">G12R</td>
+              <td align="center" valign="top">1.5</td>
+              <td align="center" valign="top">1.1</td>
+              <td align="center" valign="top">8</td>
+              <td align="center" valign="top">1.8</td>
+              <td align="center" valign="top">1.7</td>
+              <td align="left" valign="top">&#xA0;</td>
+              <td align="left" valign="top">&#xA0;</td>
+              <td align="center" valign="top">1.6</td>
+              <td align="center" valign="top">2.4</td>
+              <td align="center" valign="top">0.7</td>
+              <td align="left" valign="top">&#xA0;</td>
+            </tr>
+            <tr>
+              <td align="center" valign="top">G13D</td>
+              <td align="center" valign="top">18.8</td>
+              <td align="center" valign="top">17.4</td>
+              <td align="center" valign="top">110</td>
+              <td align="center" valign="top">24.1</td>
+              <td align="center" valign="top">20.1</td>
+              <td align="left" valign="top">&#xA0;</td>
+              <td align="center" valign="top">11.7</td>
+              <td align="center" valign="top">15.8</td>
+              <td align="center" valign="top">20.2</td>
+              <td align="center" valign="top">20.8</td>
+              <td align="center" valign="top">16.7</td>
+            </tr>
+            <tr>
+              <td align="center" valign="top">G13C</td>
+              <td align="center" valign="top">0.3</td>
+              <td align="left" valign="top">&#xA0;</td>
+              <td align="center" valign="top">3</td>
+              <td align="center" valign="top">0.7</td>
+              <td align="left" valign="top">&#xA0;</td>
+              <td align="left" valign="top">&#xA0;</td>
+              <td align="left" valign="top">&#xA0;</td>
+              <td align="left" valign="top">&#xA0;</td>
+              <td align="center" valign="top">0.3</td>
+              <td align="center" valign="top">0.4</td>
+              <td align="left" valign="top">&#xA0;</td>
+            </tr>
+            <tr>
+              <td align="center" valign="top">Q61H</td>
+              <td align="center" valign="top">1.3</td>
+              <td align="center" valign="top">0.3</td>
+              <td align="left" valign="top">&#xA0;</td>
+              <td align="left" valign="top">&#xA0;</td>
+              <td align="center" valign="top">2.3</td>
+              <td align="left" valign="top">&#xA0;</td>
+              <td align="left" valign="top">&#xA0;</td>
+              <td align="left" valign="top">&#xA0;</td>
+              <td align="left" valign="top">&#xA0;</td>
+              <td align="left" valign="top">&#xA0;</td>
+              <td align="left" valign="top">&#xA0;</td>
+            </tr>
+            <tr>
+              <td align="center" valign="top">Q61L</td>
+              <td align="center" valign="top">0.7</td>
+              <td align="center" valign="top">0.2</td>
+              <td align="left" valign="top">&#xA0;</td>
+              <td align="left" valign="top">&#xA0;</td>
+              <td align="center" valign="top">1</td>
+              <td align="left" valign="top">&#xA0;</td>
+              <td align="left" valign="top">&#xA0;</td>
+              <td align="left" valign="top">&#xA0;</td>
+              <td align="left" valign="top">&#xA0;</td>
+              <td align="left" valign="top">&#xA0;</td>
+              <td align="left" valign="top">&#xA0;</td>
+            </tr>
+            <tr>
+              <td align="center" valign="top">Q61R</td>
+              <td align="center" valign="top">0.3</td>
+              <td align="center" valign="top">0.1</td>
+              <td align="left" valign="top">&#xA0;</td>
+              <td align="left" valign="top">&#xA0;</td>
+              <td align="center" valign="top">1.3</td>
+              <td align="left" valign="top">&#xA0;</td>
+              <td align="left" valign="top">&#xA0;</td>
+              <td align="left" valign="top">&#xA0;</td>
+              <td align="left" valign="top">&#xA0;</td>
+              <td align="left" valign="top">&#xA0;</td>
+              <td align="left" valign="top">&#xA0;</td>
+            </tr>
+            <tr>
+              <td align="center" valign="top">A146T</td>
+              <td align="center" valign="top">2.7</td>
+              <td align="center" valign="top">0.2</td>
+              <td align="left" valign="top">&#xA0;</td>
+              <td align="left" valign="top">&#xA0;</td>
+              <td align="center" valign="top">5</td>
+              <td align="left" valign="top">&#xA0;</td>
+              <td align="left" valign="top">&#xA0;</td>
+              <td align="left" valign="top">&#xA0;</td>
+              <td align="left" valign="top">&#xA0;</td>
+              <td align="left" valign="top">&#xA0;</td>
+              <td align="left" valign="top">&#xA0;</td>
+            </tr>
+          </tbody>
+        </table>
+      </table-wrap>
+      <p>We report two rare in-frame insertion mutations in this study, c.30_31insGGA: p.G10_A11insG (duplication of codon 10) and c.33_34insGGAGCT:p.A11_G12insGA (duplication of codon 10&#x2013;11). In-frame Insertion mutations in <italic>KRAS</italic> are rarely reported. Almost all reported <italic>KRAS</italic> in-frame insertions are tandem duplications. Three-nucleotide insertions resulting in codon 9, codon 10, and codon 12 duplications have been reported in colorectal cancer and leukemia.<xref rid="R8" ref-type="bibr"><sup>8</sup></xref><sup>,</sup><xref rid="R32" ref-type="bibr"><sup>32</sup></xref><sup>-</sup><xref rid="R34" ref-type="bibr"><sup>34</sup></xref> A Netherland cohort study found a duplication of six nucleotides in a colorectal tumor, leading to two additional amino acids added in codon 9 of <italic>KRAS</italic>.<xref rid="R31" ref-type="bibr"><sup>31</sup></xref> A 15-bp insertion in exon 3 that resulted in tandem duplication of codons 62&#x2013;66 has been found in a case of primary lung adenocarcinoma.<xref rid="R35" ref-type="bibr"><sup>35</sup></xref> Another study also reported the identical 15-bp in-frame insertion mutation in a colorectal carcinoma.<xref rid="R36" ref-type="bibr"><sup>36</sup></xref></p>
+      <p>Wild-type <italic>KRAS</italic> regulate cellular growth and differentiation by cycling between inactive GDP-bound form (Ras-GDP) and active GTP-bound form (Ras-GTP). Mutant <italic>KRAS</italic> is defective in intrinsic GTP hydrolysis. Therefore, it is accumulated in cells in active GTP-bound form, resulting in constitutive activation of downstream signaling through effector proteins. Both insertion mutations found in the current study (<sup>10</sup>G<sup>11</sup> and <sup>11</sup>GA<sup>12</sup>) affect the phosphate-binding loop (codon 10&#x2013;16) of <italic>KRAS</italic>. Our in vitro functional analyses have confirmed that similar to the <italic>KRAS</italic> mutant G12V, both rare mutants enhance the cellular accumulation of active RAS (Ras-GTP), and activate the Raf-MEK-ERK pathway. Using soft agar assays, we demonstrate the ability of both insertion variants in driving in vitro cell transformation. We also show that both insertion mutants demonstrate enhanced tumorigenicity in nude mice. Our finding is concordant with previous in vivo analysis of <italic>KRAS</italic>
+<sup>10</sup>Gly<sup>11</sup> mutation in acute leukemia which showed duplication of amino acid residue in codon 12 could lead to the activation of <italic>KRAS</italic>.<xref rid="R8" ref-type="bibr"><sup>8</sup></xref> In addition, another RAS protein member, HRAS with an insertion mutation in codon 12 was reported to gain the ability in cell transformation.<xref rid="R8" ref-type="bibr"><sup>8</sup></xref> These results suggest that both point mutation and insertion mutation within codon 12 and sites nearby could activate RAS protein through interrupting the GTP binding site of RAS family protein.</p>
+      <p>In summary, this study has provided a <italic>KRAS</italic> mutation database in colorectal cancer of local Chinese population and the correlation between <italic>KRAS</italic> status with gender and primary site in the colon. Furthermore, we report the identification and characterization of two rare <italic>KRAS</italic> insertion mutations. In vitro and in vivo functional studies confirm the oncogenic properties of these insertion mutations. <italic>KRAS</italic> mutations beyond the &#x201C;hotspots&#x201D; can be oncogenic by conveying selective growth advantage to the cells. These mutations might potentially contribute to primary resistance for anti-EGFR mAb targeted therapy. The clinical implication for these mutations requires further validation.</p>
+    </sec>
+    <sec sec-type="materials|methods">
+      <title>Materials and Methods</title>
+      <sec>
+        <title>Patient sample</title>
+        <p>A total of 1506 consecutive colorectal adenocarcinoma specimens sent for <italic>KRAS</italic> mutational analysis in Prince of Wales Hospital, Hong Kong between 2008 and 2012 were included in this study. The study protocol was approved by the Joint CUHK-NTE Clinical Research Ethics Committee, Hong Kong.</p>
+      </sec>
+      <sec>
+        <title>Tumor DNA extraction</title>
+        <p>The location of tumor cells in the formalin-fixed, paraffin-embedded (FFPE) tissue were first marked on the standard H&amp;E-stained histological slides. Subsequently, the corresponding tumor tissues on the unstained glass slide were microdissected manually for DNA extraction using QIAamp DNA tissue mini kit with standard procedure (Qiagen).</p>
+      </sec>
+      <sec>
+        <title>Sequencing analysis</title>
+        <p>Mutational hot spots including <italic>KRAS</italic> codons 12, 13, 61, and 146 were investigated by PCR-direct sequencing. PCR reactions were performed using primers listed in <xref ref-type="table" rid="T5">Table 5</xref>. Cycling sequencing reaction of the PCR fragments was performed with BigDye Terminator system (Applied Biosystems) using primers from both directions. The sequencing results were analyzed with the ABI PRISM<sup>&#xAE;</sup> 3130XL Genetic Analyzer (Applied Biosystems). The data was collected and analyzed using Applied Biosystems sequencing analysis software.</p>
+        <table-wrap id="T5" orientation="portrait" position="float">
+          <caption>
+            <title><bold>Table 5.</bold> The sequences of oligonucleotides used in this study</title>
+          </caption>
+          <!--OASIS TABLE HERE-->
+          <table frame="hsides" rules="groups">
+            <colgroup>
+              <col width="15.92%"/>
+              <col width="42.55%"/>
+              <col width="41.53%"/>
+            </colgroup>
+            <thead>
+              <tr>
+                <th align="center" valign="middle">PCR primers</th>
+                <th align="center" valign="middle">Forward sequence</th>
+                <th align="center" valign="middle">Reverse sequence</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td align="center" valign="middle"><italic>KRAS</italic> codon 12/13</td>
+                <td align="center" valign="middle">GTATTAACCT TATGTGTGAC A</td>
+                <td align="center" valign="middle">GTCCTGCACC AGTAATATGC</td>
+              </tr>
+              <tr>
+                <td align="center" valign="middle"><italic>KRAS</italic> codon 61</td>
+                <td align="center" valign="middle">TGCACTGTAA TAATCCAGAC TGTG</td>
+                <td align="center" valign="middle">TGCACTGTAA TAATCCAGAC TGTG</td>
+              </tr>
+              <tr>
+                <td align="center" valign="middle"><italic>KRAS</italic> codon 146</td>
+                <td align="center" valign="middle">TCTGAAGATG TACCTATGGT CCTAGT</td>
+                <td align="center" valign="middle">AAGAAGCAAT GCCCTCTCAA</td>
+              </tr>
+              <tr>
+                <td align="center" valign="middle">
+                  <bold>Mutagenesis primers</bold>
+                </td>
+                <td align="left" valign="middle">&#xA0;</td>
+                <td align="left" valign="middle">&#xA0;</td>
+              </tr>
+              <tr>
+                <td align="center" valign="middle"><italic>KRAS</italic>-WT</td>
+                <td align="center" valign="middle">5&#x2032;-GGTAGTTGGA GCTGGTGGCG TAGGCAAGA-3&#x2032;</td>
+                <td align="center" valign="middle">5&#x2032;- TCTTGCCTAC GCCACCAGCT CCAACTACC-3&#x2032;</td>
+              </tr>
+              <tr>
+                <td align="center" valign="middle"><italic>KRAS</italic>-10G11</td>
+                <td align="center" valign="middle">5&#x2032;-GTGGTAGTTG GAGGAGCTGG TGGCGTAGGC AAG-3&#x2032;</td>
+                <td align="center" valign="middle">5&#x2032;-CTTGCCTACG CCACCAGCTC CTCCAACTAC CAC-3&#x2032;</td>
+              </tr>
+              <tr>
+                <td align="center" valign="middle"><italic>KRAS</italic>-11GA12</td>
+                <td align="center" valign="middle">5&#x2032;-GGTAGTTGGA GCTGGAGCTG GTGGCGTAGG CAAG-3&#x2032;</td>
+                <td align="center" valign="middle">5&#x2032;-CTTGCCTACG CCACCAGCTC CAGCTCCAAC TACC-3&#x2032;</td>
+              </tr>
+            </tbody>
+          </table>
+        </table-wrap>
+      </sec>
+      <sec>
+        <title>Detection of the precise sequence of the rare mutation</title>
+        <p>PCR product corresponding to <italic>KRAS</italic> exon 1 was amplified from the patient genomic DNA and subsequently cloned using the TOPO-TA Cloning kit (Invitrogen). Ten colonies of each transformation were randomly selected for sequencing analysis.</p>
+      </sec>
+      <sec>
+        <title>Cell culture and transfection</title>
+        <p>Human embryonic kidney cells (293FT) and mouse embryonic fibroblast cells (NIH3T3) were obtained from Invitrogen and American Type Culture Collection (ATCC) respectively. Both cell lines were cultured in Dulbecco modified Eagle medium plus 10% FBS (Gibco, Invitrogen). Transfection of 293FT and NIH3T3 cells were performed using Lipofectamine<sup>TM</sup> LTX reagent (Invitrogen) following the manufacturer&#x2019;s protocol.</p>
+      </sec>
+      <sec>
+        <title>Site-direct mutagenesis and active RAS measurement</title>
+        <p>Full-length of <italic>KRAS</italic> cDNA was cut from pBabe K-Ras 12V vector (Addgene plasmid 12544)<xref rid="R37" ref-type="bibr"><sup>37</sup></xref> and cloned into pcDNA3.1 (+) expression vector (Invitrogen) via <italic>BamH1</italic> and <italic>Xba1</italic> restriction sites. Corresponding <italic>KRAS</italic> mutations were introduced into the expression vector using QuickChange&#xAE; II Site-Directed Mutagenesis Kit according to the manufacturer&#x2019;s recommendations (Stratagene). The desired mutations in each construct were finally confirmed by direct sequencing. The primer sequences for mutagenesis were listed in <xref ref-type="table" rid="T5">Table 5</xref>. Ras Activation Assay Kit (Millipore) was used to measure the level of active RAS (RAS-GTP) after transient transfection of corresponding plasmid into the cell lines. In brief, 0.5 mg of cell extract was immunoprecipitated with agarose beads containing human Ras Binding Domain (RBD, residues 1&#x2013;149) of Raf-1. After washing, the beads were mixed with protein loading buffer and 10% of the mixture was electrophoresed by 12% SDS-PAGE for western blot analysis as previously described.<xref rid="R38" ref-type="bibr"><sup>38</sup></xref><sup>,</sup><xref rid="R39" ref-type="bibr"><sup>39</sup></xref> The primary antibodies used were pan-RAS (RAS10, Millipore; 1:2000) and p-ERK1/2 (9102, Cell Signaling; 1:1000). HRP conjugated anti-mouse secondary antibody used was purchased from DAKO (1:20000 dilution).</p>
+      </sec>
+      <sec>
+        <title>Soft agar colony formation assay</title>
+        <p>NIH3T3 cells transfected with corresponding <italic>KRAS</italic> expression plasmids were selected in culture medium containing 400 &#x3BC;g/mL of G418 (Invitrogen) for one month before preparing colony formation assay. In the assay, culture medium containing 0.7% agarose was set as a bottom layer in 6-well dishes. A total of 3000 cells, which mixed with culture medium containing 0.35% agarose, were added over the bottom layer. After 25 d of incubation, colonies were stained with 0.005% crystal violet overnight and were counted under dissection microscope. Each experiment was performed in triplicate.</p>
+      </sec>
+      <sec>
+        <title>In vivo tumorigenicity</title>
+        <p>NIH3T3 transfectants (1 &#xD7; 10<sup>6</sup> cells suspended in 0.1 mL phosphate-buffered saline), containing empty vector or different <italic>KRAS</italic> mutant, were injected subcutaneously into the dorsal flank of five 5-wk-old male Balb/c nude mice. The tumor volume was determined as previously described.<xref rid="R40" ref-type="bibr"><sup>40</sup></xref> All experimental procedures were approved by the Animal Ethics Committee of the Chinese University of Hong Kong.</p>
+      </sec>
+      <sec>
+        <title>Statistical analysis</title>
+        <p>Statistical analysis of two times two contingency tables of categorical variables was performed using the Chi-square test or Fisher exact test, as appropriate. The <italic>t</italic> test was performed to compare continuous variables between two groups. All statistical analyses were performed by using statistical program SPSS version 16.0. A two-tailed <italic>P</italic> value of &lt;0.05 was regarded as statistically significant.</p>
+      </sec>
+    </sec>
+  </body>
+  <back>
+    <ack>
+      <title>Disclosure of Potential Conflicts of Interest</title>
+      <p>No potential conflicts of interest were disclosed.</p>
+    </ack>
+    <glossary>
+      <def-list id="DL1">
+        <title>Abbreviations: </title>
+        <def-item>
+          <term>mCRC</term>
+          <def>
+            <p>metastatic colorectal carcinoma</p>
+          </def>
+        </def-item>
+        <def-item>
+          <term>mAbs</term>
+          <def>
+            <p>monoclonal antibodies</p>
+          </def>
+        </def-item>
+        <def-item>
+          <term>EGFR</term>
+          <def>
+            <p>epidermal growth factor receptor</p>
+          </def>
+        </def-item>
+        <def-item>
+          <term>FFPE</term>
+          <def>
+            <p>formalin-fixed, paraffin-embedded</p>
+          </def>
+        </def-item>
+      </def-list>
+    </glossary>
+    <notes>
+      <p>
+<ext-link ext-link-type="uri" xlink:href="10.4161/cbt.28550">10.4161/cbt.28550</ext-link>
+</p>
+    </notes>
+    <ref-list>
+      <title>References</title>
+      <ref id="R1">
+        <label>1</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Jemal</surname>
+              <given-names>A</given-names>
+            </name>
+            <name>
+              <surname>Bray</surname>
+              <given-names>F</given-names>
+            </name>
+            <name>
+              <surname>Center</surname>
+              <given-names>MM</given-names>
+            </name>
+            <name>
+              <surname>Ferlay</surname>
+              <given-names>J</given-names>
+            </name>
+            <name>
+              <surname>Ward</surname>
+              <given-names>E</given-names>
+            </name>
+            <name>
+              <surname>Forman</surname>
+              <given-names>D</given-names>
+            </name>
+          </person-group>
+          <article-title>Global cancer statistics</article-title>
+          <source>CA Cancer J Clin</source>
+          <year>2011</year>
+          <volume>61</volume>
+          <fpage>69</fpage>
+          <lpage>90</lpage>
+          <pub-id pub-id-type="doi">10.3322/caac.20107</pub-id>
+          <pub-id pub-id-type="pmid">21296855</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="R2">
+        <label>2</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Markman</surname>
+              <given-names>B</given-names>
+            </name>
+            <name>
+              <surname>Javier Ramos</surname>
+              <given-names>F</given-names>
+            </name>
+            <name>
+              <surname>Capdevila</surname>
+              <given-names>J</given-names>
+            </name>
+            <name>
+              <surname>Tabernero</surname>
+              <given-names>J</given-names>
+            </name>
+          </person-group>
+          <article-title>EGFR and KRAS in colorectal cancer</article-title>
+          <source>Adv Clin Chem</source>
+          <year>2010</year>
+          <volume>51</volume>
+          <fpage>71</fpage>
+          <lpage>119</lpage>
+          <pub-id pub-id-type="doi">10.1016/S0065-2423(10)51004-7</pub-id>
+          <pub-id pub-id-type="pmid">20857619</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="R3">
+        <label>3</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Brand</surname>
+              <given-names>TM</given-names>
+            </name>
+            <name>
+              <surname>Wheeler</surname>
+              <given-names>DL</given-names>
+            </name>
+          </person-group>
+          <article-title>KRAS mutant colorectal tumors: past and present</article-title>
+          <source>Small GTPases</source>
+          <year>2012</year>
+          <volume>3</volume>
+          <fpage>34</fpage>
+          <lpage>9</lpage>
+          <pub-id pub-id-type="doi">10.4161/sgtp.18751</pub-id>
+          <pub-id pub-id-type="pmid">22714415</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="R4">
+        <label>4</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Benvenuti</surname>
+              <given-names>S</given-names>
+            </name>
+            <name>
+              <surname>Sartore-Bianchi</surname>
+              <given-names>A</given-names>
+            </name>
+            <name>
+              <surname>Di Nicolantonio</surname>
+              <given-names>F</given-names>
+            </name>
+            <name>
+              <surname>Zanon</surname>
+              <given-names>C</given-names>
+            </name>
+            <name>
+              <surname>Moroni</surname>
+              <given-names>M</given-names>
+            </name>
+            <name>
+              <surname>Veronese</surname>
+              <given-names>S</given-names>
+            </name>
+            <name>
+              <surname>Siena</surname>
+              <given-names>S</given-names>
+            </name>
+            <name>
+              <surname>Bardelli</surname>
+              <given-names>A</given-names>
+            </name>
+          </person-group>
+          <article-title>Oncogenic activation of the RAS/RAF signaling pathway impairs the response of metastatic colorectal cancers to anti-epidermal growth factor receptor antibody therapies</article-title>
+          <source>Cancer Res</source>
+          <year>2007</year>
+          <volume>67</volume>
+          <fpage>2643</fpage>
+          <lpage>8</lpage>
+          <pub-id pub-id-type="doi">10.1158/0008-5472.CAN-06-4158</pub-id>
+          <pub-id pub-id-type="pmid">17363584</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="R5">
+        <label>5</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Li&#xE8;vre</surname>
+              <given-names>A</given-names>
+            </name>
+            <name>
+              <surname>Bachet</surname>
+              <given-names>JB</given-names>
+            </name>
+            <name>
+              <surname>Boige</surname>
+              <given-names>V</given-names>
+            </name>
+            <name>
+              <surname>Cayre</surname>
+              <given-names>A</given-names>
+            </name>
+            <name>
+              <surname>Le Corre</surname>
+              <given-names>D</given-names>
+            </name>
+            <name>
+              <surname>Buc</surname>
+              <given-names>E</given-names>
+            </name>
+            <name>
+              <surname>Ychou</surname>
+              <given-names>M</given-names>
+            </name>
+            <name>
+              <surname>Bouch&#xE9;</surname>
+              <given-names>O</given-names>
+            </name>
+            <name>
+              <surname>Landi</surname>
+              <given-names>B</given-names>
+            </name>
+            <name>
+              <surname>Louvet</surname>
+              <given-names>C</given-names>
+            </name>
+            <etal/>
+          </person-group>
+          <article-title>KRAS mutations as an independent prognostic factor in patients with advanced colorectal cancer treated with cetuximab</article-title>
+          <source>J Clin Oncol</source>
+          <year>2008</year>
+          <volume>26</volume>
+          <fpage>374</fpage>
+          <lpage>9</lpage>
+          <pub-id pub-id-type="doi">10.1200/JCO.2007.12.5906</pub-id>
+          <pub-id pub-id-type="pmid">18202412</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="R6">
+        <label>6</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Jimeno</surname>
+              <given-names>A</given-names>
+            </name>
+            <name>
+              <surname>Messersmith</surname>
+              <given-names>WA</given-names>
+            </name>
+            <name>
+              <surname>Hirsch</surname>
+              <given-names>FR</given-names>
+            </name>
+            <name>
+              <surname>Franklin</surname>
+              <given-names>WA</given-names>
+            </name>
+            <name>
+              <surname>Eckhardt</surname>
+              <given-names>SG</given-names>
+            </name>
+          </person-group>
+          <article-title>KRAS mutations and sensitivity to epidermal growth factor receptor inhibitors in colorectal cancer: practical application of patient selection</article-title>
+          <source>J Clin Oncol</source>
+          <year>2009</year>
+          <volume>27</volume>
+          <fpage>1130</fpage>
+          <lpage>6</lpage>
+          <pub-id pub-id-type="doi">10.1200/JCO.2008.19.8168</pub-id>
+          <pub-id pub-id-type="pmid">19124802</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="R7">
+        <label>7</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Amado</surname>
+              <given-names>RG</given-names>
+            </name>
+            <name>
+              <surname>Wolf</surname>
+              <given-names>M</given-names>
+            </name>
+            <name>
+              <surname>Peeters</surname>
+              <given-names>M</given-names>
+            </name>
+            <name>
+              <surname>Van Cutsem</surname>
+              <given-names>E</given-names>
+            </name>
+            <name>
+              <surname>Siena</surname>
+              <given-names>S</given-names>
+            </name>
+            <name>
+              <surname>Freeman</surname>
+              <given-names>DJ</given-names>
+            </name>
+            <name>
+              <surname>Juan</surname>
+              <given-names>T</given-names>
+            </name>
+            <name>
+              <surname>Sikorski</surname>
+              <given-names>R</given-names>
+            </name>
+            <name>
+              <surname>Suggs</surname>
+              <given-names>S</given-names>
+            </name>
+            <name>
+              <surname>Radinsky</surname>
+              <given-names>R</given-names>
+            </name>
+            <etal/>
+          </person-group>
+          <article-title>Wild-type KRAS is required for panitumumab efficacy in patients with metastatic colorectal cancer</article-title>
+          <source>J Clin Oncol</source>
+          <year>2008</year>
+          <volume>26</volume>
+          <fpage>1626</fpage>
+          <lpage>34</lpage>
+          <pub-id pub-id-type="doi">10.1200/JCO.2007.14.7116</pub-id>
+          <pub-id pub-id-type="pmid">18316791</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="R8">
+        <label>8</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Bollag</surname>
+              <given-names>G</given-names>
+            </name>
+            <name>
+              <surname>Adler</surname>
+              <given-names>F</given-names>
+            </name>
+            <name>
+              <surname>elMasry</surname>
+              <given-names>N</given-names>
+            </name>
+            <name>
+              <surname>McCabe</surname>
+              <given-names>PC</given-names>
+            </name>
+            <name>
+              <surname>Conner</surname>
+              <given-names>E</given-names>
+              <suffix>Jr.</suffix>
+            </name>
+            <name>
+              <surname>Thompson</surname>
+              <given-names>P</given-names>
+            </name>
+            <name>
+              <surname>McCormick</surname>
+              <given-names>F</given-names>
+            </name>
+            <name>
+              <surname>Shannon</surname>
+              <given-names>K</given-names>
+            </name>
+          </person-group>
+          <article-title>Biochemical characterization of a novel KRAS insertion mutation from a human leukemia</article-title>
+          <source>J Biol Chem</source>
+          <year>1996</year>
+          <volume>271</volume>
+          <fpage>32491</fpage>
+          <lpage>4</lpage>
+          <pub-id pub-id-type="doi">10.1074/jbc.271.51.32491</pub-id>
+          <pub-id pub-id-type="pmid">8955068</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="R9">
+        <label>9</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Tejpar</surname>
+              <given-names>S</given-names>
+            </name>
+            <name>
+              <surname>Celik</surname>
+              <given-names>I</given-names>
+            </name>
+            <name>
+              <surname>Schlichting</surname>
+              <given-names>M</given-names>
+            </name>
+            <name>
+              <surname>Sartorius</surname>
+              <given-names>U</given-names>
+            </name>
+            <name>
+              <surname>Bokemeyer</surname>
+              <given-names>C</given-names>
+            </name>
+            <name>
+              <surname>Van Cutsem</surname>
+              <given-names>E</given-names>
+            </name>
+          </person-group>
+          <article-title>Association of KRAS G13D tumor mutations with outcome in patients with metastatic colorectal cancer treated with first-line chemotherapy with or without cetuximab</article-title>
+          <source>J Clin Oncol</source>
+          <year>2012</year>
+          <volume>30</volume>
+          <fpage>3570</fpage>
+          <lpage>7</lpage>
+          <pub-id pub-id-type="doi">10.1200/JCO.2012.42.2592</pub-id>
+          <pub-id pub-id-type="pmid">22734028</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="R10">
+        <label>10</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Edkins</surname>
+              <given-names>S</given-names>
+            </name>
+            <name>
+              <surname>O&#x2019;Meara</surname>
+              <given-names>S</given-names>
+            </name>
+            <name>
+              <surname>Parker</surname>
+              <given-names>A</given-names>
+            </name>
+            <name>
+              <surname>Stevens</surname>
+              <given-names>C</given-names>
+            </name>
+            <name>
+              <surname>Reis</surname>
+              <given-names>M</given-names>
+            </name>
+            <name>
+              <surname>Jones</surname>
+              <given-names>S</given-names>
+            </name>
+            <name>
+              <surname>Greenman</surname>
+              <given-names>C</given-names>
+            </name>
+            <name>
+              <surname>Davies</surname>
+              <given-names>H</given-names>
+            </name>
+            <name>
+              <surname>Dalgliesh</surname>
+              <given-names>G</given-names>
+            </name>
+            <name>
+              <surname>Forbes</surname>
+              <given-names>S</given-names>
+            </name>
+            <etal/>
+          </person-group>
+          <article-title>Recurrent KRAS codon 146 mutations in human colorectal cancer</article-title>
+          <source>Cancer Biol Ther</source>
+          <year>2006</year>
+          <volume>5</volume>
+          <fpage>928</fpage>
+          <lpage>32</lpage>
+          <pub-id pub-id-type="doi">10.4161/cbt.5.8.3251</pub-id>
+          <pub-id pub-id-type="pmid">16969076</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="R11">
+        <label>11</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Andreyev</surname>
+              <given-names>HJ</given-names>
+            </name>
+            <name>
+              <surname>Norman</surname>
+              <given-names>AR</given-names>
+            </name>
+            <name>
+              <surname>Cunningham</surname>
+              <given-names>D</given-names>
+            </name>
+            <name>
+              <surname>Oates</surname>
+              <given-names>JR</given-names>
+            </name>
+            <name>
+              <surname>Clarke</surname>
+              <given-names>PA</given-names>
+            </name>
+          </person-group>
+          <article-title>Kirsten ras mutations in patients with colorectal cancer: the multicenter &#x201C;RASCAL&#x201D; study</article-title>
+          <source>J Natl Cancer Inst</source>
+          <year>1998</year>
+          <volume>90</volume>
+          <fpage>675</fpage>
+          <lpage>84</lpage>
+          <pub-id pub-id-type="doi">10.1093/jnci/90.9.675</pub-id>
+          <pub-id pub-id-type="pmid">9586664</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="R12">
+        <label>12</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Zulhabri</surname>
+              <given-names>O</given-names>
+            </name>
+            <name>
+              <surname>Rahman</surname>
+              <given-names>J</given-names>
+            </name>
+            <name>
+              <surname>Ismail</surname>
+              <given-names>S</given-names>
+            </name>
+            <name>
+              <surname>Isa</surname>
+              <given-names>MR</given-names>
+            </name>
+            <name>
+              <surname>Wan Zurinah</surname>
+              <given-names>WN</given-names>
+            </name>
+          </person-group>
+          <article-title>Predominance of G to A codon 12 mutation K-ras gene in Dukes&#x2019; B colorectal cancer</article-title>
+          <source>Singapore Med J</source>
+          <year>2012</year>
+          <volume>53</volume>
+          <fpage>26</fpage>
+          <lpage>31</lpage>
+          <pub-id pub-id-type="pmid">22252179</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="R13">
+        <label>13</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Russo</surname>
+              <given-names>A</given-names>
+            </name>
+            <name>
+              <surname>Bazan</surname>
+              <given-names>V</given-names>
+            </name>
+            <name>
+              <surname>Agnese</surname>
+              <given-names>V</given-names>
+            </name>
+            <name>
+              <surname>Rodolico</surname>
+              <given-names>V</given-names>
+            </name>
+            <name>
+              <surname>Gebbia</surname>
+              <given-names>N</given-names>
+            </name>
+          </person-group>
+          <article-title>Prognostic and predictive factors in colorectal cancer: Kirsten Ras in CRC (RASCAL) and TP53CRC collaborative studies</article-title>
+          <source>Ann Oncol</source>
+          <year>2005</year>
+          <volume>16</volume>
+          <issue>Suppl 4</issue>
+          <fpage>iv44</fpage>
+          <lpage>9</lpage>
+          <pub-id pub-id-type="doi">10.1093/annonc/mdi907</pub-id>
+          <pub-id pub-id-type="pmid">15923428</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="R14">
+        <label>14</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Richman</surname>
+              <given-names>SD</given-names>
+            </name>
+            <name>
+              <surname>Seymour</surname>
+              <given-names>MT</given-names>
+            </name>
+            <name>
+              <surname>Chambers</surname>
+              <given-names>P</given-names>
+            </name>
+            <name>
+              <surname>Elliott</surname>
+              <given-names>F</given-names>
+            </name>
+            <name>
+              <surname>Daly</surname>
+              <given-names>CL</given-names>
+            </name>
+            <name>
+              <surname>Meade</surname>
+              <given-names>AM</given-names>
+            </name>
+            <name>
+              <surname>Taylor</surname>
+              <given-names>G</given-names>
+            </name>
+            <name>
+              <surname>Barrett</surname>
+              <given-names>JH</given-names>
+            </name>
+            <name>
+              <surname>Quirke</surname>
+              <given-names>P</given-names>
+            </name>
+          </person-group>
+          <article-title>KRAS and BRAF mutations in advanced colorectal cancer are associated with poor prognosis but do not preclude benefit from oxaliplatin or irinotecan: results from the MRC FOCUS trial</article-title>
+          <source>J Clin Oncol</source>
+          <year>2009</year>
+          <volume>27</volume>
+          <fpage>5931</fpage>
+          <lpage>7</lpage>
+          <pub-id pub-id-type="doi">10.1200/JCO.2009.22.4295</pub-id>
+          <pub-id pub-id-type="pmid">19884549</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="R15">
+        <label>15</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Kim</surname>
+              <given-names>ST</given-names>
+            </name>
+            <name>
+              <surname>Park</surname>
+              <given-names>KH</given-names>
+            </name>
+            <name>
+              <surname>Kim</surname>
+              <given-names>JS</given-names>
+            </name>
+            <name>
+              <surname>Shin</surname>
+              <given-names>SW</given-names>
+            </name>
+            <name>
+              <surname>Kim</surname>
+              <given-names>YH</given-names>
+            </name>
+          </person-group>
+          <article-title>Impact of KRAS Mutation Status on Outcomes in Metastatic Colon Cancer Patients without Anti-Epidermal Growth Factor Receptor Therapy</article-title>
+          <source>Cancer Res Treat</source>
+          <year>2013</year>
+          <volume>45</volume>
+          <fpage>55</fpage>
+          <lpage>62</lpage>
+          <pub-id pub-id-type="doi">10.4143/crt.2013.45.1.55</pub-id>
+          <pub-id pub-id-type="pmid">23613671</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="R16">
+        <label>16</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Petrelli</surname>
+              <given-names>F</given-names>
+            </name>
+            <name>
+              <surname>Coinu</surname>
+              <given-names>A</given-names>
+            </name>
+            <name>
+              <surname>Cabiddu</surname>
+              <given-names>M</given-names>
+            </name>
+            <name>
+              <surname>Ghilardi</surname>
+              <given-names>M</given-names>
+            </name>
+            <name>
+              <surname>Barni</surname>
+              <given-names>S</given-names>
+            </name>
+          </person-group>
+          <article-title>KRAS as prognostic biomarker in metastatic colorectal cancer patients treated with bevacizumab: a pooled analysis of 12 published trials</article-title>
+          <source>Med Oncol</source>
+          <year>2013</year>
+          <volume>30</volume>
+          <fpage>650</fpage>
+          <pub-id pub-id-type="doi">10.1007/s12032-013-0650-4</pub-id>
+          <pub-id pub-id-type="pmid">23828442</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="R17">
+        <label>17</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Watanabe</surname>
+              <given-names>T</given-names>
+            </name>
+            <name>
+              <surname>Yoshino</surname>
+              <given-names>T</given-names>
+            </name>
+            <name>
+              <surname>Uetake</surname>
+              <given-names>H</given-names>
+            </name>
+            <name>
+              <surname>Yamazaki</surname>
+              <given-names>K</given-names>
+            </name>
+            <name>
+              <surname>Ishiguro</surname>
+              <given-names>M</given-names>
+            </name>
+            <name>
+              <surname>Kurokawa</surname>
+              <given-names>T</given-names>
+            </name>
+            <name>
+              <surname>Saijo</surname>
+              <given-names>N</given-names>
+            </name>
+            <name>
+              <surname>Ohashi</surname>
+              <given-names>Y</given-names>
+            </name>
+            <name>
+              <surname>Sugihara</surname>
+              <given-names>K</given-names>
+            </name>
+          </person-group>
+          <article-title>KRAS mutational status in Japanese patients with colorectal cancer: results from a nationwide, multicenter, cross-sectional study</article-title>
+          <source>Jpn J Clin Oncol</source>
+          <year>2013</year>
+          <volume>43</volume>
+          <fpage>706</fpage>
+          <lpage>12</lpage>
+          <pub-id pub-id-type="doi">10.1093/jjco/hyt062</pub-id>
+          <pub-id pub-id-type="pmid">23657052</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="R18">
+        <label>18</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Adelstein</surname>
+              <given-names>BA</given-names>
+            </name>
+            <name>
+              <surname>Dobbins</surname>
+              <given-names>TA</given-names>
+            </name>
+            <name>
+              <surname>Harris</surname>
+              <given-names>CA</given-names>
+            </name>
+            <name>
+              <surname>Marschner</surname>
+              <given-names>IC</given-names>
+            </name>
+            <name>
+              <surname>Ward</surname>
+              <given-names>RL</given-names>
+            </name>
+          </person-group>
+          <article-title>A systematic review and meta-analysis of KRAS status as the determinant of response to anti-EGFR antibodies and the impact of partner chemotherapy in metastatic colorectal cancer</article-title>
+          <source>Eur J Cancer</source>
+          <year>2011</year>
+          <volume>47</volume>
+          <fpage>1343</fpage>
+          <lpage>54</lpage>
+          <pub-id pub-id-type="doi">10.1016/j.ejca.2011.03.031</pub-id>
+          <pub-id pub-id-type="pmid">21550229</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="R19">
+        <label>19</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Mao</surname>
+              <given-names>C</given-names>
+            </name>
+            <name>
+              <surname>Zhou</surname>
+              <given-names>J</given-names>
+            </name>
+            <name>
+              <surname>Yang</surname>
+              <given-names>Z</given-names>
+            </name>
+            <name>
+              <surname>Huang</surname>
+              <given-names>Y</given-names>
+            </name>
+            <name>
+              <surname>Wu</surname>
+              <given-names>X</given-names>
+            </name>
+            <name>
+              <surname>Shen</surname>
+              <given-names>H</given-names>
+            </name>
+            <name>
+              <surname>Tang</surname>
+              <given-names>J</given-names>
+            </name>
+            <name>
+              <surname>Chen</surname>
+              <given-names>Q</given-names>
+            </name>
+          </person-group>
+          <article-title>KRAS, BRAF and PIK3CA mutations and the loss of PTEN expression in Chinese patients with colorectal cancer</article-title>
+          <source>PLoS One</source>
+          <year>2012</year>
+          <volume>7</volume>
+          <fpage>e36653</fpage>
+          <pub-id pub-id-type="doi">10.1371/journal.pone.0036653</pub-id>
+          <pub-id pub-id-type="pmid">22586484</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="R20">
+        <label>20</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Yunxia</surname>
+              <given-names>Z</given-names>
+            </name>
+            <name>
+              <surname>Jun</surname>
+              <given-names>C</given-names>
+            </name>
+            <name>
+              <surname>Guanshan</surname>
+              <given-names>Z</given-names>
+            </name>
+            <name>
+              <surname>Yachao</surname>
+              <given-names>L</given-names>
+            </name>
+            <name>
+              <surname>Xueke</surname>
+              <given-names>Z</given-names>
+            </name>
+            <name>
+              <surname>Jin</surname>
+              <given-names>L</given-names>
+            </name>
+          </person-group>
+          <article-title>Mutations in epidermal growth factor receptor and K-ras in Chinese patients with colorectal cancer</article-title>
+          <source>BMC Med Genet</source>
+          <year>2010</year>
+          <volume>11</volume>
+          <fpage>34</fpage>
+          <pub-id pub-id-type="doi">10.1186/1471-2350-11-34</pub-id>
+          <pub-id pub-id-type="pmid">20184776</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="R21">
+        <label>21</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Samowitz</surname>
+              <given-names>WS</given-names>
+            </name>
+            <name>
+              <surname>Curtin</surname>
+              <given-names>K</given-names>
+            </name>
+            <name>
+              <surname>Schaffer</surname>
+              <given-names>D</given-names>
+            </name>
+            <name>
+              <surname>Robertson</surname>
+              <given-names>M</given-names>
+            </name>
+            <name>
+              <surname>Leppert</surname>
+              <given-names>M</given-names>
+            </name>
+            <name>
+              <surname>Slattery</surname>
+              <given-names>ML</given-names>
+            </name>
+          </person-group>
+          <article-title>Relationship of Ki-ras mutations in colon cancers to tumor location, stage, and survival: a population-based study</article-title>
+          <source>Cancer Epidemiol Biomarkers Prev</source>
+          <year>2000</year>
+          <volume>9</volume>
+          <fpage>1193</fpage>
+          <lpage>7</lpage>
+          <pub-id pub-id-type="pmid">11097226</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="R22">
+        <label>22</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Elnatan</surname>
+              <given-names>J</given-names>
+            </name>
+            <name>
+              <surname>Goh</surname>
+              <given-names>HS</given-names>
+            </name>
+            <name>
+              <surname>Smith</surname>
+              <given-names>DR</given-names>
+            </name>
+          </person-group>
+          <article-title>C-KI-RAS activation and the biological behaviour of proximal and distal colonic adenocarcinomas</article-title>
+          <source>Eur J Cancer</source>
+          <year>1996</year>
+          <volume>32A</volume>
+          <fpage>491</fpage>
+          <lpage>7</lpage>
+          <pub-id pub-id-type="doi">10.1016/0959-8049(95)00567-6</pub-id>
+          <pub-id pub-id-type="pmid">8814697</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="R23">
+        <label>23</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Rosty</surname>
+              <given-names>C</given-names>
+            </name>
+            <name>
+              <surname>Young</surname>
+              <given-names>JP</given-names>
+            </name>
+            <name>
+              <surname>Walsh</surname>
+              <given-names>MD</given-names>
+            </name>
+            <name>
+              <surname>Clendenning</surname>
+              <given-names>M</given-names>
+            </name>
+            <name>
+              <surname>Walters</surname>
+              <given-names>RJ</given-names>
+            </name>
+            <name>
+              <surname>Pearson</surname>
+              <given-names>S</given-names>
+            </name>
+            <name>
+              <surname>Pavluk</surname>
+              <given-names>E</given-names>
+            </name>
+            <name>
+              <surname>Nagler</surname>
+              <given-names>B</given-names>
+            </name>
+            <name>
+              <surname>Pakenas</surname>
+              <given-names>D</given-names>
+            </name>
+            <name>
+              <surname>Jass</surname>
+              <given-names>JR</given-names>
+            </name>
+            <etal/>
+          </person-group>
+          <article-title>Colorectal carcinomas with KRAS mutation are associated with distinctive morphological and molecular features</article-title>
+          <source>Mod Pathol</source>
+          <year>2013</year>
+          <volume>26</volume>
+          <fpage>825</fpage>
+          <lpage>34</lpage>
+          <pub-id pub-id-type="doi">10.1038/modpathol.2012.240</pub-id>
+          <pub-id pub-id-type="pmid">23348904</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="R24">
+        <label>24</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Lin</surname>
+              <given-names>JK</given-names>
+            </name>
+            <name>
+              <surname>Chang</surname>
+              <given-names>SC</given-names>
+            </name>
+            <name>
+              <surname>Wang</surname>
+              <given-names>HS</given-names>
+            </name>
+            <name>
+              <surname>Yang</surname>
+              <given-names>SH</given-names>
+            </name>
+            <name>
+              <surname>Jiang</surname>
+              <given-names>JK</given-names>
+            </name>
+            <name>
+              <surname>Chen</surname>
+              <given-names>WC</given-names>
+            </name>
+            <name>
+              <surname>Lin</surname>
+              <given-names>TC</given-names>
+            </name>
+            <name>
+              <surname>Li</surname>
+              <given-names>AF</given-names>
+            </name>
+          </person-group>
+          <article-title>Distinctive clinicopathological features of Ki-ras mutated colorectal cancers</article-title>
+          <source>J Surg Oncol</source>
+          <year>2006</year>
+          <volume>94</volume>
+          <fpage>234</fpage>
+          <lpage>41</lpage>
+          <pub-id pub-id-type="doi">10.1002/jso.20438</pub-id>
+          <pub-id pub-id-type="pmid">16900509</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="R25">
+        <label>25</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Pai</surname>
+              <given-names>RK</given-names>
+            </name>
+            <name>
+              <surname>Jayachandran</surname>
+              <given-names>P</given-names>
+            </name>
+            <name>
+              <surname>Koong</surname>
+              <given-names>AC</given-names>
+            </name>
+            <name>
+              <surname>Chang</surname>
+              <given-names>DT</given-names>
+            </name>
+            <name>
+              <surname>Kwok</surname>
+              <given-names>S</given-names>
+            </name>
+            <name>
+              <surname>Ma</surname>
+              <given-names>L</given-names>
+            </name>
+            <name>
+              <surname>Arber</surname>
+              <given-names>DA</given-names>
+            </name>
+            <name>
+              <surname>Balise</surname>
+              <given-names>RR</given-names>
+            </name>
+            <name>
+              <surname>Tubbs</surname>
+              <given-names>RR</given-names>
+            </name>
+            <name>
+              <surname>Shadrach</surname>
+              <given-names>B</given-names>
+            </name>
+            <etal/>
+          </person-group>
+          <article-title>BRAF-mutated, microsatellite-stable adenocarcinoma of the proximal colon: an aggressive adenocarcinoma with poor survival, mucinous differentiation, and adverse morphologic features</article-title>
+          <source>Am J Surg Pathol</source>
+          <year>2012</year>
+          <volume>36</volume>
+          <fpage>744</fpage>
+          <lpage>52</lpage>
+          <pub-id pub-id-type="doi">10.1097/PAS.0b013e31824430d7</pub-id>
+          <pub-id pub-id-type="pmid">22314188</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="R26">
+        <label>26</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Benedix</surname>
+              <given-names>F</given-names>
+            </name>
+            <name>
+              <surname>Kube</surname>
+              <given-names>R</given-names>
+            </name>
+            <name>
+              <surname>Meyer</surname>
+              <given-names>F</given-names>
+            </name>
+            <name>
+              <surname>Schmidt</surname>
+              <given-names>U</given-names>
+            </name>
+            <name>
+              <surname>Gastinger</surname>
+              <given-names>I</given-names>
+            </name>
+            <name>
+              <surname>Lippert</surname>
+              <given-names>H</given-names>
+            </name>
+            <collab>Colon/Rectum Carcinomas (Primary Tumor) Study Group</collab>
+          </person-group>
+          <article-title>Comparison of 17,641 patients with right- and left-sided colon cancer: differences in epidemiology, perioperative course, histology, and survival</article-title>
+          <source>Dis Colon Rectum</source>
+          <year>2010</year>
+          <volume>53</volume>
+          <fpage>57</fpage>
+          <lpage>64</lpage>
+          <pub-id pub-id-type="doi">10.1007/DCR.0b013e3181c703a4</pub-id>
+          <pub-id pub-id-type="pmid">20010352</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="R27">
+        <label>27</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Bufill</surname>
+              <given-names>JA</given-names>
+            </name>
+          </person-group>
+          <article-title>Colorectal cancer: evidence for distinct genetic categories based on proximal or distal tumor location</article-title>
+          <source>Ann Intern Med</source>
+          <year>1990</year>
+          <volume>113</volume>
+          <fpage>779</fpage>
+          <lpage>88</lpage>
+          <pub-id pub-id-type="doi">10.7326/0003-4819-113-10-779</pub-id>
+          <pub-id pub-id-type="pmid">2240880</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="R28">
+        <label>28</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Sugai</surname>
+              <given-names>T</given-names>
+            </name>
+            <name>
+              <surname>Habano</surname>
+              <given-names>W</given-names>
+            </name>
+            <name>
+              <surname>Jiao</surname>
+              <given-names>YF</given-names>
+            </name>
+            <name>
+              <surname>Tsukahara</surname>
+              <given-names>M</given-names>
+            </name>
+            <name>
+              <surname>Takeda</surname>
+              <given-names>Y</given-names>
+            </name>
+            <name>
+              <surname>Otsuka</surname>
+              <given-names>K</given-names>
+            </name>
+            <name>
+              <surname>Nakamura</surname>
+              <given-names>S</given-names>
+            </name>
+          </person-group>
+          <article-title>Analysis of molecular alterations in left- and right-sided colorectal carcinomas reveals distinct pathways of carcinogenesis: proposal for new molecular profile of colorectal carcinomas</article-title>
+          <source>J Mol Diagn</source>
+          <year>2006</year>
+          <volume>8</volume>
+          <fpage>193</fpage>
+          <lpage>201</lpage>
+          <pub-id pub-id-type="doi">10.2353/jmoldx.2006.050052</pub-id>
+          <pub-id pub-id-type="pmid">16645205</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="R29">
+        <label>29</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Soong</surname>
+              <given-names>R</given-names>
+            </name>
+            <name>
+              <surname>Powell</surname>
+              <given-names>B</given-names>
+            </name>
+            <name>
+              <surname>Elsaleh</surname>
+              <given-names>H</given-names>
+            </name>
+            <name>
+              <surname>Gnanasampanthan</surname>
+              <given-names>G</given-names>
+            </name>
+            <name>
+              <surname>Smith</surname>
+              <given-names>DR</given-names>
+            </name>
+            <name>
+              <surname>Goh</surname>
+              <given-names>HS</given-names>
+            </name>
+            <name>
+              <surname>Joseph</surname>
+              <given-names>D</given-names>
+            </name>
+            <name>
+              <surname>Iacopetta</surname>
+              <given-names>B</given-names>
+            </name>
+          </person-group>
+          <article-title>Prognostic significance of TP53 gene mutation in 995 cases of colorectal carcinoma. Influence of tumour site, stage, adjuvant chemotherapy and type of mutation</article-title>
+          <source>Eur J Cancer</source>
+          <year>2000</year>
+          <volume>36</volume>
+          <fpage>2053</fpage>
+          <lpage>60</lpage>
+          <pub-id pub-id-type="doi">10.1016/S0959-8049(00)00285-9</pub-id>
+          <pub-id pub-id-type="pmid">11044641</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="R30">
+        <label>30</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Iacopetta</surname>
+              <given-names>B</given-names>
+            </name>
+          </person-group>
+          <article-title>Are there two sides to colorectal cancer?</article-title>
+          <source>Int J Cancer</source>
+          <year>2002</year>
+          <volume>101</volume>
+          <fpage>403</fpage>
+          <lpage>8</lpage>
+          <pub-id pub-id-type="doi">10.1002/ijc.10635</pub-id>
+          <pub-id pub-id-type="pmid">12216066</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="R31">
+        <label>31</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Brink</surname>
+              <given-names>M</given-names>
+            </name>
+            <name>
+              <surname>de Goeij</surname>
+              <given-names>AF</given-names>
+            </name>
+            <name>
+              <surname>Weijenberg</surname>
+              <given-names>MP</given-names>
+            </name>
+            <name>
+              <surname>Roemen</surname>
+              <given-names>GM</given-names>
+            </name>
+            <name>
+              <surname>Lentjes</surname>
+              <given-names>MH</given-names>
+            </name>
+            <name>
+              <surname>Pachen</surname>
+              <given-names>MM</given-names>
+            </name>
+            <name>
+              <surname>Smits</surname>
+              <given-names>KM</given-names>
+            </name>
+            <name>
+              <surname>de Bru&#xEF;ne</surname>
+              <given-names>AP</given-names>
+            </name>
+            <name>
+              <surname>Goldbohm</surname>
+              <given-names>RA</given-names>
+            </name>
+            <name>
+              <surname>van den Brandt</surname>
+              <given-names>PA</given-names>
+            </name>
+          </person-group>
+          <article-title>K-ras oncogene mutations in sporadic colorectal cancer in The Netherlands Cohort Study</article-title>
+          <source>Carcinogenesis</source>
+          <year>2003</year>
+          <volume>24</volume>
+          <fpage>703</fpage>
+          <lpage>10</lpage>
+          <pub-id pub-id-type="doi">10.1093/carcin/bgg009</pub-id>
+          <pub-id pub-id-type="pmid">12727799</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="R32">
+        <label>32</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Reimann</surname>
+              <given-names>C</given-names>
+            </name>
+            <name>
+              <surname>Arola</surname>
+              <given-names>M</given-names>
+            </name>
+            <name>
+              <surname>Bierings</surname>
+              <given-names>M</given-names>
+            </name>
+            <name>
+              <surname>Karow</surname>
+              <given-names>A</given-names>
+            </name>
+            <name>
+              <surname>van den Heuvel-Eibrink</surname>
+              <given-names>MM</given-names>
+            </name>
+            <name>
+              <surname>Hasle</surname>
+              <given-names>H</given-names>
+            </name>
+            <name>
+              <surname>Niemeyer</surname>
+              <given-names>CM</given-names>
+            </name>
+            <name>
+              <surname>Kratz</surname>
+              <given-names>CP</given-names>
+            </name>
+          </person-group>
+          <article-title>A novel somatic K-Ras mutation in juvenile myelomonocytic leukemia</article-title>
+          <source>Leukemia</source>
+          <year>2006</year>
+          <volume>20</volume>
+          <fpage>1637</fpage>
+          <lpage>8</lpage>
+          <pub-id pub-id-type="doi">10.1038/sj.leu.2404303</pub-id>
+          <pub-id pub-id-type="pmid">16826224</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="R33">
+        <label>33</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Tartaglia</surname>
+              <given-names>M</given-names>
+            </name>
+            <name>
+              <surname>Martinelli</surname>
+              <given-names>S</given-names>
+            </name>
+            <name>
+              <surname>Cazzaniga</surname>
+              <given-names>G</given-names>
+            </name>
+            <name>
+              <surname>Cordeddu</surname>
+              <given-names>V</given-names>
+            </name>
+            <name>
+              <surname>Iavarone</surname>
+              <given-names>I</given-names>
+            </name>
+            <name>
+              <surname>Spinelli</surname>
+              <given-names>M</given-names>
+            </name>
+            <name>
+              <surname>Palmi</surname>
+              <given-names>C</given-names>
+            </name>
+            <name>
+              <surname>Carta</surname>
+              <given-names>C</given-names>
+            </name>
+            <name>
+              <surname>Pession</surname>
+              <given-names>A</given-names>
+            </name>
+            <name>
+              <surname>Aric&#xF2;</surname>
+              <given-names>M</given-names>
+            </name>
+            <etal/>
+          </person-group>
+          <article-title>Genetic evidence for lineage-related and differentiation stage-related contribution of somatic PTPN11 mutations to leukemogenesis in childhood acute leukemia</article-title>
+          <source>Blood</source>
+          <year>2004</year>
+          <volume>104</volume>
+          <fpage>307</fpage>
+          <lpage>13</lpage>
+          <pub-id pub-id-type="doi">10.1182/blood-2003-11-3876</pub-id>
+          <pub-id pub-id-type="pmid">14982869</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="R34">
+        <label>34</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Servomaa</surname>
+              <given-names>K</given-names>
+            </name>
+            <name>
+              <surname>Kiuru</surname>
+              <given-names>A</given-names>
+            </name>
+            <name>
+              <surname>Kosma</surname>
+              <given-names>VM</given-names>
+            </name>
+            <name>
+              <surname>Hirvikoski</surname>
+              <given-names>P</given-names>
+            </name>
+            <name>
+              <surname>Ryt&#xF6;maa</surname>
+              <given-names>T</given-names>
+            </name>
+          </person-group>
+          <article-title>p53 and K-ras gene mutations in carcinoma of the rectum among Finnish women</article-title>
+          <source>Mol Pathol</source>
+          <year>2000</year>
+          <volume>53</volume>
+          <fpage>24</fpage>
+          <lpage>30</lpage>
+          <pub-id pub-id-type="doi">10.1136/mp.53.1.24</pub-id>
+          <pub-id pub-id-type="pmid">10884918</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="R35">
+        <label>35</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Schmid</surname>
+              <given-names>K</given-names>
+            </name>
+            <name>
+              <surname>Oehl</surname>
+              <given-names>N</given-names>
+            </name>
+            <name>
+              <surname>Wrba</surname>
+              <given-names>F</given-names>
+            </name>
+            <name>
+              <surname>Pirker</surname>
+              <given-names>R</given-names>
+            </name>
+            <name>
+              <surname>Pirker</surname>
+              <given-names>C</given-names>
+            </name>
+            <name>
+              <surname>Filipits</surname>
+              <given-names>M</given-names>
+            </name>
+          </person-group>
+          <article-title>EGFR/KRAS/BRAF mutations in primary lung adenocarcinomas and corresponding locoregional lymph node metastases</article-title>
+          <source>Clin Cancer Res</source>
+          <year>2009</year>
+          <volume>15</volume>
+          <fpage>4554</fpage>
+          <lpage>60</lpage>
+          <pub-id pub-id-type="doi">10.1158/1078-0432.CCR-09-0089</pub-id>
+          <pub-id pub-id-type="pmid">19584155</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="R36">
+        <label>36</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>W&#xF3;jcik</surname>
+              <given-names>P</given-names>
+            </name>
+            <name>
+              <surname>Kulig</surname>
+              <given-names>J</given-names>
+            </name>
+            <name>
+              <surname>Oko&#x144;</surname>
+              <given-names>K</given-names>
+            </name>
+            <name>
+              <surname>Zazula</surname>
+              <given-names>M</given-names>
+            </name>
+            <name>
+              <surname>Mo&#x17A;dzioch</surname>
+              <given-names>I</given-names>
+            </name>
+            <name>
+              <surname>Niepsuj</surname>
+              <given-names>A</given-names>
+            </name>
+            <name>
+              <surname>Stachura</surname>
+              <given-names>J</given-names>
+            </name>
+          </person-group>
+          <article-title>KRAS mutation profile in colorectal carcinoma and novel mutation--internal tandem duplication in KRAS</article-title>
+          <source>Pol J Pathol</source>
+          <year>2008</year>
+          <volume>59</volume>
+          <fpage>93</fpage>
+          <lpage>6</lpage>
+          <pub-id pub-id-type="pmid">18669174</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="R37">
+        <label>37</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Khosravi-Far</surname>
+              <given-names>R</given-names>
+            </name>
+            <name>
+              <surname>White</surname>
+              <given-names>MA</given-names>
+            </name>
+            <name>
+              <surname>Westwick</surname>
+              <given-names>JK</given-names>
+            </name>
+            <name>
+              <surname>Solski</surname>
+              <given-names>PA</given-names>
+            </name>
+            <name>
+              <surname>Chrzanowska-Wodnicka</surname>
+              <given-names>M</given-names>
+            </name>
+            <name>
+              <surname>Van Aelst</surname>
+              <given-names>L</given-names>
+            </name>
+            <name>
+              <surname>Wigler</surname>
+              <given-names>MH</given-names>
+            </name>
+            <name>
+              <surname>Der</surname>
+              <given-names>CJ</given-names>
+            </name>
+          </person-group>
+          <article-title>Oncogenic Ras activation of Raf/mitogen-activated protein kinase-independent pathways is sufficient to cause tumorigenic transformation</article-title>
+          <source>Mol Cell Biol</source>
+          <year>1996</year>
+          <volume>16</volume>
+          <fpage>3923</fpage>
+          <lpage>33</lpage>
+          <pub-id pub-id-type="pmid">8668210</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="R38">
+        <label>38</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Tong</surname>
+              <given-names>JH</given-names>
+            </name>
+            <name>
+              <surname>Ng</surname>
+              <given-names>DC</given-names>
+            </name>
+            <name>
+              <surname>Chau</surname>
+              <given-names>SL</given-names>
+            </name>
+            <name>
+              <surname>So</surname>
+              <given-names>KK</given-names>
+            </name>
+            <name>
+              <surname>Leung</surname>
+              <given-names>PP</given-names>
+            </name>
+            <name>
+              <surname>Lee</surname>
+              <given-names>TL</given-names>
+            </name>
+            <name>
+              <surname>Lung</surname>
+              <given-names>RW</given-names>
+            </name>
+            <name>
+              <surname>Chan</surname>
+              <given-names>MW</given-names>
+            </name>
+            <name>
+              <surname>Chan</surname>
+              <given-names>AW</given-names>
+            </name>
+            <name>
+              <surname>Lo</surname>
+              <given-names>KW</given-names>
+            </name>
+            <etal/>
+          </person-group>
+          <article-title>Putative tumour-suppressor gene DAB2 is frequently down regulated by promoter hypermethylation in nasopharyngeal carcinoma</article-title>
+          <source>BMC Cancer</source>
+          <year>2010</year>
+          <volume>10</volume>
+          <fpage>253</fpage>
+          <pub-id pub-id-type="doi">10.1186/1471-2407-10-253</pub-id>
+          <pub-id pub-id-type="pmid">20525238</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="R39">
+        <label>39</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Lung</surname>
+              <given-names>RW</given-names>
+            </name>
+            <name>
+              <surname>Tong</surname>
+              <given-names>JH</given-names>
+            </name>
+            <name>
+              <surname>Sung</surname>
+              <given-names>YM</given-names>
+            </name>
+            <name>
+              <surname>Leung</surname>
+              <given-names>PS</given-names>
+            </name>
+            <name>
+              <surname>Ng</surname>
+              <given-names>DC</given-names>
+            </name>
+            <name>
+              <surname>Chau</surname>
+              <given-names>SL</given-names>
+            </name>
+            <name>
+              <surname>Chan</surname>
+              <given-names>AW</given-names>
+            </name>
+            <name>
+              <surname>Ng</surname>
+              <given-names>EK</given-names>
+            </name>
+            <name>
+              <surname>Lo</surname>
+              <given-names>KW</given-names>
+            </name>
+            <name>
+              <surname>To</surname>
+              <given-names>KF</given-names>
+            </name>
+          </person-group>
+          <article-title>Modulation of LMP2A expression by a newly identified Epstein-Barr virus-encoded microRNA miR-BART22</article-title>
+          <source>Neoplasia</source>
+          <year>2009</year>
+          <volume>11</volume>
+          <fpage>1174</fpage>
+          <lpage>84</lpage>
+          <pub-id pub-id-type="pmid">19881953</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="R40">
+        <label>40</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Kang</surname>
+              <given-names>W</given-names>
+            </name>
+            <name>
+              <surname>Tong</surname>
+              <given-names>JH</given-names>
+            </name>
+            <name>
+              <surname>Chan</surname>
+              <given-names>AW</given-names>
+            </name>
+            <name>
+              <surname>Lee</surname>
+              <given-names>TL</given-names>
+            </name>
+            <name>
+              <surname>Lung</surname>
+              <given-names>RW</given-names>
+            </name>
+            <name>
+              <surname>Leung</surname>
+              <given-names>PP</given-names>
+            </name>
+            <name>
+              <surname>So</surname>
+              <given-names>KK</given-names>
+            </name>
+            <name>
+              <surname>Wu</surname>
+              <given-names>K</given-names>
+            </name>
+            <name>
+              <surname>Fan</surname>
+              <given-names>D</given-names>
+            </name>
+            <name>
+              <surname>Yu</surname>
+              <given-names>J</given-names>
+            </name>
+            <etal/>
+          </person-group>
+          <article-title>Yes-associated protein 1 exhibits oncogenic property in gastric cancer and its nuclear accumulation associates with poor prognosis</article-title>
+          <source>Clin Cancer Res</source>
+          <year>2011</year>
+          <volume>17</volume>
+          <fpage>2130</fpage>
+          <lpage>9</lpage>
+          <pub-id pub-id-type="doi">10.1158/1078-0432.CCR-10-2467</pub-id>
+          <pub-id pub-id-type="pmid">21346147</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="R41">
+        <label>41</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Imamura</surname>
+              <given-names>Y</given-names>
+            </name>
+            <name>
+              <surname>Morikawa</surname>
+              <given-names>T</given-names>
+            </name>
+            <name>
+              <surname>Liao</surname>
+              <given-names>X</given-names>
+            </name>
+            <name>
+              <surname>Lochhead</surname>
+              <given-names>P</given-names>
+            </name>
+            <name>
+              <surname>Kuchiba</surname>
+              <given-names>A</given-names>
+            </name>
+            <name>
+              <surname>Yamauchi</surname>
+              <given-names>M</given-names>
+            </name>
+            <name>
+              <surname>Qian</surname>
+              <given-names>ZR</given-names>
+            </name>
+            <name>
+              <surname>Nishihara</surname>
+              <given-names>R</given-names>
+            </name>
+            <name>
+              <surname>Meyerhardt</surname>
+              <given-names>JA</given-names>
+            </name>
+            <name>
+              <surname>Haigis</surname>
+              <given-names>KM</given-names>
+            </name>
+            <etal/>
+          </person-group>
+          <article-title>Specific mutations in KRAS codons 12 and 13, and patient prognosis in 1075 BRAF wild-type colorectal cancers</article-title>
+          <source>Clin Cancer Res</source>
+          <year>2012</year>
+          <volume>18</volume>
+          <fpage>4753</fpage>
+          <lpage>63</lpage>
+          <pub-id pub-id-type="doi">10.1158/1078-0432.CCR-11-3210</pub-id>
+          <pub-id pub-id-type="pmid">22753589</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="R42">
+        <label>42</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>De Roock</surname>
+              <given-names>W</given-names>
+            </name>
+            <name>
+              <surname>Claes</surname>
+              <given-names>B</given-names>
+            </name>
+            <name>
+              <surname>Bernasconi</surname>
+              <given-names>D</given-names>
+            </name>
+            <name>
+              <surname>De Schutter</surname>
+              <given-names>J</given-names>
+            </name>
+            <name>
+              <surname>Biesmans</surname>
+              <given-names>B</given-names>
+            </name>
+            <name>
+              <surname>Fountzilas</surname>
+              <given-names>G</given-names>
+            </name>
+            <name>
+              <surname>Kalogeras</surname>
+              <given-names>KT</given-names>
+            </name>
+            <name>
+              <surname>Kotoula</surname>
+              <given-names>V</given-names>
+            </name>
+            <name>
+              <surname>Papamichael</surname>
+              <given-names>D</given-names>
+            </name>
+            <name>
+              <surname>Laurent-Puig</surname>
+              <given-names>P</given-names>
+            </name>
+            <etal/>
+          </person-group>
+          <article-title>Effects of KRAS, BRAF, NRAS, and PIK3CA mutations on the efficacy of cetuximab plus chemotherapy in chemotherapy-refractory metastatic colorectal cancer: a retrospective consortium analysis</article-title>
+          <source>Lancet Oncol</source>
+          <year>2010</year>
+          <volume>11</volume>
+          <fpage>753</fpage>
+          <lpage>62</lpage>
+          <pub-id pub-id-type="doi">10.1016/S1470-2045(10)70130-3</pub-id>
+          <pub-id pub-id-type="pmid">20619739</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="R43">
+        <label>43</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Chang</surname>
+              <given-names>YS</given-names>
+            </name>
+            <name>
+              <surname>Yeh</surname>
+              <given-names>KT</given-names>
+            </name>
+            <name>
+              <surname>Chang</surname>
+              <given-names>TJ</given-names>
+            </name>
+            <name>
+              <surname>Chai</surname>
+              <given-names>C</given-names>
+            </name>
+            <name>
+              <surname>Lu</surname>
+              <given-names>HC</given-names>
+            </name>
+            <name>
+              <surname>Hsu</surname>
+              <given-names>NC</given-names>
+            </name>
+            <name>
+              <surname>Chang</surname>
+              <given-names>JG</given-names>
+            </name>
+          </person-group>
+          <article-title>Fast simultaneous detection of K-RAS mutations in colorectal cancer</article-title>
+          <source>BMC Cancer</source>
+          <year>2009</year>
+          <volume>9</volume>
+          <fpage>179</fpage>
+          <pub-id pub-id-type="doi">10.1186/1471-2407-9-179</pub-id>
+          <pub-id pub-id-type="pmid">19515263</pub-id>
+        </element-citation>
+      </ref>
+      <ref id="R44">
+        <label>44</label>
+        <element-citation publication-type="journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Karapetis</surname>
+              <given-names>CS</given-names>
+            </name>
+            <name>
+              <surname>Khambata-Ford</surname>
+              <given-names>S</given-names>
+            </name>
+            <name>
+              <surname>Jonker</surname>
+              <given-names>DJ</given-names>
+            </name>
+            <name>
+              <surname>O&#x2019;Callaghan</surname>
+              <given-names>CJ</given-names>
+            </name>
+            <name>
+              <surname>Tu</surname>
+              <given-names>D</given-names>
+            </name>
+            <name>
+              <surname>Tebbutt</surname>
+              <given-names>NC</given-names>
+            </name>
+            <name>
+              <surname>Simes</surname>
+              <given-names>RJ</given-names>
+            </name>
+            <name>
+              <surname>Chalchal</surname>
+              <given-names>H</given-names>
+            </name>
+            <name>
+              <surname>Shapiro</surname>
+              <given-names>JD</given-names>
+            </name>
+            <name>
+              <surname>Robitaille</surname>
+              <given-names>S</given-names>
+            </name>
+            <etal/>
+          </person-group>
+          <article-title>K-ras mutations and benefit from cetuximab in advanced colorectal cancer</article-title>
+          <source>N Engl J Med</source>
+          <year>2008</year>
+          <volume>359</volume>
+          <fpage>1757</fpage>
+          <lpage>65</lpage>
+          <pub-id pub-id-type="doi">10.1056/NEJMoa0804385</pub-id>
+          <pub-id pub-id-type="pmid">18946061</pub-id>
+        </element-citation>
+      </ref>
+    </ref-list>
+  </back>
+</article>
+</pmc-articleset>

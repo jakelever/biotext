@@ -1,0 +1,407 @@
+<!-- PMC4902179 -->
+<table frame="box" rules="all">
+    <thead>
+        <tr>
+            <th align="center" rowspan="1" colspan="1">References</th>
+            <th align="center" rowspan="1" colspan="1">Cancer Study</th>
+            <th align="center" rowspan="1" colspan="1">Mutations</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td align="center" rowspan="1" colspan="1">TCGA-C5-A1BM-01</td>
+            <td align="center" rowspan="1" colspan="1">Cervical (TCGA)</td>
+            <td align="center" rowspan="1" colspan="1">D2191H</td>
+        </tr>
+        <tr>
+            <td align="center" rowspan="1" colspan="1">TCGA-BR-4370-01</td>
+            <td align="center" rowspan="1" colspan="1">Stomach (TCGA)</td>
+            <td align="center" rowspan="1" colspan="1">R2193C</td>
+        </tr>
+        <tr>
+            <td align="center" rowspan="1" colspan="1">P-0004376-T01-IM5</td>
+            <td align="center" rowspan="1" colspan="1">MSK-IMPACT</td>
+            <td align="center" rowspan="1" colspan="1">F2202L</td>
+        </tr>
+        <tr>
+            <td align="center" rowspan="1" colspan="1">TCGA-BT-A0YX-01</td>
+            <td align="center" rowspan="1" colspan="1">Bladder (TCGA)</td>
+            <td align="center" rowspan="1" colspan="1">L2209V</td>
+        </tr>
+        <tr>
+            <td align="center" rowspan="1" colspan="1">TCGA-B0-4810-01</td>
+            <td align="center" rowspan="1" colspan="1">ccRCC (TCGA)</td>
+            <td align="center" rowspan="1" colspan="1">A2210P</td>
+        </tr>
+        <tr>
+            <td align="center" rowspan="1" colspan="1">JHUEM7_ENDOMETRIUM</td>
+            <td align="center" rowspan="1" colspan="1">CCLE</td>
+            <td align="center" rowspan="1" colspan="1">S2215Y</td>
+        </tr>
+        <tr>
+            <td align="center" rowspan="1" colspan="1">TCGA-JW-A5VL-01</td>
+            <td align="center" rowspan="1" colspan="1">Cervical (TCGA)</td>
+            <td align="center" rowspan="1" colspan="1">S2215Y</td>
+        </tr>
+        <tr>
+            <td align="center" rowspan="1" colspan="1">TCGA-FU-A3HZ-01</td>
+            <td align="center" rowspan="1" colspan="1">Cervical (TCGA)</td>
+            <td align="center" rowspan="1" colspan="1">S2215Y</td>
+        </tr>
+        <tr>
+            <td align="center" rowspan="1" colspan="1">TCGA-AA-A00K-01</td>
+            <td align="center" rowspan="1" colspan="1">Colorectal (TCGA)</td>
+            <td align="center" rowspan="1" colspan="1">S2215Y</td>
+        </tr>
+        <tr>
+            <td align="center" rowspan="1" colspan="1">TCGA-A6-6141-01</td>
+            <td align="center" rowspan="1" colspan="1">Colorectal (TCGA)</td>
+            <td align="center" rowspan="1" colspan="1">S2215Y</td>
+        </tr>
+        <tr>
+            <td align="center" rowspan="1" colspan="1">TCGA-F4-6806-01</td>
+            <td align="center" rowspan="1" colspan="1">Colorectal (TCGA)</td>
+            <td align="center" rowspan="1" colspan="1">S2215F</td>
+        </tr>
+        <tr>
+            <td align="center" rowspan="1" colspan="1">TCGA-DM-A1D4</td>
+            <td align="center" rowspan="1" colspan="1">Colorectal (TCGA)</td>
+            <td align="center" rowspan="1" colspan="1">S2215F</td>
+        </tr>
+        <tr>
+            <td align="center" rowspan="1" colspan="1">S12-23181-TP-NT</td>
+            <td align="center" rowspan="1" colspan="1">CSCC (Dana-Farber)</td>
+            <td align="center" rowspan="1" colspan="1">S2215F</td>
+        </tr>
+        <tr>
+            <td align="center" rowspan="1" colspan="1">TCGA-CJ-5679-01</td>
+            <td align="center" rowspan="1" colspan="1">ccRCC (TCGA)</td>
+            <td align="center" rowspan="1" colspan="1">S2215Y</td>
+        </tr>
+        <tr>
+            <td align="center" rowspan="1" colspan="1">TCGA-A4-7828-01</td>
+            <td align="center" rowspan="1" colspan="1">pRCC (TCGA)</td>
+            <td align="center" rowspan="1" colspan="1">S2215Y</td>
+        </tr>
+        <tr>
+            <td align="center" rowspan="1" colspan="1">P-0000208-T01-IM3</td>
+            <td align="center" rowspan="1" colspan="1">MSK-IMPACT</td>
+            <td align="center" rowspan="1" colspan="1">S2215Y</td>
+        </tr>
+        <tr>
+            <td align="center" rowspan="1" colspan="1">P-0000208-T02-IM5</td>
+            <td align="center" rowspan="1" colspan="1">MSK-IMPACT</td>
+            <td align="center" rowspan="1" colspan="1">S2215Y</td>
+        </tr>
+        <tr>
+            <td align="center" rowspan="1" colspan="1">P-0005214-T01-IM5</td>
+            <td align="center" rowspan="1" colspan="1">MSK-IMPACT</td>
+            <td align="center" rowspan="1" colspan="1">S2215Y</td>
+        </tr>
+        <tr>
+            <td align="center" rowspan="1" colspan="1">MEL-UKRV-Mel-20</td>
+            <td align="center" rowspan="1" colspan="1">Melanoma (Broad)</td>
+            <td align="center" rowspan="1" colspan="1">S2215Y</td>
+        </tr>
+        <tr>
+            <td align="center" rowspan="1" colspan="1">TCGA-BS-A0UF-01</td>
+            <td align="center" rowspan="1" colspan="1">Uterine (TCGA)</td>
+            <td align="center" rowspan="1" colspan="1">S2215Y</td>
+        </tr>
+        <tr>
+            <td align="center" rowspan="1" colspan="1">TCGA-BS-A0UV-01</td>
+            <td align="center" rowspan="1" colspan="1">Uterine (TCGA)</td>
+            <td align="center" rowspan="1" colspan="1">S2215Y</td>
+        </tr>
+        <tr>
+            <td align="center" rowspan="1" colspan="1">TCGA-BG-A0VX</td>
+            <td align="center" rowspan="1" colspan="1">Uterine (TCGA)</td>
+            <td align="center" rowspan="1" colspan="1">S2215Y</td>
+        </tr>
+        <tr>
+            <td align="center" rowspan="1" colspan="1">TCGA-CS-5396-01</td>
+            <td align="center" rowspan="1" colspan="1">Glioma (TCGA)</td>
+            <td align="center" rowspan="1" colspan="1">L2216P</td>
+        </tr>
+        <tr>
+            <td align="center" rowspan="1" colspan="1">HEC251_ENDOMETRIUM</td>
+            <td align="center" rowspan="1" colspan="1">CCLE</td>
+            <td align="center" rowspan="1" colspan="1">R2217W</td>
+        </tr>
+        <tr>
+            <td align="center" rowspan="1" colspan="1">TCGA-A6-4105-01</td>
+            <td align="center" rowspan="1" colspan="1">Colorectal (TCGA)</td>
+            <td align="center" rowspan="1" colspan="1">Q2223K</td>
+        </tr>
+        <tr>
+            <td align="center" rowspan="1" colspan="1">TCGA-CJ-4887-01</td>
+            <td align="center" rowspan="1" colspan="1">ccRCC (TCGA)</td>
+            <td align="center" rowspan="1" colspan="1">L2230V</td>
+        </tr>
+        <tr>
+            <td align="center" rowspan="1" colspan="1">SNU1196_BILIARY</td>
+            <td align="center" rowspan="1" colspan="1">CCLE</td>
+            <td align="center" rowspan="1" colspan="1">S2231W</td>
+        </tr>
+        <tr>
+            <td align="center" rowspan="1" colspan="1">KMH2_HAEMATOPOIE</td>
+            <td align="center" rowspan="1" colspan="1">CCLE</td>
+            <td align="center" rowspan="1" colspan="1">T2232I</td>
+        </tr>
+        <tr>
+            <td align="center" rowspan="1" colspan="1">CW2_LARGE_INTEST</td>
+            <td align="center" rowspan="1" colspan="1">CCLE</td>
+            <td align="center" rowspan="1" colspan="1">G2238D</td>
+        </tr>
+        <tr>
+            <td align="center" rowspan="1" colspan="1">TCGA-JW-A5VL-01</td>
+            <td align="center" rowspan="1" colspan="1">Cervical (TCGA)</td>
+            <td align="center" rowspan="1" colspan="1">W2239C</td>
+        </tr>
+        <tr>
+            <td align="center" rowspan="1" colspan="1">P-0000614-T01-IM3</td>
+            <td align="center" rowspan="1" colspan="1">MSK-IMPACT</td>
+            <td align="center" rowspan="1" colspan="1">W2239Ffs*39</td>
+        </tr>
+        <tr>
+            <td align="center" rowspan="1" colspan="1">DS-bla-084</td>
+            <td align="center" rowspan="1" colspan="1">Bladder (MSKCC 2014)</td>
+            <td align="center" rowspan="1" colspan="1">P2241S</td>
+        </tr>
+        <tr>
+            <td align="center" rowspan="1" colspan="1">MSKCC-0296_R</td>
+            <td align="center" rowspan="1" colspan="1">Bladder (DFARBER_MSKCC 2014)</td>
+            <td align="center" rowspan="1" colspan="1">P2241S</td>
+        </tr>
+        <tr>
+            <td align="center" rowspan="1" colspan="1">TCGA-DK-A6B6-01</td>
+            <td align="center" rowspan="1" colspan="1">Bladder (TCGA)</td>
+            <td align="center" rowspan="1" colspan="1">P2241S</td>
+        </tr>
+        <tr>
+            <td align="center" rowspan="1" colspan="1">TCGA-JW-A5VL-01</td>
+            <td align="center" rowspan="1" colspan="1">Cervical (TCGA)</td>
+            <td align="center" rowspan="1" colspan="1">P2241S</td>
+        </tr>
+        <tr>
+            <td align="center" rowspan="1" colspan="1">TCGA-97-7554-01</td>
+            <td align="center" rowspan="1" colspan="1">Lung adeno (TCGA)</td>
+            <td align="center" rowspan="1" colspan="1">R2251Q</td>
+        </tr>
+        <tr>
+            <td align="center" rowspan="1" colspan="1">HEC1A_ENDOMETRIUM</td>
+            <td align="center" rowspan="1" colspan="1">CCLE</td>
+            <td align="center" rowspan="1" colspan="1">R2254M</td>
+        </tr>
+        <tr>
+            <td align="center" rowspan="1" colspan="1">SNU520_STOMACH</td>
+            <td align="center" rowspan="1" colspan="1">CCLE</td>
+            <td align="center" rowspan="1" colspan="1">H2265P</td>
+        </tr>
+        <tr>
+            <td align="center" rowspan="1" colspan="1">TCGA-75-5126-01</td>
+            <td align="center" rowspan="1" colspan="1">Lung adeno (TCGA)</td>
+            <td align="center" rowspan="1" colspan="1">R2266P</td>
+        </tr>
+        <tr>
+            <td align="center" rowspan="1" colspan="1">TCGA-34-5239-01</td>
+            <td align="center" rowspan="1" colspan="1">Lung squ (TCGA)</td>
+            <td align="center" rowspan="1" colspan="1">A2272S</td>
+        </tr>
+        <tr>
+            <td align="center" rowspan="1" colspan="1">TCGA-EB-A3Y7-01</td>
+            <td align="center" rowspan="1" colspan="1">Melanoma (TCGA)</td>
+            <td align="center" rowspan="1" colspan="1">A2272V</td>
+        </tr>
+        <tr>
+            <td align="center" rowspan="1" colspan="1">P-0005309-T01-IM5</td>
+            <td align="center" rowspan="1" colspan="1">MSK-IMPACT</td>
+            <td align="center" rowspan="1" colspan="1">Q2282P</td>
+        </tr>
+        <tr>
+            <td align="center" rowspan="1" colspan="1">TCGA-BR-8363-01</td>
+            <td align="center" rowspan="1" colspan="1">Stomach (TCGA)</td>
+            <td align="center" rowspan="1" colspan="1">T2294A</td>
+        </tr>
+        <tr>
+            <td align="center" rowspan="1" colspan="1">P-0001171-T01-IM3</td>
+            <td align="center" rowspan="1" colspan="1">MSK-IMPACT</td>
+            <td align="center" rowspan="1" colspan="1">D2298H</td>
+        </tr>
+        <tr>
+            <td align="center" rowspan="1" colspan="1">DS-bla-037</td>
+            <td align="center" rowspan="1" colspan="1">Bladder (MSKCC 2014)</td>
+            <td align="center" rowspan="1" colspan="1">E2311K</td>
+        </tr>
+        <tr>
+            <td align="center" rowspan="1" colspan="1">P-0001042-T01-IM3</td>
+            <td align="center" rowspan="1" colspan="1">MSK IMPACT</td>
+            <td align="center" rowspan="1" colspan="1">A2325V</td>
+        </tr>
+        <tr>
+            <td align="center" rowspan="1" colspan="1">P-0003529-T01-IM5</td>
+            <td align="center" rowspan="1" colspan="1">MSK-IMPACT</td>
+            <td align="center" rowspan="1" colspan="1">V2330I</td>
+        </tr>
+        <tr>
+            <td align="center" rowspan="1" colspan="1">TCGA-AA-3666-01</td>
+            <td align="center" rowspan="1" colspan="1">Colorectal (TCGA)</td>
+            <td align="center" rowspan="1" colspan="1">I2333M</td>
+        </tr>
+        <tr>
+            <td align="center" rowspan="1" colspan="1">TCGA-B0-5691-01</td>
+            <td align="center" rowspan="1" colspan="1">Renal clear cell (TCGA)</td>
+            <td align="center" rowspan="1" colspan="1">L2334V</td>
+        </tr>
+        <tr>
+            <td align="center" rowspan="1" colspan="1">TCGA-HU-A4GU-01</td>
+            <td align="center" rowspan="1" colspan="1">Stomach (TCGA)</td>
+            <td align="center" rowspan="1" colspan="1">R2339_splice</td>
+        </tr>
+        <tr>
+            <td align="center" rowspan="1" colspan="1">L540_HAEMATOPOIE</td>
+            <td align="center" rowspan="1" colspan="1">CCLE</td>
+            <td align="center" rowspan="1" colspan="1">H2340R</td>
+        </tr>
+        <tr>
+            <td align="center" rowspan="1" colspan="1">TCGA-HB-A43Z-01</td>
+            <td align="center" rowspan="1" colspan="1">Sarcoma (TCGA)</td>
+            <td align="center" rowspan="1" colspan="1">S2342Y</td>
+        </tr>
+        <tr>
+            <td align="center" rowspan="1" colspan="1">NCIH446_LUNG</td>
+            <td align="center" rowspan="1" colspan="1">CCLE</td>
+            <td align="center" rowspan="1" colspan="1">M2345V</td>
+        </tr>
+        <tr>
+            <td align="center" rowspan="1" colspan="1">ESCC-148T</td>
+            <td align="center" rowspan="1" colspan="1">Esophagus sq (ICGC)</td>
+            <td align="center" rowspan="1" colspan="1">G2351E</td>
+        </tr>
+        <tr>
+            <td align="center" rowspan="1" colspan="1">LUAD-FH5PJ</td>
+            <td align="center" rowspan="1" colspan="1">Lung adeno (BROAD)</td>
+            <td align="center" rowspan="1" colspan="1">H2355R</td>
+        </tr>
+        <tr>
+            <td align="center" rowspan="1" colspan="1">S12-23181-TP-NT</td>
+            <td align="center" rowspan="1" colspan="1">CSCC (Dana-Farber)</td>
+            <td align="center" rowspan="1" colspan="1">G2359R</td>
+        </tr>
+        <tr>
+            <td align="center" rowspan="1" colspan="1">TCGA-E9-A54Y-01</td>
+            <td align="center" rowspan="1" colspan="1">Breast (TCGA)</td>
+            <td align="center" rowspan="1" colspan="1">R2368Q</td>
+        </tr>
+        <tr>
+            <td align="center" rowspan="1" colspan="1">HEC108-ENDOMETRIUM</td>
+            <td align="center" rowspan="1" colspan="1">CCLE (Novartis/Broad 2012)</td>
+            <td align="center" rowspan="1" colspan="1">R2368Q</td>
+        </tr>
+        <tr>
+            <td align="center" rowspan="1" colspan="1">P-0002079-T01-IM3</td>
+            <td align="center" rowspan="1" colspan="1">MSK-IMPACT</td>
+            <td align="center" rowspan="1" colspan="1">L2383F</td>
+        </tr>
+        <tr>
+            <td align="center" rowspan="1" colspan="1">P-0001042-T01-IM3</td>
+            <td align="center" rowspan="1" colspan="1">MSK-IMPACT</td>
+            <td align="center" rowspan="1" colspan="1">T2384I</td>
+        </tr>
+        <tr>
+            <td align="center" rowspan="1" colspan="1">TCGA-BH-A0HP-01</td>
+            <td align="center" rowspan="1" colspan="1">Breast (TCGA)</td>
+            <td align="center" rowspan="1" colspan="1">E2388Q</td>
+        </tr>
+        <tr>
+            <td align="center" rowspan="1" colspan="1">SW48_LARGE_INTES</td>
+            <td align="center" rowspan="1" colspan="1">CCLE</td>
+            <td align="center" rowspan="1" colspan="1">V2389_splice</td>
+        </tr>
+        <tr>
+            <td align="center" rowspan="1" colspan="1">COSM51966</td>
+            <td align="center" rowspan="1" colspan="1">Kidney</td>
+            <td align="center" rowspan="1" colspan="1">V2406A</td>
+        </tr>
+        <tr>
+            <td align="center" rowspan="1" colspan="1">TCGA-A7-A5ZV-01</td>
+            <td align="center" rowspan="1" colspan="1">Breast (TCGA)</td>
+            <td align="center" rowspan="1" colspan="1">D2412H</td>
+        </tr>
+        <tr>
+            <td align="center" rowspan="1" colspan="1">H061142</td>
+            <td align="center" rowspan="1" colspan="1">Liver (AMC)</td>
+            <td align="center" rowspan="1" colspan="1">D2412V</td>
+        </tr>
+        <tr>
+            <td align="center" rowspan="1" colspan="1">TCGA-EK-A3GK-01</td>
+            <td align="center" rowspan="1" colspan="1">Cervical (TCGA)</td>
+            <td align="center" rowspan="1" colspan="1">E2419K</td>
+        </tr>
+        <tr>
+            <td align="center" rowspan="1" colspan="1">CLL147</td>
+            <td align="center" rowspan="1" colspan="1">CLL (BROAD)</td>
+            <td align="center" rowspan="1" colspan="1">A2420P</td>
+        </tr>
+        <tr>
+            <td align="center" rowspan="1" colspan="1">P-0003254-T01-IM5</td>
+            <td align="center" rowspan="1" colspan="1">MSK-IMPACT</td>
+            <td align="center" rowspan="1" colspan="1">A2420V</td>
+        </tr>
+        <tr>
+            <td align="center" rowspan="1" colspan="1">P-0004798-T01-IM5</td>
+            <td align="center" rowspan="1" colspan="1">MSK-IMPACT</td>
+            <td align="center" rowspan="1" colspan="1">A2420V</td>
+        </tr>
+        <tr>
+            <td align="center" rowspan="1" colspan="1">TCGA-FS-A4FC-06</td>
+            <td align="center" rowspan="1" colspan="1">Melanoma (TCGA)</td>
+            <td align="center" rowspan="1" colspan="1">A2420V</td>
+        </tr>
+        <tr>
+            <td align="center" rowspan="1" colspan="1">TCGA-ER-A42L-06</td>
+            <td align="center" rowspan="1" colspan="1">Melanoma (TCGA)</td>
+            <td align="center" rowspan="1" colspan="1">D2424N</td>
+        </tr>
+        <tr>
+            <td align="center" rowspan="1" colspan="1">ST486-HAEMATOPOI</td>
+            <td align="center" rowspan="1" colspan="1">CCLE</td>
+            <td align="center" rowspan="1" colspan="1">L2427R</td>
+        </tr>
+        <tr>
+            <td align="center" rowspan="1" colspan="1">TCGA-06-0122-01</td>
+            <td align="center" rowspan="1" colspan="1">GBM (TCGA)</td>
+            <td align="center" rowspan="1" colspan="1">L2427Q</td>
+        </tr>
+        <tr>
+            <td align="center" rowspan="1" colspan="1">TCGA-KN-8437-01</td>
+            <td align="center" rowspan="1" colspan="1">chRCC (TCGA)</td>
+            <td align="center" rowspan="1" colspan="1">L2427R</td>
+        </tr>
+        <tr>
+            <td align="center" rowspan="1" colspan="1">P-0005355-T01-IM5</td>
+            <td align="center" rowspan="1" colspan="1">MSK-IMPACT</td>
+            <td align="center" rowspan="1" colspan="1">L2427R</td>
+        </tr>
+        <tr>
+            <td align="center" rowspan="1" colspan="1">P-0005044-T01-IM5</td>
+            <td align="center" rowspan="1" colspan="1">MSK-IMPACT</td>
+            <td align="center" rowspan="1" colspan="1">L2427Q</td>
+        </tr>
+        <tr>
+            <td align="center" rowspan="1" colspan="1">P-0000839-T01-IM3</td>
+            <td align="center" rowspan="1" colspan="1">MSK-IMPACT</td>
+            <td align="center" rowspan="1" colspan="1">L2427Q</td>
+        </tr>
+        <tr>
+            <td align="center" rowspan="1" colspan="1">MOLTI6_HAEMATOP</td>
+            <td align="center" rowspan="1" colspan="1">CCLE</td>
+            <td align="center" rowspan="1" colspan="1">R2430M</td>
+        </tr>
+        <tr>
+            <td align="center" rowspan="1" colspan="1">TCGA-G4-6322-01</td>
+            <td align="center" rowspan="1" colspan="1">Colorectal (TCGA)</td>
+            <td align="center" rowspan="1" colspan="1">R2441Q</td>
+        </tr>
+    </tbody>
+</table>
