@@ -2,3 +2,4 @@ snakemake
 bioc>=2.0
 ftputil
 biopython
+git+https://github.com/jakelever/bioconverters.git
