@@ -3,7 +3,8 @@ import argparse
 import tempfile
 import hashlib
 
-from bioconverters import convert
+import bioc
+from bioconverters import pubmedxml2bioc
 
 import shutil
 import urllib.request as request
@@ -11,13 +12,10 @@ from contextlib import closing
 import time
 import gzip
 import sys
-import string
 
 import re
 import os
 from datetime import datetime
-
-from dbutils import saveDocumentsToDatabase
 
 def download_file(url,local_filename):
 	with closing(request.urlopen(url,timeout=20)) as r:
@@ -78,46 +76,27 @@ def get_pubmed_timestamp(url):
 
 	return timestamp
 
-def get_pubmed_fileindex(url):
-	filename = os.path.basename(url)
-	digits_in_filename = [ c for c in filename if c in string.digits ]
-	assert len(digits_in_filename) == 6, "Expected exactly 6 digits in filename: %s" % filename
-	file_index = int("".join(digits_in_filename))
-	return int(file_index)
-	
-
-accepted_out_formats = ['biocxml','txt']
+accepted_out_formats = ['biocxml']
 def main():
 	parser = argparse.ArgumentParser(description='Tool to convert corpus between different formats')
 	parser.add_argument('--url',type=str,required=True,help="URL to PubMed GZipped XML file")
 	parser.add_argument('--o',type=str,required=True,help="Where to store resulting converted docs")
 	parser.add_argument('--oFormat',type=str,required=True,help="Format for output corpus. Options: %s" % "/".join(accepted_out_formats))
-	parser.add_argument('--db',action='store_true',help="Whether to output as an SQLite database")
 
 	args = parser.parse_args()
 
-	in_format = 'pubmedxml'
 	out_format = args.oFormat.lower()
-
-	if args.db:
-		assert out_format == 'biocxml', "Output format must be biocxml when storing to the database"
 
 	assert out_format in accepted_out_formats, "%s is not an accepted output format. Options are: %s" % (out_format, "/".join(accepted_out_formats))
 
-	file_index = get_pubmed_fileindex(args.url)
-
-	with tempfile.NamedTemporaryFile() as tf_pubmed, tempfile.NamedTemporaryFile() as tf_out:
+	with tempfile.NamedTemporaryFile() as tf_pubmed:
 		print("Downloading...")
 		download_file_with_retries(args.url, tf_pubmed.name, check_md5=True)
-	
-		out_file = tf_out.name if args.db else args.o
 
 		print("Converting...")
-		with gzip.open(tf_pubmed.name) as f:	
-			convert([f],in_format,out_file,out_format)
-
-		if args.db:
-			saveDocumentsToDatabase(args.o,tf_out.name,is_fulltext=False,file_index=file_index)
+		with gzip.open(tf_pubmed.name, 'rt', encoding='utf-8') as f, bioc.biocxml.iterwrite(args.o) as writer:
+			for bioc_doc in pubmedxml2bioc(f):
+				writer.write_document(bioc_doc)
 
 	print("Output to %s complete" % args.o)
 

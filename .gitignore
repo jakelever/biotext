@@ -16,7 +16,6 @@ pmc_listing.txt
 
 pmc_archives/
 biocxml/
-pubtator/
 pmids/
 .coverage
 
@@ -24,12 +23,9 @@ pmids/
 
 *.out
 
-bioconcepts2pubtatorcentral.gz
-
 .vscode
 
 snakejob.*
-*.sqlite
 
 listings/
 dist

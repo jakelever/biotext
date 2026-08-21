@@ -2,14 +2,10 @@ import argparse
 import os
 import json
 import tarfile
+import io
 
 from bioconverters import pmcxml2bioc
 import bioc
-import io
-
-import tempfile
-from dbutils import saveDocumentsToDatabase
-import pathlib
 from tqdm import tqdm
 
 if __name__ == '__main__':
@@ -18,7 +14,6 @@ if __name__ == '__main__':
 	parser.add_argument('--block',required=True,type=str,help='Name of block to process')
 	parser.add_argument('--format',required=True,type=str,help='Format to output documents to (only biocxml supported)')
 	parser.add_argument('--outFile',required=True,type=str,help='File to save to')
-	parser.add_argument('--db',action='store_true',help="Whether to output as an SQLite database")
 	parser.add_argument('--verbose',action='store_true',help="Whether to provide more output")
 	args = parser.parse_args()
 
@@ -35,39 +30,32 @@ if __name__ == '__main__':
 
 	found_files = set()
 
-	with tempfile.NamedTemporaryFile() as tf_out:
-		out_file = tf_out.name if args.db else args.outFile
+	with bioc.biocxml.iterwrite(args.outFile) as writer:
 
-		with bioc.biocxml.iterwrite(out_file) as writer:
+		tar = tarfile.open(source)
 
-			tar = tarfile.open(source)
+		iterator = tqdm(tar) if args.verbose else tar
 
-			iterator = tqdm(tar) if args.verbose else tar
+		for member in iterator:
+			if member.name in files_to_extract:
 
-			for member in iterator:
-				if member.name in files_to_extract:
+				found_files.add(member.name)
+				if args.verbose:
+					iterator.set_description(f"Found {member.name}: {len(found_files)}/{len(files_to_extract)}")
 
-					found_files.add(member.name)
+				file_handle = tar.extractfile(member)
+
+				data = file_handle.read().decode('utf-8')
+
+				for bioc_doc in pmcxml2bioc(io.StringIO(data)):
+					writer.write_document(bioc_doc)
+
+				if found_files == files_to_extract:
 					if args.verbose:
-						iterator.set_description(f"Found {member.name}: {len(found_files)}/{len(files_to_extract)}")
-
-					file_handle = tar.extractfile(member)
-					
-					data = file_handle.read().decode('utf-8')
-
-					for bioc_doc in pmcxml2bioc(io.StringIO(data)):
-						writer.write_document(bioc_doc)
-
-					if found_files == files_to_extract:
-						if args.verbose:
-							print(f"Extracted all {len(found_files)} files from archives.")
-						break
-
-		if args.db:
-			saveDocumentsToDatabase(args.outFile,tf_out.name,is_fulltext=True)
+						print(f"Extracted all {len(found_files)} files from archives.")
+					break
 
 	missing_files = sorted(files_to_extract - found_files)
 	assert len(missing_files) == 0, f"Did not find {len(missing_files)} expected files in the archive ({source}): {missing_files[:10]}"
 
 	print("Saved %d documents to %s" % (len(files_to_extract), args.outFile))
-

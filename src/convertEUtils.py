@@ -3,10 +3,10 @@ import argparse
 from Bio import Entrez
 import io
 
-from bioconverters import convert
+import bioc
+from bioconverters import pmcxml2bioc, pubmedxml2bioc
 
-acceptedInFormats = ['biocxml','pubmedxml','pmcxml']
-acceptedOutFormats = ['biocxml','txt']
+acceptedOutFormats = ['biocxml']
 if __name__ == '__main__':
 	parser = argparse.ArgumentParser(description='Downloads and converts small number of PubMed or PubMed Central documents. Useful for testing purposes.')
 	parser.add_argument('--database',type=str,required=True,help="Which database to use (pubmed/pmc)")
@@ -23,7 +23,7 @@ if __name__ == '__main__':
 	identifiers = args.identifiers.split(',')
 	assert len(identifiers) <= 10, "Too many identifiers provided. The EUtils API should only be used for a small number of documents"
 
-	inFormat = "pubmedxml" if args.database == "pubmed" else "pmcxml"
+	parse_func = pubmedxml2bioc if args.database == "pubmed" else pmcxml2bioc
 
 	doc_xmls = []
 	for identifier in identifiers:
@@ -35,6 +35,9 @@ if __name__ == '__main__':
 	assert outFormat in acceptedOutFormats, "%s is not an accepted output format. Options are: %s" % (outFormat, "/".join(acceptedOutFormats))
 
 	print("Fetching and converting %d files from %s" % (len(doc_xmls),args.database))
-	convert(doc_xmls,inFormat,args.o,outFormat)
+	with bioc.biocxml.iterwrite(args.o) as writer:
+		for doc_xml in doc_xmls:
+			for bioc_doc in parse_func(doc_xml):
+				writer.write_document(bioc_doc)
 	print("Output to %s complete" % args.o)
 

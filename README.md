@@ -2,7 +2,7 @@
 
 <p>
 	<a href="https://github.com/jakelever/biotext/actions/workflows/test.yml">
-		<img src="https://github.com/jakelever/biotext/actions/workflows/test.yml/badge.svg" />
+		<img src="https://github.com/jakelever/biotext/actions/workflows/tests.yml/badge.svg" />
 	</a>
 	<a href="https://opensource.org/licenses/MIT">
 		<img src="https://img.shields.io/badge/License-MIT-blue.svg" />

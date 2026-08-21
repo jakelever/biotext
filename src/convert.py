@@ -1,10 +1,22 @@
-
 import argparse
 
-from bioconverters import convert
+import bioc
+from bioconverters import pmcxml2bioc, pubmedxml2bioc
 
 acceptedInFormats = ['biocxml','pubmedxml','pmcxml']
-acceptedOutFormats = ['biocxml','txt']
+acceptedOutFormats = ['biocxml']
+
+
+def _bioc_docs_from_file(in_file, in_format):
+	if in_format == 'pubmedxml':
+		yield from pubmedxml2bioc(in_file)
+	elif in_format == 'pmcxml':
+		yield from pmcxml2bioc(in_file)
+	elif in_format == 'biocxml':
+		with bioc.biocxml.iterparse(in_file) as reader:
+			yield from reader
+
+
 if __name__ == '__main__':
 	parser = argparse.ArgumentParser(description='Tool to convert corpus between different formats')
 	parser.add_argument('--i',type=str,required=True,help="Comma-delimited list of documents to convert")
@@ -21,8 +33,10 @@ if __name__ == '__main__':
 	assert outFormat in acceptedOutFormats, "%s is not an accepted output format. Options are: %s" % (outFormat, "/".join(acceptedOutFormats))
 
 	inFiles = args.i.split(',')
-	
-	print("Converting %d files to %s" % (len(inFiles),args.o))
-	convert(inFiles,inFormat,args.o,outFormat)
-	print("Output to %s complete" % args.o)
 
+	print("Converting %d files to %s" % (len(inFiles),args.o))
+	with bioc.biocxml.iterwrite(args.o) as writer:
+		for in_file in inFiles:
+			for bioc_doc in _bioc_docs_from_file(in_file, inFormat):
+				writer.write_document(bioc_doc)
+	print("Output to %s complete" % args.o)
