@@ -1,0 +1,20 @@
+executor: slurm
+jobs: 200
+latency-wait: 60
+retries: 2
+
+default-resources:
+  slurm_partition: "general"     # site-specific, edit to match your cluster
+  mem_mb: 2000
+  runtime: 30
+
+set-resources:
+  download:
+    mem_mb: 2000
+    runtime: 120
+  pmc_convert_biocxml:
+    mem_mb: 4000
+    runtime: 60
+  pubmed_convert_biocxml:
+    mem_mb: 6000
+    runtime: 90

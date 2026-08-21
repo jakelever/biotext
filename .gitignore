@@ -14,7 +14,7 @@ htmlcov
 pubmed_listing.txt
 pmc_listing.txt
 
-pmc_archives/
+pmc_batches/
 biocxml/
 pmids/
 .coverage

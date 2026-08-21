@@ -5,9 +5,6 @@ import os
 import json
 import sys
 
-from snakemake.remote.FTP import RemoteProvider as FTPRemoteProvider
-FTP = FTPRemoteProvider()
-
 # Make the default rule print out usage info
 rule nodefault:
 	output: "nodefault"
@@ -64,27 +61,29 @@ if os.path.isfile('listings/pubmed.txt'):
 		unexpected_files = [ f for f in sorted(existing_pubmed_biocxml_files) if not f in pubmed_biocxml_files ]
 		assert len(unexpected_files) == 0, "Found unexpected PubMed files (e.g. %s) in biocxml directory. Likely due to a new PubMed baseline release. These should be manually deleted as well as downstream files. Check the project README for more details under section Yearly Baseline Releases." % unexpected_files[0]
 
-# Use the PMC groupings file to get a list of output files
-if os.path.isfile('pmc_archives/groupings.json'):
-	with open('pmc_archives/groupings.json') as f:
+# Use the PMC batches file to get a list of output files
+if os.path.isfile('pmc_batches/batches.json'):
+	with open('pmc_batches/batches.json') as f:
 		pmc_blocks = sorted(json.load(f).keys())
 		pmc_biocxml_files = [ f"biocxml/pmc_{b}.bioc.xml" for b in pmc_blocks ]
 
 rule convert_biocxml:
 	input:
 		pubmed = pubmed_biocxml_files,
-		pmc_downloaded = 'pmc_archives/groupings.json',
+		pmc_downloaded = 'pmc_batches/batches.json',
 		pmc = pmc_biocxml_files
 	output: "converted.flag"
 	shell: "touch {output}"
 
 rule pubmed_convert_biocxml:
 	output: "biocxml/pubmed_{dir}_{f}.bioc.xml"
+	resources: mem_mb=6000, runtime=90
 	shell: "python src/convertPubmed.py --url ftp://ftp.ncbi.nlm.nih.gov/pubmed/{wildcards.dir}/pubmed{wildcards.f}.xml.gz --o {output} --oFormat biocxml"
 
 rule pmc_convert_biocxml:
 	output: "biocxml/pmc_{block}.bioc.xml"
-	shell: "python src/convertPMC.py --pmcDir pmc_archives --block {wildcards.block} --format biocxml --outFile {output}"
+	resources: mem_mb=4000, runtime=60
+	shell: "python src/convertPMC.py --batchesFile pmc_batches/batches.json --batch {wildcards.block} --outFile {output}"
 
 
 #  ____  __  __ ___ ____

@@ -1,61 +1,42 @@
 import argparse
-import os
-import json
-import tarfile
 import io
+import json
+import urllib.parse
 
-from bioconverters import pmcxml2bioc
 import bioc
-from tqdm import tqdm
+from bioconverters import pmcxml2bioc
+
+from s3util import get_anonymous_s3_client, fetch_object_text
 
 if __name__ == '__main__':
-	parser = argparse.ArgumentParser(description='Convert a block of PMC articles')
-	parser.add_argument('--pmcDir',required=True,type=str,help='Directory with PMC Tar Gz files and groupings already processed')
-	parser.add_argument('--block',required=True,type=str,help='Name of block to process')
-	parser.add_argument('--format',required=True,type=str,help='Format to output documents to (only biocxml supported)')
+	parser = argparse.ArgumentParser(description='Convert a batch of PMC articles fetched from the PMC Cloud Service (S3)')
+	parser.add_argument('--batchesFile',required=True,type=str,help='JSON file mapping batch names to lists of s3:// article XML URIs')
+	parser.add_argument('--batch',required=True,type=str,help='Name of batch to process')
 	parser.add_argument('--outFile',required=True,type=str,help='File to save to')
+	parser.add_argument('--region',required=False,type=str,default='us-east-1',help='AWS region for the S3 client')
+	parser.add_argument('--endpointUrl',required=False,type=str,default=None,help='Override S3 endpoint URL (for testing against a local fake S3)')
 	parser.add_argument('--verbose',action='store_true',help="Whether to provide more output")
 	args = parser.parse_args()
 
-	assert args.format == 'biocxml'
+	with open(args.batchesFile) as f:
+		uris = json.load(f)[args.batch]
 
-	grouping_file = os.path.join(args.pmcDir,'groupings.json')
-	with open(grouping_file) as f:
-		block = json.load(f)[args.block]
+	print(f"Fetching {len(uris)} documents from S3 for batch {args.batch}")
 
-	source = os.path.join(args.pmcDir, block['src'])
-	files_to_extract = set(block['group'])
-
-	print(f"Loading {len(files_to_extract)} documents from archive: {source}")
-
-	found_files = set()
+	client = get_anonymous_s3_client(region=args.region, endpoint_url=args.endpointUrl)
 
 	with bioc.biocxml.iterwrite(args.outFile) as writer:
+		for i, uri in enumerate(uris):
+			parsed = urllib.parse.urlparse(uri)
+			assert parsed.scheme == 's3', f"Expected an s3:// URI, got: {uri}"
+			bucket, key = parsed.netloc, parsed.path.lstrip('/')
 
-		tar = tarfile.open(source)
+			if args.verbose:
+				print(f"Fetching {i + 1}/{len(uris)}: {uri}")
 
-		iterator = tqdm(tar) if args.verbose else tar
+			data = fetch_object_text(client, bucket, key)
 
-		for member in iterator:
-			if member.name in files_to_extract:
+			for bioc_doc in pmcxml2bioc(io.StringIO(data)):
+				writer.write_document(bioc_doc)
 
-				found_files.add(member.name)
-				if args.verbose:
-					iterator.set_description(f"Found {member.name}: {len(found_files)}/{len(files_to_extract)}")
-
-				file_handle = tar.extractfile(member)
-
-				data = file_handle.read().decode('utf-8')
-
-				for bioc_doc in pmcxml2bioc(io.StringIO(data)):
-					writer.write_document(bioc_doc)
-
-				if found_files == files_to_extract:
-					if args.verbose:
-						print(f"Extracted all {len(found_files)} files from archives.")
-					break
-
-	missing_files = sorted(files_to_extract - found_files)
-	assert len(missing_files) == 0, f"Did not find {len(missing_files)} expected files in the archive ({source}): {missing_files[:10]}"
-
-	print("Saved %d documents to %s" % (len(files_to_extract), args.outFile))
+	print("Saved %d documents to %s" % (len(uris), args.outFile))

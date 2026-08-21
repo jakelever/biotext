@@ -1,5 +1,7 @@
 snakemake
 bioc>=2.0
-ftputil
+boto3
 biopython
+pytest
+moto[server]
 git+https://github.com/jakelever/bioconverters.git
