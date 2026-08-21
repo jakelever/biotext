@@ -1,4 +1,4 @@
-# BioText (with added PubTator)
+# BioText
 
 <p>
 	<a href="https://github.com/jakelever/biotext/actions/workflows/test.yml">
@@ -9,14 +9,13 @@
 	</a>
 </p>
 
-Sometimes you need a easily-updated local copy of PubMed and PubMed Central, and sometimes (but not always) you want annotations of entities from [PubTator](https://www.ncbi.nlm.nih.gov/research/pubtator/) on those articles. This project can help with that. It manages the download of PubMed and PubMed Central and converting it into the nice BioC XML format while keeping important metadata. As a separate step, it can load up PubTator Central annotations and align them to the documents. It also handles the update process without redoing all the previous downloading and computation.
+Sometimes you need a easily-updated local copy of PubMed and PubMed Central. This project can help with that. It manages the download of PubMed and PubMed Central and converting it into the nice BioC XML format while keeping important metadata. It also handles the update process without redoing all the previous downloading and computation.
 
 ## Advantages
 
 - Deals with format conversion
 - Chunks PubMed Central (which is normally ~2,000,000 files) into larger files that are easier to parallelise
 - Uses Snakemake, so can be deployed on a cluster
-- Can add [PubTator Central](https://www.ncbi.nlm.nih.gov/research/pubtator/) annotations (of chemicals, genes, diseases, etc) to the text
 
 ## Details
 
@@ -31,10 +30,6 @@ There are few details that you should keep at the back of your mind when using t
 - This project does not deal with duplicates of documents, both in the PubMed update files, and documents in PubMed Central that are also in PubMed. Any text mining of these documents should do a final pass to identify the latest version of a document, i.e. going through new-to-old PubMed Central files before new-to-old PubMed files.
 - PubMed Central files contain a lot of Unicode characters while PubMed generally does not. An abstract for an article that is in both resources may be processed differently in the PubMed Central file due to Unicode characters.
 - Yearly releases of PubMed means that there is a yearly cleanup required. More details are in the Yearly Baseline Releases below and BioText will throw an error to try to warn you about a new release.
-
-## PubTator Annotation
-
-As an optional extra, you can get [PubTator Central annotations](https://www.ncbi.nlm.nih.gov/research/pubtator/) added to the documents. This uses the method outlined in [Lever et al, PSB 2020](https://pubmed.ncbi.nlm.nih.gov/31797632/). It downloads the latest version of the [PubTator Central annotation alignments](ftp://ftp.ncbi.nlm.nih.gov/pub/lu/PubTatorCentral) and identifies their locations in each document. This doubles the disk space requirement.
 
 ## Usage
 
@@ -55,16 +50,6 @@ Those calls to snakemake can then be augmented to use a cluster (or whatever loc
 ```bash
 # Run a hundred jobs at a time on a SLURM cluster using sbatch
 snakemake -j 100 --cluster ' sbatch' --latency-wait 60 converted.flag
-```
-
-The commands for running the PubTator alignments are below. Please add appropriate cluster flags.
-
-```bash
-# Download the PubTator file
-snakemake --cores 1 pubtator_downloaded.flag
-
-# Run the conversions on all the files in biocxml/
-snakemake --cores 1 pubtator.flag
 ```
 
 ## Dependencies
