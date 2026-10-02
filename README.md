@@ -1,7 +1,7 @@
 # BioText
 
 <p>
-	<a href="https://github.com/jakelever/biotext/actions/workflows/test.yml">
+	<a href="https://github.com/jakelever/biotext/actions/workflows/tests.yml">
 		<img src="https://github.com/jakelever/biotext/actions/workflows/tests.yml/badge.svg" />
 	</a>
 	<a href="https://opensource.org/licenses/MIT">
@@ -71,7 +71,7 @@ snakemake --profile profiles/slurm -j 200 converted.flag
 
 ## Dependencies
 
-This project requires Python 3 with dependencies that can be installed with pip.
+This project requires Python 3.11+ with dependencies that can be installed with pip.
 
 ```bash
 pip install -U snakemake bioc boto3
