@@ -3,6 +3,8 @@ import argparse
 import bioc
 from bioconverters import pmcxml2bioc, pubmedxml2bioc
 
+from fileutil import open_maybe_gzip
+
 acceptedInFormats = ['biocxml','pubmedxml','pmcxml']
 acceptedOutFormats = ['biocxml']
 
@@ -13,7 +15,7 @@ def _bioc_docs_from_file(in_file, in_format):
 	elif in_format == 'pmcxml':
 		yield from pmcxml2bioc(in_file)
 	elif in_format == 'biocxml':
-		with bioc.biocxml.iterparse(in_file) as reader:
+		with open_maybe_gzip(in_file, 'rb') as f, bioc.biocxml.iterparse(f) as reader:
 			yield from reader
 
 
@@ -21,7 +23,7 @@ if __name__ == '__main__':
 	parser = argparse.ArgumentParser(description='Tool to convert corpus between different formats')
 	parser.add_argument('--i',type=str,required=True,help="Comma-delimited list of documents to convert")
 	parser.add_argument('--iFormat',type=str,required=True,help="Format of input corpus. Options: %s" % "/".join(acceptedInFormats))
-	parser.add_argument('--o',type=str,required=True,help="Where to store resulting converted docs")
+	parser.add_argument('--o',type=str,required=True,help="Where to store resulting converted docs (gzipped if it ends with .gz)")
 	parser.add_argument('--oFormat',type=str,required=True,help="Format for output corpus. Options: %s" % "/".join(acceptedOutFormats))
 
 	args = parser.parse_args()
@@ -35,7 +37,7 @@ if __name__ == '__main__':
 	inFiles = args.i.split(',')
 
 	print("Converting %d files to %s" % (len(inFiles),args.o))
-	with bioc.biocxml.iterwrite(args.o) as writer:
+	with open_maybe_gzip(args.o, 'wb') as f, bioc.biocxml.iterwrite(f) as writer:
 		for in_file in inFiles:
 			for bioc_doc in _bioc_docs_from_file(in_file, inFormat):
 				writer.write_document(bioc_doc)

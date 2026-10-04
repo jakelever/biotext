@@ -6,13 +6,16 @@ import io
 import bioc
 from bioconverters import pmcxml2bioc, pubmedxml2bioc
 
+from fileutil import open_maybe_gzip
+
+
 acceptedOutFormats = ['biocxml']
 if __name__ == '__main__':
 	parser = argparse.ArgumentParser(description='Downloads and converts small number of PubMed or PubMed Central documents. Useful for testing purposes.')
 	parser.add_argument('--database',type=str,required=True,help="Which database to use (pubmed/pmc)")
 	parser.add_argument('--identifiers',type=str,required=True,help="PubMed or PMC identifiers (comma-delimited). Max of 10.")
 	parser.add_argument('--email',type=str,required=True,help="Entrez requires an email address is provided to use their API")
-	parser.add_argument('--o',type=str,required=True,help="Where to store resulting converted docs")
+	parser.add_argument('--o',type=str,required=True,help="Where to store resulting converted docs (gzipped if it ends with .gz)")
 	parser.add_argument('--oFormat',type=str,required=True,help="Format for output corpus. Options: %s" % "/".join(acceptedOutFormats))
 
 	args = parser.parse_args()
@@ -35,7 +38,7 @@ if __name__ == '__main__':
 	assert outFormat in acceptedOutFormats, "%s is not an accepted output format. Options are: %s" % (outFormat, "/".join(acceptedOutFormats))
 
 	print("Fetching and converting %d files from %s" % (len(doc_xmls),args.database))
-	with bioc.biocxml.iterwrite(args.o) as writer:
+	with open_maybe_gzip(args.o, 'wb') as f, bioc.biocxml.iterwrite(f) as writer:
 		for doc_xml in doc_xmls:
 			for bioc_doc in parse_func(doc_xml):
 				writer.write_document(bioc_doc)

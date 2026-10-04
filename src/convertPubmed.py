@@ -17,6 +17,8 @@ import re
 import os
 from datetime import datetime
 
+from fileutil import open_maybe_gzip
+
 def download_file(url,local_filename):
 	with closing(request.urlopen(url,timeout=20)) as r:
 		with open(local_filename, 'wb') as f:
@@ -80,7 +82,7 @@ accepted_out_formats = ['biocxml']
 def main():
 	parser = argparse.ArgumentParser(description='Tool to convert corpus between different formats')
 	parser.add_argument('--url',type=str,required=True,help="URL to PubMed GZipped XML file")
-	parser.add_argument('--o',type=str,required=True,help="Where to store resulting converted docs")
+	parser.add_argument('--o',type=str,required=True,help="Where to store resulting converted docs (gzipped if it ends with .gz)")
 	parser.add_argument('--oFormat',type=str,required=True,help="Format for output corpus. Options: %s" % "/".join(accepted_out_formats))
 
 	args = parser.parse_args()
@@ -94,7 +96,7 @@ def main():
 		download_file_with_retries(args.url, tf_pubmed.name, check_md5=True)
 
 		print("Converting...")
-		with gzip.open(tf_pubmed.name, 'rt', encoding='utf-8') as f, bioc.biocxml.iterwrite(args.o) as writer:
+		with gzip.open(tf_pubmed.name, 'rt', encoding='utf-8') as f, open_maybe_gzip(args.o, 'wb') as f_out, bioc.biocxml.iterwrite(f_out) as writer:
 			for bioc_doc in pubmedxml2bioc(f):
 				writer.write_document(bioc_doc)
 

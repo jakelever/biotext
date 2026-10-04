@@ -44,7 +44,9 @@ snakemake --cores 1 downloaded.flag
 snakemake --cores 1 converted.flag
 ```
 
-Step 1 writes small listing/batch manifests to *listings/* and *pmc_batches/*. Step 2 needs outbound network access to fetch PubMed (FTP) and PMC (S3) content, and writes the converted files to a *biocxml* directory. No bulk PMC archive is ever stored locally.
+Step 1 writes small listing/batch manifests to *listings/* and *pmc_batches/*. Step 2 needs outbound network access to fetch PubMed (FTP) and PMC (S3) content, and writes the converted files to a *biocxml* directory as gzipped BioC XML (*.bioc.xml.gz). No bulk PMC archive is ever stored locally.
+
+If you have uncompressed *.bioc.xml files from an older version of BioText, compress them in place with `gzip biocxml/*.bioc.xml` (and delete any old *pmids/* files) rather than regenerating them; Snakemake will refuse to run while uncompressed files remain.
 
 ### Running on more cores
 
@@ -85,13 +87,13 @@ pip install -U biopython moto
 
 ## Yearly Baseline Releases
 
-Every year, PubMed is given a new baseline release with daily updates based from this (typically in Nov/Dec). BioText will throw an error (below) if it sees any old baseline/update files in the biocxml/ directory. This will happen when a new baseline is released. You can see the year of the release by the first number in the filename. For example, pubmed\_updatefiles\_**20**n1478.bioc.xml is from the 2020 release.
+Every year, PubMed is given a new baseline release with daily updates based from this (typically in Nov/Dec). BioText will throw an error (below) if it sees any old baseline/update files in the biocxml/ directory. This will happen when a new baseline is released. You can see the year of the release by the first number in the filename. For example, pubmed\_updatefiles\_**20**n1478.bioc.xml.gz is from the 2020 release.
 
 When this happens, it's time for a yearly clean-out. You should delete the old PubMed files (which will likely be all PubMed files in biocxml). You will also need to delete any downstream files based upon these files to make sure that other projects don't end up with duplicate files.
 
 ```text
 AssertionError in line 66 of /projects/jlever/github/biotext/Snakefile:
-Found unexpected PubMed files (e.g. biocxml/pubmed_baseline_20n0001.bioc.xml) in biocxml directory. Likely due to a new PubMed baseline release. These should be manually deleted as well as downstream files. Check the project README for more details under section Yearly Baseline Releases.
+Found unexpected PubMed files (e.g. biocxml/pubmed_baseline_20n0001.bioc.xml.gz) in biocxml directory. Likely due to a new PubMed baseline release. These should be manually deleted as well as downstream files. Check the project README for more details under section Yearly Baseline Releases.
   File "/projects/jlever/github/biotext/Snakefile", line 66, in <module>
 ```
 

@@ -54,10 +54,13 @@ if os.path.isfile('listings/pubmed.txt'):
 			split = line.strip('\n').split('/')
 			filename = split[-1].replace('.xml.gz','').replace('pubmed','')
 			dir = split[-2]
-			pubmed_biocxml_files.append(f"biocxml/pubmed_{dir}_{filename}.bioc.xml")
+			pubmed_biocxml_files.append(f"biocxml/pubmed_{dir}_{filename}.bioc.xml.gz")
 
 	if os.path.isdir('biocxml'):
-		existing_pubmed_biocxml_files = [ f"biocxml/{f}" for f in os.listdir('biocxml') if f.startswith('pubmed') and f.endswith('.xml') ]
+		uncompressed_files = sorted( f"biocxml/{f}" for f in os.listdir('biocxml') if f.endswith('.bioc.xml') )
+		assert len(uncompressed_files) == 0, "Found uncompressed BioC XML files (e.g. %s) in biocxml directory. Outputs are now gzipped (*.bioc.xml.gz). Compress existing files with: gzip biocxml/*.bioc.xml" % uncompressed_files[0]
+
+		existing_pubmed_biocxml_files = [ f"biocxml/{f}" for f in os.listdir('biocxml') if f.startswith('pubmed') and f.endswith('.bioc.xml.gz') ]
 		unexpected_files = [ f for f in sorted(existing_pubmed_biocxml_files) if not f in pubmed_biocxml_files ]
 		assert len(unexpected_files) == 0, "Found unexpected PubMed files (e.g. %s) in biocxml directory. Likely due to a new PubMed baseline release. These should be manually deleted as well as downstream files. Check the project README for more details under section Yearly Baseline Releases." % unexpected_files[0]
 
@@ -65,7 +68,7 @@ if os.path.isfile('listings/pubmed.txt'):
 if os.path.isfile('pmc_batches/batches.json'):
 	with open('pmc_batches/batches.json') as f:
 		pmc_blocks = sorted(json.load(f).keys())
-		pmc_biocxml_files = [ f"biocxml/pmc_{b}.bioc.xml" for b in pmc_blocks ]
+		pmc_biocxml_files = [ f"biocxml/pmc_{b}.bioc.xml.gz" for b in pmc_blocks ]
 
 rule convert_biocxml:
 	input:
@@ -76,12 +79,12 @@ rule convert_biocxml:
 	shell: "touch {output}"
 
 rule pubmed_convert_biocxml:
-	output: "biocxml/pubmed_{dir}_{f}.bioc.xml"
+	output: "biocxml/pubmed_{dir}_{f}.bioc.xml.gz"
 	resources: mem_mb=6000, runtime=90
 	shell: "python src/convertPubmed.py --url ftp://ftp.ncbi.nlm.nih.gov/pubmed/{wildcards.dir}/pubmed{wildcards.f}.xml.gz --o {output} --oFormat biocxml"
 
 rule pmc_convert_biocxml:
-	output: "biocxml/pmc_{block}.bioc.xml"
+	output: "biocxml/pmc_{block}.bioc.xml.gz"
 	resources: mem_mb=4000, runtime=60
 	shell: "python src/convertPMC.py --batchesFile pmc_batches/batches.json --batch {wildcards.block} --outFile {output}"
 
@@ -98,7 +101,7 @@ if os.path.isfile("pmids.flag"):
 
 pmid_files = []
 if os.path.isdir('biocxml'):
-	pmid_files = [ "pmids/%s" % f.replace('.bioc.xml','.txt') for f in os.listdir('biocxml') ]
+	pmid_files = [ "pmids/%s" % f.replace('.bioc.xml.gz','.txt') for f in os.listdir('biocxml') if f.endswith('.bioc.xml.gz') ]
 
 rule gather_all_pmids:
 	input: pmid_files
@@ -106,6 +109,6 @@ rule gather_all_pmids:
 	shell: "touch {output}"
 
 rule gather_pmids:
-	input: "biocxml/{f}.bioc.xml"
+	input: "biocxml/{f}.bioc.xml.gz"
 	output: "pmids/{f}.txt"
-	shell: ' {{ grep -hoP "<infon key=.pmid.>\d+</infon>" {input} || true; }} | tr ">" "<" | cut -f 3 -d "<" | sort -u > {output}'
+	shell: ' {{ zgrep -hoP "<infon key=.pmid.>\d+</infon>" {input} || true; }} | tr ">" "<" | cut -f 3 -d "<" | sort -u > {output}'
