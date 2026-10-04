@@ -4,4 +4,4 @@ boto3
 biopython
 pytest
 moto[server]
-git+https://github.com/jakelever/bioconverters.git
+bioconverters
