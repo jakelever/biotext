@@ -35,7 +35,11 @@ if __name__ == '__main__':
 			if args.verbose:
 				print(f"Fetching {i + 1}/{len(uris)}: {uri}")
 
-			data = fetch_object_text(client, bucket, key)
+			try:
+				data = fetch_object_text(client, bucket, key)
+			except FileNotFoundError as e:
+				print(f"WARNING: skipping missing object: {e}")
+				continue
 
 			for bioc_doc in pmcxml2bioc(io.StringIO(data)):
 				writer.write_document(bioc_doc)

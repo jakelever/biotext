@@ -20,6 +20,8 @@ def fetch_object_bytes(client, bucket, key, retries=5):
 		try:
 			response = client.get_object(Bucket=bucket, Key=key)
 			return response["Body"].read()
+		except client.exceptions.NoSuchKey:
+			raise FileNotFoundError("s3://%s/%s does not exist" % (bucket, key))
 		except Exception:
 			print("Unexpected error (%s %s) on try %d/%d while fetching s3://%s/%s" % (sys.exc_info()[0], sys.exc_info()[1], tryno + 1, retries, bucket, key))
 			time.sleep(5 * (tryno + 1))
