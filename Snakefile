@@ -81,7 +81,7 @@ rule convert_biocxml:
 rule pubmed_convert_biocxml:
 	output: "biocxml/pubmed_{dir}_{f}.bioc.xml.gz"
 	resources: mem_mb=6000, runtime=90
-	shell: "python src/convertPubmed.py --url ftp://ftp.ncbi.nlm.nih.gov/pubmed/{wildcards.dir}/pubmed{wildcards.f}.xml.gz --o {output} --oFormat biocxml"
+	shell: "python src/convertPubmed.py --url https://ftp.ncbi.nlm.nih.gov/pubmed/{wildcards.dir}/pubmed{wildcards.f}.xml.gz --o {output} --oFormat biocxml"
 
 rule pmc_convert_biocxml:
 	output: "biocxml/pmc_{block}.bioc.xml.gz"
